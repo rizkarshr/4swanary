@@ -15,7 +15,6 @@ use App\Http\Controllers\Controller;
 |
 */
 
-Route::post('/register', [App\Http\Controllers\Api\AuthController::class, 'register']);
 Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
