@@ -75,7 +75,7 @@ class ProductController extends Controller
             'code' => 200,
             'status' => true,
             'message' => "Success get the Product",
-            'data' => $Product
+            'data' => $product
         ]);
     }
 
