@@ -4,11 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class product extends Model
 {
     use HasFactory;
-
+    public function Readproduk()
+    {
+        $product = DB::table('products')->get();
+        return $product;
+    }
     protected $tabel = 'products';
     protected $fillable = [
         'id',
@@ -28,5 +33,4 @@ class product extends Model
     {
         return $this->hasOne(Category::class, "id", "subcategory_id");
     }
-
 }
