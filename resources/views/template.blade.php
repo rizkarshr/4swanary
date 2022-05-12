@@ -65,21 +65,21 @@ session_start();
                         <ul class="metismenu" id="menu">
                             <li align="center"><img src="{{asset('images/logo2.png') }}" style="width:150px; "></li>
 
-                            <li><a href="#"><i class="ti-user"></i><span>Admin</span></a></li>
+                            <li><a href="#"><i class="ti-user"></i><span>Nama Admin</span></a></li>
 
-                            <li><a href="#"><span>Kembali Ke Toko</span></a></li>
-                            <li>
-                                <a href="#"><i class="ti-dashboard"></i><span>Manage Admin</span></a>
-                            </li>
+                            <li class="link {{ Request::is('dashboard') ? ' active' : '' }}"><a href="{{ route('dashboard') }}"><span>Home</span></a></li>
+                            <li class="link {{ Request::is('user') ? ' active' : '' }}"><a href="{{ route('user') }}"></i><span>Manage Admin</span></a></li>
+
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout"></i><span>Manage Store
                                     </span></a>
                                 <ul class="collapse">
-                                    <li><a href="#">Article</a></li>
-                                    <li><a class="nav-link{{ Request::is('produk') ? ' active' : '' }}" href="{{ route('produk') }}">Product</a></li>
-                                    <li><a href="#">Category</a></li>
-                                    <li><a href="#">Subcategory</a></li>
-                                    <li><a href="#">Origins</a></li>
+                                    <li class="link {{ Request::is('article') ? ' active' : '' }}"><a href="{{ route('article') }}">Article</a></li>
+                                    <li class="link {{ Request::is('company') ? ' active' : '' }}"><a href="{{ route('company') }}">Company</a></li>
+                                    <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ route('product') }}">Product</a></li>
+                                    <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ route('category') }}">Category</a></li>
+                                    <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ route('subcategory') }}">Subcategory</a></li>
+                                    <li class="link {{ Request::is('origins') ? ' active' : '' }}"><a href="{{ route('origins') }}">Origins</a></li>
                                 </ul>
                             </li>
 
@@ -100,7 +100,7 @@ session_start();
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>by Aswana.ry Directory 2022</p>
+                <p>@2022 Aswana.ry Directory</p>
             </div>
         </footer>
         <!-- footer area end-->
