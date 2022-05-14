@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class subcategory extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $tabel = 'subcategories';
     protected $fillable = [
@@ -17,6 +18,13 @@ class subcategory extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name,
+        ];
+    }
 
     public function product()
     {

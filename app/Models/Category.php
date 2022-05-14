@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class category extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $tabel = 'categories';
     protected $fillable = [
@@ -17,4 +18,11 @@ class category extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name,
+        ];
+    }
 }

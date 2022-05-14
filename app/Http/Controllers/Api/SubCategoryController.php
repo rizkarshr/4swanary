@@ -14,9 +14,17 @@ class SubCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $subcategory = Subcategory::all();
+        if($request->filled('search')){
+
+            $subcategory = Subcategory::search($request->search)->get();
+
+        }else{
+
+            $subcategory = Subcategory::all();
+
+        }
 
         return response()->json([
             'code' => 200,

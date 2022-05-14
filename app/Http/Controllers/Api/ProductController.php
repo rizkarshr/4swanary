@@ -16,10 +16,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $product = Product::all();
+        if($request->filled('search')){
+
+            $product = Product::search($request->search)->get();
+
+        }else{
+
+            $product = Product::all();
+
+        }
 
         return response()->json([
             'code' => 200,

@@ -11,9 +11,25 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        if($request->filled('search')){
+
+            $user = User::search($request->search)->get();
+
+        }else{
+
+            $user = User::all();
+
+        }
+
+        return response()->json([
+            'code' => 200,
+            'status' => true,
+            'message' => "Success get all user",
+            'data' => $user
+        ]);
     }
 
     /**
@@ -34,7 +50,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'id' => $request->id,
+            'name' => $request->name,
+            'desc' => $request->desc,
+        ]);
+
+        return response()->json([
+            'code' => 200,
+            'status' => true,
+            'message' => "Success create the user",
+            'data' => $user
+        ]);
     }
 
     /**
@@ -43,9 +70,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        //$user = User::with('item')->find($user->id);
+        $user = User::all();
+
+        return response()->json([
+            'code' => 200,
+            'status' => true,
+            'message' => "Success get the user",
+            'data' => $user
+        ]);
     }
 
     /**
@@ -66,9 +101,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update([
+            'id' => $request->id,
+            'name' => $request->name,
+            'desc' => $request->desc,
+        ]);
+
+        return response()->json([
+            'code' => 200,
+            'status' => true,
+            'message' => "Success update the user",
+            'data' => $user
+        ]);
     }
 
     /**
@@ -77,8 +123,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return response()->json([
+            'code' => 200,
+            'status' => true,
+            'message' => "Success delete the user",
+            'data' => ""
+        ]);
     }
 }

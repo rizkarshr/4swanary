@@ -13,9 +13,17 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $category = Category::all();
+        if($request->filled('search')){
+
+            $category = Category::search($request->search)->get();
+
+        }else{
+
+            $category = Category::all();
+
+        }
 
         return response()->json([
             'code' => 200,

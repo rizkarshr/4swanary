@@ -15,9 +15,17 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $company = Company::all();
+        if($request->filled('search')){
+
+            $company = Company::search($request->search)->get();
+
+        }else{
+
+            $company = Company::all();
+
+        }
 
         return response()->json([
             'code' => 200,
