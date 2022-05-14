@@ -142,7 +142,7 @@ session_start();
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
-                                    <h2>List Product</h2>
+                                    <h2>List Origins</h2>
                                     <button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Product</button>
                                 </div>
                                 <div class="data-tables datatable-dark">

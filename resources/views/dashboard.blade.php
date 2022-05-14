@@ -49,6 +49,24 @@
     <!-- page title area end -->
     <div class="main-content-inner">
 
+        <!-- market value area start -->
+        <div class="row mt-5 mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-sm-flex justify-content-between align-items-center">
+                            <h2>Welcome to Aswana.ry Directory</h2>
+                        </div>
+                        <div class="market-status-table mt-4">
+                            You are login as <strong>Admin</strong>
+                            <br>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- market value area end -->
 
         <div class="sales-report-area mt-5 mb-5">
             <div class="row">
@@ -57,7 +75,7 @@
                         <div class="s-report-inner pr--20 pt--30 mb-3">
                             <div class="icon"><i class="fa fa-user"></i></div>
                             <div class="s-report-title d-flex justify-content-between">
-                                <h4 class="header-title mb-0">Pelanggan</h4>
+                                <h4 class="header-title mb-0">Product</h4>
                             </div>
                             <div class="d-flex justify-content-between pb-2">
                                 <h1>220</h1>
@@ -71,7 +89,7 @@
                         <div class="s-report-inner pr--20 pt--30 mb-3">
                             <div class="icon"><i class="fa fa-book"></i></div>
                             <div class="s-report-title d-flex justify-content-between">
-                                <h4 class="header-title mb-0">Pesanan</h4>
+                                <h4 class="header-title mb-0">Company</h4>
                             </div>
                             <div class="d-flex justify-content-between pb-2">
                                 <h1>321</h1>
@@ -84,7 +102,7 @@
                         <div class="s-report-inner pr--20 pt--30 mb-3">
                             <div class="icon"><i class="fa fa-link"></i></div>
                             <div class="s-report-title d-flex justify-content-between">
-                                <h4 class="header-title mb-0">Konfirmasi Pembayaran</h4>
+                                <h4 class="header-title mb-0">Category</h4>
                             </div>
                             <div class="d-flex justify-content-between pb-2">
                                 <h1>123</h1>
@@ -97,25 +115,9 @@
         </div>
 
 
+
         <!-- overview area end -->
-        <!-- market value area start -->
-        <div class="row mt-5 mb-5">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-sm-flex justify-content-between align-items-center">
-                            <h2>Welcome to Aswana.ry Directory</h2>
-                        </div>
-                        <div class="market-status-table mt-4">
-                            Anda masuk sebagai <strong>Admin</strong>
-                            <br>
-                            <p>Pada halaman admin, Anda dapat menambah kategori produk, mengelola produk,
-                                mengelola user dan admin, melihat konfirmasi pembayaran</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
 
         <!-- row area start-->
