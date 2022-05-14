@@ -19,12 +19,12 @@ Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login'])
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
 
+    Route::apiResource('/user', App\Http\Controllers\Api\SubCategoryController::class);
+    Route::apiResource('/category', App\Http\Controllers\Api\CategoryController::class);
+    Route::apiResource('/subcategory', App\Http\Controllers\Api\SubCategoryController::class);
+    Route::apiResource('/product', App\Http\Controllers\Api\ProductController::class);
+    Route::apiResource('/company', App\Http\Controllers\Api\CategoryController::class);
+    
     Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
 
 });
-
-Route::apiResource('/user', App\Http\Controllers\Api\SubCategoryController::class);
-Route::apiResource('/category', App\Http\Controllers\Api\CategoryController::class);
-Route::apiResource('/subcategory', App\Http\Controllers\Api\SubCategoryController::class);
-Route::apiResource('/product', App\Http\Controllers\Api\ProductController::class);
-Route::apiResource('/company', App\Http\Controllers\Api\CategoryController::class);

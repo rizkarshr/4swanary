@@ -159,7 +159,7 @@ session_start();
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -194,6 +194,7 @@ session_start();
 
                 <div class="modal-body">
                     <form action="{{ route('category') }}" method="post" enctype="multipart/form-data">
+                        
                         <div class="form-group">
                             <label>Category Name</label>
                             <input name="name" type="text" class="form-control" required autofocus>
