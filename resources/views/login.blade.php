@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-    <title>Login Aswana.ry Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/images/l.png">
+    <title>Login Admin</title>
     <link rel="stylesheet" href="text/css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -14,7 +15,7 @@
         }
 
         body {
-            background-image: url(pictures/b.png);
+            background-image: url(/images/b.png);
             background-repeat: no-repeat;
             background-size: cover;
             color: #25262B;
@@ -25,7 +26,7 @@
         }
 
         #card {
-            background-color: rgba(255, 255, 255, 0.877);
+            background-color: rgba(255, 255, 255, 0.851);
             border-radius: 10px;
             box-shadow: 1px 2px 8px rgba(0, 0, 0, 65);
             height: 435px;
@@ -89,20 +90,21 @@
     <div id="card">
         <div id="card-content">
             <div id="card-title">
-                <image src="l.png" width="60%" align="center"></image><br><br>
+                <image src="/images/l.png" width="60%" align="center"></image><br><br>
                 <label><b>Welcome To Aswana.ry!</b></label>
             </div>
-            <form method="post" class="form">
+            <form method="get" class="form">
                 <input style="padding-top: 10px;" type="text" id="username" class="form-content" name="usernamee" autocomplete="on" placeholder="enter your username..." required />
                 <div class="form-border"></div> <br>
 
-                <input style="padding-top: 10px;" type="text" id="password" class="form-content" name="pass" autocomplete="on" placeholder="enter your password..." required />
+                <input style="padding-top: 10px;" type="password" id="password" class="form-content" name="pass" autocomplete="on" placeholder="enter your password..." required />
                 <div class="form-border"></div>
                 <input id="submit-btn" type="submit" name="submit" value="L O G I N">
-
             </form>
         </div>
     </div>
+
+</script>
 </body>
 
 </html>
