@@ -22,7 +22,7 @@
         }
 
         label {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family:  'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
         #card {
@@ -30,7 +30,7 @@
             border-radius: 10px;
             box-shadow: 1px 2px 8px rgba(0, 0, 0, 65);
             height: 435px;
-            margin: 6rem auto 8.1rem auto;
+            margin: 5rem auto 5rem auto;
             width: 380px;
         }
 
@@ -43,6 +43,7 @@
             padding-bottom: 8px;
             padding-top: 13px;
             text-align: center;
+            font-family: 'helvetica';
         }
 
         #submit-btn {
