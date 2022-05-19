@@ -60,7 +60,7 @@
                         <div class="market-status-table mt-4">
                             You are login as <strong>Admin</strong>
                             <br>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that.</p>
+                            <p>On the admin page, you can manage users and admins, manage articles, manage companies, manage products, add product categories and subcategories, and view origins lists.</p>
                         </div>
                     </div>
                 </div>

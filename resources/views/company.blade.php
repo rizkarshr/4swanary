@@ -11,6 +11,7 @@ session_start();
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="../favicon.png">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="images/l.png">
     <title>Manage Store - Aswana.ry</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
