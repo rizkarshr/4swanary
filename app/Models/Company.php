@@ -15,7 +15,7 @@ class company extends Model
         'id',
         'name',
         'logo',
-        'banner',
+        'background',
         'since',
         'sector',
         'website',
@@ -32,5 +32,10 @@ class company extends Model
             'since' => $this->since,
             'sector' => $this->sector,
         ];
+    }
+
+    public function product()
+    {
+        return $this->hasMay(Product::class);
     }
 }

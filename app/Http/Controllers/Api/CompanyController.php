@@ -53,11 +53,34 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $company = Company::create([
-            'id' => $request->id,
-            'name' => $request->name,
-            'desc' => $request->desc,
-        ]);
+        if ($file = $request->file('logo')) {
+            
+            $uploadFolder = 'company';
+
+            $image_uploaded_path = $file->store($uploadFolder);
+
+            $company = Company::create([
+                'id' => $request->id,
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'logo' => Storage::disk('public')->url($image_uploaded_path)
+            ]);
+
+            if (!$product) {
+                return $this->sendError("", "failed create company");
+            }
+            
+        } else {
+            $company = Company::create([
+                'id' => $request->id,
+                'name' => $request->name,
+                'desc' => $request->desc,
+            ]);
+
+            if (!$company) {
+                return $this->sendError("", "failed create company");
+            }
+        }
 
         return response()->json([
             'code' => 200,

@@ -74,9 +74,8 @@ class SubCategoryController extends Controller
      */
     public function show(Subcategory $subcategory)
     {
-        //$subcategory = Subcategory::with('item')->find($subcategory->id);
-        $subcategory = Subcategory::all();
-
+        $subcategory = Subcategory::find($subcategory->id);
+        
         return response()->json([
             'code' => 200,
             'status' => true,

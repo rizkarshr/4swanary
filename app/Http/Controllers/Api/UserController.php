@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use App\Models\User;
+ 
 class UserController extends Controller
 {
     /**
@@ -20,7 +24,7 @@ class UserController extends Controller
 
         }else{
 
-            $user = User::all();
+            $user = User::get();
 
         }
 
@@ -48,18 +52,58 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        $user = User::create([
-            'id' => $request->id,
-            'name' => $request->name,
-            'desc' => $request->desc,
-        ]);
+        // $user = User::find($id);
+
+        if ($file = $request->file('profil_pict')) {
+
+            $upload = $request->file('profil_pict');
+            $this->validate($request, [
+                'profil_pict'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+            ]);
+            $penyimpanan = public_path().'/user';
+            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
+            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+
+            $user = User::create([
+                'id' => $request->id,
+                'username' => $request->username,
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+                'status' => "Active",
+                'profil_pict' => $image
+            ]);
+
+            if (!$user) {
+                // return $this->sendError("", "failed create user");
+            }
+            
+        } else {
+            $user = User::create([
+                'id' => $request->id,
+                'username' => $request->username,
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+                'status' => "Active",
+            ]);
+
+            if (!$user) {
+                return response()->json([
+                    'code' => 422,
+                    'status' => false,
+                    'message' => "Failed get the user",
+                    'data' => ""
+                ]);
+            }
+        }
 
         return response()->json([
             'code' => 200,
             'status' => true,
-            'message' => "Success create the user",
+            'message' => "Success get the user",
             'data' => $user
         ]);
     }
@@ -72,8 +116,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //$user = User::with('item')->find($user->id);
-        $user = User::all();
+        $user = User::find($user->id);
 
         return response()->json([
             'code' => 200,
@@ -103,11 +146,66 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->update([
-            'id' => $request->id,
-            'name' => $request->name,
-            'desc' => $request->desc,
-        ]);
+        // $user = User::find($user->id);
+        
+        if ($file = $request->file('profil_pict')) {
+
+            if(File::exists(public_path('user/'.$user->profil_pict))){
+
+                File::delete(public_path('user/'.$user->profil_pict));
+    
+            }
+
+            $upload = $request->file('profil_pict');
+            $this->validate($request, [
+                'profil_pict'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+            ]);
+            $penyimpanan = public_path().'/user';
+            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
+            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+
+            $user->update([
+                'username' => $request->username,
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+                'status' => $request->status,
+                'profil_pict' => $image
+            ]);
+
+            if (!$user) {
+                // return $this->sendError("", "failed create user");
+
+                return response()->json([
+                    'code' => 422,
+                    'status' => False,
+                    'message' => "Failed update the user",
+                    'data' => ""
+                ]);
+            }
+            
+        } else {
+            
+            $user->update([
+                'username' => $request->username,
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+                'status' => $request->status,
+            ]);
+
+            if (!$user) {
+                
+                // return $this->sendError("", "failed update user");
+
+                return response()->json([
+                    'code' => 422,
+                    'status' => False,
+                    'message' => "Failed update the user",
+                    'data' => ""
+                ]);
+            }
+        }
 
         return response()->json([
             'code' => 200,
@@ -115,6 +213,7 @@ class UserController extends Controller
             'message' => "Success update the user",
             'data' => $user
         ]);
+        
     }
 
     /**
@@ -125,7 +224,19 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
+        $user = User::find($user->id);
+        
+        if(File::exists(public_path('user/'.$user->profil_pict))){
+
+            File::delete(public_path('user/'.$user->profil_pict));
+            
+            $user->delete();
+
+        } else{
+
+            $user->delete();
+
+        }
 
         return response()->json([
             'code' => 200,

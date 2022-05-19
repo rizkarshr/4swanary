@@ -15,16 +15,28 @@ use App\Http\Controllers\Controller;
 |
 */
 
+//LOGIN ADMIN
 Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
 
-    Route::apiResource('/user', App\Http\Controllers\Api\SubCategoryController::class);
+
+    Route::apiResource('/user', App\Http\Controllers\Api\UserController::class);
+
+    //CATEGORY AND SUBCATEGORY TABLE
     Route::apiResource('/category', App\Http\Controllers\Api\CategoryController::class);
     Route::apiResource('/subcategory', App\Http\Controllers\Api\SubCategoryController::class);
+
+    //PRODUCT TABLE
     Route::apiResource('/product', App\Http\Controllers\Api\ProductController::class);
+
+    //COMPANY TABLE
     Route::apiResource('/company', App\Http\Controllers\Api\CategoryController::class);
+
+    //ARTICLE TABLE
+    Route::apiResource('/article', App\Http\Controllers\Api\ArticleController::class);
     
+    //LOGOUT ADMIN
     Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
 
 });

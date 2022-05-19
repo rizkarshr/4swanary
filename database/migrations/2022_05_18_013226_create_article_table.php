@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('article', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('logo');
-            $table->string('background');
-            $table->integer('since');
-            $table->string('sector');
-            $table->string('website');
-            $table->string('contact_number');
-            $table->integer('id_origin');
+            $table->string('title');
+            $table->string('keywords');
+            $table->string('image');
+            $table->text('desc');
+            $table->string('content');
+            $table->string('writer');
+            $table->string('source');
+            $table->enum('status', ['Active','Inactive']);
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('article');
     }
 };

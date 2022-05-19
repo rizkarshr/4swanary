@@ -55,11 +55,50 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::create([
-            'id' => $request->id,
-            'name' => $request->name,
-            'desc' => $request->desc,
-        ]);
+        if ($file = $request->file('product_pict')) {
+            
+            $upload = $request->file('product_pict');
+            $this->validate($request, [
+                'product_pict'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+            ]);
+            $penyimpanan = public_path().'/product';
+            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
+            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+
+            $product = Product::create([
+                'id' => $request->id,
+                'name' => $request->name,
+                'product_pict' => $image,
+                'desc' => $request->desc,
+                'hs_code' => $request->hs_code,
+                'dimension' => $request->dimension,
+                'id_subcategory' => $request->id_subcategory,
+                'id_origin' => $request->id_origin,
+                'id_company' => $request->id_company,
+                
+            ]);
+
+            if (!$product) {
+                // return $this->sendError("", "failed create product");
+            }
+            
+        } else {
+            $product = Product::create([
+                'id' => $request->id,
+                'name' => $request->name,
+                'product_pict' => $image,
+                'desc' => $request->desc,
+                'hs_code' => $request->hs_code,
+                'dimension' => $request->dimension,
+                'id_subcategory' => $request->id_subcategory,
+                'id_origin' => $request->id_origin,
+                'id_company' => $request->id_company,
+            ]);
+
+            if (!$product) {
+                // return $this->sendError("", "failed create product");
+            }
+        }
 
         return response()->json([
             'code' => 200,
@@ -77,8 +116,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //$product = Product::with('item')->find($product->id);
-        $product = Product::all();
+        $product = Product::whereHas('subcategory','')->find($product->id);
 
         return response()->json([
             'code' => 200,
@@ -108,11 +146,55 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->update([
-            'id' => $request->id,
-            'name' => $request->name,
-            'desc' => $request->desc,
-        ]);
+        if ($file = $request->file('product_pict')) {
+            
+            if(File::exists(public_path('product/'.$product->product_pict))){
+
+                File::delete(public_path('product/'.$product->product_pict));
+    
+            }
+
+            $upload = $request->file('product_pict');
+            $this->validate($request, [
+                'product_pict'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+            ]);
+            $penyimpanan = public_path().'/product';
+            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
+            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+
+            $product->update([
+                'id' => $request->id,
+                'name' => $request->name,
+                'product_pict' => $image,
+                'desc' => $request->desc,
+                'hs_code' => $request->hs_code,
+                'dimension' => $request->dimension,
+                'id_subcategory' => $request->id_subcategory,
+                'id_origin' => $request->id_origin,
+                'id_company' => $request->id_company,
+            ]);
+
+            if (!$product) {
+                // return $this->sendError("", "failed update product");
+            }
+            
+        } else {
+            $product = Product::create([
+                'id' => $request->id,
+                'name' => $request->name,
+                'product_pict' => $image,
+                'desc' => $request->desc,
+                'hs_code' => $request->hs_code,
+                'dimension' => $request->dimension,
+                'id_subcategory' => $request->id_subcategory,
+                'id_origin' => $request->id_origin,
+                'id_company' => $request->id_company,
+            ]);
+
+            if (!$product) {
+                // return $this->sendError("", "failed update product");
+            }
+        }
 
         return response()->json([
             'code' => 200,
@@ -130,7 +212,19 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
+        $product = Product::find($product->id);
+        
+        if(File::exists(public_path('product/'.$product->product_pict))){
+
+            File::delete(public_path('product/'.$product->product_pict));
+            
+            $product->delete();
+
+        } else{
+
+            $product->delete();
+
+        }
 
         return response()->json([
             'code' => 200,

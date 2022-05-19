@@ -74,7 +74,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //$category = Category::with('item')->find($category->id);
-        $category = Category::all();
+        $category = Category::find($category->id); 
 
         return response()->json([
             'code' => 200,

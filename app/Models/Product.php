@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Laravel\Scout\Searchable;
+use Laravolt\Indonesia\Models\Extended\Provinsi;
 
 class product extends Model
 {
@@ -35,12 +36,17 @@ class product extends Model
     {
         return [
             'name' => $this->name,
-            'hs_code' => $this->since,
+            'hs_code' => $this->hs_code,
         ];
     }
 
     public function subcategory()
     {
-        return $this->hasOne(Category::class, "id", "subcategory_id");
+        return $this->hasOne(Subcategory::class, "id", "id_subcategory");
+    }
+
+    public function company()
+    {
+        return $this->hasOne(company::class, "id", "id_company");
     }
 }
