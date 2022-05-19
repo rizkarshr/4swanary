@@ -66,6 +66,27 @@ Route::get('origins', function () {
     return view('origins');
 })->name('origins');
 
+//index
+Route::get('index', function () {
+    return view('index');
+})->name('index');
+
+//category
+Route::get('home.categoryproduct', function () {
+    return view('home.categoryproduct');
+})->name('categoryproduct');
+
+//homepage
+Route::get('no.index', function () {
+    return view('no.index');
+})->name('index');
+Route::get('no.inner-page', function () {
+    return view('no.inner-page');
+})->name('portofolio-details');
+Route::get('no.portofolio-details', function () {
+    return view('no.portofolio-details');
+})->name('portofolio-details');
+
 
 
 //Route::get('product', 'ProductController@index')->name('product');

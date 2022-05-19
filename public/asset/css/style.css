@@ -4,6 +4,89 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #444444;
+}
+
+a {
+  color: #4A312C;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3b8af2;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Caraousel
+--------------------------------------------------------------*/
+.carousel-item {
+	padding-left: 70px;
+  padding-right: 70px;
+}
+
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #fff;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #4A312C;
+  border-top-color: #e2eefd;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
 html,
 body {
   font-size: 100%;
@@ -36,8 +119,84 @@ label {
 body a:hover {
   text-decoration: none;
 }
+
+
+
 /*-- header --*/
-span.glyphicon.glyphicon-shopping-cart.my-cart-icon.my-cart-icon-affix {
+#header {
+  background: #fff;
+  transition: all 0.5s;
+  z-index: 997;
+  height: 5rem;
+  padding-top: 0.5%;
+  padding: 10px 10px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  
+  margin-right: 0%;
+
+}
+
+.w3l_offers {
+  float: left;
+  padding: 0;
+  width: 47%;
+  padding-top: -5%;
+  position: relative;
+}
+
+.w3l_offers ul {
+  margin: 0;
+  margin-left: -5%;
+  padding-top: -5%;
+  position: relative;
+}
+
+#header.fixed-top {
+  position: sticky;
+  top: 0;
+  height: 100%;
+  position: relative;
+}
+#header .logo {
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+#header .logo a {
+  color: #222222;
+  position: relative;
+}
+#header .logo a span {
+  color: #106eea;
+}
+#header .logo img {
+  max-height: 40px;
+  margin-left: 5%;
+  position: relative;
+}
+
+.scrolled-offset {
+  margin-top: 70px;
+  position: relative;
+}
+
+
+
+
+
+
+
+/*span.glyphicon.glyphicon-shopping-cart.my-cart-icon.my-cart-icon-affix {
   position: relative !important;
 }
 .btn-danger {
@@ -102,7 +261,8 @@ ul.agileits_social_icons li a,
 }
 .w3l_offers {
   float: left;
-  padding: 9px 0;
+  padding: 2px 0;
+  padding-left: 2px;
   width: 47%;
 }
 .w3l_offers p {
@@ -151,9 +311,9 @@ button.btn.btn-default.search:hover {
 }
 .agile-login {
   float: left;
-  width: 40%;
-  text-align: center;
-  padding: 9px 0;
+  width: 50%;
+  text-align: right;
+  padding: 20px 0;
 }
 .agile-login ul li {
   display: inline-block;
@@ -228,9 +388,140 @@ button.w3view-cart:focus {
 .w3ls_logo_products_left1 ul.phone_email li {
   display: inline-block;
   color: #212121;
-}
+}*/
 /*-- //header --*/
-.navbar-default .navbar-nav > li > a {
+
+/*--Navbar--*/
+/**
+* Desktop Navigation 
+*/
+.navbar {
+  position: relative;
+  top: 0;
+  padding: 0;
+}
+.navbar ul {
+  margin: 0;
+  margin-left: 80%;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  top: auto;
+  position: relative;
+}
+.navbar li {
+  position: relative;
+}
+.navbar > ul > li {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 10px 0 10px 10px;
+  text-align: right;
+  padding: 1em;
+  top: auto;
+  position: relative;
+  margin: right;
+  align-items: center;
+  
+}
+.navbar a, .navbar a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 3px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #222222;
+  white-space: nowrap;
+  transition: 0.3s;
+  position: relative;
+}
+.navbar a i, .navbar a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+}
+.navbar > ul > li > a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background-color: #4A312C;
+  visibility: hidden;
+  width: 0px;
+  transition: all 0.3s ease-in-out 0s;
+}
+.navbar a:hover:before, .navbar li:hover > a:before, .navbar .active:before {
+  visibility: visible;
+  width: 100%;
+}
+.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+  color: #4A312C;
+}
+.navbar .dropdown ul {
+  display: block;
+  position: absolute;
+  left: 28px;
+  top: calc(100% + 30px);
+  margin: 0;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  background: #fff;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  transition: 0.3s;
+}
+.navbar .dropdown ul li {
+  min-width: 200px;
+}
+.navbar .dropdown ul a {
+  padding: 10px 20px;
+  font-weight: 400;
+}
+.navbar .dropdown ul a i {
+  font-size: 12px;
+}
+.navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
+  color: #106eea;
+}
+.navbar .dropdown:hover > ul {
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
+}
+.navbar .dropdown .dropdown ul {
+  top: 0;
+  left: calc(100% - 30px);
+  visibility: hidden;
+}
+.navbar .dropdown .dropdown:hover > ul {
+  opacity: 1;
+  top: 0;
+  left: 100%;
+  visibility: visible;
+}
+@media (max-width: 1366px) {
+  .navbar .dropdown .dropdown ul {
+    left: -90%;
+  }
+  .navbar .dropdown .dropdown:hover > ul {
+    left: -100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+/*.navbar-default .navbar-nav > li > a {
   color: #fff;
   font-size: 16px;
   font-weight: 500;
@@ -335,7 +626,10 @@ ul.multi-column-dropdown h6 {
 .navbar {
   margin-bottom: 0;
   border: none;
-}
+}*/
+
+/*--//Navbar--*/
+
 /*-- cart --*/
 /*-- cart-box --*/
 .w3view-cart {
@@ -613,7 +907,7 @@ p.w3l-ad {
   font-size: 14px;
   color: #777;
   width: 42%;
-  line-height: 28px;
+  line-height: 10px;
 }
 .agile_top_brands_grids {
   margin-top: 40px;
@@ -814,36 +1108,60 @@ i.gray-star {
 }
 /*-- footer --*/
 .footer {
-  padding: 5em 0 2em;
+  padding: 1em 0 2em;
   background: #2b2a2a;
 }
 .w3_footer_grid h3 {
   color: #ffffff;
-  font-size: 1.5em;
-  margin-bottom: 1.8em;
+  font-size: 1em;
+  margin-bottom: 1em;
   text-transform: uppercase;
 }
+
 .w3_footer_grid p {
   color: #afafaf;
-  line-height: 1.8em;
-  margin-bottom: 2em;
+  line-height: 1em;
+  margin-bottom: 1em;
+  
 }
 .w3_footer_grid ul li {
+  
   list-style-type: none;
   margin-bottom: 1em;
+  
   color: #afafaf;
   font-size: 14px;
+  text-align: center;
+  display: inline-block;
+  right: 15%;
 }
+
 .w3_footer_grid ul.address li i {
-  color: #562016;
-  border: 1px solid #562016;
-  padding: 0.5em;
+  color: #0066ff;
+  border: 1px solid #0066ff;
+  padding: 0.3em;
   margin-right: 1em;
 }
 .w3_footer_grid ul.address li span {
   display: block;
   margin-left: 3em;
 }
+.w3_footer_grid ul.info h3 {
+  color: #ffffff;
+  font-size: 1em;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  padding-left: 60%;
+  position: relative;
+}
+.w3_footer_grid ul.info li {
+  display: flex;
+  margin-left: 70%;
+  margin-right: 5%;
+  position: relative;
+}
+
+
 .w3_footer_grid ul li a {
   color: #afafaf;
   text-decoration: none;
@@ -870,7 +1188,7 @@ i.fa.fa-arrow-right {
   right: 14%;
   bottom: -75%;
   width: 50px;
-  height: 50px;
+  height: 10px;
   border: 3px solid rgba(86, 32, 22, 0.69);
   border-radius: 25px;
   -webkit-border-radius: 25px;
@@ -880,10 +1198,10 @@ i.fa.fa-arrow-right {
   box-shadow: 0px 0px 15px rgba(86, 32, 22, 0.49);
 }
 .footer-copy p {
-  margin: 4em 0 0;
   text-align: center;
   color: #999;
-  line-height: 1.8em;
+  line-height: 1em;
+  padding-top: 1em;
 }
 .footer-copy p a {
   color: #562016;
@@ -930,7 +1248,7 @@ a.w3_agile_vimeo:hover {
 }
 .footer-botm {
   background: #393737;
-  padding: 16px 0;
+  padding: 20px 0;
 }
 /*-- //footer --*/
 .newproducts-w3agile {
@@ -1685,11 +2003,107 @@ h2.w3_agile_header:after {
   top: 0%;
   right: 0%;
 }
+
+.nav-page {
+  margin-top: 5%;
+  color: white;
+}
+.nav-page li {
+  display: inline-block;
+  color: #54a7df;
+}
+.nav-page a, .nav-page a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 3px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #657b8a;
+  white-space: nowrap;
+  transition: 0.3s;
+  position: relative;
+}
+.nav-page a i, .nav-page a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+}
+.nav-page > ul > li > a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background-color: #4A312C;
+  visibility: hidden;
+  width: 0px;
+  transition: all 0.3s ease-in-out 0s;
+}
+.nav-page a:hover:before, .nav-page li:hover > a:before, .nav-page .active:before {
+  visibility: visible;
+  width: 100%;
+}
+.nav-page a:hover, .nav-page .active, .nav-page .active:focus, .nav-page li:hover > a {
+  color: #4A312C;
+}
+
+
+
+.card {
+  border: none;
+  border-radius: 10px;
+  background-color: #cacaca;
+  display: block;
+
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  height: 300px;
+  margin-top: 1%;
+}
+.card:hover {
+  box-shadow: 0 50px 30px rgba(231, 222, 222, 0.02);
+}
+
+.card-head {
+  padding: 25.6px;
+  padding: 1.6rem;
+  color: rgb(0, 0, 0);
+  
+}
+
+.card-head.profil {
+  border: #000;
+  border: 10px;
+  box-shadow: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.card-body {
+  float: left;
+  padding: 0;
+  width: 60%;
+  height: 100%;
+  padding-left: 10%;
+  padding-top: 2.5%;
+  position: relative;
+}
+
+.card-body.display {
+  margin: 0;
+  margin-left: 10%;
+  padding-top: 10em;
+}
+
 .testi-slider {
   padding: 4em 2em 3em;
   background: #3399cc;
   margin-top: 2em;
 }
+
 /*-- slider start here --*/
 #slider3,
 #slider4 {
@@ -2582,6 +2996,10 @@ h3.agileits-icons-title {
   h2.w3_agile_header {
     font-size: 2em;
   }
+  header,
+  header {
+    font-size: 2em;
+  }
   .w3_agileits_contact_grid_right {
     padding: 0 2em 0 6em;
   }
@@ -2608,7 +3026,8 @@ h3.agileits-icons-title {
     font-size: 14px;
   }
   .w3l_offers {
-    width: 52%;
+    padding: 0px 12px 8px;
+    width: 10%;
   }
   .agile-login {
     padding: 6px 0;
@@ -2618,7 +3037,35 @@ h3.agileits-icons-title {
   }
   .agileits_header {
     padding: 12px 0 8px;
+    width: 100%;
+    float: none;
   }
+  .header {
+    padding: 12px 0 8px;
+    margin-right: auto;
+    width: 100%;
+    float: none;
+  }
+  .navbar {
+    padding: 0px 0 8px;
+    margin-right: auto;
+    width: 75%;
+    float: none;
+  }
+  
+  .card {
+    float: none;
+    width: 100%;
+  }
+  .card-head.profil {
+    float: none;
+    width: 100%;
+  }
+  .card-body {
+    float: left;
+    width: 60%;
+  }
+
   .w3ls_logo_products_left h1 a {
     font-size: 30px;
   }
@@ -2838,6 +3285,12 @@ h3.agileits-icons-title {
     background: none;
     border: none;
     text-align: center;
+  }
+  .navbar {
+    float: none;
+    margin-left: 0px;
+    text-align: center;
+    position: relative;
   }
 }
 @media (max-width: 736px) {
