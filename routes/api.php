@@ -35,6 +35,10 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 
     //ARTICLE TABLE
     Route::apiResource('/article', App\Http\Controllers\Api\ArticleController::class);
+
+    //CITY AND PROVINCE TABLE
+    Route::apiResource('/city', App\Http\Controllers\Api\CityController::class);
+    Route::apiResource('/province', App\Http\Controllers\Api\ProvinceController::class);
     
     //LOGOUT ADMIN
     Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);

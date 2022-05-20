@@ -26,17 +26,18 @@ class product extends Model
         'hs_code',
         'dimension',
         'id_subcategory',
-        'id_origin',
+        // 'id_origin',
         'id_company',
         'created_at',
         'updated_at'
-    ];
+    ]; 
 
     public function toSearchableArray()
     {
         return [
             'name' => $this->name,
             'hs_code' => $this->hs_code,
+            'subcategory' => $this->subcategory,
         ];
     }
 

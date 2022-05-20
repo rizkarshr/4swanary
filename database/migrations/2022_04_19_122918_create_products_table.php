@@ -17,11 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('product_pict');
-            $table->text('desc')->nullable();;
+            $table->text('desc')->nullable();
             $table->integer('hs_code');
-            $table->string('dimension');
+            $table->string('dimension')->nullable();
             $table->integer('id_subcategory');
-            $table->integer('id_origin');
+            $table->integer('id_indonesia_provinces');
+            $table->integer('id_indonesia_cities');
             $table->integer('id_company');
             $table->timestamps();
         });

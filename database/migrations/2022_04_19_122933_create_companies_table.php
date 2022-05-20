@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('sector');
             $table->string('website');
             $table->string('contact_number');
-            $table->integer('id_origin');
+            $table->integer('id_indonesia_provinces');
+            $table->integer('id_indonesia_cities');
             $table->timestamps();
         });
     }

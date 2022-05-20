@@ -17,10 +17,10 @@ class company extends Model
         'logo',
         'background',
         'since',
-        'sector',
+        'subcategory',
         'website',
         'contact_number',
-        'id_origin',
+        // 'id_origin',
         'created_at',
         'updated_at'
     ];
@@ -30,12 +30,17 @@ class company extends Model
         return [
             'name' => $this->name,
             'since' => $this->since,
-            'sector' => $this->sector,
+            'subcategory' => $this->subcategory,
         ];
     }
 
     public function product()
     {
-        return $this->hasMay(Product::class);
-    }
+        return $this->hasMany(Product::class);
+    } 
+
+    // public function -()
+    // {
+    //     return $this->hasOne(-::class, "id", "-");
+    // }
 }

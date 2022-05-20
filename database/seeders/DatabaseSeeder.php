@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             CitiesSeeder::class,
             DistrictsSeeder::class,
             VillagesSeeder::class,
+            SubcategorySeeder::class,
+            CategorySeeder::class,
         ]);
     }
 }

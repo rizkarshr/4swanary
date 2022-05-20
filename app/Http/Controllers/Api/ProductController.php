@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Company;
 use App\Models\Subcategory;
+use App\Models\City;
+use App\Models\Province;
 
 class ProductController extends Controller
 {
@@ -21,11 +23,11 @@ class ProductController extends Controller
 
         if($request->filled('search')){
 
-            $product = Product::search($request->search)->get();
+            $product = Product::search($request->search)->with('company','subcategory','city','province')->get();
 
         }else{
 
-            $product = Product::all();
+            $product = Product::with('company','subcategory','city','province')->get();
 
         }
 
@@ -116,7 +118,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product = Product::whereHas('subcategory','')->find($product->id);
+        $product = Product::whereHas('company','subcategory','city','province')->find($product->id);
 
         return response()->json([
             'code' => 200,

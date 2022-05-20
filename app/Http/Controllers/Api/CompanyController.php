@@ -54,33 +54,76 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         if ($file = $request->file('logo')) {
-            
-            $uploadFolder = 'company';
 
-            $image_uploaded_path = $file->store($uploadFolder);
+            $upload = $request->file('logo');
+            $this->validate($request, [
+                'logo'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+            ]);
+            $penyimpanan = public_path().'/company-logo';
+            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
+            $image = $request->id.'.'.$upload->getClientOriginalExtension();
 
             $company = Company::create([
                 'id' => $request->id,
                 'name' => $request->name,
                 'desc' => $request->desc,
-                'logo' => Storage::disk('public')->url($image_uploaded_path)
+                'logo' => $image,
+                'since' => $request->since,
+                'subcategory' => $request->subcategory,
+                'website' => $request->website,
+                'contact_number' => $request->contact_number,
+                // 'id_origin',
             ]);
 
-            if (!$product) {
-                return $this->sendError("", "failed create company");
-            }
-            
-        } else {
-            $company = Company::create([
-                'id' => $request->id,
-                'name' => $request->name,
-                'desc' => $request->desc,
-            ]);
+            // if (!$company) {
+            //     return $this->sendError("", "failed create company");
+            // }
 
-            if (!$company) {
-                return $this->sendError("", "failed create company");
-            }
         }
+
+        if($file = $request->file('background')){
+
+            $upload = $request->file('background');
+            $this->validate($request, [
+                'background'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+            ]);
+            $penyimpanan = public_path().'/company-bg';
+            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
+            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+
+            $company = Company::create([
+                'id' => $request->id,
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'background' => $image,
+                'since' => $request->since,
+                'subcategory' => $request->subcategory,
+                'website' => $request->website,
+                'contact_number' => $request->contact_number,
+                // 'id_origin',
+            ]);
+
+            // if (!$company) {
+            //     return $this->sendError("", "failed create company");
+            // }
+
+        } else {
+
+            $company = Company::create([
+                'id' => $request->id,
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'since' => $request->since,
+                'subcategory' => $request->subcategory,
+                'website' => $request->website,
+                'contact_number' => $request->contact_number,
+                // 'id_origin',
+            ]);
+
+            // if (!$company) {
+            //     return $this->sendError("", "failed create company");
+            // }
+        } 
 
         return response()->json([
             'code' => 200,
@@ -129,11 +172,85 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        $company->update([
-            'id' => $request->id,
-            'name' => $request->name,
-            'desc' => $request->desc,
-        ]);
+        if ($file = $request->file('logo')) {
+
+            $upload = $request->file('logo');
+            $this->validate($request, [
+                'logo'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+            ]);
+            $penyimpanan = public_path().'/company-logo';
+            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
+            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+
+            $company->update([
+                'id' => $request->id,
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'logo' => $image,
+                'since' => $request->since,
+                'subcategory' => $request->subcategory,
+                'website' => $request->website,
+                'contact_number' => $request->contact_number,
+                // 'id_origin',
+            ]);
+
+            // if (!$company) {
+            //     return $this->sendError("", "failed update company");
+            // }
+
+        }
+
+        if($file = $request->file('background')){
+
+            $upload = $request->file('background');
+            $this->validate($request, [
+                'background'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+            ]);
+            $penyimpanan = public_path().'/company-bg';
+            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
+            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+
+            $company->update([
+                'id' => $request->id,
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'background' => $image,
+                'since' => $request->since,
+                'subcategory' => $request->subcategory,
+                'website' => $request->website,
+                'contact_number' => $request->contact_number,
+                // 'id_origin',
+            ]);
+
+            // if (!$company) {
+            //     return $this->sendError("", "failed update company");
+            // }
+            
+        } else {
+            
+            $company->update([
+                'id' => $request->id,
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'since' => $request->since,
+                'subcategory' => $request->subcategory,
+                'website' => $request->website,
+                'contact_number' => $request->contact_number,
+                // 'id_origin'
+            ]);
+
+            if (!$company) {
+                
+                // return $this->sendError("", "failed update company");
+
+                return response()->json([
+                    'code' => 422,
+                    'status' => False,
+                    'message' => "Failed update the company",
+                    'data' => ""
+                ]);
+            }
+        }
 
         return response()->json([
             'code' => 200,
@@ -151,8 +268,27 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        $company->delete();
+        $company = company::find($company->id);
+        
+        if(File::exists(public_path('company-logo/'.$company->logo))){
 
+            File::delete(public_path('company-logo/'.$company->logo));
+            
+            $company->delete();
+
+        } 
+        if(File::exists(public_path('company-bg/'.$company->background))){
+
+            File::delete(public_path('company-bg/'.$company->background));
+            
+            $company->delete();
+
+        } else{
+
+            $company->delete();
+
+        }
+        
         return response()->json([
             'code' => 200,
             'status' => true,

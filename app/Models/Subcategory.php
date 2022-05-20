@@ -15,9 +15,12 @@ class subcategory extends Model
         'id',
         'name',
         'desc',
+        'id_subcategory',
         'created_at',
         'updated_at'
     ];
+
+    //SEARCH
 
     public function toSearchableArray()
     {
@@ -26,8 +29,15 @@ class subcategory extends Model
         ];
     }
 
+    //RELATION
+
     public function product()
     {
-        return $this->hasMay(Product::class);
+        return $this->hasMany(Product::class);
+    } 
+
+    public function category()
+    {
+        return $this->hasOne(Category::class, "id", "id_category");
     }
 }

@@ -56,6 +56,7 @@ class SubCategoryController extends Controller
             'id' => $request->id,
             'name' => $request->name,
             'desc' => $request->desc,
+            'id_category' => $request->id_category,
         ]);
 
         return response()->json([
@@ -108,6 +109,7 @@ class SubCategoryController extends Controller
             'id' => $request->id,
             'name' => $request->name,
             'desc' => $request->desc,
+            'id_category' => $request->id_category,
         ]);
 
         return response()->json([

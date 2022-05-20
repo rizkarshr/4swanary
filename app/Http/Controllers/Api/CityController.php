@@ -2,34 +2,35 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Models\City;
+use App\Models\Province;
 
-class CategoryController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function index(Request $request)
     {
         if($request->filled('search')){
 
-            $category = Category::search($request->search)->get();
+            $city = City::search($request->search)->get();
 
         }else{
 
-            $category = Category::all();
+            $city = City::get();
 
         }
 
         return response()->json([
             'code' => 200,
             'status' => true,
-            'message' => "Success get all category",
-            'data' => $category
+            'message' => "Success get all city",
+            'data' => $city
         ]);
     }
 
@@ -51,18 +52,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = Category::create([
-            'id' => $request->id,
-            'name' => $request->name,
-            'desc' => $request->desc,
-        ]);
-
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success create the category",
-            'data' => $category
-        ]);
+        //
     }
 
     /**
@@ -71,16 +61,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(City $city)
     {
-        //$category = Category::with('item')->find($category->id);
-        $category = Category::find($category->id); 
+        $city = User::find($city->id);
 
         return response()->json([
             'code' => 200,
             'status' => true,
-            'message' => "Success get the category",
-            'data' => $category
+            'message' => "Success get the user",
+            'data' => $city
         ]);
     }
 
@@ -102,20 +91,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        $category->update([
-            'id' => $request->id,
-            'name' => $request->name,
-            'desc' => $request->desc,
-        ]);
-
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success update the category",
-            'data' => $category
-        ]);
+        //
     }
 
     /**
@@ -124,15 +102,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        $category->delete();
-
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success delete the category",
-            'data' => ""
-        ]);
+        //
     }
 }
