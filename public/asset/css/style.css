@@ -685,6 +685,7 @@ ul.multi-column-dropdown h6 {
   left: 43%;
 }
 .agile_top_brand_left_grid {
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.623);
   background: #ffffff;
   padding: 0.5em;
   position: relative;
@@ -702,6 +703,7 @@ ul.multi-column-dropdown h6 {
 }
 .top-brands {
   background: #f5f5f5;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.623);
   padding: 5em 0;
 }
 .agile_top_brand_left_grid1 p {
@@ -860,6 +862,7 @@ ul.multi-column-dropdown h6 {
 }
 /*-- //top-brands --*/
 div#myTabContent {
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.623);
   padding: 40px 40px;
 }
 .nav-tabs > li {
@@ -911,6 +914,7 @@ p.w3l-ad {
 }
 .agile_top_brands_grids {
   margin-top: 40px;
+  
 }
 .hover14.column {
   border: 1px solid #c0bebe;
@@ -2052,11 +2056,12 @@ h2.w3_agile_header:after {
 
 
 .card {
-  border: none;
+  
+  border-color: #000;
   border-radius: 10px;
   background-color: #cacaca;
   display: block;
-
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.671);
   position: relative;
   margin: 0 auto;
   width: 100%;

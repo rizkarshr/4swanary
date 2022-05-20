@@ -273,16 +273,16 @@ session_start();
                 <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                     <div id="myTabContent" class="tab-content">
                         <div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab">
-                            <!--<div class="agile-tp">
-                                <h5>Penawaran Terbaik Minggu Ini
+                            <div class="agile-tp">
+                                <!--<h5>Penawaran Terbaik Minggu Ini
                                     <?php
                                     if (!isset($_SESSION['name'])) {
                                     } else {
                                         echo 'Untukmu, ' . $_SESSION['name'] . '!';
                                     }
                                     ?>
-                                </h5>
-                            </div>-->
+                                </h5>-->
+                            </div>
                             <div class="agile_top_brands_grids">
 
                                 <?php
