@@ -71,10 +71,10 @@ Route::get('index', function () {
     return view('index');
 })->name('index');
 
-//category
-Route::get('home.categoryproduct', function () {
-    return view('home.categoryproduct');
-})->name('categoryproduct');
+//company profile
+Route::get('home.companyprofile', function () {
+    return view('home.companyprofile');
+})->name('companyprofile');
 
 //homepage
 Route::get('no.index', function () {
