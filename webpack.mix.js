@@ -1,3 +1,6 @@
+let source = 'public/app/src/'
+let build = 'public/app/build/'
+
 const mix = require('laravel-mix');
 
 /*
@@ -11,7 +14,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix
+.js('public/app/app.js', build)
+.js(source + 'api.js', build)
+.js(source + 'auth.js', build)
+;

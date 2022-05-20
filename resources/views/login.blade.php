@@ -94,7 +94,7 @@
                 <image src="/images/l.png" width="60%" align="center"></image><br><br>
                 <label><b>Welcome To Aswana.ry!</b></label>
             </div>
-            <form method="get" class="form">
+            <form method="post" class="form" onsubmit="actionLogin(this,event)">
                 <input style="padding-top: 10px;" type="text" id="username" class="form-content" name="usernamee" autocomplete="on" placeholder="enter your username..." required />
                 <div class="form-border"></div> <br>
 
@@ -105,7 +105,8 @@
         </div>
     </div>
 
-</script>
 </body>
+<script src="{{asset('app/build/app.js')}}"></script>
+<script src="{{asset('app/build/auth.js')}}" type="text/javascript"></script>
 
 </html>
