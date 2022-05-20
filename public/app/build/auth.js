@@ -227,15 +227,15 @@ __webpack_require__.r(__webpack_exports__);
 window.actionLogin = function (input, evt) {
   evt.preventDefault();
   var data = {
-    username: document.getElementById('username').value,
-    password: document.getElementById('password').value
-  }; //beforeLoading('#saveBtn')
-
+    email: getValueJquery('username'),
+    password: getValueJquery('password')
+  };
+  beforeLoading('#saveBtn');
   (0,_api__WEBPACK_IMPORTED_MODULE_0__.createData)('/api/login', data).then(function (res) {
     var response = res.data;
     window.location.href = "/dashboard";
   })["catch"](function (err) {
-    // afterLoading('#saveBtn')
+    afterLoading('#saveBtn');
     var error = err.response.data;
 
     if (!error.success) {
