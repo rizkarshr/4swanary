@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Subcategory;
+use App\Models\Category;
 
 class SubcategorySeeder extends Seeder
 {
@@ -19,7 +21,8 @@ class SubcategorySeeder extends Seeder
         $subcategory = DB::table('subcategory')->insert([
             'id'=>'1',
             'name'=>'Beauty',
-            'id_category'=>'2'
+            'id_category'=>'2',
+            'desc'=>'Beauty Products as cosmetics, skin care, face care, etc.'
         ]);
 
         $subcategory = DB::table('subcategory')->insert([

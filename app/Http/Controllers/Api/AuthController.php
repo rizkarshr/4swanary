@@ -21,20 +21,19 @@ class AuthController extends Controller
                 'code' => 422,
                 'message' => 'Wrong email or password!'
             ], 422);
-
         }
  
-        if(Auth::attempt($request->only('email','password'))){
+        // if(Auth::attempt($request->only('email','password'))){
 
             $user = User::where('email', $request['email'])->firstOrFail();
             $token = $user->createToken($request->email)->plainTextToken;
 
-        }else{
+        // }else{
 
-            $user = User::where('username', $request['username'])->firstOrFail();
-            $token = $user->createToken($request->email)->plainTextToken;
+        //     $user = User::where('username', $request['username'])->firstOrFail();
+        //     $token = $user->createToken($request->email)->plainTextToken;
             
-        }
+        // }
 
         return response()->json([
             'code' => 200,
