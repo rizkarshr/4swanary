@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge" />
     <link rel="icon" type="image/x-icon" href="/images/l.png">
     <title>Login Admin</title>
-    <link rel="stylesheet" href="text/css">
+    <!-- <link rel="stylesheet" href="text/css"> -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
@@ -106,6 +107,15 @@
     </div>
 
 </body>
+<!-- jQuery -->
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+<!-- daterangepicker -->
+<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+
 <script src="{{asset('app/build/app.js')}}"></script>
 <script src="{{asset('app/build/auth.js')}}" type="text/javascript"></script>
 
