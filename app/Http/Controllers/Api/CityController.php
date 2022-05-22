@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\City;
-use App\Models\Province;
+use App\Models\IndonesiaCity;
+use App\Models\IndonesiaProvince;
 
 class CityController extends Controller
 {
@@ -18,18 +18,18 @@ class CityController extends Controller
     {
         if($request->filled('search')){
 
-            $city = City::search($request->search)->get();
+            $city = IndonesiaCity::search($request->search)->get();
 
         }else{
 
-            $city = City::get();
+            $city = IndonesiaCity::with('IndonesiaProvince')->get();
 
         }
 
         return response()->json([
             'code' => 200,
             'status' => true,
-            'message' => "Success get all city",
+            'message' => "Success get all cities",
             'data' => $city
         ]);
     }
@@ -61,14 +61,14 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show(IndonesiaCity $city)
     {
-        $city = User::find($city->id);
+        $city = IndonesiaCity::with('IndonesiaProvince')->find($city->id);
 
         return response()->json([
             'code' => 200,
             'status' => true,
-            'message' => "Success get the user",
+            'message' => "Success get the city",
             'data' => $city
         ]);
     }

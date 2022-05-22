@@ -17,10 +17,11 @@ class company extends Model
         'logo',
         'background',
         'since',
-        'subcategory',
         'website',
         'contact_number',
-        // 'id_origin',
+        'id_subcategory',
+        'id_indonesia_province',
+        'id_indonesia_city',
         'created_at',
         'updated_at'
     ];
@@ -39,8 +40,18 @@ class company extends Model
         return $this->hasMany(Product::class);
     } 
 
-    // public function -()
-    // {
-    //     return $this->hasOne(-::class, "id", "-");
-    // }
+    public function IndonesiaProvince()
+    {
+        return $this->hasOne(IndonesiaProvince::class, "id", "id_indonesia_province");
+    }
+
+    public function IndonesiaCity()
+    {
+        return $this->hasOne(IndonesiaCity::class, "id", "id_indonesia_city");
+    }
+
+    public function subcategory()
+    {
+        return $this->hasOne(Subcategory::class, "id", "id_subcategory");
+    }
 }

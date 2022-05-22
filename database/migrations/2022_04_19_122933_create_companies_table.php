@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('logo');
-            $table->string('background');
+            $table->string('logo')->nullable();
+            $table->string('background')->nullable();
             $table->integer('since');
-            $table->string('sector');
             $table->string('website');
-            $table->string('contact_number');
-            $table->integer('id_indonesia_provinces');
-            $table->integer('id_indonesia_cities');
+            $table->string('contact_number');            
+            $table->string('id_subcategory');
+            $table->integer('id_indonesia_province');
+            $table->integer('id_indonesia_city');
             $table->timestamps();
         });
     }

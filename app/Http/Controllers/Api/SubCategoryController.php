@@ -20,18 +20,25 @@ class SubCategoryController extends Controller
 
             $subcategory = Subcategory::search($request->search)->get();
 
+            return response()->json([
+                'code' => 200,
+                'status' => true,
+                'message' => "Success get the subcategory",
+                'data' => $subcategory
+            ]);
+
         }else{
 
-            $subcategory = Subcategory::all();
+            $subcategory = Subcategory::with('category')->get();
+
+            return response()->json([
+                'code' => 200,
+                'status' => true,
+                'message' => "Success get all subcategories",
+                'data' => $subcategory
+            ]);
 
         }
-
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success get all subcategory",
-            'data' => $subcategory
-        ]);
     }
 
     /**
@@ -75,7 +82,7 @@ class SubCategoryController extends Controller
      */
     public function show(Subcategory $subcategory)
     {
-        $subcategory = Subcategory::find($subcategory->id);
+        $subcategory = Subcategory::with('category')->find($subcategory->id);
         
         return response()->json([
             'code' => 200,

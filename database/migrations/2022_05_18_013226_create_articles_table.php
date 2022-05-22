@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('article', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('keywords');
-            $table->string('image');
-            $table->text('desc');
-            $table->string('content');
+            $table->string('keywords')->nullable();
+            $table->string('image')->nullable();
+            $table->text('content');
             $table->string('writer');
             $table->string('source');
             $table->enum('status', ['Active','Inactive']);

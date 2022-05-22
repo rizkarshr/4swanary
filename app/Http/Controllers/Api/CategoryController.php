@@ -19,18 +19,26 @@ class CategoryController extends Controller
 
             $category = Category::search($request->search)->get();
 
+            return response()->json([
+                'code' => 200,
+                'status' => true,
+                'message' => "Success get the category",
+                'data' => $category
+            ]);
+
         }else{
 
             $category = Category::all();
 
+            return response()->json([
+                'code' => 200,
+                'status' => true,
+                'message' => "Success get all categories",
+                'data' => $category
+            ]);
+
         }
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success get all category",
-            'data' => $category
-        ]);
     }
 
     /**

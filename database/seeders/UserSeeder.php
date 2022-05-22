@@ -6,9 +6,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Auth;
-
 use App\Models\User;
+use Carbon\Carbon;
 
 class UserSeeder extends Seeder
 {
@@ -19,6 +18,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $now = Carbon::now();
 
         $user = DB::table('users')->insert([
             'id'=>'1',
@@ -26,9 +26,21 @@ class UserSeeder extends Seeder
             'name'=>'Ummi Pratidina',
             'email'=>'ummipratidina@gmail.com',
             'password'=>Hash::make('12345678'),
-            'status'=>'Active'
+            'status'=>'Active',
+            'created_at' => $now,
+            'updated_at' => $now,
         ]);
 
+        $user = DB::table('users')->insert([
+            'id'=>'2',
+            'username'=>'Admin',
+            'name'=>'Admin',
+            'email'=>'admin@gmail.com',
+            'password'=>Hash::make('admin'),
+            'status'=>'Active',
+            'created_at' => $now,
+            'updated_at' => $now,
+        ]);
         
     }
 }

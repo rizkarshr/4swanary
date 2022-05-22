@@ -6,21 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
-class subcategory extends Model
+class IndonesiaCity extends Model
 {
     use HasFactory, Searchable;
 
-    protected $tabel = 'subcategories';
+    protected $tabel = 'indonesia_cities';
     protected $fillable = [
         'id',
+        'code',
+        'province_code',
         'name',
-        'desc',
-        'id_category',
+        'meta',
         'created_at',
         'updated_at'
     ];
-
-    //SEARCH
 
     public function toSearchableArray()
     {
@@ -29,20 +28,18 @@ class subcategory extends Model
         ];
     }
 
-    //RELATION
-
-    public function product()
+    public function IndonesiaProvince()
     {
-        return $this->hasMany(Product::class);
-    } 
-
-    public function category()
-    {
-        return $this->hasOne(Category::class, "id", "id_category");
+        return $this->hasOne(IndonesiaProvince::class, "id", "province_code");
     }
 
     public function company()
     {
         return $this->hasMany(Company::class);
-    }
+    } 
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    } 
 }

@@ -26,7 +26,8 @@ class product extends Model
         'hs_code',
         'dimension',
         'id_subcategory',
-        // 'id_origin',
+        'id_indonesia_province',
+        'id_indonesia_city',
         'id_company',
         'created_at',
         'updated_at'
@@ -37,7 +38,7 @@ class product extends Model
         return [
             'name' => $this->name,
             'hs_code' => $this->hs_code,
-            'subcategory' => $this->subcategory,
+            'id_subcategory' => $this->id_subcategory,
         ];
     }
 
@@ -49,5 +50,15 @@ class product extends Model
     public function company()
     {
         return $this->hasOne(company::class, "id", "id_company");
+    }
+
+    public function IndonesiaProvince()
+    {
+        return $this->hasOne(IndonesiaProvince::class, "id", "id_indonesia_province");
+    }
+
+    public function IndonesiaCity()
+    {
+        return $this->hasOne(IndonesiaCity::class, "id", "id_indonesia_city");
     }
 }

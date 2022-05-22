@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
-use IllSSSSSSuminate\Support\Facades\File;
+use Illuminate\Support\Facades\File;
 use App\Models\Article;
 
 class ArticleController extends Controller
@@ -24,14 +23,14 @@ class ArticleController extends Controller
 
         }else{
 
-            $article = Article::get();
+            $article = Article::all();
 
         }
 
         return response()->json([
             'code' => 200,
             'status' => true,
-            'message' => "Success get all article",
+            'message' => "Success get all articles",
             'data' => $article
         ]);
     }
@@ -71,7 +70,6 @@ class ArticleController extends Controller
                 'title' => $request->title,
                 'keywords' => $request->keywords,
                 'image' => $image,
-                'desc' => $request->desc,
                 'content' => $request->content,
                 'writer' => $request->writer,
                 'source' => $request->source,
@@ -79,7 +77,7 @@ class ArticleController extends Controller
             ]);
 
             if (!$article) {
-                // return $this->sendError("", "failed create article");
+                // return $this->sendError("", "failed create the article");
             }
             
         } else {
@@ -88,7 +86,6 @@ class ArticleController extends Controller
                 'title' => $request->title,
                 'keywords' => $request->keywords,
                 'image' => $image,
-                'desc' => $request->desc,
                 'content' => $request->content,
                 'writer' => $request->writer,
                 'source' => $request->source,
@@ -99,7 +96,7 @@ class ArticleController extends Controller
                 return response()->json([
                     'code' => 422,
                     'status' => false,
-                    'message' => "Failed get the article",
+                    'message' => "Failed create the article",
                     'data' => ""
                 ]);
             }
@@ -108,7 +105,7 @@ class ArticleController extends Controller
         return response()->json([
             'code' => 200,
             'status' => true,
-            'message' => "Success get the article",
+            'message' => "Success create the article",
             'data' => $article
         ]);
     }
@@ -174,7 +171,6 @@ class ArticleController extends Controller
                 'title' => $request->title,
                 'keywords' => $request->keywords,
                 'image' => $image,
-                'desc' => $request->desc,
                 'content' => $request->content,
                 'writer' => $request->writer,
                 'source' => $request->source,
@@ -182,7 +178,7 @@ class ArticleController extends Controller
             ]);
 
             if (!$article) {
-                // return $this->sendError("", "failed create article");
+                // return $this->sendError("", "failed update article");
 
                 return response()->json([
                     'code' => 422,
@@ -198,8 +194,6 @@ class ArticleController extends Controller
                 'id' => $request->id,
                 'title' => $request->title,
                 'keywords' => $request->keywords,
-                'image' => $image,
-                'desc' => $request->desc,
                 'content' => $request->content,
                 'writer' => $request->writer,
                 'source' => $request->source,

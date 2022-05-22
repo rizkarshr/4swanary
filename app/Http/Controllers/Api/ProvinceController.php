@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\IndonesiaCity;
+use App\Models\IndonesiaProvince;
 
 class ProvinceController extends Controller
 {
@@ -16,18 +18,18 @@ class ProvinceController extends Controller
     {
         if($request->filled('search')){
 
-            $province = Province::search($request->search)->get();
+            $province = IndonesiaProvince::search($request->search)->get();
 
         }else{
 
-            $province = City::get();
+            $province = IndonesiaProvince::all();
 
         }
 
         return response()->json([
             'code' => 200,
             'status' => true,
-            'message' => "Success get all province",
+            'message' => "Success get all provinces",
             'data' => $province
         ]);
     }
@@ -59,9 +61,16 @@ class ProvinceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(IndonesiaProvince $province)
     {
-        //
+        $province = IndonesiaProvince::find($province->id);
+
+        return response()->json([
+            'code' => 200,
+            'status' => true,
+            'message' => "Success get the province",
+            'data' => $province
+        ]);
     }
 
     /**

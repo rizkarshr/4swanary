@@ -31,7 +31,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::apiResource('/product', App\Http\Controllers\Api\ProductController::class);
 
     //COMPANY TABLE
-    Route::apiResource('/company', App\Http\Controllers\Api\CategoryController::class);
+    Route::apiResource('/company', App\Http\Controllers\Api\CompanyController::class);
 
     //ARTICLE TABLE
     Route::apiResource('/article', App\Http\Controllers\Api\ArticleController::class);

@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\File;
 use App\Models\Product;
 use App\Models\Company;
 use App\Models\Subcategory;
-use App\Models\City;
-use App\Models\Province;
+use App\Models\IndonesiaCity;
+use App\Models\IndonesiaProvince;
 
 class ProductController extends Controller
 {
@@ -23,20 +23,25 @@ class ProductController extends Controller
 
         if($request->filled('search')){
 
-            $product = Product::search($request->search)->with('company','subcategory','city','province')->get();
+            $product = Product::search($request->search)->get();
 
+            return response()->json([
+                'code' => 200,
+                'status' => true,
+                'message' => "Success get the product",
+                'data' => $product
+            ]);
         }else{
 
-            $product = Product::with('company','subcategory','city','province')->get();
+            $product = Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get();
 
+            return response()->json([
+                'code' => 200,
+                'status' => true,
+                'message' => "Success get all products",
+                'data' => $product
+            ]);
         }
-
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success get all product",
-            'data' => $product
-        ]);
     }
 
     /**
@@ -75,30 +80,31 @@ class ProductController extends Controller
                 'hs_code' => $request->hs_code,
                 'dimension' => $request->dimension,
                 'id_subcategory' => $request->id_subcategory,
-                'id_origin' => $request->id_origin,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
                 
             ]);
 
             if (!$product) {
-                // return $this->sendError("", "failed create product");
+                // return $this->sendError("", "failed create the product");
             }
             
         } else {
             $product = Product::create([
                 'id' => $request->id,
                 'name' => $request->name,
-                'product_pict' => $image,
                 'desc' => $request->desc,
                 'hs_code' => $request->hs_code,
                 'dimension' => $request->dimension,
                 'id_subcategory' => $request->id_subcategory,
-                'id_origin' => $request->id_origin,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
             ]);
 
             if (!$product) {
-                // return $this->sendError("", "failed create product");
+                // return $this->sendError("", "failed create the product");
             }
         }
 
@@ -118,10 +124,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product = Product::whereHas('company','subcategory','city','province')->find($product->id);
+        $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($product->id);
 
         return response()->json([
-            'code' => 200,
+            'code' => 200,  
             'status' => true,
             'message' => "Success get the Product",
             'data' => $product
@@ -172,29 +178,30 @@ class ProductController extends Controller
                 'hs_code' => $request->hs_code,
                 'dimension' => $request->dimension,
                 'id_subcategory' => $request->id_subcategory,
-                'id_origin' => $request->id_origin,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
             ]);
 
             if (!$product) {
-                // return $this->sendError("", "failed update product");
+                // return $this->sendError("", "failed update the product");
             }
             
         } else {
             $product = Product::create([
                 'id' => $request->id,
                 'name' => $request->name,
-                'product_pict' => $image,
                 'desc' => $request->desc,
                 'hs_code' => $request->hs_code,
                 'dimension' => $request->dimension,
                 'id_subcategory' => $request->id_subcategory,
-                'id_origin' => $request->id_origin,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
             ]);
 
             if (!$product) {
-                // return $this->sendError("", "failed update product");
+                // return $this->sendError("", "failed update the product");
             }
         }
 

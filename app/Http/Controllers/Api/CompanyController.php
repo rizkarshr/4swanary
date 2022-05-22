@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File;
 use App\Models\Company;
 use App\Models\Subcategory;
+use App\Models\IndonesiaCity;
+use App\Models\IndonesiaProvince;
 
 class CompanyController extends Controller
 {
@@ -23,14 +25,14 @@ class CompanyController extends Controller
 
         }else{
 
-            $company = Company::all();
+            $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->get();
 
         }
 
         return response()->json([
             'code' => 200,
             'status' => true,
-            'message' => "Success get all company",
+            'message' => "Success get all companies",
             'data' => $company
         ]);
     }
@@ -51,8 +53,10 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Company $company)
     {
+        $company = company::find($company->id);
+
         if ($file = $request->file('logo')) {
 
             $upload = $request->file('logo');
@@ -61,26 +65,9 @@ class CompanyController extends Controller
             ]);
             $penyimpanan = public_path().'/company-logo';
             $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+            $image1 = $request->id.'.'.$upload->getClientOriginalExtension();
 
-            $company = Company::create([
-                'id' => $request->id,
-                'name' => $request->name,
-                'desc' => $request->desc,
-                'logo' => $image,
-                'since' => $request->since,
-                'subcategory' => $request->subcategory,
-                'website' => $request->website,
-                'contact_number' => $request->contact_number,
-                // 'id_origin',
-            ]);
-
-            // if (!$company) {
-            //     return $this->sendError("", "failed create company");
-            // }
-
-        }
-
+        } 
         if($file = $request->file('background')){
 
             $upload = $request->file('background');
@@ -89,39 +76,70 @@ class CompanyController extends Controller
             ]);
             $penyimpanan = public_path().'/company-bg';
             $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+            $image2 = $request->id.'.'.$upload->getClientOriginalExtension();
+        } 
+
+        if($file = $request->file('logo') AND $file = $request->file('background')){
 
             $company = Company::create([
                 'id' => $request->id,
                 'name' => $request->name,
                 'desc' => $request->desc,
-                'background' => $image,
+                'logo' => $image1,
+                'background' => $image2,
                 'since' => $request->since,
-                'subcategory' => $request->subcategory,
                 'website' => $request->website,
                 'contact_number' => $request->contact_number,
-                // 'id_origin',
+                'id_subcategory' => $request->id_subcategory,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
             ]);
 
-            // if (!$company) {
-            //     return $this->sendError("", "failed create company");
-            // }
+        } elseif($file = $request->file('logo')){
 
-        } else {
+            $company = Company::create([
+                'id' => $request->id,
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'logo' => $image1,
+                'since' => $request->since,
+                'website' => $request->website,
+                'contact_number' => $request->contact_number,
+                'id_subcategory' => $request->id_subcategory,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
+            ]);
+
+        }elseif($file = $request->file('background')){
+            $company = Company::create([
+                'id' => $request->id,
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'background' => $image2,
+                'since' => $request->since,
+                'website' => $request->website,
+                'contact_number' => $request->contact_number,
+                'id_subcategory' => $request->id_subcategory,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
+            ]);
+        }
+        else {
 
             $company = Company::create([
                 'id' => $request->id,
                 'name' => $request->name,
                 'desc' => $request->desc,
                 'since' => $request->since,
-                'subcategory' => $request->subcategory,
                 'website' => $request->website,
                 'contact_number' => $request->contact_number,
-                // 'id_origin',
+                'id_subcategory' => $request->id_subcategory,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
             ]);
 
             // if (!$company) {
-            //     return $this->sendError("", "failed create company");
+            //     return $this->sendError("", "failed create the company");
             // }
         } 
 
@@ -141,8 +159,7 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //$company = Company::with('item')->find($company->id);
-        $company = Company::all();
+        $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->find($company->id);
 
         return response()->json([
             'code' => 200,
@@ -174,33 +191,28 @@ class CompanyController extends Controller
     {
         if ($file = $request->file('logo')) {
 
+            if(File::exists(public_path('company-logo/'.$company->logo))){
+
+                File::delete(public_path('company-logo/'.$company->logo));
+    
+            }
+
             $upload = $request->file('logo');
             $this->validate($request, [
                 'logo'=>'|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
             $penyimpanan = public_path().'/company-logo';
             $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+            $image1 = $request->id.'.'.$upload->getClientOriginalExtension();
 
-            $company->update([
-                'id' => $request->id,
-                'name' => $request->name,
-                'desc' => $request->desc,
-                'logo' => $image,
-                'since' => $request->since,
-                'subcategory' => $request->subcategory,
-                'website' => $request->website,
-                'contact_number' => $request->contact_number,
-                // 'id_origin',
-            ]);
-
-            // if (!$company) {
-            //     return $this->sendError("", "failed update company");
-            // }
-
-        }
-
+        } 
         if($file = $request->file('background')){
+
+            if(File::exists(public_path('company-bg/'.$company->background))){
+
+                File::delete(public_path('company-bg/'.$company->background));
+    
+            }
 
             $upload = $request->file('background');
             $this->validate($request, [
@@ -208,24 +220,67 @@ class CompanyController extends Controller
             ]);
             $penyimpanan = public_path().'/company-bg';
             $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+            $image2 = $request->id.'.'.$upload->getClientOriginalExtension();
+        } 
+
+        if($file = $request->file('logo') AND $file = $request->file('background')){
 
             $company->update([
                 'id' => $request->id,
                 'name' => $request->name,
                 'desc' => $request->desc,
-                'background' => $image,
+                'logo' => $image1,
+                'background' => $image2,
                 'since' => $request->since,
-                'subcategory' => $request->subcategory,
                 'website' => $request->website,
                 'contact_number' => $request->contact_number,
-                // 'id_origin',
+                'id_subcategory' => $request->id_subcategory,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
             ]);
 
             // if (!$company) {
-            //     return $this->sendError("", "failed update company");
+            //     return $this->sendError("", "failed update the company");
             // }
-            
+
+        } elseif($file = $request->file('logo')){
+
+            $company->update([
+                'id' => $request->id,
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'logo' => $image1,
+                'since' => $request->since,
+                'website' => $request->website,
+                'contact_number' => $request->contact_number,
+                'id_subcategory' => $request->id_subcategory,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
+            ]);
+
+            // if (!$company) {
+            //     return $this->sendError("", "failed update the company");
+            // }
+
+        }elseif($file = $request->file('background')){
+
+            $company->update([
+                'id' => $request->id,
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'background' => $image2,
+                'since' => $request->since,
+                'website' => $request->website,
+                'contact_number' => $request->contact_number,
+                'id_subcategory' => $request->id_subcategory,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
+            ]);
+
+            // if (!$company) {
+            //     return $this->sendError("", "failed update the company");
+            // }
+
         } else {
             
             $company->update([
@@ -233,15 +288,16 @@ class CompanyController extends Controller
                 'name' => $request->name,
                 'desc' => $request->desc,
                 'since' => $request->since,
-                'subcategory' => $request->subcategory,
                 'website' => $request->website,
                 'contact_number' => $request->contact_number,
-                // 'id_origin'
+                'id_subcategory' => $request->id_subcategory,
+                'id_indonesia_province' => $request->id_indonesia_province,
+                'id_indonesia_city' => $request->id_indonesia_city,
             ]);
 
             if (!$company) {
                 
-                // return $this->sendError("", "failed update company");
+                // return $this->sendError("", "failed update the company");
 
                 return response()->json([
                     'code' => 422,
@@ -270,20 +326,26 @@ class CompanyController extends Controller
     {
         $company = company::find($company->id);
         
-        if(File::exists(public_path('company-logo/'.$company->logo))){
+        if(File::exists(public_path('company-logo/'.$company->logo)) AND File::exists(public_path('company-bg/'.$company->background))){
+
+            File::delete(public_path('company-logo/'.$company->logo));
+            File::delete(public_path('company-bg/'.$company->background));
+            
+            $company->delete();
+
+        } elseif(File::exists(public_path('company-logo/'.$company->logo))){
 
             File::delete(public_path('company-logo/'.$company->logo));
             
             $company->delete();
 
-        } 
-        if(File::exists(public_path('company-bg/'.$company->background))){
+        } elseif(File::exists(public_path('company-bg/'.$company->background))){
 
             File::delete(public_path('company-bg/'.$company->background));
             
             $company->delete();
-
-        } else{
+        }
+        else{
 
             $company->delete();
 

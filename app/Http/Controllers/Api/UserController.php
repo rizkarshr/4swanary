@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
  
@@ -22,18 +22,25 @@ class UserController extends Controller
 
             $user = User::search($request->search)->get();
 
+            return response()->json([
+                'code' => 200,
+                'status' => true,
+                'message' => "Success get the user",
+                'data' => $user
+            ]);
+
         }else{
 
-            $user = User::get();
+            $user = User::all();
+
+            return response()->json([
+                'code' => 200,
+                'status' => true,
+                'message' => "Success get all users",
+                'data' => $user
+            ]);           
 
         }
-
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success get all user",
-            'data' => $user
-        ]);
     }
 
     /**
@@ -77,7 +84,7 @@ class UserController extends Controller
             ]);
 
             if (!$user) {
-                // return $this->sendError("", "failed create user");
+                // return $this->sendError("", "failed create the user");
             }
             
         } else {
@@ -94,7 +101,7 @@ class UserController extends Controller
                 return response()->json([
                     'code' => 422,
                     'status' => false,
-                    'message' => "Failed get the user",
+                    'message' => "Failed create the user",
                     'data' => ""
                 ]);
             }
@@ -103,7 +110,7 @@ class UserController extends Controller
         return response()->json([
             'code' => 200,
             'status' => true,
-            'message' => "Success get the user",
+            'message' => "Success create the user",
             'data' => $user
         ]);
     }
@@ -196,7 +203,7 @@ class UserController extends Controller
 
             if (!$user) {
                 
-                // return $this->sendError("", "failed update user");
+                // return $this->sendError("", "failed update the      user");
 
                 return response()->json([
                     'code' => 422,
