@@ -72,20 +72,25 @@ Route::get('index', function () {
 })->name('index');
 
 //company profile
-Route::get('home.companyprofile', function () {
-    return view('home.companyprofile');
-})->name('companyprofile');
+Route::get('home/companyprofile', function () {
+    return view('home/companyprofile');
+})->name('home/companyprofile');
 
 //homepage
-Route::get('no.index', function () {
-    return view('no.index');
-})->name('index');
-Route::get('no.inner-page', function () {
-    return view('no.inner-page');
-})->name('portofolio-details');
-Route::get('no.portofolio-details', function () {
-    return view('no.portofolio-details');
-})->name('portofolio-details');
+Route::get('no/index', function () {
+    return view('no/index');
+})->name('no/index');
+Route::get('no/inner-page', function () {
+    return view('no/inner-page');
+})->name('no/portofolio-details');
+Route::get('no/portofolio-details', function () {
+    return view('no/portofolio-details');
+})->name('no/portofolio-details');
+
+//category product
+Route::get('home/categoryproduct', function () {
+    return view('home/categoryproduct');
+})->name('home/catgoryproduct');
 
 
 
