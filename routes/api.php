@@ -17,6 +17,7 @@ use App\Http\Controllers\Controller;
 
 //LOGIN ADMIN
 Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
+Route::get('/mail', [App\Http\Controllers\Api\MailController::class, 'mail']);
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
 
@@ -39,6 +40,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     //CITY AND PROVINCE TABLE
     Route::apiResource('/city', App\Http\Controllers\Api\CityController::class);
     Route::apiResource('/province', App\Http\Controllers\Api\ProvinceController::class);
+
+    
     
     //LOGOUT ADMIN
     Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
