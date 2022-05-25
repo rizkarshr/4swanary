@@ -92,6 +92,11 @@ Route::get('home/categoryproduct', function () {
     return view('home/categoryproduct');
 })->name('home/catgoryproduct');
 
+//category UMKM
+Route::get('home/categoryumkm', function () {
+    return view('home/categoryumkm');
+})->name('home/catgoryumkm');
+
 
 
 //Route::get('product', 'ProductController@index')->name('product');
