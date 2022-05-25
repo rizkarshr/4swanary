@@ -29,13 +29,23 @@ class SubCategoryController extends Controller
 
         }else{
 
-            $subcategory = Subcategory::with('category')->get();
+            $array = [
+
+                $subcategory = Subcategory::with('category')->get(),
+
+                $product_subcategory = Subcategory::with('category')
+                ->where('id_category','=',1)->get(),
+
+                $company_subcategory = Subcategory::with('category')
+                ->where('id_category','=',2)->get(),
+
+            ];
 
             return response()->json([
                 'code' => 200,
                 'status' => true,
                 'message' => "Success get all subcategories",
-                'data' => $subcategory
+                'data' => $array
             ]);
 
         }

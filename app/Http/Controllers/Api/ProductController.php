@@ -20,28 +20,59 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        if($request->id_subcategory!= null||$request->id_indonesia_province != null){
 
-        if($request->filled('search')){
+            if($request->id_subcategory != null AND $request->id_indonesia_province != null){
 
-            $product = Product::search($request->search)->get();
+                $product = Product::search($request->search)
+                ->where('id_indonesia_province', $request->id_indonesia_province)
+                ->where('id_subcategory', $request->id_subcategory)
+                ->get();
 
-            return response()->json([
-                'code' => 200,
-                'status' => true,
-                'message' => "Success get the product",
-                'data' => $product
-            ]);
-        }else{
+            } elseif($request->id_indonesia_province != null && $request->id_subcategory == null){
+
+                $product = Product::search($request->search)
+                ->where('id_indonesia_province', $request->id_indonesia_province)->get();
+    
+            } elseif($request->id_indonesia_province == null && $request->id_subcategory!= null){
+
+                $product = Product::search($request->search)
+                ->where('id_subcategory', $request->id_subcategory)->get();
+    
+            } 
+
+        } elseif ($request->id_subcategory == null && $request->id_indonesia_province == null){
 
             $product = Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get();
 
+            if($request->filled('search')){
+
+                $product = Product::search($request->search)->get();
+    
+            } 
+
+        } else{
+
+            $product = Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get();
+
+        }
+
+        if( $product->count() == 0){
+                    
             return response()->json([
                 'code' => 200,
                 'status' => true,
-                'message' => "Success get all products",
-                'data' => $product
+                'message' => "Product not found",
+                'data' => ''
             ]);
         }
+
+        return response()->json([
+            'code' => 200,
+            'status' => true,
+            'message' => "Success get all products",
+            'data' => $product
+        ]);
     }
 
     /**
@@ -126,11 +157,14 @@ class ProductController extends Controller
     {
         $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($product->id);
 
+        $similiar_product = Product::with('subcategory')
+        ->where('id_subcategory','=',$product->id_subcategory)->get();
+
         return response()->json([
             'code' => 200,  
             'status' => true,
             'message' => "Success get the Product",
-            'data' => $product
+            'data' => $product, $similiar_product
         ]);
     }
 

@@ -19,14 +19,51 @@ class CompanyController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->filled('search')){
+        if($request->id_subcategory!= null||$request->id_indonesia_province != null){
 
-            $company = Company::search($request->search)->get();
+            if($request->id_subcategory != null AND $request->id_indonesia_province != null){
 
-        }else{
+                $company = Company::search($request->search)
+                ->where('id_indonesia_province', $request->id_indonesia_province)
+                ->where('id_subcategory', $request->id_subcategory)
+                ->get();
+
+            } elseif($request->id_indonesia_province != null && $request->id_subcategory == null){
+
+                $company = Company::search($request->search)
+                ->where('id_indonesia_province', $request->id_indonesia_province)->get();
+    
+            } elseif($request->id_indonesia_province == null && $request->id_subcategory!= null){
+
+                $company = Company::search($request->search)
+                ->where('id_subcategory', $request->id_subcategory)->get();
+    
+            } 
+
+        } elseif ($request->id_subcategory == null && $request->id_indonesia_province == null){
 
             $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->get();
 
+            if($request->filled('search')){
+
+                $company = Company  ::search($request->search)->get();
+    
+            } 
+
+        } else{
+
+            $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->get();
+
+        }
+
+        if( $company->count() == 0){
+                    
+            return response()->json([
+                'code' => 200,
+                'status' => true,
+                'message' => "Company not found",
+                'data' => ''
+            ]);
         }
 
         return response()->json([
