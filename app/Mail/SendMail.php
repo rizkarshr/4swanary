@@ -6,6 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class SendMail extends Mailable
 {
@@ -18,9 +20,9 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    public function __construct($mailData)
+    public function __construct()
     {
-        $this->mailData = $mailData;
+        // $this->mailData = $mailData;
     }
 
     /**
@@ -30,7 +32,20 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->view('welcome');
+        $logo = env('APP_URL')."/images/logo.png";
+
+        return $this->subject('Appointment Request')->view('mail')
+        ->with(
+            [
+                'name' => 'Nama Lengkap',
+                'email' => 'email@gmail.com',
+                'contact_number' => '08123456789',
+                'date' => 'Senin, 20 Mei 2020',
+                'time' => '13:00',
+                'desc' => '-',
+                'logo' => $logo
+
+            ]);
         
     }
 }

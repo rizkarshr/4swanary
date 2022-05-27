@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Mail;
-// use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 
 class MailController extends Controller
@@ -22,12 +21,12 @@ class MailController extends Controller
         //    $message->from('hellodee91@gmail.com','Hello Dee');
         // });
 
-        $mailData = [
-            'title' => 'Mail from ItSolutionStuff.com',
-            'body' => 'This is for testing email using smtp.'
-        ];
+        // $mailData = [
+        //     'title' => 'This is for testing email.',
+        //     'body' => 'This is for testing email.'
+        // ];
          
-        Mail::to('ummipratidina12@gmail.com')->send(new SendMail($mailData));
+        Mail::to($request->input('email'))->send(new SendMail());
 
         return response()->json([
             'code' => 200,

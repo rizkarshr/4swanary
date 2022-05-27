@@ -97,6 +97,10 @@ Route::get('home/categoryumkm', function () {
     return view('home/categoryumkm');
 })->name('home/catgoryumkm');
 
+// Route::get('api/mail', function () {
+//     return view('mail');
+// });
+
 
 
 //Route::get('product', 'ProductController@index')->name('product');
