@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
-
+use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\OriginController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +21,12 @@ use App\Http\Controllers\Admin\CategoryController;
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| ADMIN SECTION
+|--------------------------------------------------------------------------
+|
+*/
 
 //AUTHENTIFICATION
 
@@ -46,7 +56,57 @@ Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/admin/manage-category/{id}', [CategoryController::class, 'update']);
     Route::get('/admin/manage-category/{id}', [CategoryController::class, 'destroy']);
 
+    //SUBCATEGORY
+
+    Route::get('/admin/manage-subcategory', [SubcategoryController::class, 'index']);
+    Route::post('/admin/manage-subcategory', [SubcategoryController::class, 'store']);
+    Route::get('/admin/manage-subcategory/{id}', [SubcategoryController::class, 'edit']);
+    Route::post('/admin/manage-subcategory/{id}', [SubcategoryController::class, 'update']);
+    Route::get('/admin/manage-subcategory/{id}', [SubcategoryController::class, 'destroy']);
+
+    //ORIGIN
+
+    Route::get('/admin/manage-origin', [OriginController::class, 'index']);
+    Route::post('/admin/manage-origin', [OriginController::class, 'store']);
+    Route::get('/admin/manage-origin/{id}', [OriginController::class, 'edit']);
+    Route::post('/admin/manage-origin/{id}', [OriginController::class, 'update']);
+    Route::get('/admin/manage-origin/{id}', [OriginController::class, 'destroy']);
+
+    //COMPANY
+
+    Route::get('/admin/manage-company', [CompanyController::class, 'index']);
+    Route::post('/admin/manage-company', [CompanyController::class, 'store']);
+    Route::get('/admin/manage-company/{id}', [CompanyController::class, 'edit']);
+    Route::post('/admin/manage-company/{id}', [CompanyController::class, 'update']);
+    Route::get('/admin/manage-company/{id}', [CompanyController::class, 'destroy']);
+
+    //PRODUCT
+
+    Route::get('/admin/manage-product', [ProductController::class, 'index']);
+    Route::post('/admin/manage-product', [ProductController::class, 'store']);
+    Route::get('/admin/manage-product/{id}', [ProductController::class, 'edit']);
+    Route::post('/admin/manage-product/{id}', [ProductController::class, 'update']);
+    Route::get('/admin/manage-product/{id}', [ProductController::class, 'destroy']);
+
+    //ARTICLE
+
+    Route::get('/admin/manage-article', [ArticleController::class, 'index']);
+    Route::post('/admin/manage-article', [ArticleController::class, 'store']);
+    Route::get('/admin/manage-article/{id}', [ArticleController::class, 'edit']);
+    Route::post('/admin/manage-article/{id}', [ArticleController::class, 'update']);
+    Route::get('/admin/manage-article/{id}', [ArticleController::class, 'destroy']);
+
+
+
 // });
+
+/*
+|--------------------------------------------------------------------------
+| VIEWER SECTION
+|--------------------------------------------------------------------------
+|
+*/
+
 
 // Route::get('login', function () {
 //     return view('login');

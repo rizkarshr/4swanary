@@ -49,7 +49,7 @@ class UserController extends Controller
      */
     public function store(Request $request, User $user)
     {
-        // $profil = User::where('id', Auth::user()->id)->first();
+        $profil = User::where('id', Auth::user()->id)->first();
 
         if ($file = $request->file('profil_pict')) {
 
@@ -72,7 +72,7 @@ class UserController extends Controller
             ]);
 
             if (!$user) {
-                
+
                 return redirect('/admin/manage-user')->with('error','Failed Create User');
             }
             
@@ -116,7 +116,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        // $profil = User::where('id', Auth::user()->id)->first();
+        $profil = User::where('id', Auth::user()->id)->first();
 
         $user = User::find($user->id);
 
@@ -132,7 +132,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {        
-        // $profil = User::where('id', Auth::user()->id)->first();
+        $profil = User::where('id', Auth::user()->id)->first();
 
         if ($file = $request->file('profil_pict')) {
 
@@ -192,7 +192,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        // $profil = User::where('id', Auth::user()->id)->first();
+        $profil = User::where('id', Auth::user()->id)->first();
 
         $user = User::find($user->id);
         
