@@ -160,7 +160,14 @@ session_start();
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach ($data as $category)
+                                                <tr>
+                                                    <td>{{ $loop->iteration}}</td>
+                                                    <td> {{ $category->id }} </td>
+                                                    <td> {{ $category->name }} </td>
+                                                    <td> {{ $category->desc }} </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

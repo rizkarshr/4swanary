@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-// use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
- 
+
 class UserController extends Controller
 {
     /**
@@ -17,25 +16,19 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $profil = User::where('id', Auth::user()->id)->first();
 
         if($request->filled('search')){
 
             $user = User::search($request->search)->get();
 
-            return view('admin/pengguna/data-admin', compact('data','profil'));
+        }else{
 
-        }else{ 
-
-            $user = User::all();
-
-            return response()->json([
-                'code' => 200,
-                'status' => true,
-                'message' => "Success get all users",
-                'data' => $user
-            ]);           
+            $user = User::all();        
 
         }
+
+        return view('user', compact('profil','user'));
     }
 
     /**
@@ -45,7 +38,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -56,7 +49,7 @@ class UserController extends Controller
      */
     public function store(Request $request, User $user)
     {
-        // $user = User::find($id);
+        // $profil = User::where('id', Auth::user()->id)->first();
 
         if ($file = $request->file('profil_pict')) {
 
@@ -79,7 +72,8 @@ class UserController extends Controller
             ]);
 
             if (!$user) {
-                // return $this->sendError("", "failed create the user");
+                
+                return redirect('/admin/manage-user')->with('error','Failed Create User');
             }
             
         } else {
@@ -93,21 +87,12 @@ class UserController extends Controller
             ]);
 
             if (!$user) {
-                return response()->json([
-                    'code' => 422,
-                    'status' => false,
-                    'message' => "Failed create the user",
-                    'data' => ""
-                ]);
+
+                return redirect('/admin/manage-user')->with('error','Failed Create User');
             }
         }
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success create the user",
-            'data' => $user
-        ]);
+        return redirect('/admin/manage-user');
     }
 
     /**
@@ -118,14 +103,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $user = User::find($user->id);
+        // $user = User::find($user->id);
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success get the user",
-            'data' => $user
-        ]);
+        // return view('user', compact('profil','user'));
     }
 
     /**
@@ -134,9 +114,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        // $profil = User::where('id', Auth::user()->id)->first();
+
+        $user = User::find($user->id);
+
+        return view('user', compact('profil','user'));
     }
 
     /**
@@ -147,9 +131,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    {
-        // $user = User::find($user->id);
-        
+    {        
+        // $profil = User::where('id', Auth::user()->id)->first();
+
         if ($file = $request->file('profil_pict')) {
 
             if(File::exists(public_path('user/'.$user->profil_pict))){
@@ -176,14 +160,8 @@ class UserController extends Controller
             ]);
 
             if (!$user) {
-                // return $this->sendError("", "failed create user");
-
-                return response()->json([
-                    'code' => 422,
-                    'status' => False,
-                    'message' => "Failed update the user",
-                    'data' => ""
-                ]);
+                
+                return redirect('/admin/manage-user')->with('error','Failed Update User');
             }
             
         } else {
@@ -198,23 +176,11 @@ class UserController extends Controller
 
             if (!$user) {
                 
-                // return $this->sendError("", "failed update the      user");
-
-                return response()->json([
-                    'code' => 422,
-                    'status' => False,
-                    'message' => "Failed update the user",
-                    'data' => ""
-                ]);
+                return redirect('/admin/manage-user')->with('error','Failed Update User');
             }
         }
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success update the user",
-            'data' => $user
-        ]);
+        return redirect('/admin/manage-user');
         
     }
 
@@ -226,6 +192,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        // $profil = User::where('id', Auth::user()->id)->first();
+
         $user = User::find($user->id);
         
         if(File::exists(public_path('user/'.$user->profil_pict))){
@@ -240,11 +208,6 @@ class UserController extends Controller
 
         }
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success delete the user",
-            'data' => ""
-        ]);
+        return redirect('/admin/manage-user');
     }
 }

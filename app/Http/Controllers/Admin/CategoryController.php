@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Category;
 
 class CategoryController extends Controller
@@ -12,32 +12,22 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function index(Request $request)
     {
+        // $profil = User::where('id', Auth::user()->id)->first();
+
         if($request->filled('search')){
 
             $category = Category::search($request->search)->get();
-
-            return view('category')->response()->json([
-                'code' => 200,
-                'status' => true,
-                'message' => "Success get the category",
-                'data' => $category
-            ]);
 
         }else{
 
             $category = Category::all();
 
-            return response()->json([
-                'code' => 200,
-                'status' => true,
-                'message' => "Success get all categories",
-                'data' => $category
-            ]);
-
         }
+
+        return view('category', compact('category'));
 
     }
 
@@ -59,18 +49,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // $profil = User::where('id', Auth::user()->id)->first();
+
         $category = Category::create([
             'id' => $request->id,
             'name' => $request->name,
             'desc' => $request->desc,
         ]);
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success create the category",
-            'data' => $category
-        ]);
+        return redirect('/admin/manage-category');
     }
 
     /**
@@ -81,15 +68,12 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        // $profil = User::where('id', Auth::user()->id)->first();
+
         //$category = Category::with('item')->find($category->id);
         $category = Category::find($category->id); 
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success get the category",
-            'data' => $category
-        ]);
+        return view('category', compact('category'));
     }
 
     /**
@@ -98,9 +82,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        // $profil = User::where('id', Auth::user()->id)->first();
+
+        $category = Category::find($category->id);
+
+        return view('category', compact('category'));
     }
 
     /**
@@ -112,18 +100,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        // $profil = User::where('id', Auth::user()->id)->first();
+
         $category->update([
             'id' => $request->id,
             'name' => $request->name,
             'desc' => $request->desc,
         ]);
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success update the category",
-            'data' => $category
-        ]);
+        return redirect('/admin/manage-category');
     }
 
     /**
@@ -134,13 +119,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        // $profil = User::where('id', Auth::user()->id)->first();
+
         $category->delete();
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success delete the category",
-            'data' => ""
-        ]);
+        return redirect('/admin/manage-category');
     }
 }
