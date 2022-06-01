@@ -221,7 +221,7 @@
         <div class="section-title">
           <h2>Team</h2>
           <h3>Our Hardworking <span>Team</span></h3>
-          <p>Tersenyumlah seperti Mirza</p>
+          <p>Tersenyumlah Seperti BABI</p>
         </div>
 
         <div class="row">
@@ -229,7 +229,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
               <div class="member-img">
-                <img src="{{ asset('assett/img/team/19410100109.jpg') }}" class="img-fluid" alt="">
+                <img src="{{ asset('assett/img/team/babi.jpeg') }}" class="img-fluid" alt="">
                 <div class="social">
                   <a href="https://www.instagram.com/rizkarshr/"><i class="bi bi-instagram"></i></a>
                 </div>
@@ -244,7 +244,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
               <div class="member-img">
-                <img src="{{ asset('assett/img/team/19410100109.jpg') }}" class="img-fluid" alt="">
+                <img src="{{ asset('assett/img/team/babi.jpeg') }}" class="img-fluid" alt="">
                 <div class="social">
                   <a href="https://www.instagram.com/upinipinofficial/"><i class="bi bi-instagram"></i></a>
                 </div>
@@ -259,7 +259,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
               <div class="member-img">
-                <img src="{{ asset('assett/img/team/19410100109.jpg') }}" class="img-fluid" alt="">
+                <img src="{{ asset('assett/img/team/team-4.jpg') }}" class="img-fluid" alt="">
                 <div class="social">
                   <a href="https://www.instagram.com/dhynadina1/"><i class="bi bi-instagram"></i></a>
                 </div>
@@ -274,7 +274,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
             <div class="member">
               <div class="member-img">
-                <img src="{{ asset('assett/img/team/19410100109.jpg') }}" class="img-fluid" alt="">
+                <img src="{{ asset('assett/img/team/babi.jpeg') }}" class="img-fluid" alt="">
                 <div class="social">
                   <a href="https://www.instagram.com/rretnoangr/"><i class="bi bi-instagram"></i></a>
                 </div>
