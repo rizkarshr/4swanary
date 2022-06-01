@@ -12,7 +12,7 @@ session_start();
     <link rel="icon" type="image/png" href="../favicon.png">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="images/l.png">
-    <title>Manage Store - Aswana.ry</title>
+    <title>Manage Company - Aswana.ry</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -167,6 +167,25 @@ session_start();
                                         </thead>
                                         <tbody>
 
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td align="center">
+                                                    <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#ModalEdit"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
+                                                    <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                </td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -243,8 +262,93 @@ session_start();
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                    <input name="addcompany" type="submit" class="btn btn-primary" value="Tambah">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="addcompany" type="submit" class="btn btn-primary" value="Add">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal input -->
+    <div id="ModalEdit" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Company</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('company') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input name="name" type="text" class="form-control" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Since</label>
+                            <input name="logo" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Sector</label>
+                            <input name="sector" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Website</label>
+                            <input name="website" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Number</label>
+                            <select name="contact_number" class="form-control">
+                                <option selected>Choose Subcategory</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Origin</label>
+                            <select name="id_origin" class="form-control">
+                                <option selected>Choose Origin</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Logo</label>
+                            <input name="logo" type="file" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Banner</label>
+                            <input name="banner" type="file" class="form-control">
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="addcompany" type="submit" class="btn btn-primary" value="Save">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal delete -->
+    <div id="ModalDelete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Company</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('company') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            Are You Sure You Want To Delete This Data?
+                            <input name="name" type="hidden" class="form-control" required autofocus>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="deletecompany" type="submit" class="btn btn-primary" value="Delete">
                 </div>
                 </form>
             </div>

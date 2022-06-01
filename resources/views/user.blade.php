@@ -167,6 +167,25 @@ session_start();
                                         </thead>
                                         <tbody>
 
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td align="center">
+                                                    <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#ModalEdit"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
+                                                    <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                </td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -233,8 +252,83 @@ session_start();
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                    <input name="addproduct" type="submit" class="btn btn-primary" value="Tambah">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="adduser" type="submit" class="btn btn-primary" value="Add">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal input -->
+    <div id="ModalEdit" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit User</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('user') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input name="username" type="text" class="form-control" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input name="name" type="text" class="form-control" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input name="email" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input name="password" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <input name="status" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Remember Token</label>
+                            <input name="remember_token" type="text" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Profile Picture</label>
+                            <input name="profile_pict" type="file" class="form-control">
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="edituser" type="submit" class="btn btn-primary" value="Save">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal delete -->
+    <div id="ModalDelete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete User</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('product') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            Are You Sure You Want To Delete This Data?
+                            <input name="name" type="hidden" class="form-control" required autofocus>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="deleteuser" type="submit" class="btn btn-primary" value="Delete">
                 </div>
                 </form>
             </div>
