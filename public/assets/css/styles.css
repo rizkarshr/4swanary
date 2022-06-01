@@ -1890,6 +1890,13 @@ p.card-text {
 .modal-dialog.modal-xl {
     max-width: 100%;
 }
+.child-media {
+    padding-left: 100px;
+}
+
+.modal-edit.modal-xl {
+    max-width: 100%;
+}
 
 /*-------------------- END Modal ------------------- */
 

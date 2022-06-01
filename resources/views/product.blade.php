@@ -167,6 +167,25 @@ session_start();
                                         </thead>
                                         <tbody>
 
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td align="center">
+                                                    <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#ModalEdit"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
+                                                    <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                </td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -246,8 +265,96 @@ session_start();
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                    <input name="addproduct" type="submit" class="btn btn-primary" value="Tambah">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="addproduct" type="submit" class="btn btn-primary" value="Add">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal edit -->
+    <div id="ModalEdit" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Product</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('product') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input name="name" type="text" class="form-control" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input name="desc" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>HS Code</label>
+                            <input name="hs_code" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Dimension</label>
+                            <input name="dimension" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Subcategory</label>
+                            <select name="id_subcategory" class="form-control">
+                                <option selected>Choose Subcategory</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Origin</label>
+                            <select name="id_origin" class="form-control">
+                                <option selected>Choose Origin</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Company</label>
+                            <select name="id_company" class="form-control">
+                                <option selected>Choose Company</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Product Picture</label>
+                            <input name="product_pict" type="file" class="form-control">
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="editproduct" type="submit" class="btn btn-primary" value="Save">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal delete -->
+    <div id="ModalDelete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Product</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('product') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            Are You Sure You Want To Delete This Data?
+                            <input name="name" type="hidden" class="form-control" required autofocus>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="deleteproduct" type="submit" class="btn btn-primary" value="Delete">
                 </div>
                 </form>
             </div>

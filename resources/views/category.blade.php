@@ -216,8 +216,63 @@ session_start();
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                    <input name="addcategory" type="submit" class="btn btn-primary" value="Tambah">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="addcategory" type="submit" class="btn btn-primary" value="Add">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal edit -->
+    <div id="ModalEdit" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Category</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('category') }}" method="post" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label>Category Name</label>
+                            <input name="name" type="text" class="form-control" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input name="desc" type="text" class="form-control" required>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="editcategory" type="submit" class="btn btn-primary" value="Save">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal delete -->
+    <div id="ModalDelete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Category</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('category') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            Are You Sure You Want To Delete This Data?
+                            <input name="name" type="hidden" class="form-control" required autofocus>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="deletecategory" type="submit" class="btn btn-primary" value="Delete">
                 </div>
                 </form>
             </div>

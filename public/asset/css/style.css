@@ -81,6 +81,35 @@ h1, h2, h3, h4, h5, h6 {
     transform: rotate(360deg);
   }
 }
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  background: #4A312C;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+.back-to-top i {
+  font-size: 28px;
+  color: #fff;
+  line-height: 0;
+}
+.back-to-top:hover {
+  background: #25262B;
+  color: #fff;
+}
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
 
 
 
@@ -145,7 +174,7 @@ body a:hover {
   float: left;
   padding: 0;
   width: 47%;
-  padding-top: -5%;
+  margin: 4px 0;
   position: relative;
 }
 
@@ -190,13 +219,22 @@ body a:hover {
   position: relative;
 }
 
+/*Modal Form Personal Data*/
+.modal-content {
+  background-color: #25262B;
+}
+.modal-header h4 {
+  color: #ffffff;
+}
+.form-group label {
+  color: #ffffff;
+}
+/*==End Modal Form Personal Data==*/
 
 
 
 
-
-
-/*span.glyphicon.glyphicon-shopping-cart.my-cart-icon.my-cart-icon-affix {
+span.glyphicon.glyphicon-shopping-cart.my-cart-icon.my-cart-icon-affix {
   position: relative !important;
 }
 .btn-danger {
@@ -388,7 +426,7 @@ button.w3view-cart:focus {
 .w3ls_logo_products_left1 ul.phone_email li {
   display: inline-block;
   color: #212121;
-}*/
+}
 /*-- //header --*/
 
 /*--Navbar--*/
@@ -399,9 +437,12 @@ button.w3view-cart:focus {
   position: relative;
   top: 0;
   padding: 0;
+  width: 100%;
 }
+
 .navbar ul {
   margin: 0;
+
   margin-left: 80%;
   padding: 0;
   display: flex;
@@ -1171,7 +1212,7 @@ i.gray-star {
   text-decoration: none;
 }
 .w3_footer_grid ul li a:hover {
-  color: #562016;
+  color: #ffffff;
 }
 .w3_footer_grid h4 {
   margin: 2em 0 1em;
@@ -1202,10 +1243,10 @@ i.fa.fa-arrow-right {
   box-shadow: 0px 0px 15px rgba(86, 32, 22, 0.49);
 }
 .footer-copy p {
-  text-align: center;
   color: #999;
   line-height: 1em;
   padding-top: 1em;
+  margin-left: 40%;
 }
 .footer-copy p a {
   color: #562016;
@@ -1213,6 +1254,11 @@ i.fa.fa-arrow-right {
 }
 .footer-copy p a:hover {
   color: #999;
+}
+.w3layouts-foot ul {
+  margin-top: 10px;
+  margin-left: 7.5em;
+  position: relative;
 }
 .w3layouts-foot ul li {
   display: inline-block;
@@ -1236,9 +1282,13 @@ a.agile_twitter:hover {
   background: #1da1f2;
   border: 1px solid #1da1f2;
 }
-a.w3_agile_dribble:hover {
+a.w3_agile_instagram:hover {
   background: #ea4c89;
   border: 1px solid #ea4c89;
+}
+a.w3_agile_whatsapp:hover {
+  background: #25D366;
+  border: 1px solid #25D366;
 }
 a.w3_agile_vimeo:hover {
   background: #1ab7ea;
@@ -1509,7 +1559,7 @@ td.invert-image a img {
   transition: color 0.2s ease-in-out;
 }
 /*-- quantity-starts --*/
-.value-minus,
+/*.value-minus,
 .value-plus {
   height: 40px;
   line-height: 24px;
@@ -1525,7 +1575,7 @@ td.invert-image a img {
   -moz-user-select: none;
   border: 1px solid #b2b2b2;
   vertical-align: bottom;
-}
+}*/
 .quantity-select .entry.value-minus:before,
 .quantity-select .entry.value-plus:before {
   content: "";
@@ -2065,7 +2115,7 @@ h2.w3_agile_header:after {
   position: relative;
   margin: 0 auto;
   width: 100%;
-  height: 300px;
+  height: 255px;
   margin-top: 1%;
 }
 .card:hover {
@@ -2085,23 +2135,67 @@ h2.w3_agile_header:after {
   box-shadow: 10px;
   width: 20px;
   height: 20px;
+  display: flex;
 }
+.card-head ul {
+  margin-top: 0%;
+  padding-left: 12%;
+  position: relative;
+  display: flex;
+}
+
+.card-head ul h2 {
+  margin-top: 2%;
+  margin-left: 10%;
+  width: 100px;
+  position: relative;
+  display: inline-block;
+}
+.card-head h5 {
+  margin-top: 55px;
+  margin-left: -14%;
+  width: 30%;
+  text-align: left;
+  position: relative;
+  display: inline-block;
+}
+.card-head > a button {
+  padding: 5px 10px;
+  margin-top: 5%;
+  margin-right: 5%;
+  border-radius: 10px;
+  outline: none;
+  background-color: #362706;
+  color: #ffffff;
+  position: relative;
+  float: right;
+}
+
+
+
 
 .card-body {
   float: left;
   padding: 0;
-  width: 60%;
-  height: 100%;
+  width: 100%;
+  height: 80%;
   padding-left: 10%;
-  padding-top: 2.5%;
+  padding-top: 1%;
   position: relative;
 }
 
 .card-body.display {
   margin: 0;
-  margin-left: 10%;
-  padding-top: 10em;
+  padding-top: 20em;
 }
+.card-body.display.table.tr th {
+  margin: 0;
+  padding-top: 20em;
+}
+.table th {
+  padding-top: 20em;
+}
+
 
 .testi-slider {
   padding: 4em 2em 3em;
@@ -2240,14 +2334,14 @@ h2.w3_agile_header:after {
   padding: 0;
   margin: 0;
 }
-.rslides li {
+/*.rslides li {
   -webkit-backface-visibility: hidden;
   position: absolute;
   display: none;
   width: 100%;
   left: 0;
   top: 0;
-}
+}*/
 .rslides li {
   position: relative;
   display: block;
@@ -2527,7 +2621,7 @@ a.callbacks1_s3:focus {
   outline: none;
 }
 
-.input__label {
+/*.input__label {
   display: inline-block;
   float: right;
   padding: 0 1em;
@@ -2542,7 +2636,7 @@ a.callbacks1_s3:focus {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
+}*/
 
 .input__label-content {
   position: relative;
@@ -3024,6 +3118,23 @@ h3.agileits-icons-title {
     font-size: 1.1em;
   }
 }
+@media (max-width: 500px) {
+  .navbar {
+    position: relative;
+    top: 0;
+    padding: 0;
+    width: 100%;
+    align-items: center;
+  }
+  .navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin-left: -50%;
+  }
+  .w3l_offers {
+    margin-left: -65%;
+  }
+}
 @media (max-width: 1024px) {
 }
 @media (max-width: 991px) {
@@ -3062,15 +3173,41 @@ h3.agileits-icons-title {
     float: none;
     width: 100%;
   }
-  .card-head.profil {
+  .card-head.profil ul img {
     float: none;
     width: 100%;
+    margin-left: 0%;
+  }
+  .card-head ul h2 {
+    float: none;
+    width: 100%;
+    margin-top: 4%;
+    margin-left: 10%;
+  }
+  .card-head ul h5 {
+    float: none;
+    width: 100%;
+    margin-top: 18%;
+    margin-left: -48%;
+  }
+  .card-head ul a {
+    float: none;
+    width: 100%;
+    margin-top: 0%;
+    margin-left: 90%;
+  }
+  .card-head ul button {
+    float: none;
+    width: 130px;
+    margin-top: 48%;
+    margin-left: 60%;
   }
   .card-body {
     float: left;
-    width: 60%;
+    width: 100%;
+    margin-left: -3%;
   }
-
+  
   .w3ls_logo_products_left h1 a {
     font-size: 30px;
   }
@@ -3206,6 +3343,244 @@ h3.agileits-icons-title {
     width: 36% !important;
   }
 }
+@media (max-width: 500px) {
+  #PPMiniCart {
+    left: 39% !important;
+  }
+  .navbar-default .navbar-nav-link > li > a {
+    font-size: 14px;
+  }
+  .nav > li > a {
+    padding: 10px 2px !important;
+  }
+  .navbar-nav-link > li {
+    margin-left: 0px;
+  }
+  .navbar {
+    min-height: 43px;
+  }
+  .card {
+    float: none;
+    width: 100%;
+  }
+  .card-head ul {
+    float: none;
+    width: 100%;
+    margin-left: -20%;
+  }
+  .card-head.profil ul img {
+    float: none;
+    width: 100%;
+    margin-left: -95%;
+  }
+  .card-head ul h2 {
+    float: none;
+    width: 100%;
+    margin-top: 4%;
+    margin-left: 5%;
+  }
+  .card-head h5 {
+    float: left;
+    width: 100%;
+    margin-top: -18%;
+    margin-left: 33%;
+  }
+  
+  .card-head > a button {
+    float: right;
+    width: 121px;
+    margin-top: -20%;
+    margin-right: -5%;
+  }
+  .card-body {
+    float: left;
+    width: 100%;
+    margin-left: -3%;
+    margin-top: -4%;
+  }
+}
+
+@media (max-width: 1000px) {
+  #PPMiniCart {
+    left: 39% !important;
+  }
+  .navbar-default .navbar-nav-link > li > a {
+    font-size: 14px;
+  }
+  .nav > li > a {
+    padding: 10px 2px !important;
+  }
+  .navbar-nav-link > li {
+    margin-left: -10%;
+  }
+  .navbar {
+    min-height: 43px;
+  }
+  .w3l_offers {
+    margin-left: -84%;
+  }
+  .card {
+    float: none;
+    width: 100%;
+  }
+  .card-head ul {
+    float: left;
+    width: 100%;
+    margin-left: -15%;
+  }
+  .card-head.profil ul img {
+    float: none;
+    width: 100%;
+    margin-right: 80%;
+  }
+  .card-head ul h2 {
+    float: none;
+    width: 100%;
+    margin-top: 4%;
+    margin-left: 5%;
+  }
+  .card-head h5 {
+    float: left;
+    width: 100%;
+    margin-top: -13%;
+    margin-left: 30%;
+  }
+  
+  .card-head > a button {
+    float: right;
+    width: 121px;
+    margin-top: -17%;
+    margin-right: 0%;
+  }
+  .card-body {
+    float: left;
+    width: 100%;
+    margin-left: -3%;
+    margin-top: 1%;
+  }
+}
+
+@media (max-width: 1000px) {
+  #PPMiniCart {
+    left: 39% !important;
+  }
+  .navbar {
+    position: relative;
+    top: 0;
+    padding: 0;
+    width: 100%;
+    align-items: center;
+  }
+  .navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin-left: -15%;
+  }
+  .w3l_offers {
+    margin-left: -6%;
+  }
+  .card {
+    float: none;
+    width: 100%;
+  }
+  .card-head ul {
+    float: left;
+    width: 100%;
+    margin-left: -5%;
+  }
+  .card-head.profil ul img {
+    float: none;
+    width: 100%;
+    margin-right: 80%;
+  }
+  .card-head ul h2 {
+    float: none;
+    width: 100%;
+    margin-top: 4%;
+    margin-left: 10%;
+  }
+  .card-head h5 {
+    float: left;
+    width: 100%;
+    margin-top: -10%;
+    margin-left: 27%;
+  }
+  
+  .card-head > a button {
+    float: right;
+    width: 230px;
+    margin-top: -12%;
+    margin-right: 0%;
+  }
+  .card-body {
+    float: left;
+    width: 100%;
+    margin-left: -3%;
+    margin-top: 2%;
+  }
+}
+
+@media (max-width: 700px) {
+  #PPMiniCart {
+    left: 35% !important;
+  }
+  .navbar {
+    position: relative;
+    top: 0;
+    padding: 0;
+    width: 100%;
+    align-items: center;
+  }
+  .navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin-left: -20%;
+  }
+  .w3l_offers {
+    margin-left: -70%;
+  }
+  .card {
+    float: none;
+    width: 100%;
+  }
+  .card-head ul {
+    float: left;
+    width: 100%;
+    margin-left: -5%;
+  }
+  .card-head.profil ul img {
+    float: none;
+    width: 100%;
+    margin-right: 80%;
+  }
+  .card-head ul h2 {
+    float: none;
+    width: 100%;
+    margin-top: 4%;
+    margin-left: 5%;
+  }
+  .card-head h5 {
+    float: left;
+    width: 100%;
+    margin-top: -10%;
+    margin-left: 35%;
+  }
+  
+  .card-head > a button {
+    float: right;
+    width: 230px;
+    margin-top: -12%;
+    margin-right: 0%;
+  }
+  .card-body {
+    float: left;
+    width: 100%;
+    margin-left: -3%;
+    margin-top: 2%;
+  }
+  
+}
+
 @media (max-width: 800px) {
 }
 @media (max-width: 768px) {
@@ -3267,6 +3642,19 @@ h3.agileits-icons-title {
   .navbar-nav {
     margin: 0;
   }
+  .navbar > li > a {
+    float: none;
+    margin-left: 0px;
+    text-align: center;
+  }
+  .navbar.nav-link {
+    float: none;
+    margin-left: 5px;
+    text-align: center;
+  }
+  .nav-link {
+    margin: 0;
+  }
   .about,
   .about-team,
   .contact,
@@ -3296,6 +3684,28 @@ h3.agileits-icons-title {
     margin-left: 0px;
     text-align: center;
     position: relative;
+  }
+}
+@media (max-width: 736px) {
+  #PPMiniCart {
+    top: 140px !important;
+  }
+  #PPMiniCart form {
+    max-height: 185px !important;
+
+  }
+  .navbar > ul > li > a {
+    float: none;
+    margin-left: 0px;
+    text-align: center;
+  }
+  .navbar.nav-link {
+    float: none;
+    margin-left: 0px;
+    text-align: center;
+  }
+  .nav-link {
+    margin: 0;
   }
 }
 @media (max-width: 736px) {
@@ -3710,6 +4120,11 @@ h3.agileits-icons-title {
     width: 86%;
   }
   .w3layouts-foot {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .w3layouts-foot ul {
     width: 100%;
     text-align: center;
     margin-bottom: 20px;

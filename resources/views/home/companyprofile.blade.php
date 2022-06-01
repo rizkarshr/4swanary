@@ -7,7 +7,13 @@ session_start();
 <html>
 
 <head>
-    <title>Aswana.ry Directory</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="images/l.png">
+    <link href="{{ asset('assett/img/aswanalogo.png') }}" rel="icon">
+    <title>MSME Profile - Aswana.ry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,22 +28,22 @@ session_start();
         }
     </script>
     <!-- //for-mobile-apps -->
-    <link href="asset/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="asset/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('asset/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
     <!-- font-awesome icons -->
-    <link href="asset/css/font-awesome.css" rel="stylesheet">
+    <link href="{{ asset('asset/css/font-awesome.css') }}" rel="stylesheet">
     <!-- //font-awesome icons -->
     <!-- js -->
-    <script src="asset/js/jquery-1.11.1.min.js"></script>
+    <script src="{{ asset('asset/js/jquery-1.11.1.min.js') }}"></script>
     <!-- //js -->
     <link href='///fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href='///fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <!--Swiper-->
-    <link href="assett/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{{ asset('assett/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
     <!-- start-smoth-scrolling -->
-    <script type="text/javascript" src="asset/js/move-top.js"></script>
-    <script type="text/javascript" src="asset/js/easing.js"></script>
+    <script type="text/javascript" src="{{ asset('asset/js/move-top.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('asset/js/easing.js') }}"></script>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event) {
@@ -60,14 +66,13 @@ session_start();
             <!-- Uncomment below if you prefer to use an image logo -->
             <div class="w3l_offers">
                 <ul><img src="{{asset('images/l.png') }}" style="width:100px; "></ul>
-
             </div>
 
             <nav id=" navbar" class="navbar">
                 <ul>
                     <!--<a href="index.html" class="logo"><img src="/images/l.png" alt=""></a>-->
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Category</a></li>
+                    <li><a class="nav-link scrollto" href="{{ route('index') }}">Home</a></li>
+                    <li><a class="nav-link scrollto active" href="#services">Category</a></li>
                     <li><a class="nav-link scrollto" href="#about">About Us</a></li>
                 </ul>
             </nav><!-- .navbar -->
@@ -197,6 +202,27 @@ session_start();
 
     <!-- //navigation -->
 
+
+    <!-- main-slider -->
+    <ul id="demo1">
+        <li>
+            <img src="{{ asset('asset/images/slider1.jpg') }}" alt="" />
+        </li>
+        <li>
+            <img src="{{ asset('asset/images/slider2.jpg') }}" alt="" />
+        </li>
+
+        <li>
+            <img src="{{ asset('asset/images/slider3.jpg') }}" alt="" />
+        </li>
+        <li>
+            <img src="{{ asset('asset/images/slider4.jpg') }}" alt="" />
+        </li>
+    </ul>
+    <!-- //main-slider -->
+    <!-- //top-header and slider -->
+
+
     <!-- market value area start -->
     <div class="container">
         <div class="nav-page">
@@ -204,15 +230,27 @@ session_start();
             <li><a href="#">> Product</a></li>
             <li><a href="#">> Category</a></li>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-6">
             <div class="col-12">
                 <div class="card">
                     <div class="card-head">
-                        <div class="col-sm-3 profil">
-                            <ul><img src="asset/images/witrove.png" alt=" " class="img-responsive"></ul>
-                            <br>
-                            <h2>Witrove</h2>
+                        <div class="col-sm-5 col-md-4 profil">
+                            <ul><img src="{{ asset('asset/images/witrove.png') }}" alt=" " class="img-responsive">
+                                <h2>Witrove
+                                </h2>
+
+
+
+                            </ul>
+
                         </div>
+                        <h5>Establishes in 1945
+                            <br><br>
+                            Surabaya, Jawa Timur
+                        </h5>
+                        <a href="{{ route('appointment') }}">
+                            <button>Schedule on Appoinment</button>
+                        </a>
                         <!--<div class="d-sm-flex justify-content-between align-items-center">
                             <h2>Welcome to Aswana.ry Directory</h2>
                         </div>
@@ -228,8 +266,6 @@ session_start();
                                 <tr>
                                     <th>Website or Social Media</th>
                                     <th>Email Address</th>
-                                </tr>
-                                <tr>
                                     <th>Business Sector</th>
                                     <th>Contact Number</th>
                                 </tr>
@@ -247,24 +283,7 @@ session_start();
     <!-- market value area end -->
 
 
-    <!-- main-slider -->
-    <!--<ul id="demo1">
-        <li>
-            <img src="asset/images/slides1.png" alt="" />
-        </li>
-        <li>
-            <img src="asset/images/slides2.png" alt="" />
-        </li>
 
-        <li>
-            <img src="asset/images/slides3.png" alt="" />
-        </li>
-        <li>
-            <img src="asset/images/slides4.png" alt="" />
-        </li>
-    </ul>-->
-    <!-- //main-slider -->
-    <!-- //top-header and slider -->
     <!-- top-brands -->
     <div class="top-brands">
         <div class="container">
@@ -362,7 +381,7 @@ session_start();
 
                     <ul class="address">
                         <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Aswana.ry Directory</li>
-                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@email">info@email</a></li>
+                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:4swanary@gmail.com">4swanary@gmail.com</a></li>
                         <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+62 8512 3456 789</li>
                     </ul>
                 </div>
@@ -371,8 +390,8 @@ session_start();
                     <ul class="info">
                         <h3>Support By</h3>
                         <li>
-                            <img src="asset/images/merdeka.png" alt=" " class="img-responsive">
-                            <img src="asset/images/sekolahekspor.png" alt=" " class="img-responsive">
+                            <img src="{{ asset('asset/images/merdeka.png') }}" alt=" " class="img-responsive">
+                            <img src="{{ asset('asset/images/sekolahekspor.png') }}" alt=" " class="img-responsive">
                         </li>
                         <!--<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">About Us</a></li>-->
                     </ul>
@@ -382,6 +401,14 @@ session_start();
         </div>
 
         <div class="footer-copy">
+            <div class="w3layouts-foot">
+                <ul>
+                    <li><a href="#" class="w3_agile_instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="w3_agile_whatsapp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
 
 
             <p>© 2022 Aswana.ry Directory. All rights reserved</p>
@@ -407,10 +434,12 @@ session_start();
     </div>-->
     <!-- //footer -->
     <!-- Bootstrap Core JavaScript -->
-    <script src="asset/js/bootstrap.min.js"></script>
+    <script src="{{ asset('asset/js/bootstrap.min.js') }}"></script>
 
     <!-- top-header and slider -->
     <!-- here stars scrolling icon -->
+
+    <!--<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>-->
     <script type="text/javascript">
         $(document).ready(function() {
 
@@ -431,8 +460,8 @@ session_start();
     <!-- //here ends scrolling icon -->
 
     <!-- main slider-banner -->
-    <script src="asset/js/skdslider.min.js"></script>
-    <link href="asset/css/skdslider.css" rel="stylesheet">
+    <script src="{{ asset('asset/js/skdslider.min.js') }}"></script>
+    <link href="{{ asset('asset/css/skdslider.css') }}" rel="stylesheet">
     <script type="text/javascript">
         jQuery(document).ready(function() {
             jQuery('#demo1').skdslider({
