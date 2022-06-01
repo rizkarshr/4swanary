@@ -166,7 +166,7 @@ session_start();
                                               <td> {{ $category->id }} </td>
                                               <td> {{ $category->name }} </td>
                                               <td> {{ $category->desc }} </td>
-                                             
+                                              <td> {{ $category->created_at }} </td>
                                               
                                             </tr>
                                             @endforeach
@@ -233,7 +233,7 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ route('category') }}" method="post" enctype="multipart/form-data">
+                    {{-- <form action="{{ route('category') }}" method="post" enctype="multipart/form-data"> --}}
 
                         <div class="form-group">
                             <label>Category Name</label>
@@ -263,7 +263,7 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ route('category') }}" method="post" enctype="multipart/form-data">
+                    {{-- <form action="{{ route('category') }}" method="post" enctype="multipart/form-data"> --}}
                         <div class="form-group">
                             Are You Sure You Want To Delete This Data?
                             <input name="name" type="hidden" class="form-control" required autofocus>
