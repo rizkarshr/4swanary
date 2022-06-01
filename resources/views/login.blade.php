@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-    <link rel="icon" type="image/x-icon" href="/images/l.png">
+    <link rel="icon" type="image/x-icon" href="/images/iconpg.png">
     <title>Login Admin</title>
     <!-- <link rel="stylesheet" href="text/css"> -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -91,8 +91,8 @@
 <body>
     <div id="card">
         <div id="card-content">
-            <div id="card-title">
-                <image src="/images/l.png" width="60%" align="center"></image><br><br>
+            <div id="card-title"> <image src="/images/l.png" width="60%" align="center"></image>
+               <br><br>
                 <label><b>Welcome To Aswana.ry!</b></label>
             </div>
             <form method="post" class="form" onsubmit="actionLogin(this,event)">

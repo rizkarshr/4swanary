@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Product;
 use App\Models\Company;
@@ -20,36 +20,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->id_subcategory!= null||$request->id_indonesia_province != null){
+        if($request->filled('search')){
 
-            if($request->id_subcategory != null AND $request->id_indonesia_province != null){
-
-                $product = Product::search($request->search)
-                ->where('id_indonesia_province', $request->id_indonesia_province)
-                ->where('id_subcategory', $request->id_subcategory)
-                ->get();
-
-            } elseif($request->id_indonesia_province != null && $request->id_subcategory == null){
-
-                $product = Product::search($request->search)
-                ->where('id_indonesia_province', $request->id_indonesia_province)->get();
-    
-            } elseif($request->id_indonesia_province == null && $request->id_subcategory!= null){
-
-                $product = Product::search($request->search)
-                ->where('id_subcategory', $request->id_subcategory)->get();
-    
-            } 
-
-        } elseif ($request->id_subcategory == null && $request->id_indonesia_province == null){
-
-            $product = Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get();
-
-            if($request->filled('search')){
-
-                $product = Product::search($request->search)->get();
-    
-            } 
+            $product = Product::search($request->search)->get();
 
         } else{
 
@@ -57,22 +30,7 @@ class ProductController extends Controller
 
         }
 
-        if( $product->count() == 0){
-                    
-            return response()->json([
-                'code' => 200,
-                'status' => true,
-                'message' => "Product not found",
-                'data' => ''
-            ]);
-        }
-
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success get all products",
-            'data' => $product
-        ]);
+        return view('product', compact('product'));
     }
 
     /**
@@ -139,12 +97,8 @@ class ProductController extends Controller
             }
         }
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success create the product",
-            'data' => $product
-        ]);
+        return redirect('/admin/manage-product');
+
     }
 
     /**
@@ -157,15 +111,7 @@ class ProductController extends Controller
     {
         $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($product->id);
 
-        $similiar_product = Product::with('subcategory')
-        ->where('id_subcategory','=',$product->id_subcategory)->get();
-
-        return response()->json([
-            'code' => 200,  
-            'status' => true,
-            'message' => "Success get the Product",
-            'data' => $product, $similiar_product
-        ]);
+        return view('product', compact('product'));
     }
 
     /**
@@ -174,9 +120,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($product->id);
+
+        return view('product', compact('product'));
     }
 
     /**
@@ -239,12 +187,7 @@ class ProductController extends Controller
             }
         }
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success update the product",
-            'data' => $product
-        ]);
+        return redirect('/admin/manage-product');
     }
 
     /**
@@ -269,11 +212,6 @@ class ProductController extends Controller
 
         }
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success delete the product",
-            'data' => ""
-        ]);
+        return redirect('/admin/manage-product');
     }
 }

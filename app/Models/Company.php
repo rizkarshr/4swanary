@@ -31,7 +31,9 @@ class company extends Model
         return [
             'name' => $this->name,
             'since' => $this->since,
-            'subcategory' => $this->subcategory,
+            'id_subcategory' => $this->id_subcategory,
+            'id_indonesia_province' => $this->id_indonesia_province,
+            
         ];
     }
 

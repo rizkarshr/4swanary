@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -19,59 +19,18 @@ class CompanyController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->id_subcategory!= null||$request->id_indonesia_province != null){
+        if($request->filled('search')){
 
-            if($request->id_subcategory != null AND $request->id_indonesia_province != null){
-
-                $company = Company::search($request->search)
-                ->where('id_indonesia_province', $request->id_indonesia_province)
-                ->where('id_subcategory', $request->id_subcategory)
-                ->get();
-
-            } elseif($request->id_indonesia_province != null && $request->id_subcategory == null){
-
-                $company = Company::search($request->search)
-                ->where('id_indonesia_province', $request->id_indonesia_province)->get();
-    
-            } elseif($request->id_indonesia_province == null && $request->id_subcategory!= null){
-
-                $company = Company::search($request->search)
-                ->where('id_subcategory', $request->id_subcategory)->get();
-    
-            } 
-
-        } elseif ($request->id_subcategory == null && $request->id_indonesia_province == null){
-
-            $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->get();
-
-            if($request->filled('search')){
-
-                $company = Company  ::search($request->search)->get();
-    
-            } 
+            $company = Company  ::search($request->search)->get();
 
         } else{
 
             $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->get();
-
+        
         }
 
-        if( $company->count() == 0){
-                    
-            return response()->json([
-                'code' => 200,
-                'status' => true,
-                'message' => "Company not found",
-                'data' => ''
-            ]);
-        }
+        return view('company', compact('company'));
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success get all companies",
-            'data' => $company
-        ]);
     }
 
     /**
@@ -92,7 +51,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request, Company $company)
     {
-        $company = company::find($company->id);
+        // $company = company::find($company->id);
 
         if ($file = $request->file('logo')) {
 
@@ -175,17 +134,13 @@ class CompanyController extends Controller
                 'id_indonesia_city' => $request->id_indonesia_city,
             ]);
 
-            // if (!$company) {
-            //     return $this->sendError("", "failed create the company");
-            // }
+            if (!$company) {
+
+                return redirect('/admin/manage-company')->with('error','Failed Create Company');
+            }
         } 
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success create the company",
-            'data' => $company
-        ]);
+        return redirect('/admin/manage-company');
     }
 
     /**
@@ -198,12 +153,7 @@ class CompanyController extends Controller
     {
         $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->find($company->id);
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success get the company",
-            'data' => $company
-        ]);
+        return view('company', compact('company'));
     }
 
     /**
@@ -212,9 +162,11 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Company $company)
     {
-        //
+        $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->find($company->id);
+
+        return view('company', compact('company'));
     }
 
     /**
@@ -276,9 +228,10 @@ class CompanyController extends Controller
                 'id_indonesia_city' => $request->id_indonesia_city,
             ]);
 
-            // if (!$company) {
-            //     return $this->sendError("", "failed update the company");
-            // }
+            if (!$company) {
+
+                return redirect('/admin/manage-company')->with('error','Failed Update Company');
+            }
 
         } elseif($file = $request->file('logo')){
 
@@ -295,9 +248,10 @@ class CompanyController extends Controller
                 'id_indonesia_city' => $request->id_indonesia_city,
             ]);
 
-            // if (!$company) {
-            //     return $this->sendError("", "failed update the company");
-            // }
+            if (!$company) {
+
+                return redirect('/admin/manage-company')->with('error','Failed Update Company');
+            }
 
         }elseif($file = $request->file('background')){
 
@@ -314,9 +268,10 @@ class CompanyController extends Controller
                 'id_indonesia_city' => $request->id_indonesia_city,
             ]);
 
-            // if (!$company) {
-            //     return $this->sendError("", "failed update the company");
-            // }
+            if (!$company) {
+
+                return redirect('/admin/manage-company')->with('error','Failed Update Company');
+            }
 
         } else {
             
@@ -333,24 +288,12 @@ class CompanyController extends Controller
             ]);
 
             if (!$company) {
-                
-                // return $this->sendError("", "failed update the company");
 
-                return response()->json([
-                    'code' => 422,
-                    'status' => False,
-                    'message' => "Failed update the company",
-                    'data' => ""
-                ]);
+                return redirect('/admin/manage-company')->with('error','Failed Update Company');
             }
         }
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success update the company",
-            'data' => $company
-        ]);
+        return redirect('/admin/manage-company');
     }
 
     /**
@@ -388,11 +331,6 @@ class CompanyController extends Controller
 
         }
         
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success delete the company",
-            'data' => ""
-        ]);
+        return redirect('/admin/manage-company');
     }
 }

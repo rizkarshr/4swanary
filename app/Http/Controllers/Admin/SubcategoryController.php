@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Http\Request;
 use App\Models\Subcategory;
 
-class SubCategoryController extends Controller
+class SubcategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,35 +19,13 @@ class SubCategoryController extends Controller
 
             $subcategory = Subcategory::search($request->search)->get();
 
-            return response()->json([
-                'code' => 200,
-                'status' => true,
-                'message' => "Success get the subcategory",
-                'data' => $subcategory
-            ]);
-
         }else{
 
-            $array = [
-
-                $subcategory = Subcategory::with('category')->get(),
-
-                $product_subcategory = Subcategory::with('category')
-                ->where('id_category','=',1)->get(),
-
-                $company_subcategory = Subcategory::with('category')
-                ->where('id_category','=',2)->get(),
-
-            ];
-
-            return response()->json([
-                'code' => 200,
-                'status' => true,
-                'message' => "Success get all subcategories",
-                'data' => $array
-            ]);
+            $subcategory = Subcategory::with('category')->get();
 
         }
+
+        return view('subcategory', compact('subcategory'));
     }
 
     /**
@@ -76,12 +53,7 @@ class SubCategoryController extends Controller
             'id_category' => $request->id_category,
         ]);
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success create the subcategory",
-            'data' => $subcategory
-        ]);
+        return redirect('/admin/manage-subcategory');
     }
 
     /**
@@ -94,12 +66,7 @@ class SubCategoryController extends Controller
     {
         $subcategory = Subcategory::with('category')->find($subcategory->id);
         
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success get the subcategory",
-            'data' => $subcategory
-        ]);
+        return view('subcategory', compact('subcategory'));
     }
 
     /**
@@ -108,9 +75,11 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subcategory $subcategory)
     {
-        //
+        $subcategory = Subcategory::with('category')->find($subcategory->id);
+        
+        return view('subcategory', compact('subcategory'));
     }
 
     /**
@@ -129,12 +98,7 @@ class SubCategoryController extends Controller
             'id_category' => $request->id_category,
         ]);
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success update the subcategory",
-            'data' => $subcategory
-        ]);
+        return redirect('/admin/manage-subcategory');
     }
 
     /**
@@ -147,11 +111,6 @@ class SubCategoryController extends Controller
     {
         $subcategory->delete();
 
-        return response()->json([
-            'code' => 200,
-            'status' => true,
-            'message' => "Success delete the subcategory",
-            'data' => ""
-        ]);
+        return redirect('/admin/manage-subcategory');
     }
 }

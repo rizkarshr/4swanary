@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE-edge" />
 <link rel="icon" type="image/x-icon" href="/images/l.png">
-<title>Aswana.ry | Category Product</title>
+<title>Aswana.ry | Category MSME</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -177,97 +177,97 @@
     </div></div>
 </section>
 
-<!--Product-->
-<section id="products">
+<!--umkm-->
+<section id="umkm">
     <!--<div class="border-bottom pb-2 ml-2">-->
-        <br><h4 id="burgundy" align="center"><b>PRODUCTS LIST</b></h4><br>
+        <br><h4 id="burgundy" align="center"><b>MSME LIST</b></h4><br>
     </div> 
     <div class="search">
-                <input type="text" placeholder="Search Product.." style="width: 95%;"method="post" onsubmit="actionLogin(this,event)"> 
+                <input type="text" placeholder="Search MSME.." style="width: 95%;"method="post" onsubmit="actionLogin(this,event)"> 
                 <image src="/images/lsearch.png" width="3.4%" style="box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5); border-radius: 5px; background-color: #562016;"></image>
             </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
                 <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t39.30808-6/272768737_2788334454797323_8471455129012019835_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ih2R5_TaTzIAX9RC-TX&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9kS0gBUuZHCFHYqaRMbd0TqE99R7_hrmDCM_9v1PLHEw&oe=629331CD" alt="Card image cap">
                     <div class="card-body">
-                    <p class="card-text"><b>Slim Wooden Chair</b></p>
-                    <p class="categoryprod">Household Needs</p>
+                    <p class="card-text"><b>D.gowo</b></p>
+                    <p class="categoryprod">Culture & Creative</p>
                     <p class="originprod">East Java, Surabaya</p>
-    
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
                 <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/1125137/pexels-photo-1125137.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t1.6435-9/132894025_106790474685208_4270026375630301421_n.jpg?stp=cp0_dst-jpg_e15_p480x480_q65&_nc_cat=106&ccb=1-7&_nc_sid=85a577&_nc_ohc=SOoGtiZpRjIAX9HfmKg&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9YTChE1a8xeSLbt9uWqnyoaWlHzfKfDosoeCPZHBNFZg&oe=62B2AC3F" alt="Card image cap">
                     <div class="card-body">
-                    <p class="card-text"><b>Chair and Table Set </b></p>
-                    <p class="categoryprod">Household Needs</p>
+                    <p class="card-text"><b>Kripik Tempe Pak Tohir </b></p>
+                    <p class="categoryprod">Food & Drink</p>
+                    <p class="originprod">East Java, Malang</p>    
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+                <div class="card">
+                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t39.30808-6/272768737_2788334454797323_8471455129012019835_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ih2R5_TaTzIAX9RC-TX&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9kS0gBUuZHCFHYqaRMbd0TqE99R7_hrmDCM_9v1PLHEw&oe=629331CD" alt="Card image cap">
+                    <div class="card-body">
+                    <p class="card-text"><b>D.gowo</b></p>
+                    <p class="categoryprod">Culture & Creative</p>
                     <p class="originprod">East Java, Surabaya</p>    
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>Leather Lounger</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>      
-                    </div>
-                </div>
-            </div>
             <div class="col-lg-3 col-sm-4 offset-lg-0 offset-sm-2 col-11 offset-1">
                 <div class="card">
-                    <img class="card-img-top" src="https://images.unsplash.com/photo-1537182534312-f945134cce34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card image cap">
+                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t1.6435-9/132894025_106790474685208_4270026375630301421_n.jpg?stp=cp0_dst-jpg_e15_p480x480_q65&_nc_cat=106&ccb=1-7&_nc_sid=85a577&_nc_ohc=SOoGtiZpRjIAX9HfmKg&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9YTChE1a8xeSLbt9uWqnyoaWlHzfKfDosoeCPZHBNFZg&oe=62B2AC3F" alt="Card image cap">
                     <div class="card-body">
-                    <p class="card-text"><b>Tree Trunk Table Set</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>     
+                    <p class="card-text"><b>Kripik Tempe Pak Tohir </b></p>
+                    <p class="categoryprod">Food & Drink</p>
+                    <p class="originprod">East Java, Malang</p>    
                     </div>
                 </div>
             </div>
         </div>
+        <!--Baris Bawah-->
         <div class="row mt-3">
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
                 <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/3230274/pexels-photo-3230274.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t1.6435-9/132894025_106790474685208_4270026375630301421_n.jpg?stp=cp0_dst-jpg_e15_p480x480_q65&_nc_cat=106&ccb=1-7&_nc_sid=85a577&_nc_ohc=SOoGtiZpRjIAX9HfmKg&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9YTChE1a8xeSLbt9uWqnyoaWlHzfKfDosoeCPZHBNFZg&oe=62B2AC3F" alt="Card image cap">
                     <div class="card-body">
-                    <p class="card-text"><b>Red Leather Bar Stool</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>      
+                    <p class="card-text"><b>Kripik Tempe Pak Tohir </b></p>
+                    <p class="categoryprod">Food & Drink</p>
+                    <p class="originprod">East Java, Malang</p>    
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-4 offset-lg-0 offset-sm-2 col-11 offset-1">
                 <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/3773571/pexels-photo-3773571.png?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t39.30808-6/272768737_2788334454797323_8471455129012019835_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ih2R5_TaTzIAX9RC-TX&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9kS0gBUuZHCFHYqaRMbd0TqE99R7_hrmDCM_9v1PLHEw&oe=629331CD" alt="Card image cap">
                     <div class="card-body">
-                    <p class="card-text"><b>Modern Dining Table</b></p>
-                    <p class="categoryprod">Household Needs</p>
+                    <p class="card-text"><b>D.gowo</b></p>
+                    <p class="categoryprod">Culture & Creative</p>
                     <p class="originprod">East Java, Surabaya</p>       
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
                 <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/534172/pexels-photo-534172.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t1.6435-9/132894025_106790474685208_4270026375630301421_n.jpg?stp=cp0_dst-jpg_e15_p480x480_q65&_nc_cat=106&ccb=1-7&_nc_sid=85a577&_nc_ohc=SOoGtiZpRjIAX9HfmKg&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9YTChE1a8xeSLbt9uWqnyoaWlHzfKfDosoeCPZHBNFZg&oe=62B2AC3F" alt="Card image cap">
                     <div class="card-body">
-                    <p class="card-text"><b>Boring Dining Table</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>        
+                    <p class="card-text"><b>Kripik Tempe Pak Tohir </b></p>
+                    <p class="categoryprod">Food & Drink</p>
+                    <p class="originprod">East Java, Malang</p>      
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-4 offset-lg-0 offset-sm-2 col-11 offset-1">
                 <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/37347/office-sitting-room-executive-sitting.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t39.30808-6/272768737_2788334454797323_8471455129012019835_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ih2R5_TaTzIAX9RC-TX&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9kS0gBUuZHCFHYqaRMbd0TqE99R7_hrmDCM_9v1PLHEw&oe=629331CD" alt="Card image cap">
                     <div class="card-body">
-                    <p class="card-text"><b>An Ugly Office</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>      
+                    <p class="card-text"><b>D.gowo</b></p>
+                    <p class="categoryprod">Culture & Creative</p>
+                    <p class="originprod">East Java, Surabaya</p>    
                     </div>
                 </div>
             </div>
@@ -552,7 +552,7 @@ body{
     margin: 0;
     float: left;
 }
-#products{
+#umkm{
     width: 80%;
     padding: 10px;
     margin: 0;
@@ -720,7 +720,7 @@ li a:hover{
         margin: 0;
         float: left;
     }
-    #products{
+    #umkm{
         width: 90%;
         padding: 5px;
         margin: 0;
