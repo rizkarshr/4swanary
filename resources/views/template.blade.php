@@ -67,19 +67,19 @@ session_start();
 
                             <li><a href="#"><i class="ti-user"></i><span>Nama Admin</span></a></li>
 
-                            <li class="link {{ Request::is('dashboard') ? ' active' : '' }}"><a href="{{ route('dashboard') }}"><span>Home</span></a></li>
-                            <li class="link {{ Request::is('user') ? ' active' : '' }}"><a href="{{ url('user') }}"></i><span>Manage Admin</span></a></li>
+                            <li class="link {{ Request::is('dashboard') ? ' active' : '' }}"><a href="{{ url('/admin/dashboard') }}"><span>Home</span></a></li>
+                            <li class="link {{ Request::is('user') ? ' active' : '' }}"><a href="{{ url('/admin/manage-user') }}"></i><span>Manage Admin</span></a></li>
 
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout"></i><span>Manage Store
                                     </span></a>
                                 <ul class="collapse">
-                                    <li class="link {{ Request::is('article') ? ' active' : '' }}"><a href="{{ url('article') }}">Article</a></li>
-                                    <li class="link {{ Request::is('company') ? ' active' : '' }}"><a href="{{ url('company') }}">Company</a></li>
-                                    <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ url('product') }}">Product</a></li>
-                                    <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ url('category') }}">Category</a></li>
-                                    <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ url('subcategory') }}">Subcategory</a></li>
-                                    <li class="link {{ Request::is('origins') ? ' active' : '' }}"><a href="{{ url('origins') }}">Origins</a></li>
+                                    <li class="link {{ Request::is('article') ? ' active' : '' }}"><a href="{{ url('/admin/manage-article') }}">Article</a></li>
+                                    <li class="link {{ Request::is('company') ? ' active' : '' }}"><a href="{{ url('/admin/manage-company') }}">Company</a></li>
+                                    <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ url('/admin/manage-product') }}">Product</a></li>
+                                    <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ url('/admin/manage-category') }}">Category</a></li>
+                                    <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ url('/admin/manage-subcategory') }}">Subcategory</a></li>
+                                    <li class="link {{ Request::is('origins') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origins') }}">Origins</a></li>
                                 </ul>
                             </li>
 
