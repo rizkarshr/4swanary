@@ -27,6 +27,7 @@ Route::get('logins', function () {
     return view('logins');
 })->name('logins');
 
+// == DASHBOARD == //
 Route::get('dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
@@ -66,32 +67,56 @@ Route::get('origins', function () {
     return view('origins');
 })->name('origins');
 
-//index
-Route::get('index', function () {
-    return view('index');
-})->name('index');
 
+// == HOME == //
 //company profile
 Route::get('home/companyprofile', function () {
-    return view('home/companyprofile');
-})->name('home/companyprofile');
+    return view('home.companyprofile');
+})->name('companyprofile');
 
-//homepage
-Route::get('no/index', function () {
-    return view('no/index');
-})->name('no/index');
-Route::get('no/inner-page', function () {
-    return view('no/inner-page');
-})->name('no/portofolio-details');
-Route::get('no/portofolio-details', function () {
-    return view('no/portofolio-details');
-})->name('no/portofolio-details');
+//company profile
+Route::get('home/appointment', function () {
+    return view('home.appointment');
+})->name('appointment');
+
+//home index
+Route::get('home/index', function () {
+    return view('home.index');
+})->name('index');
+
+//home article
+Route::get('home/article', function () {
+    return view('home.article');
+})->name('articles');
+
+//home product catalog
+Route::get('home/product-catalog', function () {
+    return view('home.product-catalog');
+})->name('product-catalog');
 
 //category product
 Route::get('home/categoryproduct', function () {
     return view('home/categoryproduct');
 })->name('home/catgoryproduct');
 
+
+////////////////////////////
+//homepage
+/*Route::get('no.index', function () {
+    return view('no.index');
+})->name('index');
+Route::get('no/inner-page', function () {
+    return view('no/inner-page');
+})->name('no/portofolio-details');
+Route::get('no/portofolio-details', function () {
+    return view('no/portofolio-details');
+})->name('no/portofolio-details');*/
+
+
+//index
+/*Route::get('index', function () {
+    return view('index');
+})->name('index');*/
 
 
 //Route::get('product', 'ProductController@index')->name('product');

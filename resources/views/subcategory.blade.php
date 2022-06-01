@@ -160,7 +160,18 @@ session_start();
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td align="center">
+                                                    <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#ModalEdit"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
+                                                    <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -206,8 +217,62 @@ session_start();
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                    <input name="addsubcategory" type="submit" class="btn btn-primary" value="Tambah">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="addsubcategory" type="submit" class="btn btn-primary" value="Add">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal edit -->
+    <div id="ModalEdit" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Subcategory</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('subcategory') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Subcategory Name</label>
+                            <input name="name" type="text" class="form-control" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input name="desc" type="text" class="form-control" required>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="addsubcategory" type="submit" class="btn btn-primary" value="Save">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal delete -->
+    <div id="ModalDelete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Subcategory</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('subcategory') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            Are You Sure You Want To Delete This Data?
+                            <input name="name" type="hidden" class="form-control" required autofocus>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="deletesubcategory" type="submit" class="btn btn-primary" value="Delete">
                 </div>
                 </form>
             </div>
