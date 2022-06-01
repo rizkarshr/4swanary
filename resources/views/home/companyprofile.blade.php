@@ -64,12 +64,19 @@ session_start();
 
             <!--<h1 class="logo"><a href="index.html">BizLand<span>.</span></a></h1>-->
             <!-- Uncomment below if you prefer to use an image logo -->
-            <div class="w3l_offers">
-                <ul><img src="{{asset('images/l.png') }}" style="width:100px; "></ul>
-            </div>
+
+
 
             <nav id=" navbar" class="navbar">
+                <div class="w3l_offers">
+
+                    <a href="{{ route('index') }}"><img src="{{ asset('assett/img/aswanalogo.png') }}" alt="" width="100px;"></a>
+
+
+                    <!--<ul><img src="{{asset('images/l.png') }}" style="width:100px; "></ul>-->
+                </div>
                 <ul>
+
                     <!--<a href="index.html" class="logo"><img src="/images/l.png" alt=""></a>-->
                     <li><a class="nav-link scrollto" href="{{ route('index') }}">Home</a></li>
                     <li><a class="nav-link scrollto active" href="#services">Category</a></li>

@@ -174,14 +174,15 @@ body a:hover {
   float: left;
   padding: 0;
   width: 47%;
-  margin: 4px 0;
   position: relative;
 }
 
-.w3l_offers ul {
+
+.w3l_offers a {
   margin: 0;
   margin-left: -5%;
   padding-top: -5%;
+  width: 100px;
   position: relative;
 }
 
@@ -302,6 +303,9 @@ ul.agileits_social_icons li a,
   padding: 2px 0;
   padding-left: 2px;
   width: 47%;
+}
+.w3l_offers a {
+  width: 100%;
 }
 .w3l_offers p {
   font-size: 15px;
@@ -3132,7 +3136,10 @@ h3.agileits-icons-title {
     margin-left: -50%;
   }
   .w3l_offers {
-    margin-left: -65%;
+    margin-left: 1%;
+  }
+  .w3l_offers a {
+    margin-left: 65%;
   }
 }
 @media (max-width: 1024px) {
@@ -3144,6 +3151,10 @@ h3.agileits-icons-title {
   .w3l_offers {
     padding: 0px 12px 8px;
     width: 10%;
+  }
+  .w3l_offers a {
+    padding: 0px 12px 8px;
+    width: 100%;
   }
   .agile-login {
     padding: 6px 0;
@@ -3417,7 +3428,10 @@ h3.agileits-icons-title {
     min-height: 43px;
   }
   .w3l_offers {
-    margin-left: -84%;
+    margin-left: -4%;
+  }
+  .w3l_offers a {
+    width: 100%;
   }
   .card {
     float: none;
@@ -3527,17 +3541,18 @@ h3.agileits-icons-title {
   .navbar {
     position: relative;
     top: 0;
-    padding: 0;
-    width: 100%;
+    padding: 0 0 50px;
+    width: 50%;
     align-items: center;
   }
   .navbar ul li {
     list-style: none;
-    display: inline-block;
-    margin-left: -20%;
   }
   .w3l_offers {
-    margin-left: -70%;
+    width: 5px;
+  }
+  .w3l_offers a {
+    width: 5px;
   }
   .card {
     float: none;
@@ -3718,6 +3733,10 @@ h3.agileits-icons-title {
   .w3l_offers p {
     font-size: 13px;
   }
+  .w3l_offers a {
+    font-size: 13px;
+    width: 100%;
+  }
   .w3ls_logo_products_left h1 a {
     font-size: 26px;
   }
@@ -3765,6 +3784,9 @@ h3.agileits-icons-title {
     width: 37%;
   }
   .w3l_offers {
+    width: 56%;
+  }
+  .w3l_offers a {
     width: 56%;
   }
   .agile-login ul li {
@@ -3822,6 +3844,10 @@ h3.agileits-icons-title {
     max-height: 400px !important;
   }
   .w3l_offers {
+    width: 100%;
+    text-align: center;
+  }
+  .w3l_offers a {
     width: 100%;
     text-align: center;
   }
@@ -4113,6 +4139,10 @@ h3.agileits-icons-title {
   .w3l_offers p {
     font-size: 12px;
   }
+  .w3l_offers a {
+    width: 100%;
+    font-size: 12px;
+  }
   .agile-login {
     width: 67%;
   }
@@ -4183,11 +4213,15 @@ h3.agileits-icons-title {
   .agile-login {
     width: 79%;
   }
-  .w3l_offers p {
+  .w3l_offers a {
+    width: 100%;
     font-size: 10px;
   }
   .w3l_offers {
     padding: 9px 0 5px;
+  }
+  .w3l_offers p {
+    font-size: 10px;
   }
   .w3ls_logo_products_left {
     margin: 3px 0 12px;
@@ -4386,3 +4420,4 @@ h3.agileits-icons-title {
     font-size: 13px;
   }
 }
+
