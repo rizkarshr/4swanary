@@ -1,14 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\SubcategoryController;
-use App\Http\Controllers\Admin\OriginController;
-use App\Http\Controllers\Admin\CompanyController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,123 +25,64 @@ use App\Http\Controllers\Admin\ArticleController;
 Route::get('/', function () {
     return view('login');
 });
-Route::get('/login', [AuthController::class, 'index']);
-Route::post('/login', [AuthController::class, 'authenticate']);
-Route::get('/logout', [AuthController::class, 'logout']);
+Route::get('/login', [App\Http\Controllers\Admin\AuthController::class, 'index']);
+Route::post('/login', [App\Http\Controllers\Admin\AuthController::class, 'authenticate']);
+Route::get('/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout']);
 
 // Route::group(['middleware' => ['auth:sanctum']], function(){
 
-//USER
+    // == DASHBOARD == //
+    Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+
+    //USER
+    Route::get('/admin/manage-user', [App\Http\Controllers\Admin\UserController::class, 'index']);
+    Route::post('/admin/manage-user', [App\Http\Controllers\Admin\UserController::class, 'store']);
+    Route::get('/admin/manage-user/{id}', [App\Http\Controllers\Admin\UserController::class, 'edit']);
+    Route::post('/admin/manage-user/{id}', [App\Http\Controllers\Admin\UserController::class, 'update']);
+    Route::get('/admin/manage-user/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy']);
 
 
-// == DASHBOARD == //
-Route::get('dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+    //CATEGORY
+    Route::get('/admin/manage-category', [App\Http\Controllers\Admin\CategoryController::class, 'index']);
+    Route::post('/admin/manage-category', [App\Http\Controllers\Admin\CategoryController::class, 'store']);
+    Route::get('/admin/manage-category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit']);
+    Route::post('/admin/manage-category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update']);
+    Route::get('/admin/manage-category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
 
-Route::get('/admin/manage-user', [UserController::class, 'index']);
-Route::post('/admin/manage-user', [UserController::class, 'store']);
-// Route::get('/Admin/Manage-user/{id}', [UserController::class, 'show']);
-Route::get('/admin/manage-user/{id}', [UserController::class, 'edit']);
-Route::post('/admin/manage-user/{id}', [UserController::class, 'update']);
-Route::get('/admin/manage-user/{id}', [UserController::class, 'destroy']);
+    //SUBCATEGORY
+    Route::get('/admin/manage-subcategory', [App\Http\Controllers\Admin\SubcategoryController::class, 'index']);
+    Route::post('/admin/manage-subcategory', [App\Http\Controllers\Admin\SubcategoryController::class, 'store']);
+    Route::get('/admin/manage-subcategory/{id}', [App\Http\Controllers\Admin\SubcategoryController::class, 'edit']);
+    Route::post('/admin/manage-subcategory/{id}', [App\Http\Controllers\Admin\SubcategoryController::class, 'update']);
+    Route::get('/admin/manage-subcategory/{id}', [App\Http\Controllers\Admin\SubcategoryController::class, 'destroy']);
 
+    //ORIGIN
+    Route::get('/admin/manage-origin', [App\Http\Controllers\Admin\OriginController::class, 'index']);
+    Route::post('/admin/manage-origin', [App\Http\Controllers\Admin\OriginController::class, 'store']);
+    Route::get('/admin/manage-origin/{id}', [App\Http\Controllers\Admin\OriginController::class, 'edit']);
+    Route::post('/admin/manage-origin/{id}', [App\Http\Controllers\Admin\OriginController::class, 'update']);
+    Route::get('/admin/manage-origin/{id}', [App\Http\Controllers\Admin\OriginController::class, 'destroy']);
 
-//CATEGORY
+    //COMPANY
+    Route::get('/admin/manage-company', [App\Http\Controllers\Admin\CompanyController::class, 'index']);
+    Route::post('/admin/manage-company', [App\Http\Controllers\Admin\CompanyController::class, 'store']);
+    Route::get('/admin/manage-company/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'edit']);
+    Route::post('/admin/manage-company/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'update']);
+    Route::get('/admin/manage-company/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'destroy']);
 
-Route::get('/admin/manage-category', [CategoryController::class, 'index']);
-Route::post('/admin/manage-category', [CategoryController::class, 'store']);
-Route::get('/admin/manage-category/{id}', [CategoryController::class, 'edit']);
-Route::post('/admin/manage-category/{id}', [CategoryController::class, 'update']);
-Route::get('/admin/manage-category/{id}', [CategoryController::class, 'destroy']);
+    //PRODUCT
+    Route::get('/admin/manage-product', [App\Http\Controllers\Admin\ProductController::class, 'index']);
+    Route::post('/admin/manage-product', [App\Http\Controllers\Admin\ProductController::class, 'store']);
+    Route::get('/admin/manage-product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'edit']);
+    Route::post('/admin/manage-product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'update']);
+    Route::get('/admin/manage-product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'destroy']);
 
-//SUBCATEGORY
-
-Route::get('/admin/manage-subcategory', [SubcategoryController::class, 'index']);
-Route::post('/admin/manage-subcategory', [SubcategoryController::class, 'store']);
-Route::get('/admin/manage-subcategory/{id}', [SubcategoryController::class, 'edit']);
-Route::post('/admin/manage-subcategory/{id}', [SubcategoryController::class, 'update']);
-Route::get('/admin/manage-subcategory/{id}', [SubcategoryController::class, 'destroy']);
-
-//ORIGIN
-
-Route::get('/admin/manage-origin', [OriginController::class, 'index']);
-Route::post('/admin/manage-origin', [OriginController::class, 'store']);
-Route::get('/admin/manage-origin/{id}', [OriginController::class, 'edit']);
-Route::post('/admin/manage-origin/{id}', [OriginController::class, 'update']);
-Route::get('/admin/manage-origin/{id}', [OriginController::class, 'destroy']);
-
-//COMPANY
-
-
-
-// == HOME == //
-//company profile
-Route::get('home/companyprofile', function () {
-    return view('home.companyprofile');
-})->name('companyprofile');
-
-//company profile
-Route::get('home/appointment', function () {
-    return view('home.appointment');
-})->name('appointment');
-
-//home index
-Route::get('home/index', function () {
-    return view('home.index');
-})->name('index');
-
-//home article
-Route::get('home/article', function () {
-    return view('home.article');
-})->name('articles');
-
-//home product catalog
-Route::get('home/product-catalog', function () {
-    return view('home.product-catalog');
-})->name('product-catalog');
-
-Route::get('/admin/manage-company', [CompanyController::class, 'index']);
-Route::post('/admin/manage-company', [CompanyController::class, 'store']);
-Route::get('/admin/manage-company/{id}', [CompanyController::class, 'edit']);
-Route::post('/admin/manage-company/{id}', [CompanyController::class, 'update']);
-Route::get('/admin/manage-company/{id}', [CompanyController::class, 'destroy']);
-
-//PRODUCT
-
-Route::get('/admin/manage-product', [ProductController::class, 'index']);
-Route::post('/admin/manage-product', [ProductController::class, 'store']);
-Route::get('/admin/manage-product/{id}', [ProductController::class, 'edit']);
-Route::post('/admin/manage-product/{id}', [ProductController::class, 'update']);
-Route::get('/admin/manage-product/{id}', [ProductController::class, 'destroy']);
-
-
-//ARTICLE
-
-Route::get('/admin/manage-article', [ArticleController::class, 'index']);
-Route::post('/admin/manage-article', [ArticleController::class, 'store']);
-Route::get('/admin/manage-article/{id}', [ArticleController::class, 'edit']);
-Route::post('/admin/manage-article/{id}', [ArticleController::class, 'update']);
-Route::get('/admin/manage-article/{id}', [ArticleController::class, 'destroy']);
-
-
-////////////////////////////
-//homepage
-/*Route::get('no.index', function () {
-    return view('no.index');
-})->name('index');
-Route::get('no/inner-page', function () {
-    return view('no/inner-page');
-})->name('no/portofolio-details');
-Route::get('no/portofolio-details', function () {
-    return view('no/portofolio-details');
-})->name('no/portofolio-details');*/
-
-
-//index
-/*Route::get('index', function () {
-    return view('index');
-})->name('index');*/
+    //ARTICLE
+    Route::get('/admin/manage-article', [App\Http\Controllers\Admin\ArticleController::class, 'index']);
+    Route::post('/admin/manage-article', [App\Http\Controllers\Admin\ArticleController::class, 'store']);
+    Route::get('/admin/manage-article/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'edit']);
+    Route::post('/admin/manage-article/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'update']);
+    Route::get('/admin/manage-article/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'destroy']);
 
 
 // });
@@ -161,6 +94,26 @@ Route::get('no/portofolio-details', function () {
 |
 */
 
+//HOMEPAGE
+Route::get('/home', [App\Http\Controllers\Viewer\HomeController::class, 'index']);
+
+//ARTICLE PAGE
+Route::get('/article', [App\Http\Controllers\Viewer\ArticleController::class, 'show']);
+
+//SEARCH & FILTER PRODUCT
+Route::get('/search/product', [App\Http\Controllers\Viewer\SearchProductController::class, 'index']); 
+
+//SEARCH & FILTER COMPANY
+Route::get('/search/msme', [App\Http\Controllers\Viewer\SearchProductController::class, 'index']); 
+
+//PRODUCT CATALOG PAGE
+Route::get('/product/{id}', [App\Http\Controllers\Viewer\ProductCatalogController::class, 'show']);
+
+//COMPANY PROFIL PAGE
+Route::get('/company/{id}', [App\Http\Controllers\Viewer\CompanyProfilController::class, 'show']);
+
+// //APPOINTMENT PAGE
+// Route::get('/company/{id}', [App\Http\Controllers\Viewer\CompanyProfilController::class, 'show']);
 
 // Route::get('login', function () {
 //     return view('login');
