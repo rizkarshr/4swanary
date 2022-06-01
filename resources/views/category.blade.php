@@ -166,6 +166,10 @@ session_start();
                                                 <td> {{ $category->id }} </td>
                                                 <td> {{ $category->name }} </td>
                                                 <td> {{ $category->desc }} </td>
+                                                <td align="center">
+                                                    <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#ModalEdit"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
+                                                    <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
