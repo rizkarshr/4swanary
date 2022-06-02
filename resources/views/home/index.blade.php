@@ -49,7 +49,7 @@
 
       <!--<h1 class="logo"><a href="index.html">BizLand<span>.</span></a></h1>-->
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="{{ route('index') }}" class="logo"><img src="{{ asset('assett/img/aswanalogo.png') }}" alt=""></a>
+      <a href="{{ url('/home') }}" class="logo"><img src="{{ asset('assett/img/aswanalogo.png') }}" alt=""></a>
 
       <nav id="navbar" class="navbar">
         <ul>
