@@ -5,47 +5,32 @@
 <meta http-equiv="X-UA-Compatible" content="IE-edge" />
 <link rel="icon" type="image/x-icon" href="/images/l.png">
 <title>Aswana.ry | Category MSME</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="{{url('https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css')}}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="/assetz/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/assetz/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('/assetz/css/font-awesome.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/assetz/css/bootstrap.min.css')}}">
 </head>
 
 <body>
      <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-left">
-    <div class="container d-flex align-items-left justify-content-between">
+    <div class="container d-flex align-items-left justify-content-between" style="margin-left: 20px;padding-top: 5px;">
 
       <!--<h1 class="logo"><a href="index.html">BizLand<span>.</span></a></h1>-->
       <!-- Uncomment below if you prefer to use an image logo -->
       
-
       <nav id="navbar" class="navbar">
-      <image src="/images/l.png" width="10%"></image>
+      <image src="{{asset('/images/l.png')}}" width="10%"></image>
         <ul>
           <li><a class="nav-link scrollto" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto active" href="#services">Category</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
-
       </nav><!-- .navbar -->
-
     </div>
   </header><!-- End Header -->
-<!--<nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom">
-    <image src="/images/l.png" width="10%"></image>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation"> 
-        <span class="navbar-toggler-icon"></span> 
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor">
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#">Home</a> </li>
-            <li class="nav-item"><a class="nav-link" href="#"><b>Category</b></a> </li>                
-            <li class="nav-item "><a class="nav-link" href="#">About Us</a> </li>
-        </ul>        
-    </div>
-    </div>    
-</nav>-->
+
+<!--FILTER
 <div class="filter">
     <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="false" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
 </div>
@@ -92,9 +77,9 @@
             </div>
         </form>
     </div>
-</div>
+</div>-->
 
-<!--Sidebar-->
+<!--===================================F I L T E R=======================================-->
 <section id="sidebar">
 <div class="container">
     <div class="border-bottom pb-2 ml-2">
@@ -177,104 +162,52 @@
     </div></div>
 </section>
 
-<!--umkm-->
+<!--===================================U M K M=======================================-->
 <section id="umkm">
     <!--<div class="border-bottom pb-2 ml-2">-->
         <br><h4 id="burgundy" align="center"><b>MSME LIST</b></h4><br>
     </div> 
+
+<!--===================================Search=======================================-->
     <div class="search">
-                <input type="text" placeholder="Search MSME.." style="width: 95%;"method="post" onsubmit="actionLogin(this,event)"> 
+                <input type="text" placeholder="Search MSME...." style="width: 93%; "method="post" onsubmit="actionLogin(this,event)"> 
                 <image src="/images/lsearch.png" width="3.4%" style="box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5); border-radius: 5px; background-color: #562016;"></image>
-            </div>
-    <div class="container">
+    </div>
+
+<!--===================================UMKM LIST=======================================-->
+    @foreach ($search as $search)
+    <div class="container" style="padding-left: 3px; padding-right: 3px;">
         <div class="row">
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
                 <div class="card">
-                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t39.30808-6/272768737_2788334454797323_8471455129012019835_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ih2R5_TaTzIAX9RC-TX&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9kS0gBUuZHCFHYqaRMbd0TqE99R7_hrmDCM_9v1PLHEw&oe=629331CD" alt="Card image cap">
+                    <img class="card-img-top" src="{{$search->logo}}" alt="Card image cap">
                     <div class="card-body">
-                    <p class="card-text"><b>D.gowo</b></p>
-                    <p class="categoryprod">Culture & Creative</p>
-                    <p class="originprod">East Java, Surabaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t1.6435-9/132894025_106790474685208_4270026375630301421_n.jpg?stp=cp0_dst-jpg_e15_p480x480_q65&_nc_cat=106&ccb=1-7&_nc_sid=85a577&_nc_ohc=SOoGtiZpRjIAX9HfmKg&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9YTChE1a8xeSLbt9uWqnyoaWlHzfKfDosoeCPZHBNFZg&oe=62B2AC3F" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>Kripik Tempe Pak Tohir </b></p>
-                    <p class="categoryprod">Food & Drink</p>
-                    <p class="originprod">East Java, Malang</p>    
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t39.30808-6/272768737_2788334454797323_8471455129012019835_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ih2R5_TaTzIAX9RC-TX&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9kS0gBUuZHCFHYqaRMbd0TqE99R7_hrmDCM_9v1PLHEw&oe=629331CD" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>D.gowo</b></p>
-                    <p class="categoryprod">Culture & Creative</p>
-                    <p class="originprod">East Java, Surabaya</p>    
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4 offset-lg-0 offset-sm-2 col-11 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t1.6435-9/132894025_106790474685208_4270026375630301421_n.jpg?stp=cp0_dst-jpg_e15_p480x480_q65&_nc_cat=106&ccb=1-7&_nc_sid=85a577&_nc_ohc=SOoGtiZpRjIAX9HfmKg&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9YTChE1a8xeSLbt9uWqnyoaWlHzfKfDosoeCPZHBNFZg&oe=62B2AC3F" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>Kripik Tempe Pak Tohir </b></p>
-                    <p class="categoryprod">Food & Drink</p>
-                    <p class="originprod">East Java, Malang</p>    
+                    <p class="card-text"><b>{{$search->name}}</b></p>
+                    <p class="categoryprod">{{$search->id_subcategory}}</p>
+                    <p class="originprod">hai</p>
                     </div>
                 </div>
             </div>
         </div>
-        <!--Baris Bawah-->
+
         <div class="row mt-3">
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
                 <div class="card">
-                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t1.6435-9/132894025_106790474685208_4270026375630301421_n.jpg?stp=cp0_dst-jpg_e15_p480x480_q65&_nc_cat=106&ccb=1-7&_nc_sid=85a577&_nc_ohc=SOoGtiZpRjIAX9HfmKg&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9YTChE1a8xeSLbt9uWqnyoaWlHzfKfDosoeCPZHBNFZg&oe=62B2AC3F" alt="Card image cap">
+                    <img class="card-img-top" src="{{$search->logo}}" alt="Card image cap">
                     <div class="card-body">
-                    <p class="card-text"><b>Kripik Tempe Pak Tohir </b></p>
-                    <p class="categoryprod">Food & Drink</p>
-                    <p class="originprod">East Java, Malang</p>    
+                    <p class="card-text"><b>{{$search->name}}</b></p>
+                    <p class="categoryprod">{{$search->id_subcategory}}</p>
+                    <p class="originprod">hai</p>      
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-4 offset-lg-0 offset-sm-2 col-11 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t39.30808-6/272768737_2788334454797323_8471455129012019835_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ih2R5_TaTzIAX9RC-TX&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9kS0gBUuZHCFHYqaRMbd0TqE99R7_hrmDCM_9v1PLHEw&oe=629331CD" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>D.gowo</b></p>
-                    <p class="categoryprod">Culture & Creative</p>
-                    <p class="originprod">East Java, Surabaya</p>       
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t1.6435-9/132894025_106790474685208_4270026375630301421_n.jpg?stp=cp0_dst-jpg_e15_p480x480_q65&_nc_cat=106&ccb=1-7&_nc_sid=85a577&_nc_ohc=SOoGtiZpRjIAX9HfmKg&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9YTChE1a8xeSLbt9uWqnyoaWlHzfKfDosoeCPZHBNFZg&oe=62B2AC3F" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>Kripik Tempe Pak Tohir </b></p>
-                    <p class="categoryprod">Food & Drink</p>
-                    <p class="originprod">East Java, Malang</p>      
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4 offset-lg-0 offset-sm-2 col-11 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://scontent.fcgk10-1.fna.fbcdn.net/v/t39.30808-6/272768737_2788334454797323_8471455129012019835_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ih2R5_TaTzIAX9RC-TX&_nc_ht=scontent.fcgk10-1.fna&oh=00_AT9kS0gBUuZHCFHYqaRMbd0TqE99R7_hrmDCM_9v1PLHEw&oe=629331CD" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>D.gowo</b></p>
-                    <p class="categoryprod">Culture & Creative</p>
-                    <p class="originprod">East Java, Surabaya</p>    
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
+    @endforeach
     <br><br>
-    <!--page navigation-->        
+<!--===================================END OF LIST=======================================-->
+
+<!--===================================PAGINATION=======================================-->       
     <div class="pagination" style="margin: 2%; padding-left: 30%">
                 <a href="#"><b>&laquo;</b></a>
                 <a class="active" href="#">1</a>
@@ -289,8 +222,8 @@
 </body>
 
 
-<script src="/assetz/js/bootstrap.bundle.min.js"></script>
-<script src="/assetz/js/jquery.min.js"></script>
+<script src="{{asset('/assetz/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('/assetz/js/jquery.min.js')}}"></script>
 
 </html>
 
@@ -300,8 +233,7 @@
 }
 body{
     color: #25262B;
-    margin: 0%;
-
+    margin:0;
 }
 
 /*Header Start*/

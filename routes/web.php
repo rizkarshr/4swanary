@@ -104,7 +104,7 @@ Route::get('/article', [App\Http\Controllers\Viewer\ArticleController::class, 's
 Route::get('/search/product', [App\Http\Controllers\Viewer\SearchProductController::class, 'index']); 
 
 //SEARCH & FILTER COMPANY
-Route::get('/search/msme', [App\Http\Controllers\Viewer\SearchProductController::class, 'index']); 
+Route::get('/search/msme', [App\Http\Controllers\Viewer\SearchUMKMController::class, 'index']); 
 
 //PRODUCT CATALOG PAGE
 Route::get('/product/{id}', [App\Http\Controllers\Viewer\ProductCatalogController::class, 'show']);
@@ -184,10 +184,10 @@ Route::get('/appointment/send/{id}', [App\Http\Controllers\Viewer\AppointmentCon
 //     return view('no/portofolio-details');
 // })->name('no/portofolio-details');
 
-// //category product
-// Route::get('home/categoryproduct', function () {
-//     return view('home/categoryproduct');
-// })->name('home/catgoryproduct');
+//category product
+ //Route::get('home/categoryproduct', function () {
+   // return view('home/categoryproduct');
+//})->name('home/catgoryproduct');
 
 // //category UMKM
 // Route::get('home/categoryumkm', function () {
