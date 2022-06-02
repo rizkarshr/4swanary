@@ -3,49 +3,34 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-<link rel="icon" type="image/x-icon" href="/images/l.png">
+<link rel="icon" type="image/x-icon" href="{{asset('/images/l.png')}}">
 <title>Aswana.ry | Category Product</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="{{url('https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css')}}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="/assetz/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/assetz/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('/assetz/css/font-awesome.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/assetz/css/bootstrap.min.css')}}">
 </head>
 
 <body>
-     <!-- ======= Header ======= -->
+<!--==================================START OF HEADER======================================-->
   <header id="header" class="d-flex align-items-left">
-    <div class="container d-flex align-items-left justify-content-between">
-
-      <!--<h1 class="logo"><a href="index.html">BizLand<span>.</span></a></h1>-->
-      <!-- Uncomment below if you prefer to use an image logo -->
-      
-
+    <div class="container d-flex align-items-left justify-content-between" style="margin-left: 20px;padding-top: 5px;">
+      <!--START NAVBAR-->
       <nav id="navbar" class="navbar">
-      <image src="/images/l.png" width="10%"></image>
+      <image src="{{asset('/images/l.png')}}" width="10%"></image>
         <ul>
-          <li><a class="nav-link scrollto" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="index.blade.php">Home</a></li>
           <li><a class="nav-link scrollto active" href="#services">Category</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
-
-      </nav><!-- .navbar -->
-
+      </nav>
+      <!-- END NAVBAR -->
     </div>
-  </header><!-- End Header -->
-<!--<nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom">
-    <image src="/images/l.png" width="10%"></image>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation"> 
-        <span class="navbar-toggler-icon"></span> 
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor">
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#">Home</a> </li>
-            <li class="nav-item"><a class="nav-link" href="#"><b>Category</b></a> </li>                
-            <li class="nav-item "><a class="nav-link" href="#">About Us</a> </li>
-        </ul>        
-    </div>
-    </div>    
-</nav>-->
+  </header>
+  <!--===================================END OF HEADER======================================-->
+
+
+<!--=== MOBILE VERSION
 <div class="filter">
     <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="false" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
 </div>
@@ -92,22 +77,26 @@
             </div>
         </form>
     </div>
-</div>
+</div>-->
 
-<!--Sidebar-->
+<!--===================================F I L T E R=======================================-->
 <section id="sidebar">
 <div class="container">
     <div class="border-bottom pb-2 ml-2">
         <h5 id="burgundy">Filters</h5>
     </div>
+
+<!--==============================Filter Categories=================================-->    
     <div class="py-2 border-bottom ml-3">
         <h6 class="font-weight-bold">Categories</h6>
         <form>
+            @foreach ($search as $search)
             <div class="form-group">
                 <input type="checkbox" id="artisan">
-                <label for="artisan">Beauty</label>
+                <label for="artisan">{{ $search->id_subcategory }}</label>
             </div>
-            <div class="form-group">
+            @endforeach
+            <!--<div class="form-group">
                 <input type="checkbox" id="breakfast">
                 <label for="breakfast">Culture & Creative</label>
             </div>
@@ -146,17 +135,21 @@
             <div class="form-group">
                 <input type="checkbox" id="healthy">
                 <label for="healthy">Household Needs</label>
-            </div>                            
+            </div>-->                          
         </form>
     </div>
+
+    <!--==============================Filter Region=================================-->
     <div class="py-2 border-bottom ml-3">
         <h6 class="font-weight-bold">Regions</h6>
         <form>
+            @foreach ($search as $search)
             <div class="form-group">
                 <input type="checkbox" id="tea">
-                <label for="tea">Sumatera</label>
+                <label for="tea">{{ $search->id_indonesia_province }}</label>
             </div>
-            <div class="form-group">
+            @endforeach
+            <!--<div class="form-group">
                 <input type="checkbox" id="cookies">
                 <label for="cookies">Java</label>
             </div>
@@ -171,35 +164,41 @@
             <div class="form-group">
                 <input type="checkbox" id="choco">
                 <label for="choco">Sulawesi</label>
-            </div>                                
+            </div>-->                                
         </form>
     </div>
     </div></div>
 </section>
+<!--===================================END OF FILTER=======================================-->
 
-<!--Product-->
+
+<!--===================================P R O D U C T=======================================-->
 <section id="products">
     <!--<div class="border-bottom pb-2 ml-2">-->
         <br><h4 id="burgundy" align="center"><b>PRODUCTS LIST</b></h4><br>
     </div> 
+    <!--===================================Search=======================================-->
     <div class="search">
-                <input type="text" placeholder="Search Product.." style="width: 95%;"method="post" onsubmit="actionLogin(this,event)"> 
+                <input type="text" placeholder="Search Product.." style="width: 95%;"method="post" onsubmit="actionLogin(this,event)">
                 <image src="/images/lsearch.png" width="3.4%" style="box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5); border-radius: 5px; background-color: #562016;"></image>
-            </div>
+    </div>
+
+<!--===================================Product List=======================================-->    
     <div class="container">
         <div class="row">
+        @foreach ($search as $search)
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
                 <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+                    <img class="card-img-top" src="{{$search->product_pict}}" alt="Card image cap">
                     <div class="card-body">
-                    <p class="card-text"><b>Slim Wooden Chair</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>
-    
+                    <p class="card-text"><b>{{$search->name}}</b></p>
+                    <p class="categoryprod">{{$search->id_subcategory}}</p>
+                    <p class="originprod">{{$search->id_indonesia_province}}</p>
                     </div>
                 </div>
+         @endforeach
             </div>
-            <div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
+            <!--<div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
                 <div class="card">
                     <img class="card-img-top" src="https://images.pexels.com/photos/1125137/pexels-photo-1125137.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
                     <div class="card-body">
@@ -230,6 +229,7 @@
                 </div>
             </div>
         </div>
+        /////////////////////////
         <div class="row mt-3">
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
                 <div class="card">
@@ -269,12 +269,14 @@
                     <p class="categoryprod">Household Needs</p>
                     <p class="originprod">East Java, Surabaya</p>      
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
     <br><br>
-    <!--page navigation-->        
+<!--===================================END OF PRODUCT LIST=======================================-->
+
+   <!--===================================PAGINATION=======================================-->       
     <div class="pagination" style="margin: 2%; padding-left: 30%">
                 <a href="#"><b>&laquo;</b></a>
                 <a class="active" href="#">1</a>
@@ -288,12 +290,14 @@
 </section>  
 </body>
 
-
-<script src="/assetz/js/bootstrap.bundle.min.js"></script>
-<script src="/assetz/js/jquery.min.js"></script>
+<script src="{{asset('/assetz/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('/assetz/js/jquery.min.js')}}"></script>
 
 </html>
+<!--===================================END OF HTML=======================================-->
 
+
+<!--===================================START OF CSS=======================================-->
 <style>
     *{
     box-sizing: fit-content;
@@ -337,6 +341,8 @@ body{
 .scrolled-offset {
   margin-top: 70px;
 }
+
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -757,5 +763,6 @@ li a:hover{
         padding: 10px;
     }
 }
-</style>
 
+</style>
+<!--===================================END OF CSS=======================================-->
