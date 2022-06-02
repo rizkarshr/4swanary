@@ -18,6 +18,7 @@ class company extends Model
         'background',
         'since',
         'website',
+        'email',
         'contact_number',
         'id_subcategory',
         'id_indonesia_province',

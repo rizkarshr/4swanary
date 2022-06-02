@@ -112,8 +112,9 @@ Route::get('/product/{id}', [App\Http\Controllers\Viewer\ProductCatalogControlle
 //COMPANY PROFIL PAGE
 Route::get('/company/{id}', [App\Http\Controllers\Viewer\CompanyProfilController::class, 'show']);
 
-// //APPOINTMENT PAGE
-// Route::get('/company/{id}', [App\Http\Controllers\Viewer\CompanyProfilController::class, 'show']);
+//APPOINTMENT PAGE
+Route::get('/appointment/{id}', [App\Http\Controllers\Viewer\AppointmentController::class, 'index']);
+Route::get('/appointment/send/{id}', [App\Http\Controllers\Viewer\AppointmentController::class, 'mail']);
 
 // Route::get('login', function () {
 //     return view('login');

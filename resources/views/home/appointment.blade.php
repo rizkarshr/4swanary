@@ -89,9 +89,10 @@ session_start();
             </div>
 
             <div class="modal-body">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="{{url('appointment/send/{id}')}}" method="get" enctype="multipart/form-data">
+                    <input name="email_company" value="{{$company->email}}" hidden>
                     <div class="form-group">
-                        <label>Full Name</label>
+                        <label>Name</label>
                         <input name="name" type="text" class="form-control" required autofocus>
                     </div>
                     <div class="form-group">
@@ -100,7 +101,7 @@ session_start();
                     </div>
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input name="phone" type="number" class="form-control" required>
+                        <input name="phone_number" type="number" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Date</label>
@@ -108,20 +109,18 @@ session_start();
                     </div>
                     <div class="form-group">
                         <label>Time</label>
-                        <input name="date" type="time" class="form-control" required>
+                        <input name="time" type="time" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
                         <textarea cols="30" rows="5" name="message" type="text" class="form-control" required></textarea>
                     </div>
-
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                        <input name="personaldata" type="submit" class="btn btn-primary" value="Submit">
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                <input name="personaldata" type="submit" class="btn btn-primary" value="Submit">
-            </div>
-
         </div>
     </div>
     <!-- market value area end -->

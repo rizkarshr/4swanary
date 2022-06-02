@@ -22,7 +22,7 @@ class ProductCatalogController extends Controller
            ->where('id_subcategory','=',$product->id_subcategory)->get(),
        ];
 
-        return view('/product-catalog', compact('data'));
+        return view('home/product-catalog', compact('data'));
         
     }
 }

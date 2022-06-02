@@ -21,6 +21,6 @@ class CompanyProfilController extends Controller
 
         ];
 
-        return view('/companyprofil', compact('data'));
+        return view('/home/companyprofile', compact('data'));
     }
 }

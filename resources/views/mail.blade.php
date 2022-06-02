@@ -6,7 +6,7 @@
   <meta name="x-apple-disable-message-reformatting"> 
   <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
   <meta content="telephone=no" name="format-detection"> 
-  <title>New email template 2022-05-27</title><!--[if (mso 16)]>
+  <title>Send</title><!--[if (mso 16)]>
     <style type="text/css">
     a {text-decoration: none;}
     </style>
@@ -62,7 +62,7 @@ a[x-apple-data-detectors] {
 </style> 
  </head> 
  <body style="width:100%;font-family:Arial, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0"> 
-  <div class="es-wrapper-color" style="background-color:#25262B"><!--[if gte mso 9]>
+  <div class="es-wrapper-color" style="background-color:#ffffff"><!--[if gte mso 9]>
 			<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
 				<v:fill type="tile" color="#25262B"></v:fill>
 			</v:background>
@@ -81,7 +81,7 @@ a[x-apple-data-detectors] {
                   <td valign="top" align="center" style="padding:0;Margin:0;width:480px"> 
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="center" style="padding:0;Margin:0;font-size:0px"><a target="_blank" href="https://viewstripo.email/" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#3CA7F1;font-size:14px"><img class="adapt-img" src="{{ $logo}}" alt width="105" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" height="59"></a></td> 
+                      <td align="center" style="padding:0;Margin:0;font-size:0px"><a target="_blank" href="https://viewstripo.email/" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#3CA7F1;font-size:14px"><img class="adapt-img" src="" alt width="105" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" height="59"></a></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -139,7 +139,7 @@ a[x-apple-data-detectors] {
                   <td align="left" style="padding:0;Margin:0;width:212px"> 
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$name}}</p></td> 
+                      <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$data['name']}}</p></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -162,7 +162,7 @@ a[x-apple-data-detectors] {
                   <td align="left" style="padding:0;Margin:0;width:212px"> 
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$email}}</p></td> 
+                      <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$data['email']}}</p></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -185,7 +185,7 @@ a[x-apple-data-detectors] {
                   <td align="left" style="padding:0;Margin:0;width:212px"> 
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$contact_number}}</p></td> 
+                      <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$data['phone_number']}}</p></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -208,7 +208,7 @@ a[x-apple-data-detectors] {
                   <td align="left" style="padding:0;Margin:0;width:212px"> 
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$date}}</p></td> 
+                      <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$data['date']}}</p></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -231,7 +231,7 @@ a[x-apple-data-detectors] {
                   <td align="left" style="padding:0;Margin:0;width:212px"> 
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$time}}</p></td> 
+                      <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$data['time']}}</p></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -244,7 +244,7 @@ a[x-apple-data-detectors] {
                   <td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:208px"> 
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px"><b>Describe</b></p></td> 
+                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px"><b>Message</b></p></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -254,7 +254,7 @@ a[x-apple-data-detectors] {
                   <td align="left" style="padding:0;Margin:0;width:212px"> 
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="right" style="padding:0;Margin:0;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$desc}}</p></td> 
+                      <td align="right" style="padding:0;Margin:0;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Arial, sans-serif;line-height:24px;color:#333333;font-size:16px;text-align:left">{{$data['message']}}</p></td> 
                      </tr> 
                    </table></td> 
                  </tr> 

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('background')->nullable();
             $table->integer('since');
             $table->string('website');
+            $table->string('email');  
             $table->string('contact_number');            
             $table->string('id_subcategory');
             $table->integer('id_indonesia_province');

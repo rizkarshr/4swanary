@@ -13,16 +13,16 @@ class SendMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $mailData;
+    public $data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        // $this->mailData = $mailData;
+        $this->data = $data;
     }
 
     /**
@@ -34,18 +34,26 @@ class SendMail extends Mailable
     {
         $logo = env('APP_URL')."/images/logo.png";
 
-        return $this->subject('Appointment Request')->view('mail')
-        ->with(
-            [
-                'name' => 'Nama Lengkap',
-                'email' => 'email@gmail.com',
-                'contact_number' => '08123456789',
-                'date' => 'Senin, 20 Mei 2020',
-                'time' => '13:00',
-                'desc' => '-',
-                'logo' => $logo
+        return $this->subject('Appointment Request')->view('mail');
+        // ->with(
+        //     [
+        //         // 'name' => $data['name'],
+        //         // 'email' => $data['email'],
+        //         // 'contact_number' => $data['contact_number'],
+        //         // 'date' => $data['date'],
+        //         // 'time' => $data['time'],
+        //         // 'desc' => $data['message'],
+        //         // 'logo' => $logo
 
-            ]);
+        //         // 'name' => $data->name,
+        //         // 'email' => $data->email,
+        //         // 'contact_number' => $data->contact_number,
+        //         // 'date' => $data->date,
+        //         // 'time' => $data->time,
+        //         // 'desc' => $data->message,
+        //         // 'logo' => $logo
+
+        //     ]);
         
     }
 }
