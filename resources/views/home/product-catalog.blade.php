@@ -83,7 +83,7 @@
     </section><!-- Breadcrumbs Section -->
 
     <!-- ======= Product Details Section ======= -->
-    <div class="row" id="product-details">
+     <!--<div class="row" id="product-details">
       <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
         <img src="{{ asset('assett/img/product1.JPG') }}" class="img-fluid" alt="">
       </div>
@@ -91,23 +91,38 @@
         <h3 class="text-justify" id="pdw">Keripik Tempe</h3>
         <p style="text-align: justify" id="pdw">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Info lebih lanjut hubungi nomor dibawah.
-        </p>
-        <table>
+        </p>-->
+        
+      <div class="row" id="product-details">
+      @foreach ($product as $product)
+      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+      <img src="" class="img-fluid" alt="">
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <p class="card-text"><b>{{ $search->name }}</b></p>
+        <h3 class="text-justify" id="pdw">{{$product->name}}</h3>
+        <p style="text-align: justify" id="pdw">{{$product->desc}}</p>
+      <table>
           <tr>
             <td>Categories</td>
             <td>HSCode</td>
             <td>Origins</td>
             <td>Dimension</td>
           </tr>
-          <tr>
+          <td> {{ $product->subcategory->name }} </td>
+          <td> {{ $product->hs_code }} </td>
+          <td> {{ $product->indonesiaprovince->name }} </td>  
+          <td> {{ $product->dimension }} </td>  
+          <!--<tr>
             <td>Food</td>
             <td>00000</td>
             <td>East Java, Malang</td>
             <td>30x30cm</td>
-          </tr>
+          </tr>-->
         </table>
       </div>
     </div>
+    @endforeach
     <hr>
 
 

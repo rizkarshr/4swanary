@@ -95,6 +95,8 @@
               </div> 
             @endforeach                          
         </form>
+ 
+<!--===================================region filter=======================================-->
     </div>
     <div class="py-2 border-bottom ml-3">
         <h6 class="font-weight-bold">Regions</h6>
@@ -126,22 +128,22 @@
     <div class="container" style="padding-left: 3px; padding-right: 3px;">
       @foreach ($search as $search)
         <div class="row">
+        @foreach ($search as $search)
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="{{$search->logo}}" alt="Card image cap">
+                <a div class="card" href="/product/{id}/">
+                    <img class="card-img-top" src="{{$search->logo}}" alt="no pict">
                     <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>
                     <p class="categoryprod">{{$search->subcategory->name}}</p>
                     <p class="originprod">{{$search->IndonesiaProvince->name}}</p>
                     </div>
-                </div>
+                </a>
             </div>
-        </div>
 
         
 
     </div>
-    @endforeach
+    
     <br><br>
 <!--===================================END OF LIST=======================================-->
 

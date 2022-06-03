@@ -20,8 +20,8 @@
       <nav id="navbar" class="navbar">
       <image src="{{asset('/images/l.png')}}" width="10%"></image>
         <ul>
-          <li><a class="nav-link scrollto" href="index.blade.php">Home</a></li>
-          <li><a class="nav-link scrollto active" href="#services">Category</a></li>
+          <li><a class="nav-link scrollto" href="#home">Home</a></li>
+          <li><a class="nav-link scrollto active" href="#category">Category</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
       </nav>
       <!-- END NAVBAR -->
@@ -29,57 +29,7 @@
   </header>
   <!--===================================END OF HEADER======================================-->
 
-
-<!--=== MOBILE VERSION
-<div class="filter">
-    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="false" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
-</div>
-<div id="mobile-filter">
-    <div>
-        <h6 class="p-1 border-bottom">Category</h6>
-        <ul>
-            <li><a href="#">Living</a></li>
-            <li><a href="#">Dining</a></li>
-            <li><a href="#">Office</a></li>
-            <li><a href="#">Bedroom</a></li>
-            <li><a href="#">Kitchen</a></li>
-        </ul>
-    </div>
-    <div>
-        <h6 class="p-1 border-bottom">Filter By</h6>
-        <p class="mb-2">Color</p>
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                <span class="fa fa-circle pr-1" id="red"></span>Red
-            </a></li>
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                <span class="fa fa-circle pr-1" id="teal"></span>Teal
-            </a></li>
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                <span class="fa fa-circle pr-1" id="blue"></span>Blue
-            </a></li>
-        </ul>
-    </div>
-    <div>
-        <h6>Type</h6>
-        <form class="ml-md-2">
-            <div class="form-inline border rounded p-sm-2 my-2">
-                <input type="radio" name="type" id="boring">
-                <label for="boring" class="pl-1 pt-sm-0 pt-1">Boring</label>
-            </div>
-            <div class="form-inline border rounded p-sm-2 my-2">
-                <input type="radio" name="type" id="ugly">
-                <label for="ugly" class="pl-1 pt-sm-0 pt-1">Ugly</label>
-            </div>
-            <div class="form-inline border rounded p-md-2 p-sm-1">
-                <input type="radio" name="type" id="notugly">
-                <label for="notugly" class="pl-1 pt-sm-0 pt-1">Not Ugly</label>
-            </div>
-        </form>
-    </div>
-</div>-->
-
-<!--===================================F I L T E R=======================================-->
+<!--=======================================F I L T E R==========================================-->
 <section id="sidebar">
 <div class="container">
     <div class="border-bottom pb-2 ml-2">
@@ -90,12 +40,13 @@
     <div class="py-2 border-bottom ml-3">
         <h6 class="font-weight-bold">Categories</h6>
         <form>
-            @foreach ($search as $search)
+           @foreach ($search as $search)
             <div class="form-group">
                 <input type="checkbox" id="artisan">
-                <label value="{{ $search->id_subcategory }}">{{ $search->subcategory->name }}</label>
+                <label for="artisan">{{ $search->subcategory->name }}</label>
             </div>
             @endforeach
+
             <!--<div class="form-group">
                 <input type="checkbox" id="breakfast">
                 <label for="breakfast">Culture & Creative</label>
@@ -135,7 +86,7 @@
             <div class="form-group">
                 <input type="checkbox" id="healthy">
                 <label for="healthy">Household Needs</label>
-            </div>-->                          
+            </div>-->                        
         </form>
     </div>
 
@@ -143,13 +94,11 @@
     <div class="py-2 border-bottom ml-3">
         <h6 class="font-weight-bold">Regions</h6>
         <form>
-            @foreach ($search as $search)
             <div class="form-group">
                 <input type="checkbox" id="tea">
-                <label>{{ $search->indonesia_provinces->name }}</label>
+                <label for="regions">Sumatera</label>
             </div>
-            @endforeach
-            <!--<div class="form-group">
+            <div class="form-group">
                 <input type="checkbox" id="cookies">
                 <label for="cookies">Java</label>
             </div>
@@ -164,7 +113,7 @@
             <div class="form-group">
                 <input type="checkbox" id="choco">
                 <label for="choco">Sulawesi</label>
-            </div>-->                                
+            </div>                     
         </form>
     </div>
     </div></div>
@@ -179,98 +128,29 @@
     </div> 
     <!--===================================Search=======================================-->
     <div class="search">
-                <input type="text" placeholder="Search Product.." style="width: 95%;"method="post" onsubmit="actionLogin(this,event)">
+                <input type="text" placeholder="Search Product.." style="width: 95%;"method="post" >
                 <image src="/images/lsearch.png" width="3.4%" style="box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5); border-radius: 5px; background-color: #562016;"></image>
     </div>
-
-<!--===================================Product List=======================================-->    
     <div class="container">
         <div class="row">
-        @foreach ($search as $search)
-            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <div class="card">
-                    {{-- <img class="card-img-top" src="{{$search->product_pict}}" alt="Card image cap"> --}}
-                    <div class="card-body">
-                    <p class="card-text"><b>{{$search->name}}</b></p>
-                    <p class="categoryprod">{{$search->subcategory->name}}</p>
-                    <p class="originprod">{{$search->indonesia_provinces->name}}</p>
-                    </div>
+            
+            @foreach($search as $dataProduct)
+               {{ $dataProducts->name }} </br>
+            @endforeach
+            <!-- @foreach ($search as $searchData)
+                {{ $searchData->name }} -->
+                <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1" href="">
+                    <a div class="card" href="/product/{id}/">
+                        <img class="card-img-top"  alt="no pict" src='{{ asset("product/".$searchData->product_pict)}}'>
+                        <div class="card-body">
+                        <p class="card-text"><b>{{ $searchData->name }}</b></p>
+                        <p class="categoryprod">{{ $searchData->subcategory->name }}</p>
+                        <p class="originprod">{{ $searchData->IndonesiaProvince->name }}</p>
+                        </div>
+                    </a>
                 </div>
-         @endforeach
-            </div>
-            <!--<div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/1125137/pexels-photo-1125137.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>Chair and Table Set </b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>    
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>Leather Lounger</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>      
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4 offset-lg-0 offset-sm-2 col-11 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://images.unsplash.com/photo-1537182534312-f945134cce34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>Tree Trunk Table Set</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>     
-                    </div>
-                </div>
-            </div>
-        </div>
-        /////////////////////////
-        <div class="row mt-3">
-            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/3230274/pexels-photo-3230274.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>Red Leather Bar Stool</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>      
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4 offset-lg-0 offset-sm-2 col-11 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/3773571/pexels-photo-3773571.png?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>Modern Dining Table</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>       
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/534172/pexels-photo-534172.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>Boring Dining Table</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4 offset-lg-0 offset-sm-2 col-11 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/37347/office-sitting-room-executive-sitting.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>An Ugly Office</b></p>
-                    <p class="categoryprod">Household Needs</p>
-                    <p class="originprod">East Java, Surabaya</p>      
-                    </div>
-                </div>-->
-            </div>
+            <!-- @endforeach -->
+            <!-- </div> -->
         </div>
     </div>
     <br><br>

@@ -62,21 +62,21 @@ session_start();
 
                             <li><a href="#"><i class="ti-user"></i><span>Nama Admin</span></a></li>
 
-                            {{-- <li class="link {{ Request::is('dashboard') ? ' active' : '' }}"><a href="{{ route('dashboard') }}"><span>Home</span></a></li>
-                            <li class="link {{ Request::is('user') ? ' active' : '' }}"><a href="{{ route('user') }}"></i><span>Manage Admin</span></a></li>
+                            <li class="link {{ Request::is('dashboard') ? ' active' : '' }}"><a href="{{ url('/admin/dashboard') }}"><span>Home</span></a></li>
+                            <li class="link {{ Request::is('user') ? ' active' : '' }}"><a href="{{ url('/admin/manage-user') }}"></i><span>Manage Admin</span></a></li>
 
                             <li class="active">
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout"></i><span>Manage Store
                                     </span></a>
                                 <ul class="collapse">
-                                    <li class="link {{ Request::is('article') ? ' active' : '' }}"><a href="{{ route('article') }}">Article</a></li>
-                                    <li class="link {{ Request::is('company') ? ' active' : '' }}"><a href="{{ route('company') }}">Company</a></li>
-                                    <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ route('product') }}">Product</a></li>
-                                    <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ route('category') }}">Category</a></li>
-                                    <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ route('subcategory') }}">Subcategory</a></li>
-                                    <li class="link {{ Request::is('origins') ? ' active' : '' }}"><a href="{{ route('origins') }}">Origins</a></li>
+                                    <li class="link {{ Request::is('article') ? ' active' : '' }}"><a href="{{ url('/admin/manage-article') }}">Article</a></li>
+                                    <li class="link {{ Request::is('company') ? ' active' : '' }}"><a href="{{ url('/admin/manage-company') }}">Company</a></li>
+                                    <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ url('/admin/manage-product') }}">Product</a></li>
+                                    <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ url('/admin/manage-category') }}">Category</a></li>
+                                    <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ url('/admin/manage-subcategory') }}">Subcategory</a></li>
+                                    <li class="link {{ Request::is('origins') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origins') }}">Origins</a></li>
                                 </ul>
-                            </li> --}}
+                            </li>
                             <li>
                                 <a href="#"><span>Logout</span></a>
 
@@ -162,23 +162,16 @@ session_start();
                                         <tbody>
                                             @foreach ($category as $category)
                                             <tr>
-<<<<<<< HEAD
                                                 <td>{{ $loop->iteration}}</td>
                                                 <td> {{ $category->id }} </td>
                                                 <td> {{ $category->name }} </td>
                                                 <td> {{ $category->desc }} </td>
+                                                <td> {{ $category->created_at }} </td>
+                                                <td> {{ $category->updated_at }} </td>
                                                 <td align="center">
                                                     <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#ModalEdit"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
                                                 </td>
-=======
-                                              <td>{{ $loop->iteration}}</td>
-                                              <td> {{ $category->id }} </td>
-                                              <td> {{ $category->name }} </td>
-                                              <td> {{ $category->desc }} </td>
-                                              <td> {{ $category->created_at }} </td>
-                                              
->>>>>>> 60d11e0fc2ee1737e4f4464d33026777c9bf3e50
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -214,16 +207,16 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    {{-- <form action="{{ route('category') }}" method="post" enctype="multipart/form-data"> --}}
+                    {{-- <form action="{{ url('/admin/manage-category') }}" method="post" enctype="multipart/form-data"> --}}
 
-                        <div class="form-group">
-                            <label>Category Name</label>
-                            <input name="name" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <input name="desc" type="text" class="form-control" required>
-                        </div>
+                    <div class="form-group">
+                        <label>Category Name</label>
+                        <input name="name" type="text" class="form-control" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input name="desc" type="text" class="form-control" required>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
@@ -234,6 +227,7 @@ session_start();
             </div>
         </div>
     </div>
+    <!-- modal input end -->
 
     <!-- modal edit -->
     <div id="ModalEdit" class="modal fade">
@@ -244,16 +238,16 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    {{-- <form action="{{ route('category') }}" method="post" enctype="multipart/form-data"> --}}
+                    {{-- <form action="{{ url('/admin/manage-category') }}" method="post" enctype="multipart/form-data"> --}}
 
-                        <div class="form-group">
-                            <label>Category Name</label>
-                            <input name="name" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <input name="desc" type="text" class="form-control" required>
-                        </div>
+                    <div class="form-group">
+                        <label>Category Name</label>
+                        <input name="name" type="text" class="form-control" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input name="desc" type="text" class="form-control" required>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
@@ -264,6 +258,7 @@ session_start();
             </div>
         </div>
     </div>
+    <!-- modal edit end -->
 
     <!-- modal delete -->
     <div id="ModalDelete" class="modal fade">
@@ -274,11 +269,11 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    {{-- <form action="{{ route('category') }}" method="post" enctype="multipart/form-data"> --}}
-                        <div class="form-group">
-                            Are You Sure You Want To Delete This Data?
-                            <input name="name" type="hidden" class="form-control" required autofocus>
-                        </div>
+                    {{-- <form action="{{ url('/admin/manage-category') }}" method="post" enctype="multipart/form-data"> --}}
+                    <div class="form-group">
+                        Are You Sure You Want To Delete This Data?
+                        <input name="name" type="hidden" class="form-control" required autofocus>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
@@ -289,6 +284,7 @@ session_start();
             </div>
         </div>
     </div>
+    <!-- modal delete end -->
 
     <script>
         $(document).ready(function() {
