@@ -129,7 +129,7 @@
     <!-- ======= Company Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-
+      @foreach($company as $company)
         <div class="col-lg-4">
           <div class="portfolio-info">
 
@@ -139,7 +139,7 @@
               </tr>
               <tr>
                 <th colspan="4">
-                  <h2>Keripik Tempe Pak Tohir</h2>
+                  <h2>{{ $company->name }}</h2>
                 </th>
               </tr>
               <tr>
@@ -149,17 +149,17 @@
                 <td><small>Contact Number</small></td>
               </tr>
               <tr>
-                <td><strong>@tempechips</strong></td>
-                <td><strong>tempechips@gmail.com</strong></td>
-                <td><strong>Food</strong></td>
-                <td><strong>0815-7890-4675</strong></td>
+                <td><strong>{{ $company->website }}</strong></td>
+                <td><strong>{{ $company->email }}</strong></td>
+                <td><strong>{{ $company->subcategory->name }}</strong></td>
+                <td><strong>{{ $company->contact_number }}</strong></td>
               </tr>
             </table>
           </div>
         </div>
 
       </div>
-
+      @endforeach
       </div>
     </section><!-- End Portfolio Details Section -->
 

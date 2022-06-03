@@ -94,7 +94,7 @@
             Jakarta – Tasks Executor (Plt.) Director General of Higher Education, Research, and Technology (Dirjen Diktiristek) Nizam, and Head of Export School Handito Joewono inaugurated the Digital Export Showcase as Export Product Gallery for Independent Study Kampus Merdeka Program students to become new exporters for 4.0 academic year 2021/ 2022. There are 198 student export products produced by 777 students from 223 universities throughout Indonesia.
           </p>
           <!--<a href="link" target="_blank" class="fst-italic">Readmore..</a>-->
-          <a href="{{ route('articles') }}" class="fst-italic">Readmore...</a>
+          <a href="{{ url('/article') }}" class="fst-italic">Readmore...</a>
         </div>
       </div>
 
@@ -171,7 +171,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-store"></i></div>
-              <h4><a href="{{ route('companyprofile') }}">MSME</a></h4>
+              <h4><a href="{{ url('/company/{id}') }}">MSME</a></h4>
               <p>If you click on this section, you can check the categories by MSME</p>
             </div>
           </div>
