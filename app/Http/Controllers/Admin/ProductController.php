@@ -20,17 +20,21 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $data = [
+            'subcategory' => Subcategory::with('category')->where('id_category','1')->get,
+            'origin' => IndonesiaCity::with('IndonesiaProvince')->get,
+            'company' => Company::with('category')->where('id_category','1')->get,
+        ];
+
         if($request->filled('search')){
 
             $product = Product::search($request->search)->get();
+        } else {
 
-        } else{
-
-            $product = Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get();
-
+            $product = Product::with('company', 'subcategory', 'IndonesiaCity', 'IndonesiaProvince')->get();
         }
 
-        return view('product', compact('product'));
+        return view('product', compact('product','data'));
     }
 
     /**
@@ -40,7 +44,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $subcategory = Subcategory::with('category')->where('id_category','1')->get;
+        
+
+        return view('product', compact('subcategory'));
     }
 
     /**
@@ -52,14 +59,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         if ($file = $request->file('product_pict')) {
-            
+
             $upload = $request->file('product_pict');
             $this->validate($request, [
-                'product_pict'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+                'product_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
-            $penyimpanan = public_path().'/product';
-            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+            $penyimpanan = public_path() . '/product';
+            $upload->move($penyimpanan, $request->id . '.' . $upload->getClientOriginalExtension());
+            $image = $request->id . '.' . $upload->getClientOriginalExtension();
 
             $product = Product::create([
                 'id' => $request->id,
@@ -72,13 +79,12 @@ class ProductController extends Controller
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
-                
+
             ]);
 
             if (!$product) {
                 // return $this->sendError("", "failed create the product");
             }
-            
         } else {
             $product = Product::create([
                 'id' => $request->id,
@@ -98,7 +104,6 @@ class ProductController extends Controller
         }
 
         return redirect('/admin/manage-product');
-
     }
 
     /**
@@ -109,7 +114,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($product->id);
+        $product = Product::with('company', 'subcategory', 'indonesiacity', 'indonesiaprovince')->find($product->id);
 
         return view('product', compact('product'));
     }
@@ -123,6 +128,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($product->id);
+        
 
         return view('product', compact('product'));
     }
@@ -137,20 +143,19 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         if ($file = $request->file('product_pict')) {
-            
-            if(File::exists(public_path('product/'.$product->product_pict))){
 
-                File::delete(public_path('product/'.$product->product_pict));
-    
+            if (File::exists(public_path('product/' . $product->product_pict))) {
+
+                File::delete(public_path('product/' . $product->product_pict));
             }
 
             $upload = $request->file('product_pict');
             $this->validate($request, [
-                'product_pict'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+                'product_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
-            $penyimpanan = public_path().'/product';
-            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+            $penyimpanan = public_path() . '/product';
+            $upload->move($penyimpanan, $request->id . '.' . $upload->getClientOriginalExtension());
+            $image = $request->id . '.' . $upload->getClientOriginalExtension();
 
             $product->update([
                 'id' => $request->id,
@@ -168,7 +173,6 @@ class ProductController extends Controller
             if (!$product) {
                 // return $this->sendError("", "failed update the product");
             }
-            
         } else {
             $product = Product::create([
                 'id' => $request->id,
@@ -199,17 +203,15 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product = Product::find($product->id);
-        
-        if(File::exists(public_path('product/'.$product->product_pict))){
 
-            File::delete(public_path('product/'.$product->product_pict));
-            
-            $product->delete();
+        if (File::exists(public_path('product/' . $product->product_pict))) {
 
-        } else{
+            File::delete(public_path('product/' . $product->product_pict));
 
             $product->delete();
+        } else {
 
+            $product->delete();
         }
 
         return redirect('/admin/manage-product');

@@ -31,7 +31,7 @@ class product extends Model
         'id_company',
         'created_at',
         'updated_at'
-    ]; 
+    ];
 
     public function toSearchableArray()
     {

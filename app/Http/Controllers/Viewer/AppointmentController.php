@@ -35,7 +35,7 @@ class AppointmentController extends Controller
         
         Mail::to($data['email_company'])->send(new SendMail($data));
 
-        // return redirect('/company/{id}');
+        return redirect('/company/{id}');
         
     }
 

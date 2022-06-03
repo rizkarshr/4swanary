@@ -88,47 +88,12 @@
     <div class="py-2 border-bottom ml-3">
         <h6 class="font-weight-bold">Categories</h6>
         <form>
-            
-            <div class="form-group">
-                <input type="checkbox" id="culcrea">
-                <label for="culcrea">Culture & Creative</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="halal">
-                <label for="halal">Halal</label>
-            </div>        
-            <div class="form-group">
-                <input type="checkbox" id="hns">
-                <label for="hns">Herbs & Spices</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="fishery">
-                <label for="fishery">Fishery</label>
-            </div>    
-            <div class="form-group">
-                <input type="checkbox" id="agriculture">
-                <label for="agriculture">Agriculture</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="food">
-                <label for="food">Food</label>
-            </div>    
-            <div class="form-group">
-                <input type="checkbox" id="automotive">
-                <label for="automotive">Automotive</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="electronic">
-                <label for="electronic">Electronic</label>
-            </div>    
-            <div class="form-group">
-                <input type="checkbox" id="fnd">
-                <label for="fnd">Food & Drinks</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="hneed">
-                <label for="hneed">Household Needs</label>
-            </div>                            
+            @foreach ($search as $item)
+              <div class="form-group">
+                <input type="checkbox" id="id_subcategory" value="{{$item->id_subcategory}}">
+                <label for="id_subcategory">{{$item->subcategory->name}}</label>
+              </div> 
+            @endforeach                          
         </form>
  
 <!--===================================region filter=======================================-->
@@ -136,26 +101,12 @@
     <div class="py-2 border-bottom ml-3">
         <h6 class="font-weight-bold">Regions</h6>
         <form>
-            <div class="form-group">
-                <input type="checkbox" id="tea">
-                <label for="tea">Sumatera</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="cookies">
-                <label for="cookies">Java</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="pastries">
-                <label for="pastries">Kalimantan</label>
-            </div>                                
-            <div class="form-group">
-                <input type="checkbox" id="dough">
-                <label for="dough">Papua</label>
-            </div>                                
-            <div class="form-group">
-                <input type="checkbox" id="choco">
-                <label for="choco">Sulawesi</label>
-            </div>                                
+          @foreach ($search as $item)
+          <div class="form-group">
+            <input type="checkbox" id="id_indonesia_province" value="{{$item->id_indonesia_province}}">
+            <label for="id_indonesia_province">{{$item->IndonesiaProvince->name}}</label>
+          </div> 
+        @endforeach                                
         </form>
     </div>
     </div></div>
@@ -175,6 +126,7 @@
 
 <!--===================================UMKM LIST=======================================-->
     <div class="container" style="padding-left: 3px; padding-right: 3px;">
+      @foreach ($search as $search)
         <div class="row">
         @foreach ($search as $search)
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
@@ -182,24 +134,14 @@
                     <img class="card-img-top" src="{{$search->logo}}" alt="no pict">
                     <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>
-                    <p class="categoryprod">{{ $search->subcategory->name }}</p>
+                    <p class="categoryprod">{{$search->subcategory->name}}</p>
                     <p class="originprod">{{$search->IndonesiaProvince->name}}</p>
                     </div>
                 </a>
             </div>
 
-           <!-- <div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="{{$search->logo}}" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>{{$search->name}}</b></p>
-                    <p class="categoryprod">{{$search->id_subcategory}}</p>
-                    <p class="originprod">hai</p>      
-                    </div>
-                </div>
-            </div>-->
-            @endforeach
-        </div>  
+        
+
     </div>
     
     <br><br>
