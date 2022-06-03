@@ -88,75 +88,23 @@
     <div class="py-2 border-bottom ml-3">
         <h6 class="font-weight-bold">Categories</h6>
         <form>
-            <div class="form-group">
-                <input type="checkbox" id="artisan">
-                <label for="artisan">Beauty</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="breakfast">
-                <label for="breakfast">Culture & Creative</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="healthy">
-                <label for="healthy">Halal</label>
-            </div>        
-            <div class="form-group">
-                <input type="checkbox" id="breakfast">
-                <label for="breakfast">Herbs & Spices</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="healthy">
-                <label for="healthy">Fishery</label>
-            </div>    
-            <div class="form-group">
-                <input type="checkbox" id="breakfast">
-                <label for="breakfast">Agriculture</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="healthy">
-                <label for="healthy">Food</label>
-            </div>    
-            <div class="form-group">
-                <input type="checkbox" id="breakfast">
-                <label for="breakfast">Automotive</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="healthy">
-                <label for="healthy">Electronic</label>
-            </div>    
-            <div class="form-group">
-                <input type="checkbox" id="breakfast">
-                <label for="breakfast">Food & Drinks</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="healthy">
-                <label for="healthy">Household Needs</label>
-            </div>                            
+            @foreach ($search as $item)
+              <div class="form-group">
+                <input type="checkbox" id="id_subcategory" value="{{$item->id_subcategory}}">
+                <label for="id_subcategory">{{$item->subcategory->name}}</label>
+              </div> 
+            @endforeach                          
         </form>
     </div>
     <div class="py-2 border-bottom ml-3">
         <h6 class="font-weight-bold">Regions</h6>
         <form>
-            <div class="form-group">
-                <input type="checkbox" id="tea">
-                <label for="tea">Sumatera</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="cookies">
-                <label for="cookies">Java</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="pastries">
-                <label for="pastries">Kalimantan</label>
-            </div>                                
-            <div class="form-group">
-                <input type="checkbox" id="dough">
-                <label for="dough">Papua</label>
-            </div>                                
-            <div class="form-group">
-                <input type="checkbox" id="choco">
-                <label for="choco">Sulawesi</label>
-            </div>                                
+          @foreach ($search as $item)
+          <div class="form-group">
+            <input type="checkbox" id="id_indonesia_province" value="{{$item->id_indonesia_province}}">
+            <label for="id_indonesia_province">{{$item->IndonesiaProvince->name}}</label>
+          </div> 
+        @endforeach                                
         </form>
     </div>
     </div></div>
@@ -175,32 +123,22 @@
     </div>
 
 <!--===================================UMKM LIST=======================================-->
-    @foreach ($search as $search)
     <div class="container" style="padding-left: 3px; padding-right: 3px;">
+      @foreach ($search as $search)
         <div class="row">
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
                 <div class="card">
                     <img class="card-img-top" src="{{$search->logo}}" alt="Card image cap">
                     <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>
-                    <p class="categoryprod">{{$search->id_subcategory}}</p>
-                    <p class="originprod">hai</p>
+                    <p class="categoryprod">{{$search->subcategory->name}}</p>
+                    <p class="originprod">{{$search->IndonesiaProvince->name}}</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row mt-3">
-            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <div class="card">
-                    <img class="card-img-top" src="{{$search->logo}}" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text"><b>{{$search->name}}</b></p>
-                    <p class="categoryprod">{{$search->id_subcategory}}</p>
-                    <p class="originprod">hai</p>      
-                    </div>
-                </div>
-            </div>
+        
 
     </div>
     @endforeach

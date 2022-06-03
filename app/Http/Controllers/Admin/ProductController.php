@@ -20,6 +20,12 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $data = [
+            'subcategory' => Subcategory::with('category')->where('id_category','1')->get,
+            'origin' => IndonesiaCity::with('IndonesiaProvince')->get,
+            'company' => Company::with('category')->where('id_category','1')->get,
+        ];
+
         if($request->filled('search')){
 
             $product = Product::search($request->search)->get();
@@ -30,7 +36,7 @@ class ProductController extends Controller
 
         }
 
-        return view('product', compact('product'));
+        return view('product', compact('product','data'));
     }
 
     /**
@@ -40,7 +46,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $subcategory = Subcategory::with('category')->where('id_category','1')->get;
+        
+
+        return view('product', compact('subcategory'));
     }
 
     /**
@@ -123,6 +132,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($product->id);
+        
 
         return view('product', compact('product'));
     }

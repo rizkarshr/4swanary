@@ -116,6 +116,10 @@ Route::get('/company/{id}', [App\Http\Controllers\Viewer\CompanyProfilController
 Route::get('/appointment/{id}', [App\Http\Controllers\Viewer\AppointmentController::class, 'index']);
 Route::get('/appointment/send/{id}', [App\Http\Controllers\Viewer\AppointmentController::class, 'mail']);
 
+// Route::get('/mail', function () {
+//     return view('test-mail');
+// })->name('login');
+
 // Route::get('login', function () {
 //     return view('login');
 // })->name('login');

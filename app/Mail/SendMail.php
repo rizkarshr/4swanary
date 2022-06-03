@@ -32,9 +32,9 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        $logo = env('APP_URL')."/images/logo.png";
+        // $logo = env('APP_URL')."/images/logo.png";
 
-        return $this->subject('Appointment Request')->view('mail');
+        return $this->subject('Appointment Request')->view('/home/mail');
         // ->with(
         //     [
         //         // 'name' => $data['name'],

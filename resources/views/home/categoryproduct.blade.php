@@ -93,7 +93,7 @@
             @foreach ($search as $search)
             <div class="form-group">
                 <input type="checkbox" id="artisan">
-                <label for="artisan">{{ $search->id_subcategory }}</label>
+                <label value="{{ $search->id_subcategory }}">{{ $search->subcategory->name }}</label>
             </div>
             @endforeach
             <!--<div class="form-group">
@@ -146,7 +146,7 @@
             @foreach ($search as $search)
             <div class="form-group">
                 <input type="checkbox" id="tea">
-                <label for="tea">{{ $search->id_indonesia_province }}</label>
+                <label>{{ $search->indonesia_provinces->name }}</label>
             </div>
             @endforeach
             <!--<div class="form-group">
@@ -189,11 +189,11 @@
         @foreach ($search as $search)
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
                 <div class="card">
-                    <img class="card-img-top" src="{{$search->product_pict}}" alt="Card image cap">
+                    {{-- <img class="card-img-top" src="{{$search->product_pict}}" alt="Card image cap"> --}}
                     <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>
-                    <p class="categoryprod">{{$search->id_subcategory}}</p>
-                    <p class="originprod">{{$search->id_indonesia_province}}</p>
+                    <p class="categoryprod">{{$search->subcategory->name}}</p>
+                    <p class="originprod">{{$search->indonesia_provinces->name}}</p>
                     </div>
                 </div>
          @endforeach

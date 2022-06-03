@@ -49,7 +49,7 @@ class SearchProductController extends Controller
 
         } else{
 
-            $search = Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get();
+            $search = Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get(); 
 
         }
 
