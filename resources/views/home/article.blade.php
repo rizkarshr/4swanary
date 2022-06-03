@@ -85,7 +85,6 @@
     <!-- ======= Isi Artikel Section ======= -->
     <section id="isiartikel" class="about section-bg">
       <div class="container" data-aos="fade-up">
-
         <div class="section-title">
           <h3>Kampus Merdeka Program through Sekolah Ekspor Produces 198 Student Work Products Ready for Export</h3><br>
           <figure>
