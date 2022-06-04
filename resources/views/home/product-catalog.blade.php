@@ -51,7 +51,7 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      {{-- <h1 class="logo"><a href="{{ route('index') }}"><img src="{{ asset('assett/img/aswanalogo.png') }}" alt=""></a></h1> --}}
+      <h1 class="logo"><a href="{{ url('/home') }}"><img src="{{ asset('assett/img/aswanalogo.png') }}" alt=""></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assett/img/logo.png" alt=""></a>-->
 
@@ -73,7 +73,7 @@
 
         <div class="d-flex justify-content-between align-items-center">
           <ol>
-            <li><a href="index.html">Product</a></li>
+            <li><a href="{{ url('/home') }}">Product</a></li>
             <li><a href="portfolio.html">Food</a></li>
             <li>Product Catalog</li>
           </ol>
@@ -83,7 +83,7 @@
     </section><!-- Breadcrumbs Section -->
 
     <!-- ======= Product Details Section ======= -->
-     <!--<div class="row" id="product-details">
+    <!--<div class="row" id="product-details">
       <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
         <img src="{{ asset('assett/img/product1.JPG') }}" class="img-fluid" alt="">
       </div>
@@ -102,7 +102,7 @@
         <p class="card-text"><b>{{ $product->name }}</b></p>
         <h3 class="text-justify" id="pdw">{{$product->name}}</h3>
         <p style="text-align: justify" id="pdw">{{$product->desc}}</p>
-      <table>
+        <table>
           <tr>
             <td>Categories</td>
             <td>HSCode</td>
@@ -111,8 +111,8 @@
           </tr>
           <td> {{ $product->subcategory->name }} </td>
           <td> {{ $product->hs_code }} </td>
-          <td> {{ $product->indonesiaprovince->name }} </td>  
-          <td> {{ $product->dimension }} </td>  
+          <td> {{ $product->indonesiaprovince->name }} </td>
+          <td> {{ $product->dimension }} </td>
           <!--<tr>
             <td>Food</td>
             <td>00000</td>
@@ -129,7 +129,7 @@
     <!-- ======= Company Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-
+      {{-- @foreach($product as $product) --}}
         <div class="col-lg-4">
           <div class="portfolio-info">
 
@@ -159,7 +159,7 @@
         </div>
 
       </div>
-
+      {{-- @endforeach --}}
       </div>
     </section><!-- End Portfolio Details Section -->
 

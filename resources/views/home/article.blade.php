@@ -38,26 +38,26 @@
 <body>
 
   <!-- ======= Top Bar ======= -->
-  <section id="topbar" class="d-flex align-items-center">
+  <!--<section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:4swanary@gmail.com">4swanary@gmail.com</a></i>
         <i class="bi bi-phone d-flex align-items-center ms-4"><span>+62 896-8226-5894</span></i>
       </div>
     </div>
-  </section>
+  </section>-->
 
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="{{ route('index') }}"><img src="{{ asset('assett/img/aswanalogo.png') }}" alt=""></a></h1>
+      <h1 class="logo"><a href="{{ url('/home') }}"><img src="{{ asset('assett/img/aswanalogo.png') }}" alt=""></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assett/img/logo.png" alt=""></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="{{ route('index') }}">Home</a></li>
+          <li><a class="nav-link scrollto " href="{{ url('/home') }}">Home</a></li>
           <li><a class="nav-link scrollto" href="#services">Category</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
       </nav><!-- .navbar -->
@@ -73,7 +73,7 @@
 
         <div class="d-flex justify-content-between align-items-center">
           <ol>
-            <li><a href="{{ route('index') }}">Home</a></li>
+            <li><a href="{{ url('/home') }}">Home</a></li>
             <li>Article Page</li>
           </ol>
           <h6>May 20th, 2022</h6>
@@ -85,7 +85,6 @@
     <!-- ======= Isi Artikel Section ======= -->
     <section id="isiartikel" class="about section-bg">
       <div class="container" data-aos="fade-up">
-
         <div class="section-title">
           <h3>Kampus Merdeka Program through Sekolah Ekspor Produces 198 Student Work Products Ready for Export</h3><br>
           <figure>
@@ -134,7 +133,7 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('index') }}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/home') }}">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#services">Category</a></li>
             </ul>
