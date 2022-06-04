@@ -11,6 +11,7 @@ class company extends Model
     use HasFactory, Searchable;
 
     protected $tabel = 'companies';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'id',
         'name',

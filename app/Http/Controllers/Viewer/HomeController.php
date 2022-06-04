@@ -25,7 +25,7 @@ class HomeController extends Controller
 
         ];
 
-        return view ('/home/home', compact('data'));
+        return view ('home/index', compact('data'));
     }
 
 }

@@ -61,6 +61,6 @@ class SearchUMKMController extends Controller
         //     ]);
         // }
 
-        return view ('/home/categoryumkm', compact('search'));
+        return view ('home.categoryumkm', compact('search'));
     }
 }

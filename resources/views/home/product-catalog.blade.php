@@ -51,7 +51,7 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="{{ route('index') }}"><img src="{{ asset('assett/img/aswanalogo.png') }}" alt=""></a></h1>
+      {{-- <h1 class="logo"><a href="{{ route('index') }}"><img src="{{ asset('assett/img/aswanalogo.png') }}" alt=""></a></h1> --}}
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assett/img/logo.png" alt=""></a>-->
 
@@ -94,12 +94,12 @@
         </p>-->
         
       <div class="row" id="product-details">
-      @foreach ($product as $product)
+      {{-- @foreach ($product as $data) --}}
       <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-      <img src="" class="img-fluid" alt="">
+      <img src="{{ asset('product/'.$product->product_pict) }}" class="img-fluid" alt="">
       </div>
       <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-        <p class="card-text"><b>{{ $search->name }}</b></p>
+        <p class="card-text"><b>{{ $product->name }}</b></p>
         <h3 class="text-justify" id="pdw">{{$product->name}}</h3>
         <p style="text-align: justify" id="pdw">{{$product->desc}}</p>
       <table>
@@ -122,7 +122,7 @@
         </table>
       </div>
     </div>
-    @endforeach
+    {{-- @endforeach --}}
     <hr>
 
 
@@ -135,11 +135,11 @@
 
             <table width="100%" cellpadding="5">
               <tr>
-                <th rowspan="4"> <img src="{{ asset('assett/img/logotempe.jpg') }}" alt=""></th>
+                <th rowspan="4"> <img src="{{ asset('company-logo/'.$product->company->logo) }}" alt=""></th>
               </tr>
               <tr>
                 <th colspan="4">
-                  <h2>Keripik Tempe Pak Tohir</h2>
+                  <h2>{{$product->company->name}}</h2>
                 </th>
               </tr>
               <tr>
@@ -149,10 +149,10 @@
                 <td><small>Contact Number</small></td>
               </tr>
               <tr>
-                <td><strong>@tempechips</strong></td>
-                <td><strong>tempechips@gmail.com</strong></td>
-                <td><strong>Food</strong></td>
-                <td><strong>0815-7890-4675</strong></td>
+                <td><strong>{{$product->company->website}}</strong></td>
+                <td><strong>{{$product->company->email}}</strong></td>
+                <td><strong>{{$product->company->subcategory->name}}</strong></td>
+                <td><strong>{{$product->company->contact_number}}</strong></td>
               </tr>
             </table>
           </div>
@@ -177,36 +177,18 @@
       <section id="products" style="padding-top: 0px;padding-bottom: 40px;">
         <div class="container">
           <div class="row">
+            @foreach ($similiar_product as $similiar_product)
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
               <div class="card">
-                <img class="card-img-top" src="https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('product/'.$product->product_pict) }}">
                 <div class="card-body">
-                  <p class="card-text" style="margin-bottom: 4px;"><strong>Wooden chair with legs </strong></p>
-                  <p style="margin-bottom: 3px;">Food</p>
-                  <P>East Java, Malang</P>
+                  <p class="card-text" style="margin-bottom: 4px;"><strong>{{$similiar_product->name}} </strong></p>
+                  <p style="margin-bottom: 3px;">{{$similiar_product->subcategory->name}} </p>
+                  <P>{{$similiar_product->indonesiaCity->name}}, {{$similiar_product->indonesiaProvince->name}}</P>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
-              <div class="card">
-                <img class="card-img-top" src="https://images.pexels.com/photos/1125137/pexels-photo-1125137.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text" style="margin-bottom: 4px;"><strong>Chair and table set </strong></p>
-                  <p style="margin-bottom: 3px;">Food</p>
-                  <P>East Java, Malang</P>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-              <div class="card">
-                <img class="card-img-top" src="https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text" style="margin-bottom: 4px;"><strong> Lounger</strong></p>
-                  <p style="margin-bottom: 3px;">Food</p>
-                  <P>East Java, Malang</P>
-                </div>
-              </div>
-            </div>
+            </div>     
+            @endforeach      
           </div>
       </section>
 

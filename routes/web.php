@@ -72,11 +72,11 @@ Route::get('/admin/manage-company/{id}', [App\Http\Controllers\Admin\CompanyCont
 
 //PRODUCT
 Route::get('/admin/manage-product', [App\Http\Controllers\Admin\ProductController::class, 'index']);
-Route::post('/admin/manage-product', [App\Http\Controllers\Admin\ProductController::class, 'store']);
-Route::get('/admin/manage-product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'edit']);
-Route::post('/admin/manage-product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'update']);
-Route::get('/admin/manage-product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'destroy']);
-Route::post('/admin/manage-category', [App\Http\Controllers\Admin\CategoryController::class, 'create']);
+// Route::post('/admin/manage-category', [App\Http\Controllers\Admin\ProductController::class, 'create']);
+Route::post('/admin/manage-product/store', [App\Http\Controllers\Admin\ProductController::class, 'store']);
+// Route::get('/admin/manage-product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'edit']);
+Route::post('/admin/manage-product/update/{id}', [App\Http\Controllers\Admin\ProductController::class, 'update']);
+Route::get('/admin/manage-product/delete/{id}', [App\Http\Controllers\Admin\ProductController::class, 'destroy']);
 
 //ARTICLE
 Route::get('/admin/manage-article', [App\Http\Controllers\Admin\ArticleController::class, 'index']);

@@ -140,8 +140,18 @@
                 </a>
             </div>
 
-        
-
+        <!-- <div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
+                <div class="card">
+                    <img class="card-img-top" src="{{$search->logo}}" alt="Card image cap">
+                    <div class="card-body">
+                    <p class="card-text"><b>{{$search->name}}</b></p>
+                    <p class="categoryprod">{{$search->id_subcategory}}</p>
+                    <p class="originprod">hai</p>      
+                    </div>
+                </div>
+            </div>-->
+            @endforeach
+        </div>  
     </div>
     
     <br><br>
@@ -233,9 +243,9 @@ body{
   white-space: nowrap;
   padding: 10px 0 10px 28px;
 }
-.navbar a, .navbar a:focus {
-  display: flex;
-  align-items: center;
+.navbar a, .navbar a:focu
+
+
   justify-content: space-between;
   padding: 0 3px;
   font-size: 15px;

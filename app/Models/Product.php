@@ -12,12 +12,13 @@ class product extends Model
 {
     use HasFactory, Searchable;
 
-    public function Readproduk()
-    {
-        $product = DB::table('products')->get();
-        return $product;
-    }
+    // public function Readproduk()
+    // {
+    //     $product = DB::table('products')->get();
+    //     return $product;
+    // }
     protected $tabel = 'products';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'id',
         'name',
@@ -49,7 +50,7 @@ class product extends Model
 
     public function company()
     {
-        return $this->hasOne(company::class, "id", "id_company");
+        return $this->hasOne(Company::class, "id", "id_company");
     }
 
     public function IndonesiaProvince()

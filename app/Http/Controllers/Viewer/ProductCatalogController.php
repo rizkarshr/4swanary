@@ -12,17 +12,22 @@ use App\Models\IndonesiaProvince;
 
 class ProductCatalogController extends Controller
 {
-    public function show(Product $product)
+    public function show($id)
     {
-       $data = [
+    //    $data = [
            
-           'product' => Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($product->id),
+    //        'product' => Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($product->id),
 
-           'similiar_product' => Product::with('subcategory')
-           ->where('id_subcategory','=',$product->id_subcategory)->get(),
-       ];
+    //        'similiar_product' => Product::with('subcategory')
+    //        ->where('id_subcategory','=',$product->id_subcategory)->get(),
+    //    ];
 
-        return view('home/product-catalog', compact('data'));
+        $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($id);
+
+        $similiar_product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')
+        ->where('id_subcategory','=',$product->id_subcategory)->inRandomOrder()->get();
+
+        return view('home/product-catalog', compact('product', 'similiar_product'));
         
     }
 }

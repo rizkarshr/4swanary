@@ -70,7 +70,7 @@ session_start();
             <nav id=" navbar" class="navbar">
                 <div class="w3l_offers">
 
-                    <a href="{{ route('index') }}"><img src="{{ asset('assett/img/aswanalogo.png') }}" alt="" width="100px;"></a>
+                    <a href=""><img src="{{ asset('assett/img/aswanalogo.png') }}" alt="" width="100px;"></a>
 
 
                     <!--<ul><img src="{{asset('images/l.png') }}" style="width:100px; "></ul>-->
@@ -78,7 +78,7 @@ session_start();
                 <ul>
 
                     <!--<a href="index.html" class="logo"><img src="/images/l.png" alt=""></a>-->
-                    <li><a class="nav-link scrollto" href="{{ route('index') }}">Home</a></li>
+                    <li><a class="nav-link scrollto" href="">Home</a></li>
                     <li><a class="nav-link scrollto active" href="#services">Category</a></li>
                     <li><a class="nav-link scrollto" href="#about">About Us</a></li>
                 </ul>
@@ -234,28 +234,26 @@ session_start();
     <div class="container">
         <div class="nav-page">
             <li><a class="nav-page scrollto active" href="#">Company Profile</a></li>
-            <li><a href="#">> Product</a></li>
-            <li><a href="#">> Category</a></li>
+            <li><</li>
+            <li><a href="/search/msme">{{$company->subcategory->name}}</a></li>
+            <li><</li>
+            <li><a href="/home">Home</a></li>
         </div>
         <div class="row mt-6">
             <div class="col-12">
                 <div class="card">
                     <div class="card-head">
                         <div class="col-sm-5 col-md-4 profil">
-                            <ul><img src="{{ asset('asset/images/witrove.png') }}" alt=" " class="img-responsive">
-                                <h2>Witrove
-                                </h2>
-
-
-
+                            <ul><img src="{{ asset('company-logo/'.$company->logo) }}" alt=" " class="img-responsive">
+                                <h2>{{$company->name}}</h2>
                             </ul>
 
                         </div>
-                        <h5>Establishes in 1945
+                        <h5>Establishes in {{$company->since}}
                             <br><br>
-                            Surabaya, Jawa Timur
+                            {{$company->IndonesiaCity->name}}, {{$company->IndonesiaProvince->name}}
                         </h5>
-                        <a href="{{ route('appointment') }}">
+                        <a data-toggle="modal" data-target="#modalAppointment">
                             <button>Schedule on Appoinment</button>
                         </a>
                         <!--<div class="d-sm-flex justify-content-between align-items-center">
@@ -278,7 +276,12 @@ session_start();
                                 </tr>
                             </thead>
                             <tbody>
-
+                                <tr>
+                                    <td>{{$company->website}}</td>
+                                    <td>{{$company->email}}</td>
+                                    <td>{{$company->subcategory->name}}</td>
+                                    <td>{{$company->contact_number}}</td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -318,10 +321,19 @@ session_start();
 
                                 ?>
                                 <div class="col-md-4 top_brand_left">
+
+                                    <!-- PRODUK DARI COMPANY-->
+                                    @foreach ($product as $product)
+                                    <img src="{{ asset('product/'.$product->product_pict) }}" alt=" " class="img-responsive" />
+                                    <p>{{$product->name}}</p>
+                                    <p>{{$product->subcategory->name}}</p>
+                                    <p>{{$product->indonesiaCity->name}}, {{$product->indonesiaProvince->name}}</p>  
+                                    @endforeach
+
                                     <div class="hover14 column">
                                         <div class="agile_top_brand_left_grid">
                                             <div class="agile_top_brand_left_grid_pos">
-                                                <img src="asset/images/offer.png" alt=" " class="img-responsive" />
+                                                {{-- <img src="{{asset('product/').$product->product_pict}}" alt=" " class="img-responsive" /> --}}
                                             </div>
                                             <div class="agile_top_brand_left_grid1">
                                                 <figure>
@@ -332,16 +344,6 @@ session_start();
                                                                                                                             ?>" width="200px" height="200px" /></a>
                                                             <p><?php //echo $p['namaproduk'] 
                                                                 ?></p>
-                                                            <div class="stars">
-                                                                <?php
-                                                                //$bintang = '<i class="fa fa-star blue-star" aria-hidden="true"></i>';
-                                                                //$rate = $p['rate'];
-
-                                                                //for ($n = 1; $n <= $rate; $n++) {
-                                                                echo '<i class="fa fa-star blue-star" aria-hidden="true"></i>';
-                                                                //};
-                                                                ?>
-                                                            </div>
                                                             <h4>Rp<?php //echo number_format($p['hargaafter']) 
                                                                     ?> <span>Rp<?php //echo number_format($p['hargabefore']) 
                                                                                 ?></span></h4>
@@ -374,6 +376,8 @@ session_start();
         </div>
     </div>
     <!-- //top-brands -->
+
+    
 
 
 
@@ -439,6 +443,52 @@ session_start();
             <div class="clearfix"> </div>
         </div>
     </div>-->
+
+    <!-- modal input -->
+    <div id="modalAppointment" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Make Appointment to {{$company->name}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="{{url('appointment/send/{id}')}}" method="get" enctype="multipart/form-data">
+                        <input name="email_company" value="{{$company->email}}" hidden>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input name="name" type="text" class="form-control" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input name="email" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input name="phone_number" type="number" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input name="date" type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Time</label>
+                            <input name="time" type="time" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea cols="30" rows="5" name="message" type="text" class="form-control" required></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                            <input name="personaldata" type="submit" class="btn btn-primary" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal input end -->
+
     <!-- //footer -->
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('asset/js/bootstrap.min.js') }}"></script>
