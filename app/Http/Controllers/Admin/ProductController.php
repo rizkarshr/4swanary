@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\Product;
 use App\Models\Company;
 use App\Models\Subcategory;
+use App\Models\Category;
 use App\Models\IndonesiaCity;
 use App\Models\IndonesiaProvince;
 
@@ -20,21 +21,30 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $data = [
-            'subcategory' => Subcategory::with('category')->where('id_category','1')->get,
-            'origin' => IndonesiaCity::with('IndonesiaProvince')->get,
-            'company' => Company::with('category')->where('id_category','1')->get,
-        ];
+        
+        $subcategory = Subcategory::with('category')->where('id_category','1')->get();
+        $province = IndonesiaProvince::all();
+        $city = IndonesiaCity::with('IndonesiaProvince')->get();
+        $company = Company::all();
+
+        // $data = [
+        //     'subcategory' => Subcategory::with('category')->where('id_category','1')->get(),
+        //     'province' => IndonesiaProvince::all(),
+        //     'city' => IndonesiaCity::with('IndonesiaProvince')->get(),
+        //     'company' => Company::all(),
+        // ]
+  
 
         if($request->filled('search')){
 
-            $product = Product::search($request->search)->get();
+            $product = Product::search($request->search)->with('company', 'subcategory', 'IndonesiaCity', 'IndonesiaProvince')->get();
+
         } else {
 
             $product = Product::with('company', 'subcategory', 'IndonesiaCity', 'IndonesiaProvince')->get();
         }
 
-        return view('product', compact('product','data'));
+        return view('product', compact('product','subcategory','province','city','company'));
     }
 
     /**
@@ -44,10 +54,16 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $subcategory = Subcategory::with('category')->where('id_category','1')->get;
+        // $data = [
+        //     'subcategory' => Subcategory::with('category')->get(),
+        //     'origin' => IndonesiaCity::with('IndonesiaProvince')->get(),
+        //     'company' => Company::all(),
+        // ];
+
+        $data = Subcategory::with('category')->where('id_category','1')->get();
         
 
-        return view('product', compact('subcategory'));
+        return view('product', compact('data'));
     }
 
     /**
@@ -58,14 +74,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        if ($file = $request->file('product_pict')) {
+        if ($request->file('product_pict') != null) {
 
             $upload = $request->file('product_pict');
             $this->validate($request, [
-                'product_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
+                'product_pict' => '|mimes:jpg,jpeg,png,gif,jfif|max:2048',
             ]);
             $penyimpanan = public_path() . '/product';
-            $upload->move($penyimpanan, $request->id . '.' . $upload->getClientOriginalExtension());
+            $upload->move($penyimpanan,  $request->id  . '.' . $upload->getClientOriginalExtension());
             $image = $request->id . '.' . $upload->getClientOriginalExtension();
 
             $product = Product::create([
@@ -112,11 +128,19 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
+        $product = Product::findOrFail($id);
+
+        $data = [
+            'subcategory' => Subcategory::with('category')->get,
+            'origin' => IndonesiaCity::with('IndonesiaProvince')->get,
+            'company' => Company::all(),
+        ];
+
         $product = Product::with('company', 'subcategory', 'indonesiacity', 'indonesiaprovince')->find($product->id);
 
-        return view('product', compact('product'));
+        return view('product', compact('product','data'));
     }
 
     /**
@@ -127,10 +151,15 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $subcategory = Subcategory::with('category')->where('id_category','1')->get();
+        $province = IndonesiaProvince::all();
+        $city = IndonesiaCity::with('IndonesiaProvince')->get();
+        $company = Company::all();
+        
         $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($product->id);
         
 
-        return view('product', compact('product'));
+        return view('product', compact('product','subcategory','province','city','company'));
     }
 
     /**
@@ -140,9 +169,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        if ($file = $request->file('product_pict')) {
+        $product = Product::findOrFail($id);
+
+        if ($request->file('product_pict') != null) {
+
+            $number = random_int(5);
 
             if (File::exists(public_path('product/' . $product->product_pict))) {
 
@@ -151,11 +184,11 @@ class ProductController extends Controller
 
             $upload = $request->file('product_pict');
             $this->validate($request, [
-                'product_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
+                'product_pict' => '|mimes:jpg,jpeg,png,gif,jfif|max:2048',
             ]);
             $penyimpanan = public_path() . '/product';
-            $upload->move($penyimpanan, $request->id . '.' . $upload->getClientOriginalExtension());
-            $image = $request->id . '.' . $upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $number . '.' . $upload->getClientOriginalExtension());
+            $image = $number . '.' . $upload->getClientOriginalExtension();
 
             $product->update([
                 'id' => $request->id,
@@ -174,7 +207,7 @@ class ProductController extends Controller
                 // return $this->sendError("", "failed update the product");
             }
         } else {
-            $product = Product::create([
+            $product = Product::update([
                 'id' => $request->id,
                 'name' => $request->name,
                 'desc' => $request->desc,
@@ -200,19 +233,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        $product = Product::find($product->id);
+        $product = Product::findOrFail($id);
 
-        if (File::exists(public_path('product/' . $product->product_pict))) {
-
+        if(isset($product->product_pict)) {          
+            
             File::delete(public_path('product/' . $product->product_pict));
 
-            $product->delete();
-        } else {
+        }
 
             $product->delete();
-        }
 
         return redirect('/admin/manage-product');
     }

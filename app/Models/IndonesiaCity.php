@@ -30,7 +30,7 @@ class IndonesiaCity extends Model
 
     public function IndonesiaProvince()
     {
-        return $this->hasOne(IndonesiaProvince::class, "id", "province_code");
+        return $this->hasOne(IndonesiaProvince::class, "code", "province_code");
     }
 
     public function company()

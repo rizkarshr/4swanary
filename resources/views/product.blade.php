@@ -187,6 +187,113 @@ session_start();
                                                     <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
                                                 </td>
                                             </tr>
+
+                                            <!-- modal edit -->
+    <div id="ModalEdit" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Product</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="/admin/manage-product/update/{{$product->id}}" method="post" enctype="multipart/form-data">
+                        <?php date_default_timezone_set('Asia/Makassar'); ?>
+                        @csrf
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input name="name" type="text" class="form-control" value="{{$product->name}}" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input name="desc" type="text" class="form-control" value="{{$product->desc}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>HS Code</label>
+                            <input name="hs_code" type="text" class="form-control" value="{{$product->hs_code}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Dimension</label>
+                            <input name="dimension" type="text" class="form-control" value="{{$product->dimension}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Subcategory</label>
+                            <select id="id_subcategory" name="id_subcategory" class="form-control">
+                                <option value="{{$product->id_subcategory}}" disabled>{{$product->subcategory->name}}</option>
+                                @foreach ($subcategory as $data)
+                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Province</label>
+                            <select name="id_indonesia_province" class="form-control">
+                                <option value="{{$product->id_indonesia_province}}" disabled>{{$product->IndonesiaProvince->name}}</option>
+                                @foreach ($province as $data)
+                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <select name="id_indonesia_province" class="form-control">
+                                <option value="{{$product->id_indonesia_city}}" disabled>{{$product->IndonesiaCity->name}}</option>
+                                @foreach ($city as $data)
+                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>ID Company</label>
+                            <select name="id_company" class="form-control">
+                                <option value="{{$product->id_company}}" disabled>{{$product->company->name}}</option>
+                                @foreach ($company as $data)
+                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Product Picture</label>
+                            <input name="product_pict" type="file" class="form-control" value="{{$product->product_pict}}">
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="editproduct" type="submit" class="btn btn-primary" value="Save">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- modal edit end -->
+
+    <!-- modal delete -->
+    <div id="ModalDelete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Product</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="/admin/manage-product/delete/{{$product->id}}" method="get" enctype="multipart/form-data">
+                        <div class="form-group">
+                            Are You Sure You Want To Delete This Data?
+                            <input name="name" type="hidden" class="form-control" required autofocus>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                            <input name="deleteproduct" type="submit" class="btn btn-primary" value="Delete">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!-- modal delete end -->
+    
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -219,9 +326,10 @@ session_start();
                 <div class="modal-header">
                     <h4 class="modal-title">Add Product</h4>
                 </div>
-
                 <div class="modal-body">
-                    <form action="{{ url('/admin/manage-product/{id}') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ url('/admin/manage-product/store') }}" method="post" enctype="multipart/form-data">
+                        <?php date_default_timezone_set('Asia/Makassar'); ?>
+                        @csrf
                         <div class="form-group">
                             <label>Product Name</label>
                             <input name="name" type="text" class="form-control" required autofocus>
@@ -242,30 +350,36 @@ session_start();
                             <label>Subcategory</label>
                             <select id="id_subcategory" name="id_subcategory" class="form-control">
                                 <option disabled selected>Choose Subcategory</option>
-                                @foreach ($subcategory as $sub)
-                                <option value="{{ $sub->id }}">{{ $sub->name }}</option>
+                                @foreach ($subcategory as $data)
+                                <option value="{{ $data->id}}">{{ $data->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Province</label>
-                            <select name="id_origin" class="form-control">
+                            <select name="id_indonesia_province" class="form-control">
                                 <option disabled selected>Choose Province</option>
-
+                                @foreach ($province as $data)
+                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>City</label>
-                            <select name="id_origin" class="form-control">
+                            <select name="id_indonesia_city" class="form-control">
                                 <option disabled selected>Choose City</option>
-
+                                @foreach ($city as $data)
+                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Company</label>
                             <select name="id_company" class="form-control">
                                 <option disabled selected>Choose Company</option>
-
+                                @foreach ($company as $data)
+                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -284,105 +398,6 @@ session_start();
         </div>
     </div>
     <!-- modal input end -->
-
-    <!-- modal edit -->
-    <div id="ModalEdit" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Product</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-product/{id}')}}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Product Name</label>
-                            <input name="name" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <input name="desc" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>HS Code</label>
-                            <input name="hs_code" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Dimension</label>
-                            <input name="dimension" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Subcategory</label>
-                            <select id="id_subcategory" name="id_subcategory" class="form-control">
-                                <option disabled value>Choose Subcategory</option>
-                                @foreach ($subcategory as $subcategory)
-                                <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Province</label>
-                            <select name="id_province" class="form-control">
-                                <option selected>Choose ID Province</option>
-
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>City</label>
-                            <select name="id_province" class="form-control">
-                                <option selected>Choose ID City</option>
-                                <option value="{{ url('/admin/manage-origin/{id}')}}"></option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>ID Company</label>
-                            <select name="id_company" class="form-control">
-                                <option selected>Choose Company</option>
-
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Product Picture</label>
-                            <input name="product_pict" type="file" class="form-control">
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="editproduct" type="submit" class="btn btn-primary" value="Save">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- modal edit end -->
-
-    <!-- modal delete -->
-    <div id="ModalDelete" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Product</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-product') }}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            Are You Sure You Want To Delete This Data?
-                            <input name="name" type="hidden" class="form-control" required autofocus>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="deleteproduct" type="submit" class="btn btn-primary" value="Delete">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- modal delete end -->
 
     <script>
         $(document).ready(function() {

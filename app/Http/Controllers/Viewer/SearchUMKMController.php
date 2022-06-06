@@ -14,6 +14,10 @@ class SearchUMKMController extends Controller
     
     public function index(Request $request)
     {
+        $subcategory = Subcategory::with('category')->where('id_category','2')->get();
+        $province = IndonesiaProvince::all();
+        // $search = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->get();
+
         if($request->id_subcategory!= null||$request->id_indonesia_province != null){
 
             if($request->id_subcategory != null AND $request->id_indonesia_province != null){
@@ -61,6 +65,6 @@ class SearchUMKMController extends Controller
         //     ]);
         // }
 
-        return view ('/home/categoryumkm', compact('search'));
+        return view ('home.categoryumkm', compact('subcategory','province','search'));
     }
 }

@@ -21,7 +21,7 @@ class AppointmentController extends Controller
         return view ('/home/appointment', compact('company'));
     }
 
-    public function mail(Request $request, Company $company) {
+    public function mail(Request $request, $id) {
 
         $data = [
             'email_company' => $request->email_company,
@@ -35,7 +35,7 @@ class AppointmentController extends Controller
         
         Mail::to($data['email_company'])->send(new SendMail($data));
 
-        return redirect('/company/{id}');
+        return redirect('/home');
         
     }
 

@@ -11,6 +11,7 @@ class Article extends Model
     use HasFactory, Searchable;
 
     protected $tabel = 'articles';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'id',
         'title',

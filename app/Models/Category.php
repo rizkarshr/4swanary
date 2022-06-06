@@ -11,6 +11,7 @@ class category extends Model
     use HasFactory, Searchable;
 
     protected $tabel = 'categories';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'id',
         'name',

@@ -12,15 +12,13 @@ use App\Models\IndonesiaProvince;
 
 class CompanyProfilController extends Controller
 {
-    public function show(Company $company, Product $product)
+    public function show($id)
     {
-        $data = [
+        $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->find($id);
 
-            'company' => Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->find($company->id),
-            'product' => Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get(),
+        $product = Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')
+        ->where('id_company','=',$id)->get();
 
-        ];
-
-        return view('/home/companyprofile', compact('data'));
+        return view('/home/companyprofile', compact('company','product'));
     }
 }
