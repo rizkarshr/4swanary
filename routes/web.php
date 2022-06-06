@@ -99,7 +99,7 @@ Route::get('/admin/manage-article/{id}', [App\Http\Controllers\Admin\ArticleCont
 Route::get('/home', [App\Http\Controllers\Viewer\HomeController::class, 'index']);
 
 //ARTICLE PAGE
-Route::get('/article', [App\Http\Controllers\Viewer\ArticleController::class, 'show']);
+Route::get('/article', [App\Http\Controllers\Viewer\ArticleController::class, 'index']);
 
 //SEARCH & FILTER PRODUCT
 Route::get('/search/product', [App\Http\Controllers\Viewer\SearchProductController::class, 'index']);

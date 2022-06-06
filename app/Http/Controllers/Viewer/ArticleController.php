@@ -8,9 +8,9 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
-    public function show(Article $article)
+    public function index()
     {
-        $article = Article::find($article->id);
+        $article = Article::where('status','=','Active')->get();
 
         return view ('/home/article', compact('article'));
     }
