@@ -94,14 +94,15 @@
         </p>-->
 
     <div class="row" id="product-details">
-      @foreach ($product as $product)
+
       <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
         <img src="" class="img-fluid" alt="">
       </div>
+      @foreach ($product as $product)
       <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-        <p class="card-text"><b>{{ $search->name }}</b></p>
         <h3 class="text-justify" id="pdw">{{$product->name}}</h3>
         <p style="text-align: justify" id="pdw">{{$product->desc}}</p>
+
         <table>
           <tr>
             <td>Categories</td>
@@ -119,17 +120,19 @@
             <td>East Java, Malang</td>
             <td>30x30cm</td>
           </tr>-->
+
         </table>
       </div>
+      @endforeach
     </div>
-    @endforeach
+
     <hr>
 
 
     <!-- ======= Company Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-      @foreach($company as $company)
+        @foreach($company as $company)
         <div class="col-lg-4">
           <div class="portfolio-info">
 
