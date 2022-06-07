@@ -33,7 +33,7 @@
    
 <form action="{{ url()->current() }}" method="get">
 <section id="sidebar">
-<div class="container">
+<div class="container" style="border-width: 10px;">
   <div class="border-bottom pb-2 ml-2">
     <h5 id="burgundy">Filters</h5>
   </div>
@@ -70,8 +70,8 @@
     {{-- </div>  --}}
     <!--===================================Search=======================================-->
     <div class="search">
-    <input type="search" name="search"  value="{{ request('search') }}" autocomplete="off" placeholder="Search Product.." style="width: 90%;" method="post" >
-    <button type="submit" style="width: 8%; background-color: #562016; color:#EEE8E1">Search</button>
+    <input type="search" name="search"  value="{{ request('search') }}" autocomplete="off" placeholder="Search Product Here...." style="width: 90%; border-radius: 6px;border-width: 1.5px; border-color: #562016;" method="post" >
+    <button type="submit" style="width: 6%; height: 6%; background-color: #562016; color:#EEE8E1;  border-radius: 6px; border-width: 1px; border-color: #562016;"><img src="{{asset('/images/srch.png')}}" style="width: 42%;"></button>
   </div>
 </form>
 <!--===================================PRODUCT LIST=======================================-->
@@ -79,7 +79,7 @@
       @foreach ($search as $search)
         <div class="row">
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <a div class="card" href="/product/{id}/">
+                <a div class="card" href="{{ url('/product/{id}/') }}">
                   <img src="{{ asset('product/'.$search->product_pict) }}" alt="no pict" class="card-img-top" />
                   <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>
@@ -419,9 +419,9 @@ li a:hover{
     width: 100%;
     display: inline-block;
     height: 300px;
-    background-color:  #EEE8E1;
-    color: #562016;
-    border-radius: 15px;
+    background-color:  #25262B;
+    color: #EEE8E1 ;
+    border-radius: 16px;
     margin: 0.5rem auto 0.5rem auto;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
 }
@@ -448,11 +448,11 @@ li a:hover{
 }
 .categoryprod{
     font-size: 14px;
-    color: #562016;
+    color: #EEE8E1;;
 }
 .originprod{
     font-size: 14px;
-    color: #562016;
+    color: #EEE8E1;;
 }
 /*Card end*/
 

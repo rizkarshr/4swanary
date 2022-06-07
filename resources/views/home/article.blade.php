@@ -84,28 +84,31 @@
 
     <!-- ======= Isi Artikel Section ======= -->
     <section id="isiartikel" class="about section-bg">
+    @foreach ($article as $data)
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h3>Kampus Merdeka Program through Sekolah Ekspor Produces 198 Student Work Products Ready for Export</h3><br>
+          <h3> {{ $article->title }}</h3><br>
           <figure>
-            <img src="{{ asset('assett/img/artikel1.JPG') }}" alt="" width="600" height="300">
+            <img src="{{ asset('article/'.$article->image) }}" alt="no pict" width="600" height="300">
             <figcaption class="fst-italic">Inauguration of Digital Export Showcase.</figcaption>
           </figure>
         </div>
+    @endforeach     
 
         <div class="row">
+        @foreach ($article as $data)     
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
 
           </div>
           <div>
             <p style="text-align: justify">
-              Jakarta – Tasks Executor (Plt.) Director General of Higher Education, Research, and Technology (Dirjen Diktiristek) Nizam, and Head of Export School Handito Joewono inaugurated the Digital Export Showcase as Export Product Gallery for Independent Study Kampus Merdeka Program students to become new exporters for 4.0 academic year 2021/ 2022. There are 198 student export products produced by 777 students from 223 universities throughout Indonesia. </p>
-            <p style="text-align: justify">
+            {{ $article->content }}</p>
+            <!--<p style="text-align: justify">
               The inauguration of the Digital Export Showcase of student products was carried out with the release of the first export products of Certified Independent Study (SIB) students at Merdeka Campus Export School to Taiwan, Pakistan, and Japan which were symbolically sent through PT Pos Indonesia by Plt. Director General of Diktiristek and Handito Joewono, Thursday (13/1). Nizam conveyed his pride in the innovations that were successfully carried out by students in the Sekolah Ekspor activities that were carried out in the past one semester. He believes this activity is their first step to face challenges and opportunities as a provision for their future.</p>
-            <p style="text-align: justify">“Sekolah Ekspor program can be the first step for you to start. Here, you have mentors and networks from other participants as well as from the campus which can be an important capital to start a long journey,” he said.</p>
+            <p style="text-align: justify">“Sekolah Ekspor program can be the first step for you to start. Here, you have mentors and networks from other participants as well as from the campus which can be an important capital to start a long journey,” he said.</p>-->
           </div>
         </div>
-
+        @endforeach 
       </div>
     </section><!-- End Isi Artikel Section -->
 

@@ -70,8 +70,8 @@
 
 <!--===================================Search=======================================-->
   <div class="search">
-    <input type="search" name="search"  value="{{ request('search') }}" autocomplete="off" placeholder="Search Product.." style="width: 90%;" method="post" >
-    <button type="submit" style="width: 8%; background-color: #562016; color:#EEE8E1">Search</button>
+    <input type="search" name="search"  value="{{ request('search') }}" autocomplete="off" placeholder="Search Company / MSME Here...." style="width: 90%; border-radius: 6px;border-width: 1.5px; border-color: #562016;" method="post" >
+    <button type="submit" style="width: 6%; height: 6%; background-color: #562016; color:#EEE8E1;  border-radius: 6px; border-width: 1px; border-color: #562016;"><img src="{{asset('/images/srch.png')}}" style="width: 42%;"></button>
   </div>
 </form>
 <!--===================================UMKM LIST=======================================-->
@@ -79,8 +79,8 @@
       @foreach ($search as $search)
         <div class="row">
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <a div class="card" href="/company/{id}/">
-                  <img src="{{ asset('company/'.$search->logo) }}" alt="no pict" class="card-img-top" />
+                <a div class="card" href="{{ url('/product/{id}/') }}">
+                <img src="{{ asset('company/'.$search->logo) }}" alt="no pict" class="card-img-top" />
                   <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>
                     <p class="categoryprod">{{$search->subcategory->name}}</p>
@@ -413,8 +413,8 @@ li a:hover{
   width: 100%;
   display: inline-block;
   height: 300px;
-  background-color:  #EEE8E1;
-  color: #562016;
+  background-color: #25262B;
+  color: #EEE8E1;
   border-radius: 15px;
   margin: 0.5rem auto 0.5rem auto;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
@@ -442,11 +442,11 @@ li a:hover{
 }
 .categoryprod{
   font-size: 14px;
-  color: #562016;
+  color: #EEE8E1;;
 }
 .originprod{
   font-size: 14px;
-  color: #562016;
+  color: #EEE8E1;;
 }
 /*Card end*/
 
