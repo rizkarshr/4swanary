@@ -91,15 +91,16 @@
 <body>
     <div id="card">
         <div id="card-content">
-            <div id="card-title"> <image src="/images/l.png" width="60%" align="center"></image>
+            <div id="card-title"> <img src="/images/l.png" width="60%" style="align:center">
                <br><br>
                 <label><b>Welcome To Aswana.ry!</b></label>
             </div>
-            <form method="post" class="form" onsubmit="actionLogin(this,event)">
-                <input style="padding-top: 10px;" type="text" id="username" class="form-content" name="usernamee" autocomplete="on" placeholder="enter your username..." required />
+            <form method="POST" class="form" action="/authenticate" enctype="multipart/form-data">
+                @csrf
+                <input style="padding-top: 10px;" type="text" id="email" class="form-content" name="email" autocomplete="on" placeholder="enter your email..." required />
                 <div class="form-border"></div> <br>
 
-                <input style="padding-top: 10px;" type="password" id="password" class="form-content" name="pass" autocomplete="on" placeholder="enter your password..." required />
+                <input style="padding-top: 10px;" type="password" id="password" class="form-content" name="password" autocomplete="on" placeholder="enter your password..." required />
                 <div class="form-border"></div>
                 <input id="submit-btn" type="submit" name="submit" value="L O G I N">
             </form>
@@ -116,7 +117,7 @@
 <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
 
-<script src="{{asset('app/build/app.js')}}"></script>
-<script src="{{asset('app/build/auth.js')}}" type="text/javascript"></script>
+{{-- <script src="{{asset('app/build/app.js')}}"></script>
+<script src="{{asset('app/build/auth.js')}}" type="text/javascript"></script> --}}
 
 </html>

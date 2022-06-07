@@ -14,8 +14,8 @@ class SearchUMKMController extends Controller
     
     public function index(Request $request)
     {
-        $subcategory = Subcategory::with('category')->where('id_category','2')->get();
-        $province = IndonesiaProvince::all();
+        $subcategory = Subcategory::with('category')->where('id_category','2')->orderBy('name')->get();
+        $province = IndonesiaProvince::orderBy('name')->get();
         // $search = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->get();
 
         if($request->id_subcategory!= null||$request->id_indonesia_province != null){

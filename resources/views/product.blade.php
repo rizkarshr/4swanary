@@ -176,14 +176,14 @@ session_start();
                                                 <td>{{ $product->desc }}</td>
                                                 <td>{{ $product->hs_code }}</td>
                                                 <td>{{ $product->dimension }}</td>
-                                                <td>{{ $product->id_subcategory }}</td>
-                                                <td>{{ $product->id_indonesia_province }}</td>
-                                                <td>{{ $product->id_indonesia_city }}</td>
-                                                <td>{{ $product->id_company }}</td>
+                                                <td>{{ $product->subcategory->name }}</td>
+                                                <td>{{ $product->indonesiaprovince->name }}</td>
+                                                <td>{{ $product->indonesiacity->name }}</td>
+                                                <td>{{ $product->company->name }}</td>
                                                 <td>{{ $product->created_at }}</td>
                                                 <td>{{ $product->updated_at }}</td>
-                                                <td align="center">
-                                                    <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#ModalEdit"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
+                                                <td style="align:center">
+                                                    <a href="/admin/coba-edit/{{$product->id}}" style="padding:5px" type="button" class="btn btn-primary align:center"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </a>
                                                     <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
                                                 </td>
                                             </tr>
@@ -197,7 +197,7 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <form action="/admin/manage-product/update/{{$product->id}}" method="post" enctype="multipart/form-data">
+                    <form action="/admin/manage-product/update/{{$product->id}}" method="POST" enctype="multipart/form-data">
                         <?php date_default_timezone_set('Asia/Makassar'); ?>
                         @csrf
                         <div class="form-group">

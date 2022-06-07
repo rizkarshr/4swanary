@@ -32,8 +32,7 @@ class ProductController extends Controller
         //     'province' => IndonesiaProvince::all(),
         //     'city' => IndonesiaCity::with('IndonesiaProvince')->get(),
         //     'company' => Company::all(),
-        // ]
-  
+        //   
 
         if($request->filled('search')){
 
@@ -72,8 +71,21 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function generateUniqueCode()
+    {
+        do {
+            $code = random_int(100000, 999999);
+        } while (Product::where("product_pict", "=", $code)->first());
+  
+        return $code;
+    }
+
     public function store(Request $request)
     {
+        
+        $code = $this->generateUniqueCode();
+
         if ($request->file('product_pict') != null) {
 
             $upload = $request->file('product_pict');
@@ -81,8 +93,8 @@ class ProductController extends Controller
                 'product_pict' => '|mimes:jpg,jpeg,png,gif,jfif|max:2048',
             ]);
             $penyimpanan = public_path() . '/product';
-            $upload->move($penyimpanan,  $request->id  . '.' . $upload->getClientOriginalExtension());
-            $image = $request->id . '.' . $upload->getClientOriginalExtension();
+            $upload->move($penyimpanan,  $code  . '.' . $upload->getClientOriginalExtension());
+            $image = $code . '.' . $upload->getClientOriginalExtension();
 
             $product = Product::create([
                 'id' => $request->id,
@@ -95,7 +107,8 @@ class ProductController extends Controller
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
-
+                'created_at'=>$request->created_at,
+                'updated_at'=>$request->updated_at
             ]);
 
             if (!$product) {
@@ -112,6 +125,8 @@ class ProductController extends Controller
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
+                'created_at'=>$request->created_at,
+                'updated_at'=>$request->updated_at
             ]);
 
             if (!$product) {
@@ -172,6 +187,8 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
+        $code = $this->generateUniqueCode();
+
 
         if ($request->file('product_pict') != null) {
 
@@ -187,8 +204,8 @@ class ProductController extends Controller
                 'product_pict' => '|mimes:jpg,jpeg,png,gif,jfif|max:2048',
             ]);
             $penyimpanan = public_path() . '/product';
-            $upload->move($penyimpanan, $number . '.' . $upload->getClientOriginalExtension());
-            $image = $number . '.' . $upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $code . '.' . $upload->getClientOriginalExtension());
+            $image = $code . '.' . $upload->getClientOriginalExtension();
 
             $product->update([
                 'id' => $request->id,
@@ -201,6 +218,7 @@ class ProductController extends Controller
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
+                'updated_at'=>$request->updated_at
             ]);
 
             if (!$product) {
@@ -217,6 +235,7 @@ class ProductController extends Controller
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
+                'updated_at'=>$request->updated_at
             ]);
 
             if (!$product) {

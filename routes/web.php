@@ -26,7 +26,8 @@ Route::get('/', function () {
     return view('login');
 });
 Route::get('/login', [App\Http\Controllers\Admin\AuthController::class, 'index']);
-Route::post('/login', [App\Http\Controllers\Admin\AuthController::class, 'authenticate']);
+Route::post('/authenticate', [App\Http\Controllers\Admin\AuthController::class, 'authenticate']);
+// Route::post('/login/process', [App\Http\Controllers\Admin\AuthController::class, 'authenticate']);
 Route::get('/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout']);
 
 // Route::group(['middleware' => ['auth:sanctum']], function(){
@@ -84,6 +85,12 @@ Route::post('/admin/manage-article', [App\Http\Controllers\Admin\ArticleControll
 Route::get('/admin/manage-article/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'edit']);
 Route::post('/admin/manage-article/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'update']);
 Route::get('/admin/manage-article/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'destroy']);
+
+//COBA CRUD
+Route::get('/admin/coba-edit/{id}', [App\Http\Controllers\Admin\CobaController::class, 'edit']);
+Route::POST('/admin/update/{id}', [App\Http\Controllers\Admin\CobaController::class, 'update']);
+Route::post('/admin/coba-update/{id}', [App\Http\Controllers\Admin\CobaController::class, 'update']);
+
 
 
 // });
