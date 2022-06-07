@@ -13,73 +13,25 @@
 </head>
 
 <body>
-     <!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-left">
     <div class="container d-flex align-items-left justify-content-between" style="margin-left: 20px;padding-top: 5px;">
 
-      <!--<h1 class="logo"><a href="index.html">BizLand<span>.</span></a></h1>-->
-      <!-- Uncomment below if you prefer to use an image logo -->
-      
       <nav id="navbar" class="navbar">
       <img src="{{asset('/images/l.png')}}" width="10%">
         <ul>
           <li><a class="nav-link scrollto" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto active" href="#services">Category</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
-      </nav><!-- .navbar -->
+      </nav>
+      <!--END NAVBAR -->
     </div>
-  </header><!-- End Header -->
+  </header>
+  <!-- END HEADER -->
 
-<!--FILTER
-<div class="filter">
-    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="false" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
-</div>
-<div id="mobile-filter">
-    <div>
-        <h6 class="p-1 border-bottom">Category</h6>
-        <ul>
-            <li><a href="#">Living</a></li>
-            <li><a href="#">Dining</a></li>
-            <li><a href="#">Office</a></li>
-            <li><a href="#">Bedroom</a></li>
-            <li><a href="#">Kitchen</a></li>
-        </ul>
-    </div>
-    <div>
-        <h6 class="p-1 border-bottom">Filter By</h6>
-        <p class="mb-2">Color</p>
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                <span class="fa fa-circle pr-1" id="red"></span>Red
-            </a></li>
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                <span class="fa fa-circle pr-1" id="teal"></span>Teal
-            </a></li>
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                <span class="fa fa-circle pr-1" id="blue"></span>Blue
-            </a></li>
-        </ul>
-    </div>
-    <div>
-        <h6>Type</h6>
-        <form class="ml-md-2">
-            <div class="form-inline border rounded p-sm-2 my-2">
-                <input type="radio" name="type" id="boring">
-                <label for="boring" class="pl-1 pt-sm-0 pt-1">Boring</label>
-            </div>
-            <div class="form-inline border rounded p-sm-2 my-2">
-                <input type="radio" name="type" id="ugly">
-                <label for="ugly" class="pl-1 pt-sm-0 pt-1">Ugly</label>
-            </div>
-            <div class="form-inline border rounded p-md-2 p-sm-1">
-                <input type="radio" name="type" id="notugly">
-                <label for="notugly" class="pl-1 pt-sm-0 pt-1">Not Ugly</label>
-            </div>
-        </form>
-    </div>
-</div>-->
 
 <!--===================================F I L T E R=======================================-->
+
 <form action="{{ url()->current() }}" method="get">
 <section id="sidebar">
 <div class="container">
@@ -118,18 +70,17 @@
 
 <!--===================================Search=======================================-->
   <div class="search">
-    <input type="search" name="search"  value="{{ request('search') }}" autocomplete="off" placeholder="Search Product.." style="width: 95%;"method="post" >
-    <img src="/images/lsearch.png" width="3.4%" style="box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5); border-radius: 5px; background-color: #562016;">
+    <input type="search" name="search"  value="{{ request('search') }}" autocomplete="off" placeholder="Search Product.." style="width: 90%;" method="post" >
+    <button type="submit" style="width: 8%; background-color: #562016; color:#EEE8E1">Search</button>
   </div>
-  <button type="submit">Search</button>
 </form>
 <!--===================================UMKM LIST=======================================-->
     <div class="container" style="padding-left: 3px; padding-right: 3px;">
       @foreach ($search as $search)
         <div class="row">
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <a div class="card" href="/product/{id}/">
-                  <img src="{{ asset('product/'.$search->logo) }}" alt="no pict" class="card-img-top" />
+                <a div class="card" href="/company/{id}/">
+                  <img src="{{ asset('company/'.$search->logo) }}" alt="no pict" class="card-img-top" />
                   <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>
                     <p class="categoryprod">{{$search->subcategory->name}}</p>
@@ -155,7 +106,7 @@
     <br><br>
 <!--===================================END OF LIST=======================================-->
 
-<!--===================================PAGINATION=======================================-->       
+<!--===================================PAGINATION=======================================     
     <div class="pagination" style="margin: 2%; padding-left: 30%">
                 <a href="#"><b>&laquo;</b></a>
                 <a class="active" href="#">1</a>
@@ -165,7 +116,7 @@
                 <a href="#">5</a>
                 <a href="#">6</a>
                 <a href="#"><b>&raquo;</b></a>
-        </div>
+        </div>-->  
 </section>  
 </body>
 

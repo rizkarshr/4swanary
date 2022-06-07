@@ -30,93 +30,35 @@
   <!--===================================END OF HEADER======================================-->
 
 <!--=======================================F I L T E R==========================================-->
+   
+<form action="{{ url()->current() }}" method="get">
 <section id="sidebar">
 <div class="container">
-    <div class="border-bottom pb-2 ml-2">
-        <h5 id="burgundy">Filters</h5>
-    </div>
-
-<!--==============================Filter Categories=================================-->    
-    <div class="py-2 border-bottom ml-3">
-        <h6 class="font-weight-bold">Categories</h6>
-        <form>
-           @foreach ($search as $search)
-            <div class="form-group">
-                <input type="checkbox" id="artisan">
-                <label for="artisan">{{ $search->subcategory->name }}</label>
-            </div>
-            @endforeach
-
-            <!--<div class="form-group">
-                <input type="checkbox" id="breakfast">
-                <label for="breakfast">Culture & Creative</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="healthy">
-                <label for="healthy">Halal</label>
-            </div>        
-            <div class="form-group">
-                <input type="checkbox" id="breakfast">
-                <label for="breakfast">Herbs & Spices</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="healthy">
-                <label for="healthy">Fishery</label>
-            </div>    
-            <div class="form-group">
-                <input type="checkbox" id="breakfast">
-                <label for="breakfast">Agriculture</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="healthy">
-                <label for="healthy">Food</label>
-            </div>    
-            <div class="form-group">
-                <input type="checkbox" id="breakfast">
-                <label for="breakfast">Automotive</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="healthy">
-                <label for="healthy">Electronic</label>
-            </div>    
-            <div class="form-group">
-                <input type="checkbox" id="breakfast">
-                <label for="breakfast">Food & Drinks</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="healthy">
-                <label for="healthy">Household Needs</label>
-            </div>-->                        
-        </form>
-    </div>
+  <div class="border-bottom pb-2 ml-2">
+    <h5 id="burgundy">Filters</h5>
+  </div>
+  <div class="py-2 border-bottom ml-3">
+    <h6 class="font-weight-bold">Categories</h6>
+        @foreach ($subcategory as $item)
+        <div class="form-group">
+            <input type="checkbox" id="id_subcategory" name="id_subcategory" value="{{ $item->id}}" {{ request()->filled('id') ? 'checked' :''}}>
+            <label for="id_subcategory">{{$item->name}}</label>
+        </div> 
+        @endforeach   
 
     <!--==============================Filter Region=================================-->
+    </div>
     <div class="py-2 border-bottom ml-3">
         <h6 class="font-weight-bold">Regions</h6>
-        <form>
-            <div class="form-group">
-                <input type="checkbox" id="tea">
-                <label for="regions">Sumatera</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="cookies">
-                <label for="cookies">Java</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="pastries">
-                <label for="pastries">Kalimantan</label>
-            </div>                                
-            <div class="form-group">
-                <input type="checkbox" id="dough">
-                <label for="dough">Papua</label>
-            </div>                                
-            <div class="form-group">
-                <input type="checkbox" id="choco">
-                <label for="choco">Sulawesi</label>
-            </div>                     
-        </form>
+          @foreach ($province as $item)
+          <div class="form-group">
+            <input type="checkbox" id="id_indonesia_province" name="id_indonesia_province" value="{{ $item->id}}" {{ request()->filled('id') ? 'checked' :''}}>
+            <label for="id_indonesia_province">{{$item->name}}</label>
+          </div> 
+        @endforeach                                
     </div>
-    </div></div>
+  </div>
+</div>
 </section>
 <!--===================================END OF FILTER=======================================-->
 
@@ -124,39 +66,47 @@
 <!--===================================P R O D U C T=======================================-->
 <section id="products">
     <!--<div class="border-bottom pb-2 ml-2">-->
-        <br><h4 id="burgundy" align="center"><b>PRODUCTS LIST</b></h4><br>
-    </div> 
+        <br><h4 id="burgundy" align="center"><b>PRODUCT LIST</b></h4><br>
+    {{-- </div>  --}}
     <!--===================================Search=======================================-->
     <div class="search">
-                <input type="text" placeholder="Search Product.." style="width: 95%;"method="post" >
-                <image src="/images/lsearch.png" width="3.4%" style="box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5); border-radius: 5px; background-color: #562016;"></image>
-    </div>
-    <div class="container">
+    <input type="search" name="search"  value="{{ request('search') }}" autocomplete="off" placeholder="Search Product.." style="width: 90%;" method="post" >
+    <button type="submit" style="width: 8%; background-color: #562016; color:#EEE8E1">Search</button>
+  </div>
+</form>
+<!--===================================PRODUCT LIST=======================================-->
+    <div class="container" style="padding-left: 3px; padding-right: 3px;">
+      @foreach ($search as $search)
         <div class="row">
-            
-            @foreach($search as $dataProduct)
-               {{ $dataProducts->name }} </br>
-            @endforeach
-            <!-- @foreach ($search as $searchData)
-                {{ $searchData->name }} -->
-                <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1" href="">
-                    <a div class="card" href="/product/{id}/">
-                        <img class="card-img-top"  alt="no pict" src='{{ asset("product/".$searchData->product_pict)}}'>
-                        <div class="card-body">
-                        <p class="card-text"><b>{{ $searchData->name }}</b></p>
-                        <p class="categoryprod">{{ $searchData->subcategory->name }}</p>
-                        <p class="originprod">{{ $searchData->IndonesiaProvince->name }}</p>
-                        </div>
-                    </a>
-                </div>
-            <!-- @endforeach -->
-            <!-- </div> -->
-        </div>
-    </div>
-    <br><br>
-<!--===================================END OF PRODUCT LIST=======================================-->
+            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+                <a div class="card" href="/product/{id}/">
+                  <img src="{{ asset('product/'.$search->product_pict) }}" alt="no pict" class="card-img-top" />
+                  <div class="card-body">
+                    <p class="card-text"><b>{{$search->name}}</b></p>
+                    <p class="categoryprod">{{$search->subcategory->name}}</p>
+                    <p class="originprod">{{$search->IndonesiaProvince->name}}</p>
+                  </div>
+                </a>
+            </div>
 
-   <!--===================================PAGINATION=======================================-->       
+        <!-- <div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
+                <div class="card">
+                    <img class="card-img-top" src="{{$search->logo}}" alt="Card image cap">
+                    <div class="card-body">
+                    <p class="card-text"><b>{{$search->name}}</b></p>
+                    <p class="categoryprod">{{$search->id_subcategory}}</p>
+                    <p class="originprod">hai</p>      
+                    </div>
+                </div>
+            </div>-->
+            @endforeach
+        </div>  
+    </div>
+    
+    <br><br>
+<!--===================================END OF LIST=======================================-->
+
+   <!--===================================PAGINATION=======================================      
     <div class="pagination" style="margin: 2%; padding-left: 30%">
                 <a href="#"><b>&laquo;</b></a>
                 <a class="active" href="#">1</a>
@@ -166,7 +116,7 @@
                 <a href="#">5</a>
                 <a href="#">6</a>
                 <a href="#"><b>&raquo;</b></a>
-        </div>
+        </div>--> 
 </section>  
 </body>
 
