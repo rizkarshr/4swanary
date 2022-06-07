@@ -73,12 +73,13 @@ session_start();
                                     <li class="link {{ Request::is('company') ? ' active' : '' }}"><a href="{{ url('/admin/manage-company') }}">Company</a></li>
                                     <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ url('/admin/manage-product') }}">Product</a></li>
                                     <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ url('/admin/manage-category') }}">Category</a></li>
-                                    <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ url('/admin/manage-subcategory') }}">Subcategory</a></li>
-                                    <li class="link {{ Request::is('origins') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origins') }}">Origins</a></li>
+                                    <li class="link active"><a href="{{ url('/admin/manage-subcategory') }}">Subcategory</a></li>
+                                    <li class="link {{ Request::is('province') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origin') }}">Province</a></li>
+                                    <li class="link {{ Request::is('city') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origin') }}">City</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#"><span>Logout</span></a>
+                                <a href="/logout"><span>Logout</span></a>
 
                             </li>
 
@@ -144,7 +145,9 @@ session_start();
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h2>List Subcategory</h2>
-                                    <button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Subcategory</button>
+                                    <a href="{{ route('crud/createsubcategory') }}">
+                                        <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;" data-toggle="modal" data-target="#" class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Subcategory</button>
+                                    </a>
                                 </div>
                                 <div class="data-tables datatable-dark">
                                     <table id="dataTable3" class="display" style="width:100%">
@@ -171,7 +174,9 @@ session_start();
                                                 <td>{{ $subcategory->created_at }}</td>
                                                 <td>{{ $subcategory->updated_at }}</td>
                                                 <td align="center">
-                                                    <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#ModalEdit"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
+                                                    <a href="{{ route('crud/editsubcategory') }}">
+                                                        <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
+                                                    </a>
                                                     <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
                                                 </td>
                                             </tr>
@@ -201,7 +206,7 @@ session_start();
     <!-- page container area end -->
 
     <!-- modal input -->
-    <div id="myModal" class="modal fade">
+    <!--<div id="myModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -227,11 +232,11 @@ session_start();
                 </form>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- modal input end -->
 
     <!-- modal edit -->
-    <div id="ModalEdit" class="modal fade">
+    <!--<div id="ModalEdit" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -257,7 +262,7 @@ session_start();
                 </form>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- modal edit end -->
 
     <!-- modal delete -->

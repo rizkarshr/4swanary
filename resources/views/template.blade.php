@@ -84,7 +84,7 @@ session_start();
                             </li>
 
                             <li>
-                                <a href="#"><span>Logout</span></a>
+                                <a href="/logout"><span>Logout</span></a>
 
                             </li>
 

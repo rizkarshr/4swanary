@@ -92,7 +92,7 @@
         <p style="text-align: justify" id="pdw">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Info lebih lanjut hubungi nomor dibawah.
         </p>-->
-        
+
       <div class="row" id="product-details">
       {{-- @foreach ($product as $data) --}}
       <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
@@ -119,6 +119,7 @@
             <td>East Java, Malang</td>
             <td>30x30cm</td>
           </tr>-->
+
         </table>
       </div>
     </div>

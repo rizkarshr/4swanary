@@ -25,14 +25,7 @@ class ProductController extends Controller
         $subcategory = Subcategory::with('category')->where('id_category','1')->get();
         $province = IndonesiaProvince::all();
         $city = IndonesiaCity::with('IndonesiaProvince')->get();
-        $company = Company::all();
-
-        // $data = [
-        //     'subcategory' => Subcategory::with('category')->where('id_category','1')->get(),
-        //     'province' => IndonesiaProvince::all(),
-        //     'city' => IndonesiaCity::with('IndonesiaProvince')->get(),
-        //     'company' => Company::all(),
-        //   
+        $company = Company::all(); 
 
         if($request->filled('search')){
 
@@ -53,16 +46,14 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // $data = [
-        //     'subcategory' => Subcategory::with('category')->get(),
-        //     'origin' => IndonesiaCity::with('IndonesiaProvince')->get(),
-        //     'company' => Company::all(),
-        // ];
 
-        $data = Subcategory::with('category')->where('id_category','1')->get();
+        $subcategory = Subcategory::with('category')->where('id_category','1')->get();
+        $province = IndonesiaProvince::all();
+        $city = IndonesiaCity::with('IndonesiaProvince')->get();
+        $company = Company::all(); 
         
 
-        return view('product', compact('data'));
+        return view('crud/createproduct', compact('subcategory','province','city','company'));
     }
 
     /**
@@ -71,15 +62,6 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-    public function generateUniqueCode()
-    {
-        do {
-            $code = random_int(100000, 999999);
-        } while (Product::where("product_pict", "=", $code)->first());
-  
-        return $code;
-    }
 
     public function store(Request $request)
     {
@@ -143,20 +125,20 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $product = Product::findOrFail($id);
+    // public function show($id)
+    // {
+    //     $product = Product::findOrFail($id);
 
-        $data = [
-            'subcategory' => Subcategory::with('category')->get,
-            'origin' => IndonesiaCity::with('IndonesiaProvince')->get,
-            'company' => Company::all(),
-        ];
+    //     $data = [
+    //         'subcategory' => Subcategory::with('category')->get,
+    //         'origin' => IndonesiaCity::with('IndonesiaProvince')->get,
+    //         'company' => Company::all(),
+    //     ];
 
-        $product = Product::with('company', 'subcategory', 'indonesiacity', 'indonesiaprovince')->find($product->id);
+    //     $product = Product::with('company', 'subcategory', 'indonesiacity', 'indonesiaprovince')->find($product->id);
 
-        return view('product', compact('product','data'));
-    }
+    //     return view('product', compact('product','data'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -164,17 +146,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
         $subcategory = Subcategory::with('category')->where('id_category','1')->get();
         $province = IndonesiaProvince::all();
         $city = IndonesiaCity::with('IndonesiaProvince')->get();
         $company = Company::all();
         
-        $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($product->id);
+        $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($id);
         
 
-        return view('product', compact('product','subcategory','province','city','company'));
+        return view('crud/editproduct', compact('product','subcategory','province','city','company'));
     }
 
     /**
@@ -191,8 +173,6 @@ class ProductController extends Controller
 
 
         if ($request->file('product_pict') != null) {
-
-            $number = random_int(5);
 
             if (File::exists(public_path('product/' . $product->product_pict))) {
 
@@ -225,7 +205,7 @@ class ProductController extends Controller
                 // return $this->sendError("", "failed update the product");
             }
         } else {
-            $product = Product::update([
+            $product->update([
                 'id' => $request->id,
                 'name' => $request->name,
                 'desc' => $request->desc,
@@ -265,5 +245,14 @@ class ProductController extends Controller
             $product->delete();
 
         return redirect('/admin/manage-product');
+    }
+
+    public function generateUniqueCode()
+    {
+        do {
+            $code = random_int(100000, 999999);
+        } while (Product::where("product_pict", "=", $code)->first());
+  
+        return $code;
     }
 }
