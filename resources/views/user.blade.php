@@ -144,7 +144,9 @@ session_start();
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h2>List Admin</h2>
-                                    <button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Product</button>
+                                    <a href="{{ route('crud/createuser') }}">
+                                        <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;" data-toggle="modal" data-target="#" class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Subcategory</button>
+                                    </a>
                                 </div>
                                 <div class="data-tables datatable-dark">
                                     <table id="dataTable3" class="display" style="width:100%">
@@ -166,26 +168,28 @@ session_start();
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach ($user as $user)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $loop->iteration}}</td>
+                                                <td>{{ $user->id }}</td>
+                                                <td>{{ $user->username }}</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->profil_pict }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                <td>{{ $user->email_verified_at }}</td>
+                                                <td>{{ $user->password }}</td>
+                                                <td>{{ $user->status }}</td>
+                                                <td>{{ $user->remember_token }}</td>
+                                                <td>{{ $user->created_at }}</td>
+                                                <td>{{ $user->updated_at }}</td>
                                                 <td align="center">
-                                                    <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#ModalEdit"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
+                                                    <a href="{{ route('crud/edituser') }}">
+                                                        <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
+                                                    </a>
                                                     <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
                                                 </td>
                                             </tr>
-
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -211,7 +215,7 @@ session_start();
     <!-- page container area end -->
 
     <!-- modal input -->
-    <div id="myModal" class="modal fade">
+    <!--<div id="myModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -258,11 +262,11 @@ session_start();
                 </form>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- modal input end -->
 
     <!-- modal edit -->
-    <div id="ModalEdit" class="modal fade">
+    <!--<div id="ModalEdit" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -309,7 +313,7 @@ session_start();
                 </form>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- modal edit end -->
 
     <!-- modal delete -->
@@ -321,7 +325,7 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ route('product') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ url('/admin/manage-user') }}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             Are You Sure You Want To Delete This Data?
                             <input name="name" type="hidden" class="form-control" required autofocus>

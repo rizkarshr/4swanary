@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 //AUTHENTIFICATION
 
 Route::get('/', function () {
-    return view('login');
+  return view('login');
 });
 Route::get('/login', [App\Http\Controllers\Admin\AuthController::class, 'index']);
 Route::post('/login', [App\Http\Controllers\Admin\AuthController::class, 'authenticate']);
@@ -116,6 +116,56 @@ Route::get('/company/{id}', [App\Http\Controllers\Viewer\CompanyProfilController
 //APPOINTMENT PAGE
 Route::get('/appointment/{id}', [App\Http\Controllers\Viewer\AppointmentController::class, 'index']);
 Route::get('/appointment/send/{id}', [App\Http\Controllers\Viewer\AppointmentController::class, 'mail']);
+
+
+
+//CRUD PRODUK
+Route::get('crud/createproduct', function () {
+  return view('crud.createproduct');
+})->name('crud/createproduct');
+
+Route::get('crud/editproduct', function () {
+  return view('crud.editproduct');
+})->name('crud/editproduct');
+
+//CRUD COMPANY
+Route::get('crud/createcompany', function () {
+  return view('crud.createcompany');
+})->name('crud/createcompany');
+
+Route::get('crud/editcompany', function () {
+  return view('crud.editcompany');
+})->name('crud/editcompany');
+
+//CRUD CATEGORY
+Route::get('crud/createcategory', function () {
+  return view('crud.createcategory');
+})->name('crud/createcategory');
+
+Route::get('crud/editcategory', function () {
+  return view('crud.editcategory');
+})->name('crud/editcategory');
+
+//CRUD SUBCATEGORY
+Route::get('crud/createsubcategory', function () {
+  return view('crud.createsubcategory');
+})->name('crud/createsubcategory');
+
+Route::get('crud/editsubcategory', function () {
+  return view('crud.editsubcategory');
+})->name('crud/editsubcategory');
+
+//CRUD USER
+Route::get('crud/createuser', function () {
+  return view('crud.createuser');
+})->name('crud/createuser');
+
+Route::get('crud/edituser', function () {
+  return view('crud.edituser');
+})->name('crud/edituser');
+
+
+
 
 // Route::get('/mail', function () {
 //     return view('test-mail');
