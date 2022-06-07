@@ -73,12 +73,13 @@ session_start();
                                     <li class="link {{ Request::is('company') ? ' active' : '' }}"><a href="{{ url('/admin/manage-company') }}">Company</a></li>
                                     <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ url('/admin/manage-product') }}">Product</a></li>
                                     <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ url('/admin/manage-category') }}">Category</a></li>
-                                    <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ url('/admin/manage-subcategory') }}">Subcategory</a></li>
-                                    <li class="link {{ Request::is('origin') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origin') }}">Origins</a></li>
+                                    <li class="link active"><a href="{{ url('/admin/manage-subcategory') }}">Subcategory</a></li>
+                                    <li class="link {{ Request::is('province') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origin') }}">Province</a></li>
+                                    <li class="link {{ Request::is('city') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origin') }}">City</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#"><span>Logout</span></a>
+                                <a href="/logout"><span>Logout</span></a>
 
                             </li>
 
@@ -142,46 +143,26 @@ session_start();
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-center">
-                                    <h2>List Origins</h2>
-                                    <button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Product</button>
-                                </div>
-                                <div class="data-tables datatable-dark">
-                                    <table id="dataTable3" class="display" style="width:100%">
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>ID</th>
-                                                <th>Code</th>
-                                                <th>Province Code</th>
-                                                <th>Description</th>
-                                                <th>Name</th>
-                                                <th>Meta</th>
-                                                <th>Created at</th>
-                                                <th>Updated at</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($indonesia_cities as $indonesia_cities)
-                                            <tr>
-                                                <td>{{ $loop->iteration}}</td>
-                                                <td>{{ $indonesia_cities->id }}</td>
-                                                <td>{{ $indonesia_cities->code }}</td>
-                                                <td>{{ $indonesia_cities->province_code }}</td>
-                                                <td>{{ $indonesia_cities->name }}</td>
-                                                <td>{{ $indonesia_cities->meta }}</td>
-                                                <td>{{ $indonesia_cities->created_at }}</td>
-                                                <td>{{ $indonesia_cities->updated_at }}</td>
-                                                <td align="center">
-                                                    <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#ModalEdit"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
-                                                    <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
-                                                </td>
-                                            </tr>
+                                <h2 align="center">Add Subcategory</h2>
+                                <div class="modal-body">
+                                    <form action="{{ url('/admin/manage-subcategory') }}" method="post" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label>Subcategory Name</label>
+                                            <input name="name" type="text" class="form-control" required autofocus>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <input name="desc" type="text" class="form-control" required>
+                                        </div>
 
-                                        </tbody>
-                                    </table>
                                 </div>
+                                <div class="modal-footer">
+                                    <a href="/admin/manage-subcategory">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                    </a>
+                                    <input name="addsubcategory" type="submit" class="btn btn-primary" value="Save">
+                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -204,157 +185,15 @@ session_start();
     <!-- page container area end -->
 
     <!-- modal input -->
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Origins</h4>
-                </div>
 
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-origin') }}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Product Name</label>
-                            <input name="name" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <input name="desc" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>HS Code</label>
-                            <input name="hs_code" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Dimension</label>
-                            <input name="dimension" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Subcategory</label>
-                            <select name="id_subcategory" class="form-control">
-                                <option selected>Choose Subcategory</option>
-
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Origin</label>
-                            <select name="id_origin" class="form-control">
-                                <option selected>Choose Origin</option>
-
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Company</label>
-                            <select name="id_company" class="form-control">
-                                <option selected>Choose Company</option>
-
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Product Picture</label>
-                            <input name="product_pict" type="file" class="form-control">
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="addorigins" type="submit" class="btn btn-primary" value="Add">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <!-- modal input end -->
 
     <!-- modal edit -->
-    <div id="ModalEdit" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Origins</h4>
-                </div>
 
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-product') }}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Product Name</label>
-                            <input name="name" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <input name="desc" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>HS Code</label>
-                            <input name="hs_code" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Dimension</label>
-                            <input name="dimension" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Subcategory</label>
-                            <select name="id_subcategory" class="form-control">
-                                <option selected>Choose Subcategory</option>
-
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Origin</label>
-                            <select name="id_origin" class="form-control">
-                                <option selected>Choose Origin</option>
-
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Company</label>
-                            <select name="id_company" class="form-control">
-                                <option selected>Choose Company</option>
-
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Product Picture</label>
-                            <input name="product_pict" type="file" class="form-control">
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="editorigins" type="submit" class="btn btn-primary" value="Save">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <!-- modal edit end -->
 
     <!-- modal delete -->
-    <div id="ModalDelete" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Origins</h4>
-                </div>
 
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-product') }}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            Are You Sure You Want To Delete This Data?
-                            <input name="name" type="hidden" class="form-control" required autofocus>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="deleteorigins" type="submit" class="btn btn-primary" value="Delete">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <!-- modal delete end -->
 
     <script>
@@ -367,6 +206,7 @@ session_start();
             });
         });
     </script>
+
 
     <!-- jquery latest version -->
     <script src="{{url('https://code.jquery.com/jquery-3.3.1.js')}}"></script>

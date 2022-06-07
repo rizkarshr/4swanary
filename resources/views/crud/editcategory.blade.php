@@ -12,7 +12,7 @@ session_start();
     <link rel="icon" type="image/png" href="{{asset('../favicon.png')}}">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="{{asset('images/l.png')}}">
-    <title>Manage Article - Aswana.ry</title>
+    <title>Manage Store - Aswana.ry</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/icon/favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -69,10 +69,10 @@ session_start();
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout"></i><span>Manage Store
                                     </span></a>
                                 <ul class="collapse">
-                                    <li class="link active"><a href="{{ url('/admin/manage-article') }}">Article</a></li>
+                                    <li class="link {{ Request::is('article') ? ' active' : '' }}"><a href="{{ url('/admin/manage-article') }}">Article</a></li>
                                     <li class="link {{ Request::is('company') ? ' active' : '' }}"><a href="{{ url('/admin/manage-company') }}">Company</a></li>
                                     <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ url('/admin/manage-product') }}">Product</a></li>
-                                    <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ url('/admin/manage-category') }}">Category</a></li>
+                                    <li class="link active"><a href="{{ url('/admin/manage-category') }}">Category</a></li>
                                     <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ url('/admin/manage-subcategory') }}">Subcategory</a></li>
                                     <li class="link {{ Request::is('province') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origin') }}">Province</a></li>
                                     <li class="link {{ Request::is('city') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origin') }}">City</a></li>
@@ -143,47 +143,27 @@ session_start();
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-center">
-                                    <h2 align="center">List Article</h2>
-                                    <button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Article</button>
+                                <h2 align="center">Edit Category</h2>
+                                <div class="modal-body">
+                                    <form action="{{ url('/admin/manage-category') }}" method="post" enctype="multipart/form-data">
+
+                                        <div class="form-group">
+                                            <label>Category Name</label>
+                                            <input name="name" type="text" class="form-control" required autofocus>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <input name="desc" type="text" class="form-control" required>
+                                        </div>
+
                                 </div>
-                                <div class="data-tables datatable-dark">
-                                    <table id="dataTable3" class="display" style="width:100%">
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>ID</th>
-                                                <th>Title</th>
-                                                <th>Keywords</th>
-                                                <th>Image</th>
-                                                <th>Content</th>
-                                                <th>Writer</th>
-                                                <th>Source</th>
-                                                <th>Status</th>
-                                                <th>Created at</th>
-                                                <th>Updated at</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($article as $article)
-                                            <tr>
-                                                <td>{{ $loop->iteration}}</td>
-                                                <td>{{ $article->id }}</td>
-                                                <td>{{ $article->title }}</td>
-                                                <td>{{ $article->keywords }}</td>
-                                                <td><img src="/public/images/article {{ $article->image }}" width="50%"> </td>
-                                                <td>{{ $article->content }}</td>
-                                                <td>{{ $article->writer }}</td>
-                                                <td>{{ $article->source }}</td>
-                                                <td>{{ $article->status }}</td>
-                                                <td>{{ $article->created_at }}</td>
-                                                <td>{{ $article->updated_at }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                <div class="modal-footer">
+                                    <a href="/admin/manage-category">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                    </a>
+                                    <input name="editcategory" type="submit" class="btn btn-primary" value="Save">
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -206,151 +186,15 @@ session_start();
     <!-- page container area end -->
 
     <!-- modal input -->
-    <!--<div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Article</h4>
-                </div>
 
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-article') }}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Title</label>
-                            <input name="title" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Keywords</label>
-                            <input name="keywords" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Image</label>
-                            <input name="images" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Content</label>
-                            <input name="content" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Writer</label>
-                            <input name="writer" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Source</label>
-                            <input name="source" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Company</label>
-                            <select name="id_company" class="form-control">
-                                <option selected>Choose Company</option>
-
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Product Picture</label>
-                            <input name="product_pict" type="file" class="form-control">
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="addproduct" type="submit" class="btn btn-primary" value="Add">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
     <!-- modal input end -->
 
     <!-- modal edit -->
-    <!--<div id="ModalEdit" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Product</h4>
-                </div>
 
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-article') }}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Product Name</label>
-                            <input name="name" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <input name="desc" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>HS Code</label>
-                            <input name="hs_code" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Dimension</label>
-                            <input name="dimension" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Subcategory</label>
-                            <select name="id_subcategory" class="form-control">
-                                <option selected>Choose Subcategory</option>
-
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Origin</label>
-                            <select name="id_origin" class="form-control">
-                                <option selected>Choose Origin</option>
-
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Company</label>
-                            <select name="id_company" class="form-control">
-                                <option selected>Choose Company</option>
-
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Product Picture</label>
-                            <input name="product_pict" type="file" class="form-control">
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="editproduct" type="submit" class="btn btn-primary" value="Save">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
     <!-- modal edit end -->
 
     <!-- modal delete -->
-    <!--<div id="ModalDelete" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Product</h4>
-                </div>
 
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-article') }}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            Are You Sure You Want To Delete This Data?
-                            <input name="name" type="hidden" class="form-control" required autofocus>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="deleteproduct" type="submit" class="btn btn-primary" value="Delete">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
     <!-- modal delete end -->
 
     <script>
@@ -363,6 +207,7 @@ session_start();
             });
         });
     </script>
+
 
     <!-- jquery latest version -->
     <script src="{{url('https://code.jquery.com/jquery-3.3.1.js')}}"></script>
