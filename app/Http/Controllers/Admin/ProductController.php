@@ -21,11 +21,6 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        
-        $subcategory = Subcategory::with('category')->where('id_category','1')->get();
-        $province = IndonesiaProvince::all();
-        $city = IndonesiaCity::with('IndonesiaProvince')->get();
-        $company = Company::all(); 
 
         if($request->filled('search')){
 
@@ -36,7 +31,7 @@ class ProductController extends Controller
             $product = Product::with('company', 'subcategory', 'IndonesiaCity', 'IndonesiaProvince')->get();
         }
 
-        return view('product', compact('product','subcategory','province','city','company'));
+        return view('product', compact('product'));
     }
 
     /**

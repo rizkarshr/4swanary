@@ -37,7 +37,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('createarticle');
     }
 
     /**
@@ -46,9 +46,10 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Article $article)
+    public function store(Request $request)
     {
-        // $article = Article::find($id);
+        // $article = Article::findOrFail($id);
+        $code = $this->generateUniqueCode();
 
         if ($file = $request->file('image')) {
 
@@ -57,8 +58,8 @@ class ArticleController extends Controller
                 'image'=>'|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
             $penyimpanan = public_path().'/article';
-            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
+            $image = $code.'.'.$upload->getClientOriginalExtension();
 
             $article = Article::create([
                 'id' => $request->id,
@@ -103,12 +104,12 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
-    {
-        $article = Article::find($article->id);
+    // public function show($id)
+    // {
+    //     $article = Article::find($id);
 
-        return view('article', compact('article'));
-    }
+    //     return view('article', compact('article'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -116,11 +117,11 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
-        $article = Article::find($article->id);
+        $article = Article::findOrFail($id);
 
-        return view('article', compact('article'));
+        return view('editarticle', compact('article'));
     }
 
     /**
@@ -130,9 +131,11 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $id)
     {
-        // $article = Article::find($article->id);
+        $article = Article::findOrFail($id);
+        $code = $this->generateUniqueCode();
+
         
         if ($file = $request->file('image')) {
 
@@ -147,8 +150,8 @@ class ArticleController extends Controller
                 'image'=>'|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
             $penyimpanan = public_path().'/article';
-            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
+            $image = $code.'.'.$upload->getClientOriginalExtension();
 
             $article->update([
                 'id' => $request->id,
@@ -196,9 +199,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
-        $article = Article::find($article->id);
+        $article = Article::findOrFail($id);
         
         if(File::exists(public_path('article/'.$article->image))){
 
@@ -213,5 +216,14 @@ class ArticleController extends Controller
         }
 
         return redirect('/admin/manage-article');
+    }
+
+    public function generateUniqueCode()
+    {
+        do {
+            $code = random_int(100000, 999999);
+        } while (Product::where("product_pict", "=", $code)->first());
+  
+        return $code;
     }
 }

@@ -40,7 +40,11 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        $subcategory = Subcategory::with('category')->where('id_category','1')->get();
+        $province = IndonesiaProvince::all();
+        $city = IndonesiaCity::with('IndonesiaProvince')->get();
+
+        return view('createcompany',compact('subcategory','province','city'));
     }
 
     /**
@@ -49,9 +53,10 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Company $company)
+    public function store(Request $request, $id)
     {
-        // $company = company::find($company->id);
+        // $company = company::find($id);
+        $code = $this->generateUniqueCode();
 
         if ($file = $request->file('logo')) {
 
@@ -60,8 +65,8 @@ class CompanyController extends Controller
                 'logo'=>'|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
             $penyimpanan = public_path().'/company-logo';
-            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image1 = $request->id.'.'.$upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
+            $image1 = $code.'.'.$upload->getClientOriginalExtension();
 
         } 
         if($file = $request->file('background')){
@@ -71,8 +76,8 @@ class CompanyController extends Controller
                 'background'=>'|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
             $penyimpanan = public_path().'/company-bg';
-            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image2 = $request->id.'.'.$upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
+            $image2 = $code.'.'.$upload->getClientOriginalExtension();
         } 
 
         if($file = $request->file('logo') AND $file = $request->file('background')){
@@ -107,6 +112,7 @@ class CompanyController extends Controller
             ]);
 
         }elseif($file = $request->file('background')){
+
             $company = Company::create([
                 'id' => $request->id,
                 'name' => $request->name,
@@ -149,12 +155,12 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
-    {
-        $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->find($company->id);
+    // public function show(Company $company)
+    // {
+    //     $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->find($company->id);
 
-        return view('company', compact('company'));
-    }
+    //     return view('company', compact('company'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -162,11 +168,15 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit($id)
     {
-        $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->find($company->id);
+        $subcategory = Subcategory::with('category')->where('id_category','1')->get();
+        $province = IndonesiaProvince::all();
+        $city = IndonesiaCity::with('IndonesiaProvince')->get();
 
-        return view('company', compact('company'));
+        $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->find($id);
+
+        return view('editcompany', compact('company','subcategory','province','city'));
     }
 
     /**
@@ -176,8 +186,11 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request, $id)
     {
+        $company = Company::find($id);
+        $code = $this->generateUniqueCode();
+
         if ($file = $request->file('logo')) {
 
             if(File::exists(public_path('company-logo/'.$company->logo))){
@@ -191,8 +204,8 @@ class CompanyController extends Controller
                 'logo'=>'|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
             $penyimpanan = public_path().'/company-logo';
-            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image1 = $request->id.'.'.$upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
+            $image1 = $code.'.'.$upload->getClientOriginalExtension();
 
         } 
         if($file = $request->file('background')){
@@ -208,8 +221,8 @@ class CompanyController extends Controller
                 'background'=>'|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
             $penyimpanan = public_path().'/company-bg';
-            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image2 = $request->id.'.'.$upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
+            $image2 = $code.'.'.$upload->getClientOriginalExtension();
         } 
 
         if($file = $request->file('logo') AND $file = $request->file('background')){
@@ -302,9 +315,9 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy($id)
     {
-        $company = company::find($company->id);
+        $company = company::find($id);
         
         if(File::exists(public_path('company-logo/'.$company->logo)) AND File::exists(public_path('company-bg/'.$company->background))){
 
@@ -332,5 +345,14 @@ class CompanyController extends Controller
         }
         
         return redirect('/admin/manage-company');
+    }
+
+    public function generateUniqueCode()
+    {
+        do {
+            $code = random_int(100000, 999999);
+        } while (Product::where("product_pict", "=", $code)->first());
+  
+        return $code;
     }
 }

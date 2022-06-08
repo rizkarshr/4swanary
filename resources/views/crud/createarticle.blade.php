@@ -104,7 +104,7 @@ session_start();
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-6 col-sm-4 clearfix">
-                        <ul class="notification-area pull-right">
+                        <ul class="notification-area pull-right"> 
                             <li>
                                 <h3>
                                     <div class="date">
