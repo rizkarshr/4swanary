@@ -16,12 +16,10 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('keywords')->nullable();
             $table->string('image')->nullable();
-            $table->text('content');
-            $table->string('writer');
             $table->string('source');
             $table->enum('status', ['Active','Inactive']);
+            $table->longText('content');
             $table->timestamps();
         });
     }

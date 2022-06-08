@@ -15,6 +15,7 @@ class SubcategoryController extends Controller
      */
     public function index(Request $request)
     {
+        
         if($request->filled('search')){
 
             $subcategory = Subcategory::search($request->search)->get();
@@ -35,7 +36,9 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::all();
+
+        return view('crud/createsubcategory', compact('category'));
     }
 
     /**
@@ -62,12 +65,12 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Subcategory $subcategory)
-    {
-        $subcategory = Subcategory::with('category')->find($subcategory->id);
+    // public function show(Subcategory $subcategory)
+    // {
+    //     $subcategory = Subcategory::with('category')->find($subcategory->id);
         
-        return view('subcategory', compact('subcategory'));
-    }
+    //     return view('subcategory', compact('subcategory'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -75,11 +78,12 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subcategory $subcategory)
+    public function edit($id)
     {
-        $subcategory = Subcategory::with('category')->find($subcategory->id);
+        $category = Category::all();
+        $subcategory = Subcategory::with('category')->find($id);
         
-        return view('subcategory', compact('subcategory'));
+        return view('crud/editsubcategory', compact('subcategory','category'));
     }
 
     /**
@@ -89,8 +93,10 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subcategory $subcategory)
+    public function update(Request $request, $id)
     {
+        $subcategory = Subcategory::findOrFail($id);
+
         $subcategory->update([
             'id' => $request->id,
             'name' => $request->name,
@@ -107,8 +113,9 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subcategory $subcategory)
+    public function destroy($id)
     {
+        $subcategory = Subcategory::findOrFail($id);
         $subcategory->delete();
 
         return redirect('/admin/manage-subcategory');

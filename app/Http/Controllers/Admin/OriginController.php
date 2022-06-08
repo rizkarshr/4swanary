@@ -36,7 +36,7 @@ class OriginController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -47,15 +47,15 @@ class OriginController extends Controller
      */
     public function store(Request $request)
     {
-        $city = IndonesiaCity::create([
-            'id' => $request->id,
-            'code' => $request->code,
-            'province_code' => $request->province_code,
-            'name' => $request->name,
-            'meta' => $request->meta,
-        ]);
+        // $city = IndonesiaCity::create([
+        //     'id' => $request->id,
+        //     'code' => $request->code,
+        //     'province_code' => $request->province_code,
+        //     'name' => $request->name,
+        //     'meta' => $request->meta,
+        // ]);
 
-        return redirect('/admin/manage-origin');
+        // return redirect('/admin/manage-origin');
     }
 
     /**
@@ -64,12 +64,12 @@ class OriginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(IndonesiaCity $city)
-    {
-        $city = IndonesiaCity::with('IndonesiaProvince')->find($city->id);
+    // public function show($id)
+    // {
+    //     $city = IndonesiaCity::with('IndonesiaProvince')->find($id);
 
-        return view('city', compact('city'));
-    }
+    //     return view('city', compact('city'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -89,15 +89,15 @@ class OriginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IndonesiaCity $city)
+    public function update(Request $request, $id)
     {
-        $city->update([
-            'id' => $request->id,
-            'code' => $request->code,
-            'province_code' => $request->province_code,
-            'name' => $request->name,
-            'meta' => $request->meta,
-        ]);
+        // $city->update([
+        //     'id' => $request->id,
+        //     'code' => $request->code,
+        //     'province_code' => $request->province_code,
+        //     'name' => $request->name,
+        //     'meta' => $request->meta,
+        // ]);
 
         return redirect('/admin/manage-origin');
     }
@@ -108,10 +108,11 @@ class OriginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IndonesiaCity $city)
+    public function destroy($id)
     {
-        $city->delete();
+        // $city = IndonesiaCity::findOrFail($id);
+        // $city->delete();
 
-        return redirect('/admin/manage-origin');
+        // return redirect('/admin/manage-origin');
     }
 }

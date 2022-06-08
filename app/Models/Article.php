@@ -15,12 +15,10 @@ class Article extends Model
     protected $fillable = [
         'id',
         'title',
-        'keywords',
         'image',
-        'content',
-        'writer',
         'source',
         'status',
+        'content',
         'created_at',
         'updated_at'
     ];

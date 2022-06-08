@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+        return view('crud/createuser');
     }
 
     /**
@@ -47,9 +47,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request, $id)
     {
-        $profil = User::where('id', Auth::user()->id)->first();
+        $code = $this->generateUniqueCode();
+        // $profil = User::where('id', Auth::user()->id)->first();
 
         if ($file = $request->file('profil_pict')) {
 
@@ -58,8 +59,8 @@ class UserController extends Controller
                 'profil_pict'=>'|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
             $penyimpanan = public_path().'/user';
-            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
+            $image = $code.'.'.$upload->getClientOriginalExtension();
 
             $user = User::create([
                 'id' => $request->id,
@@ -114,13 +115,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        $profil = User::where('id', Auth::user()->id)->first();
+        // $profil = User::where('id', Auth::user()->id)->first();
 
-        $user = User::find($user->id);
+        $user = User::find($id);
 
-        return view('user', compact('profil','user'));
+        return view('crud/createuser', compact('user'));
     }
 
     /**
@@ -130,9 +131,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {        
-        $profil = User::where('id', Auth::user()->id)->first();
+        // $profil = User::where('id', Auth::user()->id)->first();
+        $user = User::find($id);
+        $code = $this->generateUniqueCode();
 
         if ($file = $request->file('profil_pict')) {
 
@@ -147,8 +150,8 @@ class UserController extends Controller
                 'profil_pict'=>'|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
             $penyimpanan = public_path().'/user';
-            $upload->move($penyimpanan, $request->id.'.'.$upload->getClientOriginalExtension());
-            $image = $request->id.'.'.$upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
+            $image = $code.'.'.$upload->getClientOriginalExtension();
 
             $user->update([
                 'username' => $request->username,
@@ -190,11 +193,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
         $profil = User::where('id', Auth::user()->id)->first();
 
-        $user = User::find($user->id);
+        $user = User::find($id);
         
         if(File::exists(public_path('user/'.$user->profil_pict))){
 
@@ -209,5 +212,14 @@ class UserController extends Controller
         }
 
         return redirect('/admin/manage-user');
+    }
+
+    public function generateUniqueCode()
+    {
+        do {
+            $code = random_int(100000, 999999);
+        } while (Product::where("product_pict", "=", $code)->first());
+  
+        return $code;
     }
 }

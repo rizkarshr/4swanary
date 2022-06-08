@@ -38,7 +38,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('crud/createcategory');
     }
 
     /**
@@ -50,6 +50,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         // $profil = User::where('id', Auth::user()->id)->first();
+        $code = $this->generateUniqueCode();
 
         $category = Category::create([
             'id' => $request->id,
@@ -66,15 +67,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
-    {
-        // $profil = User::where('id', Auth::user()->id)->first();
+    // public function show($id)
+    // {
+    //     // $profil = User::where('id', Auth::user()->id)->first();
 
-        //$category = Category::with('item')->find($category->id);
-        $category = Category::find($category->id); 
+    //     //$category = Category::with('item')->find($category->id);
+    //     $category = Category::find($category->id); 
 
-        return view('category', compact('category'));
-    }
+    //     return view('category', compact('category'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -82,13 +83,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
         // $profil = User::where('id', Auth::user()->id)->first();
+        $category = Category::find($id);
 
-        $category = Category::find($category->id);
-
-        return view('category', compact('category'));
+        return view('crud/editcategory', compact('category'));
     }
 
     /**
@@ -101,6 +101,8 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         // $profil = User::where('id', Auth::user()->id)->first();
+        $category = Category::find($id);
+        $code = $this->generateUniqueCode();
 
         $category->update([
             'id' => $request->id,
@@ -117,12 +119,22 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         // $profil = User::where('id', Auth::user()->id)->first();
-
+        $category = Category::findOrFail($id);
+        
         $category->delete();
 
         return redirect('/admin/manage-category');
+    }
+
+    public function generateUniqueCode()
+    {
+        do {
+            $code = random_int(100000, 999999);
+        } while (Product::where("product_pict", "=", $code)->first());
+  
+        return $code;
     }
 }
