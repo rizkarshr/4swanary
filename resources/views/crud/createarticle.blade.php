@@ -172,7 +172,7 @@ session_start();
                                             <select  class="form-control" name="status" id="status" required>
                                                 <option value="">Choose Status</option>
                                                 <option value="Active">Active</option>
-                                                <option value="Deactive">Deactive</option>
+                                                <option value="Inactive">Inactive</option>
                                             </select>
                                         </div>
                                         <div class="form-group">

@@ -145,35 +145,56 @@ session_start();
                             <div class="card-body">
                                 <h2 align="center">Add Company</h2>
                                 <div class="modal-create">
-                                    <form action="{{ url('/admin/manage-company') }}" method="post" enctype="multipart/form-data">
+                                    <form action="/admin/manage-company/store/" method="post" enctype="multipart/form-data">
+                                        <?php date_default_timezone_set('Asia/Makassar'); ?>
+                                        @csrf
+                                        <input type="hidden" name="created_at" value="<?php echo date("Y-m-d H:i:s") ?>">
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Company Name</label>
                                             <input name="name" type="text" class="form-control" required autofocus>
                                         </div>
                                         <div class="form-group">
                                             <label>Since</label>
-                                            <input name="logo" type="text" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sector</label>
-                                            <input name="sector" type="text" class="form-control" required>
+                                            <input name="since" type="text" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Website</label>
                                             <input name="website" type="text" class="form-control" required>
                                         </div>
                                         <div class="form-group">
+                                            <label>Email</label>
+                                            <input name="email" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Contact Number</label>
-                                            <select name="contact_number" class="form-control">
-                                                <option selected>Choose Subcategory</option>
-
+                                            <input name="contact_number" type="number" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Subcategory</label>
+                                            <select id="id_subcategory" name="id_subcategory" class="form-control">
+                                                <option value="">Choose Subcategory</option>
+                                                @foreach ($subcategory as $data)
+                                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Origin</label>
-                                            <select name="id_origin" class="form-control">
-                                                <option selected>Choose Origin</option>
-
+                                            <label>Province</label>
+                                            <select name="id_indonesia_province" class="form-control">
+                                                <option value="">Choose Province</option>
+                                                @foreach ($province as $data)
+                                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <select name="id_indonesia_city" class="form-control">
+                                                <option value="">Choose City</option>
+                                                @foreach ($city as $data)
+                                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
@@ -182,8 +203,8 @@ session_start();
                                             <input name="logo" type="file" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label>Banner</label>
-                                            <input name="banner" type="file" class="form-control">
+                                            <label>Background</label>
+                                            <input name="background" type="file" class="form-control">
                                         </div>
 
                                 </div>
@@ -191,7 +212,7 @@ session_start();
                                     <a href="/admin/manage-company">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                     </a>
-                                    <input name="addcompany" type="submit" class="btn btn-primary" value="Save">
+                                    <input name="addcompany" type="submit" class="btn btn-primary" value="Add">
                                 </div>
                                 </form>
                             </div>

@@ -171,7 +171,7 @@ session_start();
                                             <select  class="form-control" name="status" id="status" required>
                                                 <option value="{{$article->status}}" disabled>value="{{$article->status}}"</option>
                                                 <option value="Active">Active</option>
-                                                <option value="Deactive">Deactive</option>
+                                                <option value="Inactive">Inactive</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
