@@ -168,27 +168,27 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Subcategory</label>
-                                            <select name="subcategory" class="form-control">
-                                                <option selected>Choose Subcategory</option>
-                                                @foreach ($subcategory as $sub)
-                                                <option value="{{ $sub->id }}">{{ $sub->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>City</label>
-                                            <select name="city" class="form-control">
-                                                <option selected>Choose City</option>
-                                                @foreach ($city as $data)
+                                            <select id="id_subcategory" name="id_subcategory" class="form-control">
+                                                <option value="">Choose Subcategory</option>
+                                                @foreach ($subcategory as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Province</label>
-                                            <select name="province" class="form-control">
-                                                <option selected>Choose Province</option>
+                                            <select name="id_indonesia_province" class="form-control">
+                                                <option value="">Choose Province</option>
                                                 @foreach ($province as $data)
+                                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <select name="id_indonesia_city" class="form-control">
+                                                <option value="">Choose City</option>
+                                                @foreach ($city as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
                                             </select>
@@ -208,7 +208,7 @@ session_start();
                                     <a href="/admin/manage-company">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                     </a>
-                                    <input name="addcompany" type="submit" class="btn btn-primary" value="Save">
+                                    <input name="addcompany" type="submit" class="btn btn-primary" value="Add">
                                 </div>
                                 </form>
                             </div>
