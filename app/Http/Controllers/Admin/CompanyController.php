@@ -57,6 +57,7 @@ class CompanyController extends Controller
     {
         // $company = company::find($id);
         $code = $this->generateUniqueCode();
+        $code2 = $this->generateUniqueCode2();
 
         if ($file = $request->file('logo')) {
 
@@ -76,8 +77,8 @@ class CompanyController extends Controller
                 'background'=>'|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
             $penyimpanan = public_path().'/company-bg';
-            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
-            $image2 = $code.'.'.$upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $code2.'.'.$upload->getClientOriginalExtension());
+            $image2 = $code2.'.'.$upload->getClientOriginalExtension();
         } 
 
         if($file = $request->file('logo') AND $file = $request->file('background')){
@@ -85,7 +86,6 @@ class CompanyController extends Controller
             $company = Company::create([
                 'id' => $request->id,
                 'name' => $request->name,
-                'desc' => $request->desc,
                 'logo' => $image1,
                 'background' => $image2,
                 'since' => $request->since,
@@ -101,7 +101,6 @@ class CompanyController extends Controller
             $company = Company::create([
                 'id' => $request->id,
                 'name' => $request->name,
-                'desc' => $request->desc,
                 'logo' => $image1,
                 'since' => $request->since,
                 'website' => $request->website,
@@ -116,7 +115,6 @@ class CompanyController extends Controller
             $company = Company::create([
                 'id' => $request->id,
                 'name' => $request->name,
-                'desc' => $request->desc,
                 'background' => $image2,
                 'since' => $request->since,
                 'website' => $request->website,
@@ -131,7 +129,6 @@ class CompanyController extends Controller
             $company = Company::create([
                 'id' => $request->id,
                 'name' => $request->name,
-                'desc' => $request->desc,
                 'since' => $request->since,
                 'website' => $request->website,
                 'contact_number' => $request->contact_number,
@@ -190,6 +187,7 @@ class CompanyController extends Controller
     {
         $company = Company::find($id);
         $code = $this->generateUniqueCode();
+        $code = $this->generateUniqueCode2();
 
         if ($file = $request->file('logo')) {
 
@@ -221,8 +219,8 @@ class CompanyController extends Controller
                 'background'=>'|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
             $penyimpanan = public_path().'/company-bg';
-            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
-            $image2 = $code.'.'.$upload->getClientOriginalExtension();
+            $upload->move($penyimpanan, $code2.'.'.$upload->getClientOriginalExtension());
+            $image2 = $code2.'.'.$upload->getClientOriginalExtension();
         } 
 
         if($file = $request->file('logo') AND $file = $request->file('background')){
@@ -230,7 +228,6 @@ class CompanyController extends Controller
             $company->update([
                 'id' => $request->id,
                 'name' => $request->name,
-                'desc' => $request->desc,
                 'logo' => $image1,
                 'background' => $image2,
                 'since' => $request->since,
@@ -251,7 +248,6 @@ class CompanyController extends Controller
             $company->update([
                 'id' => $request->id,
                 'name' => $request->name,
-                'desc' => $request->desc,
                 'logo' => $image1,
                 'since' => $request->since,
                 'website' => $request->website,
@@ -271,7 +267,6 @@ class CompanyController extends Controller
             $company->update([
                 'id' => $request->id,
                 'name' => $request->name,
-                'desc' => $request->desc,
                 'background' => $image2,
                 'since' => $request->since,
                 'website' => $request->website,
@@ -291,7 +286,6 @@ class CompanyController extends Controller
             $company->update([
                 'id' => $request->id,
                 'name' => $request->name,
-                'desc' => $request->desc,
                 'since' => $request->since,
                 'website' => $request->website,
                 'contact_number' => $request->contact_number,
@@ -351,8 +345,17 @@ class CompanyController extends Controller
     {
         do {
             $code = random_int(100000, 999999);
-        } while (Product::where("product_pict", "=", $code)->first());
+        } while (Company::where("logo", "=", $code)->first());
   
         return $code;
+    }
+
+    public function generateUniqueCode2()
+    {
+        do {
+            $code2 = random_int(100000, 999999);
+        } while (Company::where("background", "=", $code2)->first());
+  
+        return $code2;
     }
 }
