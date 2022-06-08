@@ -146,7 +146,7 @@ session_start();
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h2 align="center">List Article</h2>
                                     <a href="/admin/manage-article/create">
-                                        <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;"class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Article</button>
+                                        <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;" class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Article</button>
                                     </a>
                                 </div>
                                 <div class="data-tables datatable-dark">
@@ -171,12 +171,19 @@ session_start();
                                                 <td>{{ $article->id }}</td>
                                                 <td>{{ $article->title }}</td>
                                                 <td>
-                                                    <img src="{{ asset('article/'.$article->image) }}" width="50%"> 
+                                                    <img src="{{ asset('article/'.$article->image) }}" width="50%">
                                                 </td>
                                                 <td>{{ $article->source }}</td>
                                                 <td>{{ $article->status }}</td>
                                                 <td>{{ $article->created_at }}</td>
                                                 <td>{{ $article->updated_at }}</td>
+                                                <td align="center">
+                                                    <a href="/admin/manage-article/edit/{{$article->id}}">
+                                                        <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
+                                                    </a>
+                                                    <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -326,7 +333,7 @@ session_start();
     <!-- modal edit end -->
 
     <!-- modal delete -->
-    <!--<div id="ModalDelete" class="modal fade">
+    <div id="ModalDelete" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -334,7 +341,7 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ url('/admin/manage-article') }}" method="post" enctype="multipart/form-data">
+                    <form action="/admin/manage-article/delete/{id}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             Are You Sure You Want To Delete This Data?
                             <input name="name" type="hidden" class="form-control" required autofocus>
@@ -348,7 +355,7 @@ session_start();
                 </form>
             </div>
         </div>
-    </div>-->
+    </div>
     <!-- modal delete end -->
 
     <script>

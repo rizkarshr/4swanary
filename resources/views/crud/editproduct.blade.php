@@ -145,10 +145,10 @@ session_start();
                             <div class="card-body">
                                 <h2 align="center">Edit Product</h2>
                                 <div class="modal-body">
-                                    <form class="form-sample" action="/admin/update/{{$product->id}}" method="POST" enctype="multipart/form-data">
+                                    <form class="form-sample" action="/admin/manage-product/update/{{$product->id}}" method="POST" enctype="multipart/form-data">
                                         <?php date_default_timezone_set('Asia/Makassar'); ?>
                                         @csrf
-                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s")?>">
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Product Name</label>
                                             <input name="name" type="text" class="form-control" value="{{$product->name}}" required autofocus>
@@ -167,8 +167,8 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Subcategory</label>
-                                            <select id="id_subcategory" name="id_subcategory" class="form-control">
-                                                <option value="{{$product->id_subcategory}}" disabled>{{$product->subcategory->name}}</option>
+                                            <select id="id_subcategory" name="id_subcategory" class="form-control" required>
+                                                <option value disabled="{{$product->id_subcategory}}">{{$product->subcategory->name}}</option>
                                                 @foreach ($subcategory as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -176,8 +176,8 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Province</label>
-                                            <select name="id_indonesia_province" class="form-control">
-                                                <option value="{{$product->id_indonesia_province}}" disabled>{{$product->IndonesiaProvince->name}}</option>
+                                            <select name="id_indonesia_province" class="form-control" required>
+                                                <option value disabled="{{$product->id_indonesia_province}}">{{$product->IndonesiaProvince->name}}</option>
                                                 @foreach ($province as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -185,8 +185,8 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>City</label>
-                                            <select name="id_indonesia_city" class="form-control">
-                                                <option value="{{$product->id_indonesia_city}}" disabled>{{$product->IndonesiaCity->name}}</option>
+                                            <select name="id_indonesia_city" class="form-control" required>
+                                                <option value disabled="{{$product->id_indonesia_city}}">{{$product->IndonesiaCity->name}}</option>
                                                 @foreach ($city as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -194,14 +194,14 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>ID Company</label>
-                                            <select name="id_company" class="form-control">
-                                                <option value="{{$product->id_company}}" disabled>{{$product->company->name}}</option>
+                                            <select name="id_company" class="form-control" required>
+                                                <option value disabled="{{$product->id_company}}">{{$product->company->name}}</option>
                                                 @foreach ($company as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                        
+
                                         <div class="form-group">
                                             <label>Product Picture</label>
                                             <input name="product_pict" type="file" class="form-control" value="{{$product->product_pict}}">
@@ -213,24 +213,24 @@ session_start();
                                             <input name="editproduct" type="submit" class="btn btn-primary" value="Save">
                                         </div>
                                     </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+                <!-- row area start-->
             </div>
-
-
-            <!-- row area start-->
         </div>
-    </div>
-    <!-- main content area end -->
-    <!-- footer area start-->
-    <footer>
-        <div class="footer-area">
-            <p>@2022 Aswana.ry Directory</p>
-        </div>
-    </footer>
-    <!-- footer area end-->
+        <!-- main content area end -->
+        <!-- footer area start-->
+        <footer>
+            <div class="footer-area">
+                <p>@2022 Aswana.ry Directory</p>
+            </div>
+        </footer>
+        <!-- footer area end-->
     </div>
     <!-- page container area end -->
 

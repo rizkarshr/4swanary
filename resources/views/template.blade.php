@@ -67,7 +67,7 @@ session_start();
 
                             <li><a href="#"><i class="ti-user"></i><span>Nama Admin</span></a></li>
 
-                            <li class="link {{ Request::is('dashboard') ? ' active' : '' }}"><a href="{{ url('/admin/dashboard') }}"><span>Home</span></a></li>
+                            <li class="link active"><a href="{{ url('/admin/dashboard') }}"><span>Home</span></a></li>
                             <li class="link {{ Request::is('user') ? ' active' : '' }}"><a href="{{ url('/admin/manage-user') }}"></i><span>Manage Admin</span></a></li>
 
                             <li>

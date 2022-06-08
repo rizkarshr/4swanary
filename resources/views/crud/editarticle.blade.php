@@ -153,7 +153,7 @@ session_start();
                                     <form class="form-sample" action="/admin/manage-article/update/{{$article->id}}" method="post" enctype="multipart/form-data">
                                         <?php date_default_timezone_set('Asia/Makassar'); ?>
                                         @csrf
-                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s")?>">
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Title</label>
                                             <input name="title" type="text" class="form-control" value="{{$article->title}}" required autofocus>
@@ -168,7 +168,7 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Status</label>
-                                            <select  class="form-control" name="status" id="status" required>
+                                            <select class="form-control" name="status" id="status" required>
                                                 <option value="{{$article->status}}" disabled>value="{{$article->status}}"</option>
                                                 <option value="Active">Active</option>
                                                 <option value="Inactive">Inactive</option>
@@ -177,15 +177,15 @@ session_start();
                                         <div class="form-group">
                                             <label><strong>Content :</strong></label>
                                             <textarea id="summernote" name="content" required>{{$article->content}}</textarea>
-                                        </div> 
+                                        </div>
                                         <div class="modal-footer">
                                             <a href="/admin/manage-product">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                             </a>
-                                            <input name="addproduct" type="submit" class="btn btn-primary" value="Add">
+                                            <input name="editarticle" type="submit" class="btn btn-primary" value="Save">
                                         </div>
                                     </form>
-                                </div>                                    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -209,18 +209,18 @@ session_start();
 
     <script>
         $('#summernote').summernote({
-          placeholder: 'Hello stand alone ui',
-          tabsize: 2,
-          height: 120,
-          toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-          ]
+            placeholder: 'Hello stand alone ui',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
         });
     </script>
 

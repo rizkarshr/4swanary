@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Subcategory;
+use App\Models\Category;
 
 class SubcategoryController extends Controller
 {
@@ -15,15 +16,13 @@ class SubcategoryController extends Controller
      */
     public function index(Request $request)
     {
-        
-        if($request->filled('search')){
+
+        if ($request->filled('search')) {
 
             $subcategory = Subcategory::search($request->search)->get();
-
-        }else{
+        } else {
 
             $subcategory = Subcategory::with('category')->get();
-
         }
 
         return view('subcategory', compact('subcategory'));
@@ -68,7 +67,7 @@ class SubcategoryController extends Controller
     // public function show(Subcategory $subcategory)
     // {
     //     $subcategory = Subcategory::with('category')->find($subcategory->id);
-        
+
     //     return view('subcategory', compact('subcategory'));
     // }
 
@@ -82,8 +81,8 @@ class SubcategoryController extends Controller
     {
         $category = Category::all();
         $subcategory = Subcategory::with('category')->find($id);
-        
-        return view('crud/editsubcategory', compact('subcategory','category'));
+
+        return view('crud/editsubcategory', compact('subcategory', 'category'));
     }
 
     /**

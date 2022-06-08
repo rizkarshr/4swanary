@@ -17,18 +17,15 @@ class CategoryController extends Controller
     {
         // $profil = User::where('id', Auth::user()->id)->first();
 
-        if($request->filled('search')){
+        if ($request->filled('search')) {
 
             $category = Category::search($request->search)->get();
-
-        }else{
+        } else {
 
             $category = Category::all();
-
         }
 
         return view('category', compact('category'));
-
     }
 
     /**
@@ -50,7 +47,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         // $profil = User::where('id', Auth::user()->id)->first();
-        $code = $this->generateUniqueCode();
+
 
         $category = Category::create([
             'id' => $request->id,
@@ -98,11 +95,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
         // $profil = User::where('id', Auth::user()->id)->first();
         $category = Category::find($id);
-        $code = $this->generateUniqueCode();
 
         $category->update([
             'id' => $request->id,
@@ -123,18 +119,9 @@ class CategoryController extends Controller
     {
         // $profil = User::where('id', Auth::user()->id)->first();
         $category = Category::findOrFail($id);
-        
+
         $category->delete();
 
         return redirect('/admin/manage-category');
-    }
-
-    public function generateUniqueCode()
-    {
-        do {
-            $code = random_int(100000, 999999);
-        } while (Product::where("product_pict", "=", $code)->first());
-  
-        return $code;
     }
 }

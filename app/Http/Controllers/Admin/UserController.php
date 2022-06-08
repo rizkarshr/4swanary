@@ -16,19 +16,15 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $profil = User::where('id', Auth::user()->id)->first();
-
-        if($request->filled('search')){
+        if ($request->filled('search')) {
 
             $user = User::search($request->search)->get();
+        } else {
 
-        }else{
-
-            $user = User::all();        
-
+            $user = User::all();
         }
 
-        return view('user', compact('profil','user'));
+        return view('user', compact('user'));
     }
 
     /**
@@ -56,11 +52,11 @@ class UserController extends Controller
 
             $upload = $request->file('profil_pict');
             $this->validate($request, [
-                'profil_pict'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+                'profil_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
-            $penyimpanan = public_path().'/user';
-            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
-            $image = $code.'.'.$upload->getClientOriginalExtension();
+            $penyimpanan = public_path() . '/user';
+            $upload->move($penyimpanan, $code . '.' . $upload->getClientOriginalExtension());
+            $image = $code . '.' . $upload->getClientOriginalExtension();
 
             $user = User::create([
                 'id' => $request->id,
@@ -74,9 +70,8 @@ class UserController extends Controller
 
             if (!$user) {
 
-                return redirect('/admin/manage-user')->with('error','Failed Create User');
+                return redirect('/admin/manage-user')->with('error', 'Failed Create User');
             }
-            
         } else {
             $user = User::create([
                 'id' => $request->id,
@@ -89,7 +84,7 @@ class UserController extends Controller
 
             if (!$user) {
 
-                return redirect('/admin/manage-user')->with('error','Failed Create User');
+                return redirect('/admin/manage-user')->with('error', 'Failed Create User');
             }
         }
 
@@ -132,26 +127,25 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {        
+    {
         // $profil = User::where('id', Auth::user()->id)->first();
         $user = User::find($id);
         $code = $this->generateUniqueCode();
 
         if ($file = $request->file('profil_pict')) {
 
-            if(File::exists(public_path('user/'.$user->profil_pict))){
+            if (File::exists(public_path('user/' . $user->profil_pict))) {
 
-                File::delete(public_path('user/'.$user->profil_pict));
-    
+                File::delete(public_path('user/' . $user->profil_pict));
             }
 
             $upload = $request->file('profil_pict');
             $this->validate($request, [
-                'profil_pict'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+                'profil_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
-            $penyimpanan = public_path().'/user';
-            $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
-            $image = $code.'.'.$upload->getClientOriginalExtension();
+            $penyimpanan = public_path() . '/user';
+            $upload->move($penyimpanan, $code . '.' . $upload->getClientOriginalExtension());
+            $image = $code . '.' . $upload->getClientOriginalExtension();
 
             $user->update([
                 'username' => $request->username,
@@ -163,12 +157,11 @@ class UserController extends Controller
             ]);
 
             if (!$user) {
-                
-                return redirect('/admin/manage-user')->with('error','Failed Update User');
+
+                return redirect('/admin/manage-user')->with('error', 'Failed Update User');
             }
-            
         } else {
-            
+
             $user->update([
                 'username' => $request->username,
                 'name' => $request->name,
@@ -178,13 +171,12 @@ class UserController extends Controller
             ]);
 
             if (!$user) {
-                
-                return redirect('/admin/manage-user')->with('error','Failed Update User');
+
+                return redirect('/admin/manage-user')->with('error', 'Failed Update User');
             }
         }
 
         return redirect('/admin/manage-user');
-        
     }
 
     /**
@@ -195,20 +187,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $profil = User::where('id', Auth::user()->id)->first();
+        //$profil = User::where('id', Auth::user()->id)->first();
 
         $user = User::find($id);
-        
-        if(File::exists(public_path('user/'.$user->profil_pict))){
 
-            File::delete(public_path('user/'.$user->profil_pict));
-            
-            $user->delete();
+        if (File::exists(public_path('user/' . $user->profil_pict))) {
 
-        } else{
+            File::delete(public_path('user/' . $user->profil_pict));
 
             $user->delete();
+        } else {
 
+            $user->delete();
         }
 
         return redirect('/admin/manage-user');
@@ -218,8 +208,8 @@ class UserController extends Controller
     {
         do {
             $code = random_int(100000, 999999);
-        } while (Product::where("product_pict", "=", $code)->first());
-  
+        } while (User::where("profil_pict", "=", $code)->first());
+
         return $code;
     }
 }

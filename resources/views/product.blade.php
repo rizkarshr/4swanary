@@ -146,7 +146,7 @@ session_start();
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h2 align="center">List Product</h2>
                                     <a href="/admin/manage-product/create">
-                                        <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;"class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Product</button>
+                                        <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;" class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Product</button>
                                     </a>
                                 </div>
                                 <div class="data-tables datatable-dark">
@@ -175,7 +175,9 @@ session_start();
                                                 <td>{{ $loop->iteration}}</td>
                                                 <td>{{ $product->id }}</td>
                                                 <td>{{ $product->name }}</td>
-                                                <td>{{ $product->product_pict }}</td>
+                                                <td>
+                                                    <img src="{{ asset('product/'.$product->product_pict) }}" width="50%">
+                                                </td>
                                                 <td>{{ $product->desc }}</td>
                                                 <td>{{ $product->hs_code }}</td>
                                                 <td>{{ $product->dimension }}</td>
@@ -234,7 +236,7 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ url('/admin/manage-product') }}" method="post" enctype="multipart/form-data">
+                    <form action="/admin/manage-product/delete/{id}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             Are You Sure You Want To Delete This Data?
                             <input name="name" type="hidden" class="form-control" required autofocus>

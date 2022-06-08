@@ -63,9 +63,9 @@ session_start();
                             <li><a href="#"><i class="ti-user"></i><span>Nama Admin</span></a></li>
 
                             <li class="link {{ Request::is('dashboard') ? ' active' : '' }}"><a href="{{ url('/admin/dashboard') }}"><span>Home</span></a></li>
-                            <li class="link {{ Request::is('user') ? ' active' : '' }}"><a href="{{ url('/admin/manage-user') }}"></i><span>Manage Admin</span></a></li>
+                            <li class="link active"><a href="{{ url('/admin/manage-user') }}"></i><span>Manage Admin</span></a></li>
 
-                            <li class="active">
+                            <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout"></i><span>Manage Store
                                     </span></a>
                                 <ul class="collapse">
@@ -78,7 +78,7 @@ session_start();
                                 </ul>
                             </li>
                             <li>
-                                <a href="#"><span>Logout</span></a>
+                                <a href="/logout"><span>Logout</span></a>
 
                             </li>
 
@@ -144,7 +144,7 @@ session_start();
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h2>List Admin</h2>
-                                    <a href="{{ route('crud/createuser') }}">
+                                    <a href="/admin/manage-user/create">
                                         <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;" data-toggle="modal" data-target="#" class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Subcategory</button>
                                     </a>
                                 </div>
@@ -174,7 +174,9 @@ session_start();
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->username }}</td>
                                                 <td>{{ $user->name }}</td>
-                                                <td>{{ $user->profil_pict }}</td>
+                                                <td>
+                                                    <img src="{{ asset('user/'.$user->profil_pict) }}" width="50%">
+                                                </td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->email_verified_at }}</td>
                                                 <td>{{ $user->password }}</td>
@@ -183,7 +185,7 @@ session_start();
                                                 <td>{{ $user->created_at }}</td>
                                                 <td>{{ $user->updated_at }}</td>
                                                 <td align="center">
-                                                    <a href="{{ route('crud/edituser') }}">
+                                                    <a href="/admin/manage-user/edit/{{$user->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
                                                     <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
@@ -325,7 +327,7 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ url('/admin/manage-user') }}" method="post" enctype="multipart/form-data">
+                    <form action="/admin/manage-user/delete/{id}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             Are You Sure You Want To Delete This Data?
                             <input name="name" type="hidden" class="form-control" required autofocus>

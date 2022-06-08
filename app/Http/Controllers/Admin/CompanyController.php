@@ -71,14 +71,14 @@ class CompanyController extends Controller
 
             $upload2 = $request->file('background');
             $this->validate($request, [
-                'background'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+                'background' => '|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
-            $penyimpanan2 = public_path().'/company-bg';
-            $upload2->move($penyimpanan2, $code2.'.'.$upload2->getClientOriginalExtension());
-            $image2 = $code2.'.'.$upload2->getClientOriginalExtension();
-        } 
+            $penyimpanan2 = public_path() . '/company-bg';
+            $upload2->move($penyimpanan2, $code2 . '.' . $upload2->getClientOriginalExtension());
+            $image2 = $code2 . '.' . $upload2->getClientOriginalExtension();
+        }
 
-        if($file = $request->file('logo') AND $file = $request->file('background')){
+        if ($file = $request->file('logo') and $file = $request->file('background')) {
 
             $company = Company::create([
                 'id' => $request->id,
@@ -92,11 +92,10 @@ class CompanyController extends Controller
                 'id_subcategory' => $request->id_subcategory,
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
-                'created_at'=>$request->created_at,
-                'updated_at'=>$request->updated_at
+                'created_at' => $request->created_at,
+                'updated_at' => $request->updated_at
             ]);
-
-        } elseif($file = $request->file('logo')){
+        } elseif ($file = $request->file('logo')) {
 
             $company = Company::create([
                 'id' => $request->id,
@@ -109,11 +108,10 @@ class CompanyController extends Controller
                 'id_subcategory' => $request->id_subcategory,
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
-                'created_at'=>$request->created_at,
-                'updated_at'=>$request->updated_at
+                'created_at' => $request->created_at,
+                'updated_at' => $request->updated_at
             ]);
-
-        }elseif($file = $request->file('background')){
+        } elseif ($file = $request->file('background')) {
 
             $company = Company::create([
                 'id' => $request->id,
@@ -126,10 +124,9 @@ class CompanyController extends Controller
                 'id_subcategory' => $request->id_subcategory,
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
-                'created_at'=>$request->created_at,
-                'updated_at'=>$request->updated_at
+                'created_at' => $request->created_at,
+                'updated_at' => $request->updated_at
             ]);
-            
         } else {
 
             $company = Company::create([
@@ -142,8 +139,8 @@ class CompanyController extends Controller
                 'id_subcategory' => $request->id_subcategory,
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
-                'created_at'=>$request->created_at,
-                'updated_at'=>$request->updated_at
+                'created_at' => $request->created_at,
+                'updated_at' => $request->updated_at
             ]);
 
             // if (!$company) {
@@ -196,7 +193,7 @@ class CompanyController extends Controller
     {
         $company = Company::find($id);
         $code = $this->generateUniqueCode();
-        $code = $this->generateUniqueCode2();
+        $code2 = $this->generateUniqueCode2();
 
         if ($file = $request->file('logo')) {
 
@@ -222,12 +219,12 @@ class CompanyController extends Controller
 
             $upload2 = $request->file('background');
             $this->validate($request, [
-                'background'=>'|mimes:jpg,jpeg,png,gif|max:2048',
+                'background' => '|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
-            $penyimpanan2 = public_path().'/company-bg';
-            $upload2->move($penyimpanan2, $code2.'.'.$upload2->getClientOriginalExtension());
-            $image2 = $code2.'.'.$upload2->getClientOriginalExtension();
-        } 
+            $penyimpanan2 = public_path() . '/company-bg';
+            $upload2->move($penyimpanan2, $code2 . '.' . $upload2->getClientOriginalExtension());
+            $image2 = $code2 . '.' . $upload2->getClientOriginalExtension();
+        }
 
         if ($file = $request->file('logo') and $file = $request->file('background')) {
 
@@ -243,7 +240,7 @@ class CompanyController extends Controller
                 'id_subcategory' => $request->id_subcategory,
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
-                'updated_at'=>$request->updated_at
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$company) {
@@ -263,7 +260,7 @@ class CompanyController extends Controller
                 'id_subcategory' => $request->id_subcategory,
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
-                'updated_at'=>$request->updated_at
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$company) {
@@ -283,7 +280,7 @@ class CompanyController extends Controller
                 'id_subcategory' => $request->id_subcategory,
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
-                'updated_at'=>$request->updated_at
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$company) {
@@ -302,7 +299,7 @@ class CompanyController extends Controller
                 'id_subcategory' => $request->id_subcategory,
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
-                'updated_at'=>$request->updated_at
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$company) {
@@ -353,7 +350,7 @@ class CompanyController extends Controller
         do {
             $code = random_int(100000, 999999);
         } while (Company::where("logo", "=", $code)->first());
-  
+
         return $code;
     }
 
@@ -362,7 +359,7 @@ class CompanyController extends Controller
         do {
             $code2 = random_int(100000, 999999);
         } while (Company::where("background", "=", $code2)->first());
-  
+
         return $code2;
     }
 }
