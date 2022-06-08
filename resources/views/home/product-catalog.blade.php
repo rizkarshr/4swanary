@@ -57,9 +57,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#services">Category</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto " href="{{ url('/home') }}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/home') }}#services">Category</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/home') }}#about">About</a></li>
       </nav><!-- .navbar -->
 
     </div>

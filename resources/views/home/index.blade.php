@@ -53,9 +53,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#services">Category</a></li>
-          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+          <li><a class="nav-link scrollto active" href="{{ url('/home') }}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/home') }}#services">Category</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/home') }}#about">About Us</a></li>
 
       </nav><!-- .navbar -->
 
@@ -171,7 +171,8 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-store"></i></div>
-              <h4><a href="{{ url('/company/{id}') }}">MSME</a></h4>
+               <h4><a div href="{{ url('/search/msme') }}">MSME</a></h4>
+              <!--<h4><a href="{{ url('/company/{id}') }}">MSME</a></h4>-->
               <p>If you click on this section, you can check the categories by MSME</p>
             </div>
           </div>
@@ -179,7 +180,8 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-archive"></i></div>
-              <h4><a href="">Product</a></h4>
+              <h4><a div href="{{ url('/search/product') }}">PRODUCT</a></h4>
+              <!--<h4><a href="">Product</a></h4>-->
               <p>If you click on this section, you can check the categories by product</p>
             </div>
           </div>

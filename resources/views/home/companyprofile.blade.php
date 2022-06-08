@@ -70,7 +70,7 @@ session_start();
             <nav id=" navbar" class="navbar">
                 <div class="w3l_offers">
 
-                    <a href=""><img src="{{ asset('assett/img/aswanalogo.png') }}" alt="" width="100px;"></a>
+                    <a href=""><img src="{{asset('/images/l.png')}}" width="20%"></a>
 
 
                     <!--<ul><img src="{{asset('images/l.png') }}" style="width:100px; "></ul>-->
@@ -210,7 +210,7 @@ session_start();
     <!-- //navigation -->
 
 
-    <!-- main-slider -->
+    <!-- main-slider
     <ul id="demo1">
         <li>
             <img src="{{ asset('asset/images/slider1.jpg') }}" alt="" />
@@ -225,54 +225,52 @@ session_start();
         <li>
             <img src="{{ asset('asset/images/slider4.jpg') }}" alt="" />
         </li>
-    </ul>
+    </ul>-->
     <!-- //main-slider -->
     <!-- //top-header and slider -->
 
 
     <!-- market value area start -->
     <div class="container">
-        <div class="nav-page">
-            <li><a class="nav-page scrollto active" href="#">Company Profile</a></li>
-            <li><</li>
-            <li><a href="/search/msme">{{$company->subcategory->name}}</a></li>
-            <li><</li>
-            <li><a href="/home">Home</a></li>
+        <div class="nav-page">            
+            <!--<li><a href="#">{{$company->subcategory->name}}</a></li>
+            <li><</li>-->
+            <li><a class="nav-page scrollto" href="/search/msme">Category MSME</a></li>
+            <li>|</li> 
+            <li><a class="nav-page scrollto active" href="#"><b>MSME Profile</b></a></li>
+            <li></li>           
         </div>
+        
+   <!--=============================== Profile=========================================================-->
         <div class="row mt-6">
             <div class="col-12">
                 <div class="card">
                     <div class="card-head">
                         <div class="col-sm-5 col-md-4 profil">
-                            <ul><img src="{{ asset('company-logo/'.$company->logo) }}" alt=" " class="img-responsive">
-                                <h2>{{$company->name}}</h2>
+                            <br>
+                            <ul><img src="{{ asset('company/'.$company->logo) }}" alt=" " class="img-responsive" style=" width:200px; height:180px ;border-radius:10%;">
                             </ul>
-
                         </div>
-                        <h5>Establishes in {{$company->since}}
-                            <br><br>
-                            {{$company->IndonesiaCity->name}}, {{$company->IndonesiaProvince->name}}
-                        </h5>
+                        <br> <br>
+                        <p style="font-size: 30px;"><b>{{$company->name}}</b></p> 
                         <a data-toggle="modal" data-target="#modalAppointment">
                             <button>Schedule on Appoinment</button>
                         </a>
-                        <!--<div class="d-sm-flex justify-content-between align-items-center">
-                            <h2>Welcome to Aswana.ry Directory</h2>
-                        </div>
-                        <div class="market-status-table mt-4">
-                            You are login as <strong>Admin</strong>
-                            <br>
-                            <p>On the admin page, you can manage users and admins, manage articles, manage companies, manage products, add product categories and subcategories, and view origins lists.</p>
-                        </div>-->
-                    </div>
+                        <p>____________________________________________________</p>
+                        <br>
+                        <p><i>Establishes in {{$company->since}}</i></p>
+                        <p>{{$company->IndonesiaCity->name}}, {{$company->IndonesiaProvince->name}}</p>
+                        
+
+                    
                     <div class="card-body">
                         <table id="table" class="display" style="width:100%">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>Website or Social Media</th>
-                                    <th>Email Address</th>
-                                    <th>Business Sector</th>
-                                    <th>Contact Number</th>
+                                    <th><u>Website or Social Media</u></th>
+                                    <th><u>Email Address</u></th>
+                                    <th><u>Business Sector</u></th>
+                                    <th><u>Contact Number</u></th>
                                 </tr>
                             </thead>
                             <tbody>

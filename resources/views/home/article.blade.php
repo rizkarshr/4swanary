@@ -84,7 +84,7 @@
 
     <!-- ======= Isi Artikel Section ======= -->
     <section id="isiartikel" class="about section-bg">
-    @foreach ($article as $data)
+    @foreach ($article as $article)
       <div class="container" data-aos="fade-up">
         <div class="section-title">
           <h3> {{ $article->title }}</h3><br>
@@ -96,7 +96,7 @@
     @endforeach     
 
         <div class="row">
-        @foreach ($article as $data)     
+        @foreach ($article as $article)     
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
 
           </div>
