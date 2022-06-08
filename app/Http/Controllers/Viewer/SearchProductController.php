@@ -16,51 +16,46 @@ class SearchProductController extends Controller
 
     public function index(Request $request)
     {
-        // if($request->id_subcategory!= null||$request->id_indonesia_province != null){
+        $subcategory = Subcategory::with('category')->where('id_category','2')->orderBy('name')->get();
+        $province = IndonesiaProvince::orderBy('name')->get();
+        // $search = Product::with('subcategory','IndonesiaCity','IndonesiaProvince')->get();
 
-        //     if($request->id_subcategory != null AND $request->id_indonesia_province != null){
+        if($request->id_subcategory!= null||$request->id_indonesia_province != null){
 
-        //         $search = Product::search($request->search)
-        //         ->where('id_indonesia_province', $request->id_indonesia_province)
-        //         ->where('id_subcategory', $request->id_subcategory)
-        //         ->get();
+            if($request->id_subcategory != null AND $request->id_indonesia_province != null){
 
-        //     } elseif($request->id_indonesia_province != null && $request->id_subcategory == null){
+                $search = Product::search($request->search)
+                ->where('id_indonesia_province', $request->id_indonesia_province)
+                ->where('id_subcategory', $request->id_subcategory)
+                ->get();
 
-        //         $search = Product::search($request->search)
-        //         ->where('id_indonesia_province', $request->id_indonesia_province)->get();
+            } elseif($request->id_indonesia_province != null && $request->id_subcategory == null){
+
+                $search = Product::search($request->search)
+                ->where('id_indonesia_province', $request->id_indonesia_province)->get();
     
-        //     } elseif($request->id_indonesia_province == null && $request->id_subcategory!= null){
+            } elseif($request->id_indonesia_province == null && $request->id_subcategory!= null){
 
-        //         $search = Product::search($request->search)
-        //         ->where('id_subcategory', $request->id_subcategory)->get();
+                $search = Product::search($request->search)
+                ->where('id_subcategory', $request->id_subcategory)->get();
     
-        //     } 
+            } 
 
-        // } elseif ($request->id_subcategory == null && $request->id_indonesia_province == null){
+        } elseif ($request->id_subcategory == null && $request->id_indonesia_province == null){
 
-        //     $search = Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get();
+            $search = Product::with('subcategory','IndonesiaCity','IndonesiaProvince')->get();
 
-        //     if($request->filled('search')){
+            if($request->filled('search')){
 
-        //         $search = Product::search($request->search)->get();
+                $search = Product  ::search($request->search)->get();
     
-        //     } 
+            } 
 
-        // } else{
+        } else{
 
-        //     $search = Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get(); 
+            $search = Product::with('subcategory','IndonesiaCity','IndonesiaProvince')->get();
 
-        $search = Product::with(['company','subcategory','IndonesiaCity','IndonesiaProvince']);
-        if ($request->id_subcategory != null){
-            $search = $search->where('id_subcategory',$request->id_subcategory); 
         }
-
-        if ($request->id_indonesia_province != null){
-            $search = $search->where('id_indonesia_province',$request->id_indonesia_province);
-        }
-
-        $search->get();
-        return view ('/home/categoryproduct', compact('search'));
+        return view ('home.categoryproduct', compact('subcategory','province','search'));
     }
 }

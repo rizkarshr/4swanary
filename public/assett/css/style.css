@@ -1104,7 +1104,7 @@ section {
 }
 .img-fluid {
   border-radius: 20px;
-  max-height: 300px;
+  max-height: 400px;
 }
 
 /*--------------------------------------------------------------
@@ -1113,7 +1113,7 @@ section {
 .card{
   width: 230px;
   display: inline-block;
-  height: 310px;
+  height: 320px;
   margin-bottom: 10px;
   margin-top: 1px;
   margin-left: 20px;
