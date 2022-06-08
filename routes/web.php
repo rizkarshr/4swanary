@@ -92,7 +92,7 @@ Route::post('/admin/manage-article/update/{id}', [App\Http\Controllers\Admin\Art
 Route::get('/admin/manage-article/delete/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'destroy']);
 
 //COBA CRUD
-// Route::get('/admin/coba-edit/{id}', [App\Http\Controllers\Admin\CobaController::class, 'edit']);
+Route::get('/admin/coba-edit/{id}', [App\Http\Controllers\Admin\CobaController::class, 'edit']);
 // Route::POST('/admin/update/{id}', [App\Http\Controllers\Admin\CobaController::class, 'update']);
 // Route::post('/admin/coba-update/{id}', [App\Http\Controllers\Admin\CobaController::class, 'update']);
 
@@ -200,7 +200,7 @@ Route::get('crud/edituser', function () {
 //     return view('user');
 // })->name('user');
 
-// //article
+//article
 // Route::get('article', function () {
 //     return view('article');
 // })->name('article');

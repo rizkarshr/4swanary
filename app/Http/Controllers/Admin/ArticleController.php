@@ -63,35 +63,33 @@ class ArticleController extends Controller
 
             $content = $request->content;
             $dom = new \DomDocument();
-            $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
-            $images = $dom->getElementsByTagName('img');
-
-            foreach($images as $k => $img){
-                
+            $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $imageFile = $dom->getElementsByTagName('imageFile');
+        
+            foreach($imageFile as $item => $image){
                 $data = $img->getAttribute('src');
                 list($type, $data) = explode(';', $data);
                 list(, $data)      = explode(',', $data);
-                $data = base64_decode($data);
-                $article_content= "/upload/" . time().$k.'.png';
-                $path = public_path() . $article_content;
-                file_put_contents($path, $data);
-                $img->removeAttribute('src');
-                $img->setAttribute('src', $article_content);
-        
-            }
-    
+                $imgeData = base64_decode($data);
+                $image_name= "/upload/" . time().$item.'.png';
+                $path = public_path() . $image_name;
+                file_put_contents($path, $imgeData);
+                
+                $image->removeAttribute('src');
+                $image->setAttribute('src', $image_name);
+                }
+ 
             $content = $dom->saveHTML();
  
-
             $article = Article::create([
                 'id' => $request->id,
                 'title' => $request->title,
-                'keywords' => $request->keywords,
                 'image' => $image,
-                'content' => $content,
-                'writer' => $request->writer,
                 'source' => $request->source,
-                'status' => 'Inactive',
+                'status' => $request->status,
+                'content' => $content,
+                'created_at'=>$request->created_at,
+                'updated_at'=>$request->updated_at
             ]);
 
             if (!$article) {
@@ -102,34 +100,32 @@ class ArticleController extends Controller
 
             $content = $request->content;
             $dom = new \DomDocument();
-            $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
-            $images = $dom->getElementsByTagName('img');
-
-            foreach($images as $k => $img){
-                
+            $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $imageFile = $dom->getElementsByTagName('imageFile');
+        
+            foreach($imageFile as $item => $image){
                 $data = $img->getAttribute('src');
                 list($type, $data) = explode(';', $data);
                 list(, $data)      = explode(',', $data);
-                $data = base64_decode($data);
-                $article_content= "/upload/" . time().$k.'.png';
-                $path = public_path() . $article_content;
-                file_put_contents($path, $data);
-                $img->removeAttribute('src');
-                $img->setAttribute('src', $article_content);
+                $imgeData = base64_decode($data);
+                $image_name= "/upload/" . time().$item.'.png';
+                $path = public_path() . $image_name;
+                file_put_contents($path, $imgeData);
+                
+                $image->removeAttribute('src');
+                $image->setAttribute('src', $image_name);
+                }
         
-            }
-    
             $content = $dom->saveHTML();
 
             $article = Article::create([
                 'id' => $request->id,
                 'title' => $request->title,
-                'keywords' => $request->keywords,
-                'image' => $image,
-                'content' => $content,
-                'writer' => $request->writer,
                 'source' => $request->source,
-                'status' => 'Inactive',
+                'status' => $request->status,
+                'content' => $content,
+                'created_at'=>$request->created_at,
+                'updated_at'=>$request->updated_at
             ]);
 
             if (!$article) {
@@ -200,12 +196,10 @@ class ArticleController extends Controller
             $article->update([
                 'id' => $request->id,
                 'title' => $request->title,
-                'keywords' => $request->keywords,
                 'image' => $image,
-                'content' => $request->content,
-                'writer' => $request->writer,
                 'source' => $request->source,
                 'status' => $request->status,
+                'content' => $request->content,
             ]);
 
             if (!$article) {
@@ -219,11 +213,9 @@ class ArticleController extends Controller
             $article->update([
                 'id' => $request->id,
                 'title' => $request->title,
-                'keywords' => $request->keywords,
-                'content' => $request->content,
-                'writer' => $request->writer,
                 'source' => $request->source,
                 'status' => $request->status,
+                'content' => $request->content,
             ]);
 
             if (!$article) {
@@ -266,7 +258,7 @@ class ArticleController extends Controller
     {
         do {
             $code = random_int(100000, 999999);
-        } while (Product::where("product_pict", "=", $code)->first());
+        } while (Article::where("image", "=", $code)->first());
   
         return $code;
     }

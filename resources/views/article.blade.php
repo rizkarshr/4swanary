@@ -145,7 +145,9 @@ session_start();
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h2 align="center">List Article</h2>
-                                    <button style="margin-bottom:20px" data-toggle="modal" data-target="#myModal" class="btn btn-info col-md-2"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Article</button>
+                                    <a href="/admin/manage-article/create">
+                                        <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;"class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Article</button>
+                                    </a>
                                 </div>
                                 <div class="data-tables datatable-dark">
                                     <table id="dataTable3" class="display" style="width:100%">
@@ -154,10 +156,7 @@ session_start();
                                                 <th>No.</th>
                                                 <th>ID</th>
                                                 <th>Title</th>
-                                                <th>Keywords</th>
                                                 <th>Image</th>
-                                                <th>Content</th>
-                                                <th>Writer</th>
                                                 <th>Source</th>
                                                 <th>Status</th>
                                                 <th>Created at</th>
@@ -171,10 +170,9 @@ session_start();
                                                 <td>{{ $loop->iteration}}</td>
                                                 <td>{{ $article->id }}</td>
                                                 <td>{{ $article->title }}</td>
-                                                <td>{{ $article->keywords }}</td>
-                                                <td><img src="/public/images/article {{ $article->image }}" width="50%"> </td>
-                                                <td>{{ $article->content }}</td>
-                                                <td>{{ $article->writer }}</td>
+                                                <td>
+                                                    <img src="{{ asset('article/'.$article->image) }}" width="50%"> 
+                                                </td>
                                                 <td>{{ $article->source }}</td>
                                                 <td>{{ $article->status }}</td>
                                                 <td>{{ $article->created_at }}</td>

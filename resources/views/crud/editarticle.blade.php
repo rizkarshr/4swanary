@@ -39,6 +39,11 @@ session_start();
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
     <!-- modernizr css -->
     <script src="{{asset('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+
+    <!-- include summernote css/js-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 
 <body>
@@ -145,44 +150,42 @@ session_start();
                             <div class="card-body">
                                 <h2 align="center">Edit Articla</h2>
                                 <div class="modal-body">
-                                    <form action="{{ url('/admin/manage-article') }}" method="post" enctype="multipart/form-data">
+                                    <form class="form-sample" action="/admin/manage-article/update/{{$article->id}}" method="post" enctype="multipart/form-data">
+                                        <?php date_default_timezone_set('Asia/Makassar'); ?>
+                                        @csrf
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s")?>">
                                         <div class="form-group">
                                             <label>Title</label>
-                                            <input name="title" type="text" class="form-control" required autofocus>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Keywords</label>
-                                            <input name="keywords" type="text" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Content</label>
-                                            <input name="content" type="text" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Writer</label>
-                                            <input name="writer" type="text" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Source</label>
-                                            <input name="source" type="text" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Status</label>
-                                            <input name="status" type="text" class="form-control" required>
+                                            <input name="title" type="text" class="form-control" value="{{$article->title}}" required autofocus>
                                         </div>
                                         <div class="form-group">
                                             <label>Article Image</label>
-                                            <input name="image" type="file" class="form-control">
+                                            <input name="image" type="file" class="form-control" value="{{$article->image}}">
                                         </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="/admin/manage-article">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                    </a>
-                                    <input name="editarticle" type="submit" class="btn btn-primary" value="Save">
-                                </div>
-                                </form>
+                                        <div class="form-group">
+                                            <label>Source</label>
+                                            <input name="source" type="text" class="form-control" value="{{$article->source}}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select  class="form-control" name="status" id="status" required>
+                                                <option value="{{$article->status}}" disabled>value="{{$article->status}}"</option>
+                                                <option value="Active">Active</option>
+                                                <option value="Deactive">Deactive</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><strong>Content :</strong></label>
+                                            <textarea id="summernote" name="content" required>{{$article->content}}</textarea>
+                                        </div> 
+                                        <div class="modal-footer">
+                                            <a href="/admin/manage-product">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                            </a>
+                                            <input name="addproduct" type="submit" class="btn btn-primary" value="Add">
+                                        </div>
+                                    </form>
+                                </div>                                    
                             </div>
                         </div>
                     </div>
@@ -204,17 +207,22 @@ session_start();
     </div>
     <!-- page container area end -->
 
-    <!-- modal input -->
-
-    <!-- modal input end -->
-
-    <!-- modal edit -->
-
-    <!-- modal edit end -->
-
-    <!-- modal delete -->
-
-    <!-- modal delete end -->
+    <script>
+        $('#summernote').summernote({
+          placeholder: 'Hello stand alone ui',
+          tabsize: 2,
+          height: 120,
+          toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+          ]
+        });
+    </script>
 
     <script>
         $(document).ready(function() {
