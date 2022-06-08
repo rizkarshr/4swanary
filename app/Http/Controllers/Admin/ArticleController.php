@@ -37,7 +37,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('createarticle');
+        return view('crud/createarticle');
     }
 
     /**
@@ -61,12 +61,34 @@ class ArticleController extends Controller
             $upload->move($penyimpanan, $code.'.'.$upload->getClientOriginalExtension());
             $image = $code.'.'.$upload->getClientOriginalExtension();
 
+            $content = $request->content;
+            $dom = new \DomDocument();
+            $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+            $images = $dom->getElementsByTagName('img');
+
+            foreach($images as $k => $img){
+                
+                $data = $img->getAttribute('src');
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+                $data = base64_decode($data);
+                $article_content= "/upload/" . time().$k.'.png';
+                $path = public_path() . $article_content;
+                file_put_contents($path, $data);
+                $img->removeAttribute('src');
+                $img->setAttribute('src', $article_content);
+        
+            }
+    
+            $content = $dom->saveHTML();
+ 
+
             $article = Article::create([
                 'id' => $request->id,
                 'title' => $request->title,
                 'keywords' => $request->keywords,
                 'image' => $image,
-                'content' => $request->content,
+                'content' => $content,
                 'writer' => $request->writer,
                 'source' => $request->source,
                 'status' => 'Inactive',
@@ -77,12 +99,34 @@ class ArticleController extends Controller
             }
             
         } else {
+
+            $content = $request->content;
+            $dom = new \DomDocument();
+            $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+            $images = $dom->getElementsByTagName('img');
+
+            foreach($images as $k => $img){
+                
+                $data = $img->getAttribute('src');
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+                $data = base64_decode($data);
+                $article_content= "/upload/" . time().$k.'.png';
+                $path = public_path() . $article_content;
+                file_put_contents($path, $data);
+                $img->removeAttribute('src');
+                $img->setAttribute('src', $article_content);
+        
+            }
+    
+            $content = $dom->saveHTML();
+
             $article = Article::create([
                 'id' => $request->id,
                 'title' => $request->title,
                 'keywords' => $request->keywords,
                 'image' => $image,
-                'content' => $request->content,
+                'content' => $content,
                 'writer' => $request->writer,
                 'source' => $request->source,
                 'status' => 'Inactive',
@@ -121,7 +165,7 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);
 
-        return view('editarticle', compact('article'));
+        return view('crud/editarticle', compact('article'));
     }
 
     /**

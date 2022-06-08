@@ -44,7 +44,7 @@ class CompanyController extends Controller
         $province = IndonesiaProvince::all();
         $city = IndonesiaCity::with('IndonesiaProvince')->get();
 
-        return view('createcompany',compact('subcategory','province','city'));
+        return view('crud/createcompany',compact('subcategory','province','city'));
     }
 
     /**
@@ -176,7 +176,7 @@ class CompanyController extends Controller
 
         $company = Company::with('subcategory','IndonesiaCity','IndonesiaProvince')->find($id);
 
-        return view('editcompany', compact('company','subcategory','province','city'));
+        return view('crud/editcompany', compact('company','subcategory','province','city'));
     }
 
     /**

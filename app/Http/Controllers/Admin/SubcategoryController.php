@@ -38,7 +38,7 @@ class SubcategoryController extends Controller
     {
         $category = Category::all();
 
-        return view('createsubcategory', compact('category'));
+        return view('crud/createsubcategory', compact('category'));
     }
 
     /**
@@ -83,7 +83,7 @@ class SubcategoryController extends Controller
         $category = Category::all();
         $subcategory = Subcategory::with('category')->find($id);
         
-        return view('editsubcategory', compact('subcategory','category'));
+        return view('crud/editsubcategory', compact('subcategory','category'));
     }
 
     /**

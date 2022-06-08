@@ -38,7 +38,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('createcategory');
+        return view('crud/createcategory');
     }
 
     /**
@@ -88,7 +88,7 @@ class CategoryController extends Controller
         // $profil = User::where('id', Auth::user()->id)->first();
         $category = Category::find($id);
 
-        return view('editcategory', compact('category'));
+        return view('crud/editcategory', compact('category'));
     }
 
     /**

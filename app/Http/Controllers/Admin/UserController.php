@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+        return view('crud/createuser');
     }
 
     /**
@@ -47,7 +47,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request, $id)
     {
         $code = $this->generateUniqueCode();
         // $profil = User::where('id', Auth::user()->id)->first();
@@ -115,13 +115,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        $profil = User::where('id', Auth::user()->id)->first();
+        // $profil = User::where('id', Auth::user()->id)->first();
 
-        $user = User::find($user->id);
+        $user = User::find($id);
 
-        return view('user', compact('profil','user'));
+        return view('crud/createuser', compact('user'));
     }
 
     /**
@@ -131,7 +131,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {        
         // $profil = User::where('id', Auth::user()->id)->first();
         $user = User::find($id);
@@ -193,11 +193,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
         $profil = User::where('id', Auth::user()->id)->first();
 
-        $user = User::find($user->id);
+        $user = User::find($id);
         
         if(File::exists(public_path('user/'.$user->profil_pict))){
 
