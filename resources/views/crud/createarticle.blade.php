@@ -110,7 +110,7 @@ session_start();
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-6 col-sm-4 clearfix">
-                        <ul class="notification-area pull-right"> 
+                        <ul class="notification-area pull-right">
                             <li>
                                 <h3>
                                     <div class="date">
@@ -148,20 +148,20 @@ session_start();
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h2 style="align:center">Add Article</h2>
+                                <h2 align="center">Add Article</h2>
                                 <div class="modal-body">
                                     <form class="form-sample" action="/admin/manage-article/store/" method="post" enctype="multipart/form-data">
                                         <?php date_default_timezone_set('Asia/Makassar'); ?>
                                         @csrf
-                                        <input type="hidden" name="created_at" value="<?php echo date("Y-m-d H:i:s")?>">
-                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s")?>">
+                                        <input type="hidden" name="created_at" value="<?php echo date("Y-m-d H:i:s") ?>">
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Title</label>
                                             <input name="title" type="text" class="form-control" required autofocus>
                                         </div>
                                         <div class="form-group">
                                             <label>Article Image</label>
-                                            <input name="image" type="file" class="form-control">
+                                            <input name="image" type="file" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Source</label>
@@ -169,8 +169,8 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Status</label>
-                                            <select  class="form-control" name="status" id="status" required>
-                                                <option value="">Choose Status</option>
+                                            <select class="form-control" name="status" id="status" required>
+                                                <option selected disabled="">Choose Status</option>
                                                 <option value="Active">Active</option>
                                                 <option value="Inactive">Inactive</option>
                                             </select>
@@ -178,7 +178,7 @@ session_start();
                                         <div class="form-group">
                                             <label><strong>Content :</strong></label>
                                             <textarea id="summernote" name="content" required></textarea>
-                                        </div> 
+                                        </div>
                                         <div class="modal-footer">
                                             <a href="/admin/manage-product">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -209,20 +209,20 @@ session_start();
     <!-- page container area end -->
 
     <script>
-      $('#summernote').summernote({
-        placeholder: 'Hello stand alone ui',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-      });
+        $('#summernote').summernote({
+            placeholder: 'Hello stand alone ui',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
     </script>
 
     <script>

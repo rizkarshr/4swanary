@@ -145,15 +145,17 @@ session_start();
                             <div class="card-body">
                                 <h2 align="center">Edit Category</h2>
                                 <div class="modal-body">
-                                    <form action="{{ url('/admin/manage-category') }}" method="post" enctype="multipart/form-data">
-
+                                    <form action="/admin/manage-category/update/{{$category->id}}" method="post" enctype="multipart/form-data">
+                                        <?php date_default_timezone_set('Asia/Makassar'); ?>
+                                        @csrf
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Category Name</label>
-                                            <input name="name" type="text" class="form-control" required autofocus>
+                                            <input name="name" type="text" class="form-control" value="{{$category->name}}" required autofocus>
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <input name="desc" type="text" class="form-control" required>
+                                            <input name="desc" type="text" class="form-control" value="{{$category->desc}}" required>
                                         </div>
 
                                 </div>

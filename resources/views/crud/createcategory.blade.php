@@ -145,8 +145,10 @@ session_start();
                             <div class="card-body">
                                 <h2 align="center">Add Category</h2>
                                 <div class="modal-body">
-                                    <form action="{{ url('/admin/manage-category') }}" method="post" enctype="multipart/form-data">
-
+                                    <form action="/admin/manage-category/store/" method="post" enctype="multipart/form-data">
+                                        <?php date_default_timezone_set('Asia/Makassar'); ?>
+                                        @csrf
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Category Name</label>
                                             <input name="name" type="text" class="form-control" required autofocus>
@@ -161,7 +163,7 @@ session_start();
                                     <a href="/admin/manage-category">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                     </a>
-                                    <input name="addcategory" type="submit" class="btn btn-primary" value="Save">
+                                    <input name="addcategory" type="submit" class="btn btn-primary" value="Add">
                                 </div>
                                 </form>
                             </div>

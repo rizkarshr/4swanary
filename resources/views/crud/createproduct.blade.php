@@ -148,8 +148,8 @@ session_start();
                                     <form class="form-sample" action="/admin/manage-product/store/" method="POST" enctype="multipart/form-data">
                                         <?php date_default_timezone_set('Asia/Makassar'); ?>
                                         @csrf
-                                        <input type="hidden" name="created_at" value="<?php echo date("Y-m-d H:i:s")?>">
-                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s")?>">
+                                        <input type="hidden" name="created_at" value="<?php echo date("Y-m-d H:i:s") ?>">
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Product Name</label>
                                             <input name="name" type="text" class="form-control" required autofocus>
@@ -168,8 +168,8 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Subcategory</label>
-                                            <select id="id_subcategory" name="id_subcategory" class="form-control">
-                                                <option value="">Choose Subcategory</option>
+                                            <select id="id_subcategory" name="id_subcategory" class="form-control" required>
+                                                <option selected disabled="">Choose Subcategory</option>
                                                 @foreach ($subcategory as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -177,8 +177,8 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Province</label>
-                                            <select name="id_indonesia_province" class="form-control">
-                                                <option value="">Choose Province</option>
+                                            <select name="id_indonesia_province" class="form-control" required>
+                                                <option selected disabled="">Choose Province</option>
                                                 @foreach ($province as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -186,17 +186,17 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>City</label>
-                                            <select name="id_indonesia_city" class="form-control">
-                                                <option value="">Choose City</option>
+                                            <select name="id_indonesia_city" class="form-control" required>
+                                                <option selected disabled="">Choose City</option>
                                                 @foreach ($city as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>ID Company</label>
-                                            <select name="id_company" class="form-control">
-                                                <option value="">Choose Company</option>
+                                            <label>Company</label>
+                                            <select name="id_company" class="form-control" required>
+                                                <option selected disabled="">Choose Company</option>
                                                 @foreach ($company as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -205,7 +205,7 @@ session_start();
 
                                         <div class="form-group">
                                             <label>Product Picture</label>
-                                            <input name="product_pict" type="file" class="form-control">
+                                            <input name="product_pict" type="file" class="form-control" required>
                                         </div>
                                         <div class="modal-footer">
                                             <a href="/admin/manage-product">

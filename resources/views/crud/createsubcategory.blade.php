@@ -145,7 +145,11 @@ session_start();
                             <div class="card-body">
                                 <h2 align="center">Add Subcategory</h2>
                                 <div class="modal-body">
-                                    <form action="{{ url('/admin/manage-subcategory') }}" method="post" enctype="multipart/form-data">
+                                    <form action="/admin/manage-subcategory/store/" method="post" enctype="multipart/form-data">
+                                        <?php date_default_timezone_set('Asia/Makassar'); ?>
+                                        @csrf
+                                        <input type="hidden" name="created_at" value="<?php echo date("Y-m-d H:i:s") ?>">
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Subcategory Name</label>
                                             <input name="name" type="text" class="form-control" required autofocus>
@@ -153,6 +157,15 @@ session_start();
                                         <div class="form-group">
                                             <label>Description</label>
                                             <input name="desc" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select id="id_category" name="id_category" class="form-control" required>
+                                                <option selected disabled="">Choose Category</option>
+                                                @foreach ($category as $data)
+                                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
 
                                 </div>

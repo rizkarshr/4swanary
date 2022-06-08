@@ -168,12 +168,12 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Contact Number</label>
-                                            <input name="contact_number" type="number" class="form-control">
+                                            <input name="contact_number" type="number" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Subcategory</label>
-                                            <select id="id_subcategory" name="id_subcategory" class="form-control">
-                                                <option value="">Choose Subcategory</option>
+                                            <select id="id_subcategory" name="id_subcategory" class="form-control" required>
+                                                <option selected disabled="">Choose Subcategory</option>
                                                 @foreach ($subcategory as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -181,8 +181,8 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Province</label>
-                                            <select name="id_indonesia_province" class="form-control">
-                                                <option value="">Choose Province</option>
+                                            <select name="id_indonesia_province" class="form-control" required>
+                                                <option selected disabled="">Choose Province</option>
                                                 @foreach ($province as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -190,8 +190,8 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>City</label>
-                                            <select name="id_indonesia_city" class="form-control">
-                                                <option value="">Choose City</option>
+                                            <select name="id_indonesia_city" class="form-control" required>
+                                                <option selected disabled="">Choose City</option>
                                                 @foreach ($city as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -200,11 +200,11 @@ session_start();
 
                                         <div class="form-group">
                                             <label>Logo</label>
-                                            <input name="logo" type="file" class="form-control">
+                                            <input name="logo" type="file" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Background</label>
-                                            <input name="background" type="file" class="form-control">
+                                            <input name="background" type="file" class="form-control" required>
                                         </div>
 
                                 </div>

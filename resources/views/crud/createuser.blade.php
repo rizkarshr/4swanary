@@ -145,14 +145,18 @@ session_start();
                             <div class="card-body">
                                 <h2 align="center">Add User</h2>
                                 <div class="modal-body">
-                                    <form action="{{ url('/admin/manage-user') }}" method="post" enctype="multipart/form-data">
+                                    <form action="/admin/manage-user/store/" method="post" enctype="multipart/form-data">
+                                        <?php date_default_timezone_set('Asia/Makassar'); ?>
+                                        @csrf
+                                        <input type="hidden" name="created_at" value="<?php echo date("Y-m-d H:i:s") ?>">
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Username</label>
                                             <input name="username" type="text" class="form-control" required autofocus>
                                         </div>
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input name="name" type="text" class="form-control" required autofocus>
+                                            <input name="name" type="text" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
@@ -164,7 +168,11 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Status</label>
-                                            <input name="status" type="text" class="form-control" required>
+                                            <select class="form-control" name="status" id="status" required>
+                                                <option selected disabled="">Choose Status</option>
+                                                <option value="Active">Active</option>
+                                                <option value="Inactive">Inactive</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Remember Token</label>
@@ -173,7 +181,7 @@ session_start();
 
                                         <div class="form-group">
                                             <label>Profile Picture</label>
-                                            <input name="profile_pict" type="file" class="form-control">
+                                            <input name="profile_pict" type="file" class="form-control" required>
                                         </div>
 
                                 </div>

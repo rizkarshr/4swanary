@@ -145,45 +145,65 @@ session_start();
                             <div class="card-body">
                                 <h2 align="center">Edit Company</h2>
                                 <div class="form-edit">
-                                    <form action="{{ url('/admin/manage-company') }}" method="post" enctype="multipart/form-data">
+                                    <form class="form-sample" action="/admin/manage-company/update/{{$company->id}}" method="post" enctype="multipart/form-data">
+                                        <?php date_default_timezone_set('Asia/Makassar'); ?>
+                                        @csrf
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Company Name</label>
-                                            <input name="name" type="text" class="form-control" required autofocus>
+                                            <input name="name" type="text" class="form-control" value="{{$company->name}}" required autofocus>
                                         </div>
                                         <div class="form-group">
                                             <label>Since</label>
-                                            <input name="logo" type="text" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sector</label>
-                                            <input name="sector" type="text" class="form-control" required>
+                                            <input name="since" type="text" class="form-control" value="{{$company->since}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Website</label>
-                                            <input name="website" type="text" class="form-control" required>
+                                            <input name="website" type="text" class="form-control" value="{{$company->website}}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input name="email" type="text" class="form-control" value="{{$company->email}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Contact Number</label>
-                                            <select name="contact_number" class="form-control">
-                                                <option selected>Choose Subcategory</option>
-
+                                            <input name="contact_number" type="number" class="form-control" value="{{$company->contact_number}}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Subcategory</label>
+                                            <select id="id_subcategory" name="id_subcategory" class="form-control" required>
+                                                <option value disabled="{{$company->id_subcategory}}">{{$company->subcategory->name}}</option>
+                                                @foreach ($subcategory as $data)
+                                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Origin</label>
-                                            <select name="id_origin" class="form-control">
-                                                <option selected>Choose Origin</option>
-
+                                            <label>Province</label>
+                                            <select name="id_indonesia_province" class="form-control" required>
+                                                <option value disabled="{{$company->id_indonesia_province}}">{{$company->IndonesiaProvince->name}}</option>
+                                                @foreach ($province as $data)
+                                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <select name="id_indonesia_city" class="form-control" required>
+                                                <option value disabled="{{$company->id_indonesia_city}}">{{$company->IndonesiaCity->name}}</option>
+                                                @foreach ($city as $data)
+                                                <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Logo</label>
-                                            <input name="logo" type="file" class="form-control">
+                                            <input name="logo" type="file" class="form-control" value="{{$company->logo}}">
                                         </div>
                                         <div class="form-group">
-                                            <label>Banner</label>
-                                            <input name="banner" type="file" class="form-control">
+                                            <label>Background</label>
+                                            <input name="background" type="file" class="form-control" value="{{$company->background}}">
                                         </div>
 
                                 </div>
@@ -191,7 +211,7 @@ session_start();
                                     <a href="/admin/manage-company">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                     </a>
-                                    <input name="addcompany" type="submit" class="btn btn-primary" value="Save">
+                                    <input name="editcompany" type="submit" class="btn btn-primary" value="Save">
                                 </div>
                                 </form>
                             </div>

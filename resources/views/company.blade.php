@@ -160,6 +160,7 @@ session_start();
                                                 <th>Background</th>
                                                 <th>Since</th>
                                                 <th>Website</th>
+                                                <th>Email</th>
                                                 <th>Contact Number</th>
                                                 <th>ID Subcategory</th>
                                                 <th>ID Province</th>
@@ -175,10 +176,15 @@ session_start();
                                                 <td>{{ $loop->iteration}}</td>
                                                 <td>{{ $company->id }}</td>
                                                 <td>{{ $company->name }}</td>
-                                                <td>{{ $company->logo }}</td>
-                                                <td>{{ $company->background }}</td>
+                                                <td>
+                                                    <img src="{{ asset('company-logo/'.$company->logo) }}" width="50%">
+                                                </td>
+                                                <td>
+                                                    <img src="{{ asset('company-bg/'.$company->background) }}" width="50%">
+                                                </td>
                                                 <td>{{ $company->since }}</td>
                                                 <td>{{ $company->website }}</td>
+                                                <td>{{ $company->email }}</td>
                                                 <td>{{ $company->contact_number }}</td>
                                                 <td>{{ $company->id_subcategory }}</td>
                                                 <td>{{ $company->id_indonesia_province }}</td>
@@ -348,7 +354,7 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ url('/admin/manage-company') }}" method="post" enctype="multipart/form-data">
+                    <form action="/admin/manage-company/delete/{id}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             Are You Sure You Want To Delete This Data?
                             <input name="name" type="hidden" class="form-control" required autofocus>

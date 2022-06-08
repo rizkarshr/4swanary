@@ -145,7 +145,7 @@ session_start();
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h2>List Category</h2>
-                                    <a href="{{ route('crud/createcategory') }}">
+                                    <a href="/admin/manage-category/create">
                                         <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;" data-toggle="modal" data-target="#" class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Category</button>
                                     </a>
                                 </div>
@@ -172,7 +172,7 @@ session_start();
                                                 <td> {{ $category->created_at }} </td>
                                                 <td> {{ $category->updated_at }} </td>
                                                 <td align="center">
-                                                    <a href="{{ route('crud/editcategory') }}">
+                                                    <a href="/admin/manage-category/edit/{{$category->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
                                                     <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
@@ -274,7 +274,7 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ url('/admin/manage-category') }}" method="post" enctype="multipart/form-data">
+                    <form action="/admin/manage-category/delete/{id}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             Are You Sure You Want To Delete This Data?
                             <input name="name" type="hidden" class="form-control" required autofocus>
