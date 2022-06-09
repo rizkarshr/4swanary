@@ -97,9 +97,9 @@
     <br>
     <div class="section-title">
       <!--<h2>Product</h2>-->
-      <h3>Indonesian <span>MSME Product</span></h3>
-      <p>See the visual of Indonesian MSMEs products right here!</p>
-    </div><br>
+      <h3>Indonesian MSMEs Product</h3>
+      <p>see the visual of Indonesian MSMEs products right here!</p>
+    </div>
 
     <div class="row">
       <div class="col-lg-12" data-aos="fade-right" data-aos-delay="100">
@@ -122,14 +122,14 @@
               <img class="d-block w-100" src="{{ asset('assett/img/img3.jpg') }}" alt="Third slide">
             </div>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <!--<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
           <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
-          </a>
+          </a>-->
         </div>
 
         <!--Left Right Control-->
@@ -152,28 +152,29 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Category</h2>
-          <h3>Check our <span>Category</span></h3>
-          <p>Want to see more about Indonesian culture products?
-            choose by category one of these two categories!</p>
+          <!--<h2>Category</h2>-->
+          <br>
+          <h3>Category</h3>
+          <p>want to see more about Indonesian MSMEs & their products?
+            choose one of these two to see by categories!</p>
         </div>
 
         <div class="row" id="kotak">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
+            <div class="icon-box-m">
               <div class="icon"><i class="bx bx-store"></i></div>
                <h4><a div href="{{ url('/search/msme') }}">MSME</a></h4>
               <!--<h4><a href="{{ url('/company/{id}') }}">MSME</a></h4>-->
-              <p>If you click on this section, you can check the categories by MSME</p>
+              <p>see the categories by MSME</p>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
+            <div class="icon-box-p">
               <div class="icon"><i class="bx bx-archive"></i></div>
               <h4><a div href="{{ url('/search/product') }}">PRODUCT</a></h4>
               <!--<h4><a href="">Product</a></h4>-->
-              <p>If you click on this section, you can check the categories by product</p>
+              <p>see the categories by product</p>
             </div>
           </div>
 
@@ -182,14 +183,16 @@
 
 
     <!-- ======= About Section ======= -->
+    <br>
     <section id="about" class="about section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>About Us</h2>
-          <h3>Find Out More <span>About Us</span></h3>
-          <p>What is Aswana.ry?</p><br>
-          <img src="{{ asset('assett/img/aswanalogo.png') }}" alt="">
+          <!--<h2>About Us</h2>-->
+          
+          <h3>Find Out More <span>About Us!</span></h3><br>
+          <p><b>What is Aswana.ry?</b></p><br><br>
+          <img src="{{asset('/images/l.png')}}" alt="" style="width: 35%;">
         </div>
 
         <div class="row">
@@ -197,7 +200,7 @@
 
           </div>
           <div>
-            <p class="text-justify">
+            <p class="text-center">
               Aswana is a web directory that provides information about Indonesian MSME products that represent Indonesian culture. On this website there are two categories, namely product categories and MSMEs in which there are various subcategories to classify these types of products/MSMEs. The choice of the name Aswana.ry comes from a combination of the words Aswana and Directory, the word Aswana is taken from Sanskrit which means a place or location where the place/location functions as a container to accommodate or present something. Meanwhile, Directory comes from English which means directory which has the function of storing and providing information based on categories or groups. So, Aswana.ry means a place/location to store and provide information about Indonesian products/MSMEs based on their category.
             </p>
           </div>
@@ -212,8 +215,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Team</h2>
-          <h3>Our Hardworking <span>Team</span></h3>
+          <!--<h2>Team</h2>-->
+          <h3>Meet Our Hardworking <span>Team</span></h3>
           <p>Tersenyumlah Seperti BABI</p>
         </div>
 
@@ -282,7 +285,7 @@
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section><br><br><!-- End Team Section -->
 
 
   </main><!-- End #main -->
@@ -300,25 +303,24 @@
               All around the World <br>
               Every Universe<br>
               In your Heart too. <br><br>
-              <strong>Phone:</strong> +62 896-8226-5894<br>
-              <strong>Email:</strong> 4swanary@gmail.com<br>
             </p>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>Our Social Media</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#services">Category</a></li>
+              <a href="https://wa.me/089682265894" class="twitter"><i class="bx bxl-whatsapp" style="width: 5%;"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Contact Us</h4>
-            <p>To make it easier, click the button below to contact us</p>
-            <div class="social-links mt-3">
-              <a href="https://wa.me/089682265894" class="twitter"><i class="bx bxl-whatsapp"></i></a>
+            <p>if you need more information you can contact us on down below</p>
+            <div class="social-links mt-3">      
+              <strong>Phone :</strong> +62 896-8226-5894<br>
+              <strong>Email :</strong> 4swanary@gmail.com<br>
+              
               <!--<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
               <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
@@ -343,8 +345,8 @@
     </div>
     </div>
 
-    <div class="container py-4">
-      <div class="copyright"> &copy; Copyright <strong><span>Aswana.ry</span></strong>. All Rights Reserved
+    <div class="container py-4" align="center">
+      <div class="copyright">Copyright &copy; 2022 <strong><span>Aswana.ry</span></strong>. All Rights Reserved
       </div>
       <!--<div class="credits"> -->
       <!-- All the links in the footer should remain intact. -->
