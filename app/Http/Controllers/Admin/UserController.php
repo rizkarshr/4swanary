@@ -67,8 +67,8 @@ class UserController extends Controller
                 'password' => Hash::make($request->password),
                 'status' => $request->status,
                 'profil_pict' => $image,
-                'created_at'=>$request->created_at,
-                'updated_at'=>$request->updated_at
+                'created_at' => $request->created_at,
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$user) {
@@ -83,8 +83,8 @@ class UserController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'status' => $request->status,
-                'created_at'=>$request->created_at,
-                'updated_at'=>$request->updated_at
+                'created_at' => $request->created_at,
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$user) {
@@ -93,7 +93,7 @@ class UserController extends Controller
             }
         }
 
-        return redirect('/admin/manage-user');
+        return redirect('/admin/manage-user')->with('success', 'Data User Created Successfully!');
     }
 
     /**
@@ -152,7 +152,7 @@ class UserController extends Controller
             $upload->move($penyimpanan, $code . '.' . $upload->getClientOriginalExtension());
             $image = $code . '.' . $upload->getClientOriginalExtension();
 
-            if($request->password==null){
+            if ($request->password == null) {
 
                 $user->update([
                     'username' => $request->username,
@@ -160,10 +160,9 @@ class UserController extends Controller
                     'email' => $request->email,
                     'status' => $request->status,
                     'profil_pict' => $image,
-                    'updated_at'=>$request->updated_at
+                    'updated_at' => $request->updated_at
                 ]);
-
-            }else{
+            } else {
 
                 $user->update([
                     'username' => $request->username,
@@ -172,7 +171,7 @@ class UserController extends Controller
                     'password' => Hash::make($request->password),
                     'status' => $request->status,
                     'profil_pict' => $image,
-                    'updated_at'=>$request->updated_at
+                    'updated_at' => $request->updated_at
                 ]);
             }
 
@@ -182,23 +181,22 @@ class UserController extends Controller
             }
         } else {
 
-            if($request->password==null){
+            if ($request->password == null) {
                 $user->update([
                     'username' => $request->username,
                     'name' => $request->name,
                     'email' => $request->email,
                     'status' => $request->status,
-                    'updated_at'=>$request->updated_at
+                    'updated_at' => $request->updated_at
                 ]);
-                
-            }else{
+            } else {
                 $user->update([
                     'username' => $request->username,
                     'name' => $request->name,
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'status' => $request->status,
-                    'updated_at'=>$request->updated_at
+                    'updated_at' => $request->updated_at
                 ]);
             }
 
@@ -208,7 +206,7 @@ class UserController extends Controller
             }
         }
 
-        return redirect('/admin/manage-user');
+        return redirect('/admin/manage-user')->with('success', 'Data User Updated Successfully!');
     }
 
     /**
@@ -221,7 +219,7 @@ class UserController extends Controller
     {
         //$profil = User::where('id', Auth::user()->id)->first();
 
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         if (File::exists(public_path('user/' . $user->profil_pict))) {
 
@@ -232,6 +230,7 @@ class UserController extends Controller
 
             $user->delete();
         }
+
 
         return redirect('/admin/manage-user');
     }
