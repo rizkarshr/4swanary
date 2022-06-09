@@ -33,22 +33,11 @@
 
 <body>
 
-  <!-- ======= Top Bar ======= -->
-  <section id="topbar" class="d-flex align-items-center">
-    <div class="container d-flex justify-content-center justify-content-md-between">
-      <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:4swanary@gmail.com">4swanary@gmail.com</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+62 896-8226-5894</span></i>
-      </div>
-    </div>
-  </section>
 
   <!-- ======= Header Navbar ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <!--<h1 class="logo"><a href="index.html">BizLand<span>.</span></a></h1>-->
-      <!-- Uncomment below if you prefer to use an image logo -->
       <a href="{{ url('/home') }}" class="logo"><img src="{{ asset('assett/img/aswanalogo.png') }}" alt=""></a>
 
       <nav id="navbar" class="navbar">
@@ -68,21 +57,22 @@
       <h1>Welcome to <span>Aswana.ry</span></h1>
       <h2>Directory of Sekolah Ekspor</h2>
       <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
-        <a href="https://youtu.be/KwGnUtK2Kf0" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+       <!-- <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        <a href="https://youtu.be/KwGnUtK2Kf0" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>-->
       </div>
     </div>
   </section><!-- End Hero -->
 
   <!-- ======= Article Section ======= -->
+  <br><br>
   <section id="article" class="about section-bg">
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h2>Article</h2>
-        <h3>Here's the <span>Article</span></h3>
-        <p>Articles about export activities carried out by Sekolah Ekspor students.</p>
-      </div>
+        <!--<h2>Article</h2>-->
+        <h3>Article</h3>
+        <p>read this section if you want to know more about exports!</p>
+      </div><br>
 
       <div class="row">
         <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
@@ -92,9 +82,10 @@
           <h3 class="text-justify">Kampus Merdeka Program through Sekolah Ekspor Produces 198 Student Work Products Ready for Export</h3>
           <p class="text-justify">
             Jakarta – Tasks Executor (Plt.) Director General of Higher Education, Research, and Technology (Dirjen Diktiristek) Nizam, and Head of Export School Handito Joewono inaugurated the Digital Export Showcase as Export Product Gallery for Independent Study Kampus Merdeka Program students to become new exporters for 4.0 academic year 2021/ 2022. There are 198 student export products produced by 777 students from 223 universities throughout Indonesia.
+            <a href="{{ url('/article') }}" class="fst-italic"><b>Readmore...</b></a>
           </p>
           <!--<a href="link" target="_blank" class="fst-italic">Readmore..</a>-->
-          <a href="{{ url('/article') }}" class="fst-italic">Readmore...</a>
+          
         </div>
       </div>
 
@@ -105,10 +96,10 @@
   <main id="main">
     <br>
     <div class="section-title">
-      <h2>Product</h2>
-      <h3>Indonesian <span>Culture Product</span></h3>
-      <p>See the visual of Indonesian culture products right here!</p>
-    </div>
+      <!--<h2>Product</h2>-->
+      <h3>Indonesian <span>MSME Product</span></h3>
+      <p>See the visual of Indonesian MSMEs products right here!</p>
+    </div><br>
 
     <div class="row">
       <div class="col-lg-12" data-aos="fade-right" data-aos-delay="100">
