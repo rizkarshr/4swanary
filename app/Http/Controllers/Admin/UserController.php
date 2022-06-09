@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class UserController extends Controller
@@ -63,9 +64,11 @@ class UserController extends Controller
                 'username' => $request->username,
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => $request->password,
-                'status' => "Active",
-                'profil_pict' => $image
+                'password' => Hash::make($request->password),
+                'status' => $request->status,
+                'profil_pict' => $image,
+                'created_at'=>$request->created_at,
+                'updated_at'=>$request->updated_at
             ]);
 
             if (!$user) {
@@ -78,8 +81,10 @@ class UserController extends Controller
                 'username' => $request->username,
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => $request->password,
-                'status' => "Active",
+                'password' => Hash::make($request->password),
+                'status' => $request->status,
+                'created_at'=>$request->created_at,
+                'updated_at'=>$request->updated_at
             ]);
 
             if (!$user) {
@@ -147,14 +152,29 @@ class UserController extends Controller
             $upload->move($penyimpanan, $code . '.' . $upload->getClientOriginalExtension());
             $image = $code . '.' . $upload->getClientOriginalExtension();
 
-            $user->update([
-                'username' => $request->username,
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => $request->password,
-                'status' => $request->status,
-                'profil_pict' => $image
-            ]);
+            if($request->password==null){
+
+                $user->update([
+                    'username' => $request->username,
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'status' => $request->status,
+                    'profil_pict' => $image,
+                    'updated_at'=>$request->updated_at
+                ]);
+
+            }else{
+
+                $user->update([
+                    'username' => $request->username,
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'status' => $request->status,
+                    'profil_pict' => $image,
+                    'updated_at'=>$request->updated_at
+                ]);
+            }
 
             if (!$user) {
 
@@ -162,13 +182,25 @@ class UserController extends Controller
             }
         } else {
 
-            $user->update([
-                'username' => $request->username,
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => $request->password,
-                'status' => $request->status,
-            ]);
+            if($request->password==null){
+                $user->update([
+                    'username' => $request->username,
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'status' => $request->status,
+                    'updated_at'=>$request->updated_at
+                ]);
+                
+            }else{
+                $user->update([
+                    'username' => $request->username,
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'status' => $request->status,
+                    'updated_at'=>$request->updated_at
+                ]);
+            }
 
             if (!$user) {
 

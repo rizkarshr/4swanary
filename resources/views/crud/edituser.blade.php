@@ -145,45 +145,47 @@ session_start();
                             <div class="card-body">
                                 <h2 align="center">Edit User</h2>
                                 <div class="modal-body">
-                                    <form action="{{ url('/admin/manage-user') }}" method="post" enctype="multipart/form-data">
+                                    <form action="/admin/manage-user/update/{{$user->id}}" method="post" enctype="multipart/form-data">
+                                        <?php date_default_timezone_set('Asia/Makassar'); ?>
+                                        @csrf
+                                        <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Username</label>
-                                            <input name="username" type="text" class="form-control" required autofocus>
+                                            <input name="username" type="text" class="form-control" value="{{$user->username}}" required autofocus>
                                         </div>
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input name="name" type="text" class="form-control" required autofocus>
+                                            <input name="name" type="text" class="form-control" value="{{$user->name}}" required autofocus>
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input name="email" type="text" class="form-control" required>
+                                            <input name="email" type="text" class="form-control" value="{{$user->email}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input name="password" type="text" class="form-control" required>
+                                            <input name="password" type="text" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label>Status</label>
-                                            <input name="status" type="text" class="form-control" required>
+                                            <select class="form-control" name="status" required>
+                                                <option style="display: none" value="{{$user->status}}">{{$user->status}}</option>
+                                                <option value="Active">Active</option>
+                                                <option value="Inactive">Inactive</option>
+                                                <option value="Banned">Banned</option>
+                                            </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Remember Token</label>
-                                            <input name="remember_token" type="text" class="form-control" required>
-                                        </div>
-
                                         <div class="form-group">
                                             <label>Profile Picture</label>
-                                            <input name="profile_pict" type="file" class="form-control">
+                                            <input name="profil_pict" type="file" class="form-control">
                                         </div>
-
+                                        <div class="modal-footer">
+                                            <a href="/admin/manage-user">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                            </a>
+                                            <input name="edituser" type="submit" class="btn btn-primary" value="Save">
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <a href="/admin/manage-user">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                    </a>
-                                    <input name="edituser" type="submit" class="btn btn-primary" value="Save">
-                                </div>
-                                </form>
                             </div>
                         </div>
                     </div>

@@ -169,29 +169,24 @@ session_start();
                                         <div class="form-group">
                                             <label>Status</label>
                                             <select class="form-control" name="status" id="status" required>
-                                                <option selected disabled="">Choose Status</option>
+                                                <option style="display: none" value="">Choose Status</option>
                                                 <option value="Active">Active</option>
                                                 <option value="Inactive">Inactive</option>
+                                                <option value="Banned">Banned</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Remember Token</label>
-                                            <input name="remember_token" type="text" class="form-control" required>
-                                        </div>
-
-                                        <div class="form-group">
                                             <label>Profile Picture</label>
-                                            <input name="profile_pict" type="file" class="form-control" required>
+                                            <input name="profil_pict" type="file" class="form-control" required>
                                         </div>
-
+                                        <div class="modal-footer">
+                                            <a href="/admin/manage-user">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                            </a>
+                                            <input name="adduser" type="submit" class="btn btn-primary" value="Save">
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <a href="/admin/manage-user">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                    </a>
-                                    <input name="adduser" type="submit" class="btn btn-primary" value="Save">
-                                </div>
-                                </form>
                             </div>
                         </div>
                     </div>

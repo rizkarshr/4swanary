@@ -158,10 +158,7 @@ session_start();
                                                 <th>Name</th>
                                                 <th>Profile Picture</th>
                                                 <th>Email</th>
-                                                <th>Email Verified at</th>
-                                                <th>Password</th>
                                                 <th>Status</th>
-                                                <th>Remember Token</th>
                                                 <th>Created at</th>
                                                 <th>Updated at</th>
                                                 <th>Action</th>
@@ -178,10 +175,7 @@ session_start();
                                                     <img src="{{ asset('user/'.$user->profil_pict) }}" width="50%">
                                                 </td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>{{ $user->email_verified_at }}</td>
-                                                <td>{{ $user->password }}</td>
                                                 <td>{{ $user->status }}</td>
-                                                <td>{{ $user->remember_token }}</td>
                                                 <td>{{ $user->created_at }}</td>
                                                 <td>{{ $user->updated_at }}</td>
                                                 <td align="center">
@@ -216,108 +210,6 @@ session_start();
     </div>
     <!-- page container area end -->
 
-    <!-- modal input -->
-    <!--<div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add User</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-user') }}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input name="username" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input name="name" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input name="email" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input name="password" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Status</label>
-                            <input name="status" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Remember Token</label>
-                            <input name="remember_token" type="text" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Profile Picture</label>
-                            <input name="profile_pict" type="file" class="form-control">
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="adduser" type="submit" class="btn btn-primary" value="Add">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
-    <!-- modal input end -->
-
-    <!-- modal edit -->
-    <!--<div id="ModalEdit" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit User</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-user') }}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input name="username" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input name="name" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input name="email" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input name="password" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Status</label>
-                            <input name="status" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Remember Token</label>
-                            <input name="remember_token" type="text" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Profile Picture</label>
-                            <input name="profile_pict" type="file" class="form-control">
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="edituser" type="submit" class="btn btn-primary" value="Save">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
-    <!-- modal edit end -->
-
     <!-- modal delete -->
     <div id="ModalDelete" class="modal fade">
         <div class="modal-dialog">
@@ -327,7 +219,7 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <form action="/admin/manage-user/delete/{id}" method="post" enctype="multipart/form-data">
+                    <form action="/admin/manage-user/delete/{{$user->id}}" method="get" enctype="multipart/form-data">
                         <div class="form-group">
                             Are You Sure You Want To Delete This Data?
                             <input name="name" type="hidden" class="form-control" required autofocus>
