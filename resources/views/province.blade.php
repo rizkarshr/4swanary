@@ -74,8 +74,8 @@ session_start();
                                     <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ url('/admin/manage-product') }}">Product</a></li>
                                     <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ url('/admin/manage-category') }}">Category</a></li>
                                     <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ url('/admin/manage-subcategory') }}">Subcategory</a></li>
-                                    <li class="link active"><a href="{{ url('/admin/manage-origin') }}">Province</a></li>
-                                    <li class="link {{ Request::is('city') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origin') }}">City</a></li>
+                                    <li class="link active"><a href="{{ url('/admin/manage-province') }}">Province</a></li>
+                                    <li class="link {{ Request::is('city') ? ' active' : '' }}"><a href="{{ url('/admin/manage-city') }}">City</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -144,10 +144,10 @@ session_start();
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
-                                    <h2>List Indonesia City</h2>
-                                    <a href="#">
+                                    <h2>List Indonesia Province</h2>
+                                    <!--<a href="#">
                                         <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;" data-toggle="modal" data-target="#" class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Subcategory</button>
-                                    </a>
+                                    </a>-->
                                 </div>
                                 <div class="data-tables datatable-dark">
                                     <table id="dataTable3" class="display" style="width:100%">
@@ -160,25 +160,20 @@ session_start();
                                                 <th>Meta</th>
                                                 <th>Created at</th>
                                                 <th>Updated at</th>
-                                                <th>Action</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($indonesiaprovince as $indonesiaprovince)
+                                            @foreach ($province as $province)
                                             <tr>
                                                 <td>{{ $loop->iteration}}</td>
-                                                <td>{{ $indonesiaprovince->id }}</td>
-                                                <td>{{ $indonesiaprovince->code }}</td>
-                                                <td>{{ $indonesiaprovince->name }}</td>
-                                                <td>{{ $indonesiaprovince->meta }}</td>
-                                                <td>{{ $indonesiaprovince->created_at }}</td>
-                                                <td>{{ $indonesiaprovince->updated_at }}</td>
-                                                <td align="center">
-                                                    <a href="#">
-                                                        <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
-                                                    </a>
-                                                    <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
-                                                </td>
+                                                <td>{{ $province->id }}</td>
+                                                <td>{{ $province->code }}</td>
+                                                <td>{{ $province->name }}</td>
+                                                <td>{{ $province->meta }}</td>
+                                                <td>{{ $province->created_at }}</td>
+                                                <td>{{ $province->updated_at }}</td>
+
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -206,7 +201,7 @@ session_start();
     <!-- page container area end -->
 
     <!-- modal input -->
-    <div id="myModal" class="modal fade">
+    <!--<div id="myModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -266,11 +261,11 @@ session_start();
                 </form>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- modal input end -->
 
     <!-- modal edit -->
-    <div id="ModalEdit" class="modal fade">
+    <!--<div id="ModalEdit" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -330,7 +325,7 @@ session_start();
                 </form>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- modal edit end -->
 
     <!-- modal delete -->
@@ -338,11 +333,11 @@ session_start();
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete Origins</h4>
+                    <h4 class="modal-title">Delete Province</h4>
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ url('/admin/manage-product') }}" method="post" enctype="multipart/form-data">
+                    <form action="/admin/manage-province/delete/{{$province->id}}" method="get" enctype="multipart/form-data">
                         <div class="form-group">
                             Are You Sure You Want To Delete This Data?
                             <input name="name" type="hidden" class="form-control" required autofocus>

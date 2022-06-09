@@ -132,12 +132,11 @@ class ArticleController extends Controller
                 //
 
             }
-
         }
 
-        
 
-        return redirect('/admin/manage-article');
+
+        return redirect('/admin/manage-article')->with('success', 'Data Article Created Successfully!');
     }
 
     /**
@@ -229,7 +228,7 @@ class ArticleController extends Controller
             }
         }
 
-        return redirect('/admin/manage-article');
+        return redirect('/admin/manage-article')->with('success', 'Data Article Updated Successfully!');
     }
 
     /**
@@ -251,6 +250,7 @@ class ArticleController extends Controller
 
             $article->delete();
         }
+
 
         return redirect('/admin/manage-article');
     }

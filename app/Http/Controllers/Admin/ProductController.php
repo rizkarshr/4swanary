@@ -22,10 +22,9 @@ class ProductController extends Controller
     public function index(Request $request)
     {
 
-        if($request->filled('search')){
+        if ($request->filled('search')) {
 
             $product = Product::search($request->search)->with('company', 'subcategory', 'IndonesiaCity', 'IndonesiaProvince')->get();
-
         } else {
 
             $product = Product::with('company', 'subcategory', 'IndonesiaCity', 'IndonesiaProvince')->get();
@@ -42,13 +41,13 @@ class ProductController extends Controller
     public function create()
     {
 
-        $subcategory = Subcategory::with('category')->where('id_category','1')->get();
+        $subcategory = Subcategory::with('category')->where('id_category', '1')->get();
         $province = IndonesiaProvince::all();
         $city = IndonesiaCity::with('IndonesiaProvince')->get();
-        $company = Company::all(); 
-        
+        $company = Company::all();
 
-        return view('crud/createproduct', compact('subcategory','province','city','company'));
+
+        return view('crud/createproduct', compact('subcategory', 'province', 'city', 'company'));
     }
 
     /**
@@ -60,7 +59,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $code = $this->generateUniqueCode();
 
         if ($request->file('product_pict') != null) {
@@ -84,8 +83,8 @@ class ProductController extends Controller
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
-                'created_at'=>$request->created_at,
-                'updated_at'=>$request->updated_at
+                'created_at' => $request->created_at,
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$product) {
@@ -102,8 +101,8 @@ class ProductController extends Controller
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
-                'created_at'=>$request->created_at,
-                'updated_at'=>$request->updated_at
+                'created_at' => $request->created_at,
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$product) {
@@ -111,7 +110,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect('/admin/manage-product');
+        return redirect('/admin/manage-product')->with('success', 'Data Product Created Successfully!');
     }
 
     /**
@@ -143,15 +142,15 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $subcategory = Subcategory::with('category')->where('id_category','1')->get();
+        $subcategory = Subcategory::with('category')->where('id_category', '1')->get();
         $province = IndonesiaProvince::all();
         $city = IndonesiaCity::with('IndonesiaProvince')->get();
         $company = Company::all();
-        
-        $product = Product::with('company','subcategory','indonesiacity','indonesiaprovince')->find($id);
-        
 
-        return view('crud/editproduct', compact('product','subcategory','province','city','company'));
+        $product = Product::with('company', 'subcategory', 'indonesiacity', 'indonesiaprovince')->find($id);
+
+
+        return view('crud/editproduct', compact('product', 'subcategory', 'province', 'city', 'company'));
     }
 
     /**
@@ -193,7 +192,7 @@ class ProductController extends Controller
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
-                'updated_at'=>$request->updated_at
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$product) {
@@ -210,7 +209,7 @@ class ProductController extends Controller
                 'id_indonesia_province' => $request->id_indonesia_province,
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'id_company' => $request->id_company,
-                'updated_at'=>$request->updated_at
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$product) {
@@ -218,7 +217,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect('/admin/manage-product');
+        return redirect('/admin/manage-product')->with('success', 'Data Product Updated Successfully!');
     }
 
     /**
@@ -231,13 +230,12 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        if(isset($product->product_pict)) {          
-            
-            File::delete(public_path('product/' . $product->product_pict));
+        if (isset($product->product_pict)) {
 
+            File::delete(public_path('product/' . $product->product_pict));
         }
 
-            $product->delete();
+        $product->delete();
 
         return redirect('/admin/manage-product');
     }
@@ -247,7 +245,7 @@ class ProductController extends Controller
         do {
             $code = random_int(100000, 999999);
         } while (Product::where("product_pict", "=", $code)->first());
-  
+
         return $code;
     }
 }

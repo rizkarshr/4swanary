@@ -55,7 +55,7 @@ class CategoryController extends Controller
             'desc' => $request->desc,
         ]);
 
-        return redirect('/admin/manage-category');
+        return redirect('/admin/manage-category')->with('success', 'Data Category Created Successfully!');
     }
 
     /**
@@ -106,7 +106,7 @@ class CategoryController extends Controller
             'desc' => $request->desc,
         ]);
 
-        return redirect('/admin/manage-category');
+        return redirect('/admin/manage-category')->with('success', 'Data Category Updated Successfully!');
     }
 
     /**
