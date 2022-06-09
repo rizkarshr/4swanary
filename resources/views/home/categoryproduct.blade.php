@@ -20,9 +20,9 @@
       <nav id="navbar" class="navbar">
       <image src="{{asset('/images/l.png')}}" width="10%"></image>
         <ul>
-          <li><a class="nav-link scrollto" href="#home">Home</a></li>
-          <li><a class="nav-link scrollto active" href="#category">Category</a></li>
-          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/home') }}">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{{ url('/home') }}">Category</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/home') }}">About Us</a></li>
       </nav>
       <!-- END NAVBAR -->
     </div>

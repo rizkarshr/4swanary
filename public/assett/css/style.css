@@ -9,7 +9,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #444444;
 }
 
@@ -24,12 +24,15 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /*--------------------------------------------------------------
 # Caraousel
 --------------------------------------------------------------*/
+.carousel-indicators li{
+  border-radius: 15px;
+}
 .carousel-item {
 	padding-left: 70px;
   padding-right: 70px;
@@ -409,13 +412,13 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 75vh;
-  background: url("../img/rempah-bg.jpg") top left;
+  background: url("../img/home.png") top left;
   background-size: cover;
   position: relative;
 }
 #hero:before {
   content: "";
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.56);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -430,14 +433,14 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
-  color: #222222;
+  color: #DACBBC;
   font-family: "Poppins", sans-serif;
 }
 #hero h1 span {
-  color: #4A312C;
+  color:#ffffff;
 }
 #hero h2 {
-  color: #555555;
+  color: #faf9c1;
   margin: 5px 0 30px 0;
   font-size: 24px;
   font-weight: 400;
@@ -531,14 +534,14 @@ section {
   padding: 8px 20px;
   margin: 0;
   background: #DACBBC;
-  color: #4A312C;
+  color: #562016;
   display: inline-block;
   text-transform: uppercase;
   border-radius: 50px;
 }
 .section-title h3 {
   margin: 15px 0 0 0;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
 }
 .section-title h3 span {
@@ -546,7 +549,8 @@ section {
 }
 .section-title p {
   margin: 15px auto 0 auto;
-  font-weight: 600;
+  font-weight: 400;
+  font-size: 18px;
 }
 @media (min-width: 1024px) {
   .section-title p {
@@ -882,6 +886,7 @@ section {
 }
 .testimonials .testimonials-carousel, .testimonials .testimonials-slider {
   overflow: hidden;
+  
 }
 .testimonials .testimonial-item {
   text-align: center;
@@ -1040,6 +1045,7 @@ section {
 --------------------------------------------------------------*/
 .portfolio-details {
   padding-top: 40px;
+  padding-left: 150px;
 }
 
 .portfolio-details .portfolio-info {
@@ -1104,35 +1110,35 @@ section {
 }
 .img-fluid {
   border-radius: 20px;
-  max-height: 400px;
+  max-height: 700px;
 }
 
 /*--------------------------------------------------------------
 # Similar Product 
 --------------------------------------------------------------*/
 .card{
-  width: 230px;
+  width: 210px;
   display: inline-block;
   height: 320px;
   margin-bottom: 10px;
   margin-top: 1px;
   margin-left: 20px;
-  background-color: #EEE8E1;
-  border-radius: 25px;
+  background-color: #25262B;
+  border-radius: 15px;
   -moz-box-shadow: 0 0 5px #888;
   -webkit-box-shadow: 0 0 5px#888;
-  box-shadow: 0 0 5px #888;
+  box-shadow:  0px 2px 3px rgba(0, 0, 0, 0.5);
 }
 .offset-1{
   margin-left: 6%;
 }
 .card-img-top{
-  width: 227px;
+  width: 207px;
   height: 210px;
-  border-radius: 20px;
+  border-radius: 15px;
 }
 .card-body {
-  color: #562016;
+  color: #EEE8E1;
   font-size: small;
 }
 #similar .container {

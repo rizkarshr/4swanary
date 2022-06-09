@@ -78,9 +78,9 @@ session_start();
                 <ul>
 
                     <!--<a href="index.html" class="logo"><img src="/images/l.png" alt=""></a>-->
-                    <li><a class="nav-link scrollto" href="">Home</a></li>
-                    <li><a class="nav-link scrollto active" href="#services">Category</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url('/home') }}">Home</a></li>
+                    <li><a class="nav-link scrollto active" href="{{ url('/home') }}#services">Category</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url('/home') }}#about">About Us</a></li>
                 </ul>
             </nav><!-- .navbar -->
             <div class="clearfix"> </div>
@@ -293,12 +293,16 @@ session_start();
 
 
     <!-- top-brands -->
-    <div class="top-brands">
-        <div class="container">
-            <h2>Our Products</h2>
-            <div class="grid_3 grid_5">
+    <!--<div class="top-brands">-->
+        <!--<div class="container">-->
+        <br><br><br><br>
+        <p align="center">____________________________________________________</p>
+            <br><h1 align="center">Our Products</h1>
+            <br>
+
+            <!--<div class="grid_3 grid_5">-->
                 <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-                    <div id="myTabContent" class="tab-content">
+                    <!--<div id="myTabContent" class="tab-content">-->
                         <div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab">
                             <div class="agile-tp">
                                 <!--<h5>Penawaran Terbaik Minggu Ini
@@ -310,7 +314,7 @@ session_start();
                                     ?>
                                 </h5>-->
                             </div>
-                            <div class="agile_top_brands_grids">
+                            <!--<div class="agile_top_brands_grids">-->
 
                                 <?php
                                 //$brgs = mysqli_query($conn, "SELECT * from produk order by idproduk ASC");
@@ -318,40 +322,30 @@ session_start();
                                 //while ($p = mysqli_fetch_array($brgs)) {
 
                                 ?>
-                                <div class="col-md-4 top_brand_left">
+                                <!--<div class="col-md-4 top_brand_left">
 
-                                    <!-- PRODUK DARI COMPANY-->
+                                    //PRODUK DARI COMPANY-->
+                                    
                                     @foreach ($product as $product)
-                                    <img src="{{ asset('product/'.$product->product_pict) }}" alt=" " class="img-responsive" />
-                                    <p>{{$product->name}}</p>
-                                    <p>{{$product->subcategory->name}}</p>
-                                    <p>{{$product->indonesiaCity->name}}, {{$product->indonesiaProvince->name}}</p>  
-                                    @endforeach
+                                    <div class="row">
+                                        <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+                                             <a div class="card-prod" href="{{ url('/product/{id}/') }}">
+                                                <img src="{{ asset('product/'.$product->product_pict) }}" alt=" " class="card-img-top" />
+                                                <div class="card-body-product">
+                                                <p><b>{{$product->name}}</b></p>
+                                                <p>{{$product->subcategory->name}}</p>
+                                                <p>{{$product->indonesiaProvince->name}}</p>  
+                                                </div>
+                                             </a>
+                                        </div>
 
-                                    <div class="hover14 column">
-                                        <div class="agile_top_brand_left_grid">
-                                            <div class="agile_top_brand_left_grid_pos">
-                                                {{-- <img src="{{asset('product/').$product->product_pict}}" alt=" " class="img-responsive" /> --}}
-                                            </div>
-                                            <div class="agile_top_brand_left_grid1">
-                                                <figure>
-                                                    <div class="snipcart-item block">
-                                                        <div class="snipcart-thumb">
-                                                            <a href="product.php?idproduk=<?php //echo $p['idproduk'] 
-                                                                                            ?>"><img title=" " alt=" " src="<?php //echo $p['gambar'] 
-                                                                                                                            ?>" width="200px" height="200px" /></a>
-                                                            <p><?php //echo $p['namaproduk'] 
-                                                                ?></p>
-                                                            <h4>Rp<?php //echo number_format($p['hargaafter']) 
-                                                                    ?> <span>Rp<?php //echo number_format($p['hargabefore']) 
-                                                                                ?></span></h4>
-                                                        </div>
-                                                        <div class="snipcart-details top_brand_home_details">
-                                                            <fieldset>
-                                                                <a href="product.php?idproduk=<?php //echo $p['idproduk'] 
-                                                                                                ?>"><input type="submit" class="button" value="Lihat Produk" /></a>
-                                                            </fieldset>
-                                                        </div>
+                                        <div class="snipcart-details top_brand_home_details">
+                                            <fieldset>
+                                               <a href="product.php?idproduk=<?php //echo $p['idproduk'] ?>">                                            
+                                            </fieldset>
+                                        </div>
+                                    @endforeach                            
+                                                        
                                                     </div>
                                                 </figure>
                                             </div>
@@ -381,7 +375,7 @@ session_start();
 
 
 
-    <!-- //footer -->
+    <!-- //footer --> <br><br>
     <div class="footer">
         <div class="container">
             <div class="w3_footer_grids">

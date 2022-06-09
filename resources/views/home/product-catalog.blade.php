@@ -74,7 +74,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <ol>
             <li><a href="{{ url('/home') }}">Product</a></li>
-            <li><a href="portfolio.html">Food</a></li>
+            <li><a href="{{ url('/search/product') }}">Subcategory</a></li>
             <li>Product Catalog</li>
           </ol>
         </div>
@@ -136,7 +136,7 @@
 
             <table width="100%" cellpadding="5">
               <tr>
-                <th rowspan="4"> <img src="{{ asset('company-logo/'.$product->company->logo) }}" alt=""></th>
+                <th rowspan="4"> <img src="{{ asset('company/'.$product->logo) }}" alt=""></th>
               </tr>
               <tr>
                 <th colspan="4">

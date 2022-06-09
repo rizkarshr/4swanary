@@ -21,8 +21,8 @@
       <img src="{{asset('/images/l.png')}}" width="10%">
         <ul>
           <li><a class="nav-link scrollto" href="{{ url('/home') }}">Home</a></li>
-          <li><a class="nav-link scrollto active" href="{{ url('/home') }}">Category</a></li>
-          <li><a class="nav-link scrollto" href="{{ url('/home') }}">About Us</a></li>
+          <li><a class="nav-link scrollto active" href="{{ url('/home') }}#services">Category</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/home') }}#about">About Us</a></li>
       </nav>
       <!--END NAVBAR -->
     </div>
@@ -177,6 +177,8 @@ margin-top: 70px;
 */
 .navbar {
 padding: 0;
+width: 100%;
+position: relative;
 }
 .navbar ul {
 margin: 0;
@@ -184,6 +186,7 @@ padding: 0;
 display: flex;
 list-style: none;
 align-items: center;
+position: relative;
 }
 .navbar li {
 position: relative;
