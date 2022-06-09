@@ -19,19 +19,31 @@ class AuthController extends Controller
     
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-            'status' => 'Active'
-        ]);
-        
-        if (Auth::attempt($credentials AND Hash::check($request->password, $request->user()->password))) {
+        $email = $request->email;
+        $password = $request->password;
+
+        $data = User::where('email',$email)->first();
+
+        $email_db = $data->email;
+        $password_db = $data->password;
+
+        if ($email == $email_db and (Hash::check($password, $password_db))) {
+
+            $credentials = $request->validate([
+                'email' => ['required', 'email'],
+                'password' => ['required'],
+                'status' => 'Active'
+            ]);
+
+            if (Auth::attempt($credentials)) {
             
-            $request->session()->regenerate();
- 
-            return redirect()->intended('dashboard');
- 
-        }
+                $request->session()->regenerate();
+     
+                return redirect()->intended('admin/dashboard');
+     
+            }
+
+        }   
 
         return back()->with('loginError','Login Failed');
 

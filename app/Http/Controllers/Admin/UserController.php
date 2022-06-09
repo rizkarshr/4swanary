@@ -43,7 +43,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $code = $this->generateUniqueCode();
         // $profil = User::where('id', Auth::user()->id)->first();
@@ -116,7 +116,7 @@ class UserController extends Controller
 
         $user = User::find($id);
 
-        return view('crud/createuser', compact('user'));
+        return view('crud/edituser', compact('user'));
     }
 
     /**

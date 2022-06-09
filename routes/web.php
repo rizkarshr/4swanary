@@ -30,7 +30,7 @@ Route::post('/authenticate', [App\Http\Controllers\Admin\AuthController::class, 
 // Route::post('/login/process', [App\Http\Controllers\Admin\AuthController::class, 'authenticate']);
 Route::get('/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout']);
 
-// Route::group(['middleware' => ['auth:sanctum']], function(){
+Route::group(['middleware' => ['auth:sanctum']], function(){
 
 // == DASHBOARD == //
 Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
@@ -92,13 +92,13 @@ Route::post('/admin/manage-article/update/{id}', [App\Http\Controllers\Admin\Art
 Route::get('/admin/manage-article/delete/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'destroy']);
 
 //COBA CRUD
-Route::get('/admin/coba-edit/{id}', [App\Http\Controllers\Admin\CobaController::class, 'edit']);
+// Route::get('/admin/coba-edit/{id}', [App\Http\Controllers\Admin\CobaController::class, 'edit']);
 // Route::POST('/admin/update/{id}', [App\Http\Controllers\Admin\CobaController::class, 'update']);
 // Route::post('/admin/coba-update/{id}', [App\Http\Controllers\Admin\CobaController::class, 'update']);
 
 
 
-// });
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -111,7 +111,7 @@ Route::get('/admin/coba-edit/{id}', [App\Http\Controllers\Admin\CobaController::
 Route::get('/home', [App\Http\Controllers\Viewer\HomeController::class, 'index']);
 
 //ARTICLE PAGE
-Route::get('/article', [App\Http\Controllers\Viewer\ArticleController::class, 'index']);
+Route::get('/articles', [App\Http\Controllers\Viewer\ArticleController::class, 'index']);
 
 //SEARCH & FILTER PRODUCT
 Route::get('/search/product', [App\Http\Controllers\Viewer\SearchProductController::class, 'index']);
@@ -200,9 +200,9 @@ Route::get('crud/edituser', function () {
 //     return view('user');
 // })->name('user');
 
-//article
-// Route::get('article', function () {
-//     return view('article');
+// article
+// Route::get('articlee', function () {
+//     return view('home.article');
 // })->name('article');
 
 // //company

@@ -130,7 +130,10 @@ class ArticleController extends Controller
                 //
 
             }
+
         }
+
+        
 
         return redirect('/admin/manage-article');
     }

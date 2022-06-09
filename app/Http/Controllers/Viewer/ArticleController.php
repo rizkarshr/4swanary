@@ -12,7 +12,13 @@ class ArticleController extends Controller
     {
         $article = Article::where('status','=','Active')->get();
 
-        return view ('/home/article', compact('article'));
+        if (($article->status == 'Active') >= 2){
+
+            $article = Article::where('status','=','Active')->latest('id')->first();
+
+        }
+
+        return view ('home.article', compact('article'));
     }
     
 }
