@@ -37,7 +37,7 @@
 
 <body>
 
-  <!-- ======= Top Bar ======= -->
+  <!-- ======= Top Bar ======= 
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -45,7 +45,7 @@
         <i class="bi bi-phone d-flex align-items-center ms-4"><span>+62 896-8226-5894</span></i>
       </div>
     </div>
-  </section>
+  </section>-->
 
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
@@ -58,7 +58,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto " href="{{ url('/home') }}">Home</a></li>
-          <li><a class="nav-link scrollto" href="{{ url('/home') }}#services">Category</a></li>
+          <li><a class="nav-link scrollto active" href="{{ url('/home') }}#services">Category</a></li>
           <li><a class="nav-link scrollto" href="{{ url('/home') }}#about">About</a></li>
       </nav><!-- .navbar -->
 
@@ -67,7 +67,7 @@
 
   <main id="main" data-aos="fade-up">
 
-    <!-- ======= Breadcrumbs Section ======= -->
+    <!-- ======= Breadcrumbs Section =======
     <section class="breadcrumbs">
       <div class="container">
 
@@ -80,18 +80,15 @@
         </div>
 
       </div>
-    </section><!-- Breadcrumbs Section -->
-
-    <!-- ======= Product Details Section ======= -->
-    <!--<div class="row" id="product-details">
-      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-        <img src="{{ asset('assett/img/product1.JPG') }}" class="img-fluid" alt="">
-      </div>
-      <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="text-justify" id="pdw">Keripik Tempe</h3>
-        <p style="text-align: justify" id="pdw">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Info lebih lanjut hubungi nomor dibawah.
-        </p>-->
+    </section>Breadcrumbs Section 
+    <div class="container">
+        <div class="nav-page">            
+            
+            <li><a class="nav-page scrollto" href="/search/msme">Category MSME</a></li>
+            <li>|</li> 
+            <li><a class="nav-page scrollto active" href="#"><b>MSME Profile</b></a></li>
+            <li></li>           
+        </div>-->
 
       <div class="row" id="product-details">
       {{-- @foreach ($product as $data) --}}
@@ -99,15 +96,15 @@
       <img src="{{ asset('product/'.$product->product_pict) }}" class="img-fluid" alt="">
       </div>
       <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-        <p class="card-text"><b>{{ $product->name }}</b></p>
-        <h3 class="text-justify" id="pdw">{{$product->name}}</h3>
+        <p class="card-text">{{ $product->name }}</b></p>
+        <h3 class="text-justify" id="pdw"><strong>{{$product->name}}</strong></h3>
         <p style="text-align: justify" id="pdw">{{$product->desc}}</p>
         <table>
           <tr>
-            <td>Categories</td>
-            <td>HSCode</td>
-            <td>Origins</td>
-            <td>Dimension</td>
+            <td><u>Categories</u></td>
+            <td><u>HSCode</u></td>
+            <td><u>Origins</u></td>
+            <td><u>Dimension</u></td>
           </tr>
           <td> {{ $product->subcategory->name }} </td>
           <td> {{ $product->hs_code }} </td>
@@ -124,36 +121,36 @@
       </div>
     </div>
     {{-- @endforeach --}}
-    <hr>
-
+    <hr style="width: 800px; margin: 100px 250px 50px; color: #000000; height: 2px;">
+    
 
     <!-- ======= Company Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
       {{-- @foreach($product as $product) --}}
-        <div class="col-lg-4">
+        <div class="col-lg-2">
           <div class="portfolio-info">
 
             <table width="100%" cellpadding="5">
               <tr>
-                <th rowspan="4"> <img src="{{ asset('company/'.$product->logo) }}" alt=""></th>
+                <th rowspan="4"> <img src="{{ asset('company/'.$product->company->logo) }}" alt="no pict"></th>
               </tr>
               <tr>
                 <th colspan="4">
-                  <h2>{{$product->company->name}}</h2>
+                  <h2><b>{{$product->company->name}}</b></h2>
                 </th>
               </tr>
               <tr>
-                <td><small>Website or Social Media</small></td>
-                <td><small>Email Address</small></td>
-                <td><small>Business Sector</small></td>
-                <td><small>Contact Number</small></td>
+                <td><small><u>Website or Social Media</u></small></td>
+                <td><small><u>Email Address</u></small></td>
+                <td><small><u>Business Sector</u></small></td>
+                <td><small><u>Contact Number</u></small></td>
               </tr>
               <tr>
-                <td><strong>{{$product->company->website}}</strong></td>
-                <td><strong>{{$product->company->email}}</strong></td>
-                <td><strong>{{$product->company->subcategory->name}}</strong></td>
-                <td><strong>{{$product->company->contact_number}}</strong></td>
+                <td>{{$product->company->website}}</td>
+                <td>{{$product->company->email}}</td>
+                <td>{{$product->company->subcategory->name}}</td>
+                <td>{{$product->company->contact_number}}</td>
               </tr>
             </table>
           </div>
@@ -165,12 +162,12 @@
     </section><!-- End Portfolio Details Section -->
 
   </main><!-- End #main -->
-  <hr>
 
   <!-- ======= Product Similar Section ======= -->
   <section id="similar" style="padding-top: 0px;padding-bottom: 0px;" class="similar section-bg">
     <div class="container" data-aos="fade-up">
 
+    <hr style="width: 480px; margin: 40px 320px 10px; color: #000000; height: 2px;">
       <div class="section-title">
         <h3>Similar Product</h3>
       </div>
@@ -185,7 +182,7 @@
                 <div class="card-body">
                   <p class="card-text" style="margin-bottom: 4px;"><strong>{{$similiar_product->name}} </strong></p>
                   <p style="margin-bottom: 3px;">{{$similiar_product->subcategory->name}} </p>
-                  <P>{{$similiar_product->indonesiaCity->name}}, {{$similiar_product->indonesiaProvince->name}}</P>
+                  <P>{{$similiar_product->indonesiaProvince->name}}</P>
                 </div>
               </div>
             </div>     
@@ -202,33 +199,28 @@
 
     <div class="footer-top">
       <div class="container">
-        <div class="row">
+        <div class="row" align="center">
 
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Aswana<span>.ry</span></h3>
-            <p>
-              All around the World <br>
-              Every Universe<br>
-              In your Heart too. <br><br>
-              <strong>Phone:</strong> +62 896-8226-5894<br>
-              <strong>Email:</strong> 4swanary@gmail.com<br>
-            </p>
-          </div>
+          <div class="footer-contact" align="center">
+            <h3>Aswana.ry</h3>            
+            <p>Aswana Directory</p>
+            <p><i>All around the World Every Universe In your Heart too.</i><br><br></p>
+          </div><div></div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+          <div class="col-lg-3 col-md-3 footer-links">
+            <h4><u>Our Social Media</u></h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#services">Category</a></li>
+              <a href="https://wa.me/089682265894" class="whatsapp"><i class="bx bxl-whatsapp" style="width: 5%; margin: 0px 20px;"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram" style="margin: 0px 50px;"></i></a>
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Contact Us</h4>
-            <p>To make it easier, click the button below to contact us</p>
-            <div class="social-links mt-3">
-              <a href="https://wa.me/089682265894" class="twitter"><i class="bx bxl-whatsapp"></i></a>
+          <div class="col-lg-6 col-md-6 footer-links">
+            <h4 align="center"><u>Contact Us</u></h4>
+            <p>need more information you can contact us on down below</p>
+            <div class="social-links mt-3">      
+              <p><strong>Phone : </strong> +62 896-8226-5894 <span> | </span><span><strong> Email : </strong> 4swanary@gmail.com</span></p>
+              
               <!--<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
               <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
@@ -237,15 +229,8 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Support by:</h4>
-            <img src="{{ asset('assett/img/support.png') }}" alt="">
-            <!--<ul>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-              </ul>-->
+            <h4><u>Support By</u></h4>
+            <img src="{{ asset('assett/img/support.png') }}" alt="">        
           </div>
         </div>
 
@@ -253,16 +238,9 @@
     </div>
     </div>
 
-    <div class="container py-4">
-      <div class="copyright"> &copy; Copyright <strong><span>Aswana.ry</span></strong>. All Rights Reserved
+    <div class="container py-4" align="center">
+      <div class="copyright">Copyright &copy; 2022 <strong><span>Aswana.ry</span></strong>. All Rights Reserved
       </div>
-      <!--<div class="credits"> -->
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-      <!--  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div> -->
     </div>
   </footer><!-- End Footer -->
 

@@ -234,7 +234,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 3px;
   font-size: 15px;
   font-weight: 600;
-  color: #222222;
+  color: #25262B;
   white-space: nowrap;
   transition: 0.3s;
   position: relative;
@@ -1030,7 +1030,7 @@ section {
   font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
-  color: #444444;
+  color: #25262B;
   margin-bottom: 5px;
   transition: all 0.3s ease-in-out;
 }
@@ -1114,17 +1114,18 @@ section {
 .portfolio-details .portfolio-info {
   padding: 30px;
   box-shadow: 0px 0 20px #fff;
-  background-color: #292b25;
-  border-radius: 60px;
-  color: #fff;
-  width: 1000px;
-  max-height: 300px;
-  margin-left: 80px;
-  margin-right: 100px;  
+  background-color: #562016;
+  border-radius: 30px;
+  color: #DACBBC;
+  width: 1008px;
+  height: 210px;
+  margin-left: 1px;
+  margin-right: 8px;  
 }
 
 #portfolio-details .portfolio-info img {
-  max-height: max-content;
+  height: 130px;
+  width: 130px;
   border-radius: 20px;
 }
 
@@ -1173,36 +1174,41 @@ section {
 }
 .img-fluid {
   border-radius: 20px;
-  max-height: 700px;
+  max-height: 300px;
 }
 
 /*--------------------------------------------------------------
 # Similar Product 
 --------------------------------------------------------------*/
 .card{
-  width: 210px;
+  width: 91.2%;
   display: inline-block;
-  height: 320px;
-  margin-bottom: 10px;
-  margin-top: 1px;
-  margin-left: 20px;
+  height: 348px;
   background-color: #25262B;
-  border-radius: 15px;
-  -moz-box-shadow: 0 0 5px #888;
-  -webkit-box-shadow: 0 0 5px#888;
-  box-shadow:  0px 2px 3px rgba(0, 0, 0, 0.5);
-}
-.offset-1{
-  margin-left: 6%;
-}
-.card-img-top{
-  width: 207px;
-  height: 210px;
-  border-radius: 15px;
-}
-.card-body {
   color: #EEE8E1;
-  font-size: small;
+  border-radius: 15px;
+  margin: 0.5rem auto 0.5rem auto;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+ 
+}
+/*.offset-1{
+  margin-left: 6%;
+}*/
+.card-img-top{
+  width: 230px;
+  height: 240px;
+  border-radius: 15px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
+}
+.card-body-product p{
+  margin: 5px;
+  width: 500px;    
+}
+.card-body-product{
+  padding: 7px 7px ;
+  
 }
 #similar .container {
   margin-top: 0px;
