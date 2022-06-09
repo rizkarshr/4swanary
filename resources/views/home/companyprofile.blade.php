@@ -301,7 +301,7 @@ session_start();
             <br>
 
             <!--<div class="grid_3 grid_5">-->
-                <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs" >
                     <!--<div id="myTabContent" class="tab-content">-->
                         <div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab">
                             <div class="agile-tp">
@@ -327,7 +327,7 @@ session_start();
                                     //PRODUK DARI COMPANY-->
                                     
                                     @foreach ($product as $product)
-                                    <div class="row">
+                                    <div class="row" style="padding-bottom: 60px;">
                                         <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
                                              <a div class="card-prod" href="{{ url('/product/{id}/') }}">
                                                 <img src="{{ asset('product/'.$product->product_pict) }}" alt=" " class="card-img-top" />
@@ -375,50 +375,74 @@ session_start();
 
 
 
-    <!-- //footer --> <br><br>
-    <div class="footer">
-        <div class="container">
-            <div class="w3_footer_grids">
-                <div class="col-sm-3 w3_footer_grid">
-                    <h3>Hubungi Kami</h3>
+   <!-- ======= Footer ======= -->
+  <footer id="footer">
 
-                    <ul class="address">
-                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Aswana.ry Directory</li>
-                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:4swanary@gmail.com">4swanary@gmail.com</a></li>
-                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+62 8512 3456 789</li>
-                    </ul>
-                </div>
-                <div class="col-sm-5 w3_footer_grid">
+<div class="footer-top">
+  <div class="container">
+    <div class="row">
 
-                    <ul class="info">
-                        <h3>Support By</h3>
-                        <li>
-                            <img src="{{ asset('asset/images/merdeka.png') }}" alt=" " class="img-responsive">
-                            <img src="{{ asset('asset/images/sekolahekspor.png') }}" alt=" " class="img-responsive">
-                        </li>
-                        <!--<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">About Us</a></li>-->
-                    </ul>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
+      <div class="col-lg-3 col-md-6 footer-contact">
+        <h3>Aswana<span>.ry</span></h3>
+        <p>
+          All around the World <br>
+          Every Universe<br>
+          In your Heart too. <br><br>
+          <strong>Phone:</strong> +62 896-8226-5894<br>
+          <strong>Email:</strong> 4swanary@gmail.com<br>
+        </p>
+      </div>
+
+      <div class="col-lg-3 col-md-6 footer-links">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
+          <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+          <li><i class="bx bx-chevron-right"></i> <a href="#services">Category</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6 footer-links">
+        <h4>Contact Us</h4>
+        <p>To make it easier, click the button below to contact us</p>
+        <div class="social-links mt-3">
+          <a href="https://wa.me/089682265894" class="twitter"><i class="bx bxl-instagram"></i></a>
+          <!--<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
         </div>
+      </div>
 
-        <div class="footer-copy">
-            <div class="w3layouts-foot">
-                <ul>
-                    <li><a href="#" class="w3_agile_instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="w3_agile_whatsapp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-
-
-            <p>© 2022 Aswana.ry Directory. All rights reserved</p>
-
-        </div>
-
+      <div class="col-lg-3 col-md-6 footer-links">
+        <h4>Support by:</h4>
+        <img src="{{ asset('assett/img/support.png') }}" alt="">
+        <!--<ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+          </ul>-->
+      </div>
     </div>
+
+  </div>
+</div>
+</div>
+
+<div class="container py-4">
+  <div class="copyright"> &copy; Copyright <strong><span>Aswana.ry</span></strong>. All Rights Reserved
+  </div>
+  <!--<div class="credits"> -->
+  <!-- All the links in the footer should remain intact. -->
+  <!-- You can delete the links only if you purchased the pro version. -->
+  <!-- Licensing information: https://bootstrapmade.com/license/ -->
+  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
+  <!--  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  </div> -->
+</div>
+</footer><!-- End Footer -->
     <!--<div class="footer-botm">
         <div class="container">
             <div class="w3layouts-foot">
@@ -532,3 +556,166 @@ session_start();
 </body>
 
 </html>
+
+<style> 
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+    background: #fff;
+    padding: 0 0 30px 0;
+    color: #444444;
+    font-size: 14px;
+    background: #f1f6fe;
+  }
+  #footer .footer-newsletter {
+    padding: 50px 0;
+    background: #f1f6fe;
+    text-align: center;
+    font-size: 15px;
+  }
+  #footer .footer-newsletter h4 {
+    font-size: 24px;
+    margin: 0 0 20px 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 600;
+  }
+  #footer .footer-newsletter form {
+    margin-top: 30px;
+    background: #fff;
+    padding: 6px 10px;
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.06);
+    text-align: left;
+  }
+  #footer .footer-newsletter form input[type=email] {
+    border: 0;
+    padding: 4px 8px;
+    width: calc(100% - 100px);
+  }
+  #footer .footer-newsletter form input[type=submit] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: 0;
+    background: none;
+    font-size: 16px;
+    padding: 0 20px;
+    background: #106eea;
+    color: #fff;
+    transition: 0.3s;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  }
+  #footer .footer-newsletter form input[type=submit]:hover {
+    background: #0d58ba;
+  }
+  #footer .footer-top {
+    padding: 60px 0 30px 0;
+    background: #25262B;
+  }
+  #footer .footer-top .footer-contact {
+    margin-bottom: 30px;
+  }
+  #footer .footer-top .footer-contact h3 {
+    font-size: 24px;
+    margin: 0 0 15px 0;
+    padding: 2px 0 2px 0;
+    line-height: 1;
+    font-weight: 700;
+  }
+  #footer .footer-top .footer-contact h3 span {
+    color: #B0998D;
+  }
+  #footer .footer-top .footer-contact p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 0;
+    font-family: "Roboto", sans-serif;
+    color: #777777;
+  }
+  #footer .footer-top h4 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #444444;
+    position: relative;
+    padding-bottom: 12px;
+  }
+  #footer .footer-top .footer-links {
+    margin-bottom: 30px;
+  }
+  #footer .footer-top .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  #footer .footer-top .footer-links ul i {
+    padding-right: 2px;
+    color: #B0998D;
+    font-size: 18px;
+    line-height: 1;
+  }
+  #footer .footer-top .footer-links ul li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+  }
+  #footer .footer-top .footer-links ul li:first-child {
+    padding-top: 0;
+  }
+  #footer .footer-top .footer-links ul a {
+    color: #777777;
+    transition: 0.3s;
+    display: inline-block;
+    line-height: 1;
+  }
+  #footer .footer-top .footer-links ul a:hover {
+    text-decoration: none;
+    color: #B0998D;
+  }
+  #footer .footer-top .social-links a {
+    font-size: 18px;
+    display: inline-block;
+    background: #0b9b2d;
+    color: #fff;
+    line-height: 1;
+    padding: 8px 0;
+    margin-right: 4px;
+    border-radius: 4px;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+    
+  }
+  #footer .footer-top .social-links a:hover {
+    background: #4A312C;
+    color: #fff;
+    text-decoration: none;
+  }
+  #footer .copyright {
+    text-align: center;
+    float: left;
+  }
+  
+  .copyright {
+    text-align: center;
+  }
+  
+  #footer .credits {
+    float: right;
+    text-align: center;
+    font-size: 13px;
+    color: #444444;
+  }
+  @media (max-width: 768px) {
+    #footer .copyright, #footer .credits {
+      float: none;
+      text-align: center;
+      padding: 2px 0;
+    }
+}
+</style>

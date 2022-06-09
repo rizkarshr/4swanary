@@ -36,7 +36,12 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-item {
 	padding-left: 70px;
   padding-right: 70px;
-  border-radius: 20px;
+  border-radius: 100px;
+  height: 480px;
+  
+}
+.carousel-inner{
+  border-radius: 15px;
 }
 
 
@@ -543,14 +548,14 @@ section {
   margin: 15px 0 0 0;
   font-size: 30px;
   font-weight: 700;
+  color: #25262B;
 }
-.section-title h3 span {
-  color: #4A312C;
-}
+
 .section-title p {
   margin: 15px auto 0 auto;
   font-weight: 400;
   font-size: 18px;
+  color: #562016;
 }
 @media (min-width: 1024px) {
   .section-title p {
@@ -808,18 +813,18 @@ section {
   width: 300;
 }
 
-.services .icon-box {
+.services .icon-box-p {
   text-align: center;
-  border: 0px solid #047201;
+  border: 0px solid #fdfdfd;
   padding: 90px 10px;
   transition: all ease-in-out 0.3s;
-  background: url("../img/product.png") top left;
+  background: url("../img/p.png") top left;
   background-size: cover;
   border-radius: 20px;
+  width: 1000px;
   
 }
-
-.services .icon-box .icon {
+.services .icon-box-p .icon {
   margin: 0 auto;
   width: 64px;
   height: 64px;
@@ -832,33 +837,91 @@ section {
   margin-bottom: 20px;
   transition: ease-in-out 0.3s;
 }
-.services .icon-box .icon i {
+.services .icon-box-p .icon i {
   color: #4A312C;
   font-size: 28px;
   transition: ease-in-out 0.3s;
 }
-.services .icon-box h4 {
+.services .icon-box-p h4 {
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 24px;
 }
-.services .icon-box h4 a {
-  color: #222222;
+.services .icon-box-p h4 a {
+  color: #DACBBC;
   transition: ease-in-out 0.3s;
 }
-.services .icon-box p {
+.services .icon-box-p p {
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
+  color: #ffffff;
 }
-.services .icon-box:hover {
+.services .icon-box-p:hover {
   border-color: #fff;
   box-shadow: 0px 0 25px 0 rgba(16, 110, 234, 0.1);
 }
-.services .icon-box:hover h4 a, .services .icon-box:hover .icon i {
+.services .icon-box-p:hover h4 a, .services .icon-box:hover .icon i {
   color: #B0998D;
 }
-.services .icon-box:hover .icon {
+.services .icon-box-p:hover .icon {
+  border-color: #B0998D;
+}
+
+/*----------------Box Category MSME------------------*/
+.services .icon-box-m {
+  text-align: center;
+  border: 0px solid #fdfdfd;
+  padding: 90px 10px;
+  transition: all ease-in-out 0.3s;
+  background: url("../img/m.png") top left;
+  background-size: cover;
+  border-radius: 20px;
+  width: 1000px;
+  
+}
+
+.services .icon-box-m .icon {
+  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+  background: #DACBBC;
+  border-radius: 4px;
+  border: 1px solid #deebfd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: ease-in-out 0.3s;
+}
+.services .icon-box-m .icon i {
+  color: #4A312C;
+  font-size: 28px;
+  transition: ease-in-out 0.3s;
+}
+.services .icon-box-m h4 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+.services .icon-box-m h4 a {
+  color: #DACBBC;
+  transition: ease-in-out 0.3s;
+}
+.services .icon-box-m p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+  color: #ffffff;
+}
+.services .icon-box-m:hover {
+  border-color: #fff;
+  box-shadow: 0px 0 25px 0 rgba(16, 110, 234, 0.1);
+}
+.services .icon-box-m:hover h4 a, .services .icon-box:hover .icon i {
+  color: #B0998D;
+}
+.services .icon-box-m:hover .icon {
   border-color: #B0998D;
 }
 
@@ -1154,14 +1217,14 @@ section {
 # Team
 --------------------------------------------------------------*/
 .team {
-  padding: 60px 0;
+  padding: 20px 0;
 }
 .team .member {
   margin-bottom: 20px;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 18px;
   background: #fff;
-  box-shadow: 0px 2px 15px rgba(16, 110, 234, 0.15);
+  box-shadow: 0px 2px 15px rgba(8, 20, 36, 0.368);
 }
 .team .member .member-img {
   position: relative;
@@ -1491,15 +1554,14 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #fff;
+  background: #25262B;
   padding: 0 0 30px 0;
-  color: #444444;
+  color: #DACBBC;
   font-size: 14px;
-  background: #f1f6fe;
 }
 #footer .footer-newsletter {
   padding: 50px 0;
-  background: #f1f6fe;
+  background: #25262B;
   text-align: center;
   font-size: 15px;
 }
@@ -1557,19 +1619,19 @@ section {
   font-weight: 700;
 }
 #footer .footer-top .footer-contact h3 span {
-  color: #B0998D;
+  color: #DACBBC;
 }
 #footer .footer-top .footer-contact p {
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
   font-family: "Roboto", sans-serif;
-  color: #777777;
+  color: #DACBBC;
 }
 #footer .footer-top h4 {
   font-size: 16px;
   font-weight: bold;
-  color: #444444;
+  color: #bcaea0;
   position: relative;
   padding-bottom: 12px;
 }
@@ -1582,9 +1644,9 @@ section {
   margin: 0;
 }
 #footer .footer-top .footer-links ul i {
-  padding-right: 2px;
+  padding-right: 0px;
   color: #B0998D;
-  font-size: 18px;
+  font-size: 50px;
   line-height: 1;
 }
 #footer .footer-top .footer-links ul li {
@@ -1596,7 +1658,7 @@ section {
   padding-top: 0;
 }
 #footer .footer-top .footer-links ul a {
-  color: #777777;
+  color: #DACBBC;
   transition: 0.3s;
   display: inline-block;
   line-height: 1;
@@ -1618,6 +1680,7 @@ section {
   width: 36px;
   height: 36px;
   transition: 0.3s;
+  
 }
 #footer .footer-top .social-links a:hover {
   background: #4A312C;
@@ -1626,7 +1689,7 @@ section {
 }
 #footer .copyright {
   text-align: center;
-  float: left;
+  float: center;
 }
 
 .copyright {
@@ -1637,7 +1700,7 @@ section {
   float: right;
   text-align: center;
   font-size: 13px;
-  color: #444444;
+  color: #DACBBC;
 }
 @media (max-width: 768px) {
   #footer .copyright, #footer .credits {
