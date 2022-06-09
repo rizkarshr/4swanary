@@ -84,6 +84,7 @@ class ArticleController extends Controller
                 'title' => $request->title,
                 'image' => $image,
                 'source' => $request->source,
+                'summary' => $request->summary,
                 'status' => $request->status,
                 'content' => $content,
                 'created_at' => $request->created_at,
@@ -119,6 +120,7 @@ class ArticleController extends Controller
                 'id' => $request->id,
                 'title' => $request->title,
                 'source' => $request->source,
+                'summary' => $request->summary,
                 'status' => $request->status,
                 'content' => $content,
                 'created_at' => $request->created_at,
@@ -197,8 +199,10 @@ class ArticleController extends Controller
                 'title' => $request->title,
                 'image' => $image,
                 'source' => $request->source,
+                'summary' => $request->summary,
                 'status' => $request->status,
                 'content' => $request->content,
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$article) {
@@ -212,8 +216,10 @@ class ArticleController extends Controller
                 'id' => $request->id,
                 'title' => $request->title,
                 'source' => $request->source,
+                'summary' => $request->summary,
                 'status' => $request->status,
                 'content' => $request->content,
+                'updated_at' => $request->updated_at
             ]);
 
             if (!$article) {

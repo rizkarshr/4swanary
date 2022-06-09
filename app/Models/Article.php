@@ -17,6 +17,7 @@ class Article extends Model
         'title',
         'image',
         'source',
+        'summary',
         'status',
         'content',
         'created_at',

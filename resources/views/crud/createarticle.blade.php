@@ -168,6 +168,10 @@ session_start();
                                             <input name="source" type="text" class="form-control" required>
                                         </div>
                                         <div class="form-group">
+                                            <label><strong>Summary :</strong></label>
+                                            <textarea name="summary" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Status</label>
                                             <select class="form-control" name="status" id="status" required>
                                                 <option selected disabled="">Choose Status</option>

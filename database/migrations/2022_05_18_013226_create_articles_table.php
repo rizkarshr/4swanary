@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('image')->nullable();
             $table->string('source');
+            $table->text('summary');
             $table->enum('status', ['Active','Inactive']);
             $table->longText('content');
             $table->timestamps();
