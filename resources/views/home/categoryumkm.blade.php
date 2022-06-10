@@ -91,7 +91,7 @@
                   </div>
                 </a>
             </div>
-
+      @endforeach
         <!-- <div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
                 <div class="card">
                     <img class="card-img-top" src="{{$search->logo}}" alt="Card image cap">
@@ -102,8 +102,9 @@
                     </div>
                 </div>
             </div>-->
-            @endforeach
+      
         </div>  
+        
     </div>
     
     <br><br>
@@ -121,75 +122,6 @@
                 <a href="#"><b>&raquo;</b></a>
         </div>-->  
 </section>  
-
-<!-- ======= Footer ======= -->
-<footer id="footer">
-
-<div class="footer-top" data-unify="Footer" role="contentinfo">
-  <div class="container">
-    <div class="row">
-
-      <div class="col-lg-3 col-md-6 footer-contact" style="padding-top: 1800px;">
-        <h3>Aswana<span>.ry</span></h3>
-        <p>
-          All around the World <br>
-          Every Universe<br>
-          In your Heart too. <br><br>
-          <strong>Phone:</strong> +62 896-8226-5894<br>
-          <strong>Email:</strong> 4swanary@gmail.com<br>
-        </p>
-      </div>
-
-      <div class="col-lg-3 col-md-6 footer-links" style="padding-top: 1800px;">
-        <h4>Useful Links</h4>
-        <ul>
-          <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="#services">Category</a></li>
-        </ul>
-      </div>
-
-      <div class="col-lg-3 col-md-6 footer-links" style="padding-top: 1800px;">
-        <h4>Contact Us</h4>
-        <p>To make it easier, click the button below to contact us</p>
-        <div class="social-links mt-3">
-          <a href="https://wa.me/089682265894" class="twitter"><i class="bx bxl-whatsapp"></i></a>
-          <!--<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 footer-links" style="padding-top: 1800px;">
-        <h4>Support by:</h4>
-        <img src="{{ asset('assett/img/support.png') }}" alt="">
-        <!--<ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-          </ul>-->
-      </div>
-    </div>
-
-  </div>
-</div>
-</div>
-
-<div class="container py-4">
-  <div class="copyright"> &copy; Copyright <strong><span>Aswana.ry</span></strong>. All Rights Reserved
-  </div>
-  <!--<div class="credits"> -->
-  <!-- All the links in the footer should remain intact. -->
-  <!-- You can delete the links only if you purchased the pro version. -->
-  <!-- Licensing information: https://bootstrapmade.com/license/ -->
-  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-  <!--  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-  </div> -->
-</div>
-</footer><!-- End Footer -->
 
 </body>
 

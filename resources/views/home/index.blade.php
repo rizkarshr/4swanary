@@ -77,13 +77,13 @@
 
       <div class="row">
         <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-          <img src="{{ asset('assett/img/artikel1.JPG') }}" class="img-fluid" alt="">
+          <img src="{{ asset('article/'.$article->image) }}" class="img-fluid" alt="">
         </div>
         <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
           <h3 class="text-justify">{{$article->title}}</h3>
           <p class="text-justify">
             {{$article->summary}}
-            <a href="{{ url('/article') }}" class="fst-italic"><b>Readmore...</b></a>
+            <a href="{{ url('/articles') }}" class="fst-italic"><b>Readmore...</b></a>
           </p>
           <!--<a href="link" target="_blank" class="fst-italic">Readmore..</a>-->
           
@@ -219,7 +219,7 @@
           <!--<h2>Team</h2>-->
           <hr style="width: 280px; margin: 40px 420px 10px; color: #000000; height: 2px;">
           <h3>Meet Our Hardworking <span>Team</span></h3>
-          <p>this team based on 4 beautiful member in different city</p>
+          <p>this team based on 4 beautiful member from different city</p>
         </div>
 
         <div class="row">

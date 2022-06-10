@@ -75,11 +75,12 @@
   </div>
 </form>
 <!--===================================PRODUCT LIST=======================================-->
-    <div class="container" style="padding-left: 3px; padding-right: 3px;">
+    <section id="list-product">
+    <div class="container" data-aos="fade-up" style="padding-left: 3px; padding-right: 3px;">
       @foreach ($search as $search)
         <div class="row">
-            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <a div class="card" href="{{ url('/product/'.$search->id)}}">
+        <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+                <a div class="card" style="margin-right: 100px;" href="{{ url('/product/'.$search->id)}}">
                   <img src="{{ asset('product/'.$search->product_pict) }}" alt="no pict" class="card-img-top" />
                   <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>
@@ -88,20 +89,22 @@
                   </div>
                 </a>
             </div>
-
-        <!-- <div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
+            @endforeach      
+        
+        <!--<div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
                 <div class="card">
                     <img class="card-img-top" src="{{$search->logo}}" alt="Card image cap">
                     <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>
-                    <p class="categoryprod">{{$search->id_subcategory}}</p>
-                    <p class="originprod">hai</p>      
+                    <p class="categoryprod">{{$search->subcategory->name}}</p>
+                    <p class="originprod">{{$search->IndonesiaProvince->name}}</p>      
                     </div>
                 </div>
             </div>-->
-            @endforeach
+            
         </div>  
     </div>
+    </section>
     
     <br><br>
 <!--===================================END OF LIST=======================================-->
@@ -373,7 +376,7 @@ body{
 }
 .navbar-mobile .dropdown ul a i {
   font-size: 12px;
-}
+}float
 .navbar-mobile .dropdown ul a:hover, .navbar-mobile .dropdown ul .active:hover, .navbar-mobile .dropdown ul li:hover > a {
   color: #4A312C;
 }
@@ -383,13 +386,13 @@ body{
 
 /*Header End*/
 #sidebar{
-    width: 20%;
+    width: 28%;
     padding: 10px;
     margin: 0;
     float: left;
 }
 #products{
-    width: 80%;
+    width: 72%;
     padding: 10px;
     margin: 0;
     float: right;
@@ -445,6 +448,7 @@ li a:hover{
 }
 .container{
     padding-top: 12px;
+    max-width: 100%;
 }
 .categoryprod{
     font-size: 14px;
