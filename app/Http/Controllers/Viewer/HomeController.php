@@ -15,17 +15,23 @@ use App\Models\Category;
 class HomeController extends Controller
 {
     
-    public function index(Article $article)
+    public function index()
     {
-        $data = [
 
-            'article' => Article::find($article->id),
-            'product' => Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get(),
-            'category' => Category::all(),
+        $article = Article::where('status','=','Active')->first();
 
-        ];
+        if (($article->status == 'Active') >= 2){
 
-        return view ('home/index', compact('data'));
+            $article = Article::where('status','=','Active')->latest('id')->first();
+
+        }
+
+        $product = Product::with('company','subcategory','IndonesiaCity','IndonesiaProvince')->get();
+        $category = Category::all();
+
+        return view ('home/index', compact('article','product','category'));
+
+        return view ('coba/article', compact('article'));
     }
 
 }
