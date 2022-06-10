@@ -198,6 +198,7 @@ session_start();
                                                     <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
                                                 </td>
                                             </tr>
+                                            
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -345,31 +346,7 @@ session_start();
     </div>-->
     <!-- modal edit end -->
 
-    <!-- modal delete -->
-    <div id="ModalDelete" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Company</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="/admin/manage-company/delete/{id}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            Are You Sure You Want To Delete This Data?
-                            <input name="name" type="hidden" class="form-control" required autofocus>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="deletecompany" type="submit" class="btn btn-primary" value="Delete">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- modal delete end -->
+    
 
     <script>
         $(document).ready(function() {

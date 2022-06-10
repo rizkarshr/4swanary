@@ -185,6 +185,31 @@ session_start();
 
                                                 </td>
                                             </tr>
+
+                                            <!-- modal delete -->
+    <div id="ModalDelete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Product</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="/admin/manage-article/delete/{{$article->id}}" method="get" enctype="multipart/form-data">
+                        <div class="form-group">
+                            Are You Sure You Want To Delete This Data?
+                            <input name="name" type="hidden" class="form-control" required autofocus>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="deleteproduct" type="submit" class="btn btn-primary" value="Delete">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- modal delete end -->
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -332,31 +357,7 @@ session_start();
     </div>-->
     <!-- modal edit end -->
 
-    <!-- modal delete -->
-    <div id="ModalDelete" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Product</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="/admin/manage-article/delete/{id}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            Are You Sure You Want To Delete This Data?
-                            <input name="name" type="hidden" class="form-control" required autofocus>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="deleteproduct" type="submit" class="btn btn-primary" value="Delete">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- modal delete end -->
+    
 
     <script>
         $(document).ready(function() {

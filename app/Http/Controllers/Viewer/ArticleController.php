@@ -10,7 +10,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $article = Article::where('status','=','Active')->get();
+        $article = Article::where('status','=','Active')->first();
 
         if (($article->status == 'Active') >= 2){
 

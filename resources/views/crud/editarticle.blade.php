@@ -148,7 +148,7 @@ session_start();
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h2 align="center">Edit Articla</h2>
+                                <h2 align="center">Edit Article</h2>
                                 <div class="modal-body">
                                     <form class="form-sample" action="/admin/manage-article/update/{{$article->id}}" method="post" enctype="multipart/form-data">
                                         <?php date_default_timezone_set('Asia/Makassar'); ?>

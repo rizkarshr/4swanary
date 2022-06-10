@@ -319,7 +319,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        $company = company::find($id);
+        $company = Company::findOrFail($id);
 
         if (File::exists(public_path('company-logo/' . $company->logo)) and File::exists(public_path('company-bg/' . $company->background))) {
 
@@ -327,16 +327,19 @@ class CompanyController extends Controller
             File::delete(public_path('company-bg/' . $company->background));
 
             $company->delete();
+
         } elseif (File::exists(public_path('company-logo/' . $company->logo))) {
 
             File::delete(public_path('company-logo/' . $company->logo));
 
             $company->delete();
+
         } elseif (File::exists(public_path('company-bg/' . $company->background))) {
 
             File::delete(public_path('company-bg/' . $company->background));
 
             $company->delete();
+            
         } else {
 
             $company->delete();
