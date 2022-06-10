@@ -55,7 +55,7 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
       <h1>Welcome to <span>Aswana.ry</span></h1>
-      <h2>Directory of Sekolah Ekspor</h2>
+      <h2>Directory of Export Product from Indonesia</h2>
       <div class="d-flex">
        <!-- <a href="#about" class="btn-get-started scrollto">Get Started</a>
         <a href="https://youtu.be/KwGnUtK2Kf0" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>-->
@@ -70,8 +70,9 @@
 
       <div class="section-title">
         <!--<h2>Article</h2>-->
+        <hr style="width: 200px; margin: 40px 455px 10px; color: #000000; height: 2px;">
         <h3>Article</h3>
-        <p>read this section if you want to know more about exports!</p>
+        <p>read this section if you want to know something about indonesian exports!</p>
       </div><br>
 
       <div class="row">
@@ -79,9 +80,9 @@
           <img src="{{ asset('assett/img/artikel1.JPG') }}" class="img-fluid" alt="">
         </div>
         <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-justify">Kampus Merdeka Program through Sekolah Ekspor Produces 198 Student Work Products Ready for Export</h3>
+          <h3 class="text-justify">{{$article->title}}</h3>
           <p class="text-justify">
-            Jakarta – Tasks Executor (Plt.) Director General of Higher Education, Research, and Technology (Dirjen Diktiristek) Nizam, and Head of Export School Handito Joewono inaugurated the Digital Export Showcase as Export Product Gallery for Independent Study Kampus Merdeka Program students to become new exporters for 4.0 academic year 2021/ 2022. There are 198 student export products produced by 777 students from 223 universities throughout Indonesia.
+            {{$article->summary}}
             <a href="{{ url('/article') }}" class="fst-italic"><b>Readmore...</b></a>
           </p>
           <!--<a href="link" target="_blank" class="fst-italic">Readmore..</a>-->
@@ -97,6 +98,7 @@
     <br>
     <div class="section-title">
       <!--<h2>Product</h2>-->
+      <hr style="width: 480px; margin: 40px 400px 10px; color: #000000; height: 2px;">
       <h3>Indonesian MSMEs Product</h3>
       <p>see the visual of Indonesian MSMEs products right here!</p>
     </div>
@@ -154,6 +156,7 @@
         <div class="section-title">
           <!--<h2>Category</h2>-->
           <br>
+          <hr style="width: 280px; margin: 40px 420px 10px; color: #000000; height: 2px;">
           <h3>Category</h3>
           <p>want to see more about Indonesian MSMEs & their products?
             choose one of these two to see by categories!</p>
@@ -189,7 +192,7 @@
 
         <div class="section-title">
           <!--<h2>About Us</h2>-->
-          
+          <hr style="width: 280px; margin: 40px 420px 10px; color: #000000; height: 2px;">
           <h3>Find Out More <span>About Us!</span></h3><br>
           <p><b>What is Aswana.ry?</b></p><br><br>
           <img src="{{asset('/images/l.png')}}" alt="" style="width: 35%;">
@@ -201,9 +204,7 @@
           </div>
           <div>
             <p class="text-center">
-              Aswana is a web directory that provides information about Indonesian MSME products that represent Indonesian culture. On this website there are two categories, namely product categories and MSMEs in which there are various subcategories to classify these types of products/MSMEs. The choice of the name Aswana.ry comes from a combination of the words Aswana and Directory, the word Aswana is taken from Sanskrit which means a place or location where the place/location functions as a container to accommodate or present something. Meanwhile, Directory comes from English which means directory which has the function of storing and providing information based on categories or groups. So, Aswana.ry means a place/location to store and provide information about Indonesian products/MSMEs based on their category.
-            </p>
-          </div>
+            Aswana is a web directory that provides information about products from Indonesian MSMEs (Micro, Small and Medium Enterprises) that have the potential for export. On this website there are two categories, namely product categories and MSMEs in which there are various subcategories to classify these types of products or MSMEs. The choice of the name Aswana.ry comes from the combination of the words Aswana and Directory, the word Aswana is taken from the Sanskrit language which means a place or location where the place/location functions as a container to accommodate or present something. Meanwhile, Directory comes from English which means directory which has the function of storing and providing information based on categories or groups. So, Aswana.ry means a place or location to store and provide information about Indonesian products or MSMEs based on their category.</div>
         </div>
 
       </div>
@@ -216,8 +217,9 @@
 
         <div class="section-title">
           <!--<h2>Team</h2>-->
+          <hr style="width: 280px; margin: 40px 420px 10px; color: #000000; height: 2px;">
           <h3>Meet Our Hardworking <span>Team</span></h3>
-          <p>Tersenyumlah Seperti BABI</p>
+          <p>this team based on 4 beautiful member in different city</p>
         </div>
 
         <div class="row">
@@ -295,31 +297,27 @@
 
     <div class="footer-top">
       <div class="container">
-        <div class="row">
+        <div class="row" align="center">
 
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Aswana<span>.ry</span></h3>
-            <p>
-              All around the World <br>
-              Every Universe<br>
-              In your Heart too. <br><br>
-            </p>
-          </div>
+          <div class="footer-contact" align="center">
+            <h3>Aswana.ry</h3>            
+            <p>Aswana Directory</p>
+            <p><i>All around the World Every Universe In your Heart too.</i><br><br></p>
+          </div><div></div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Media</h4>
+          <div class="col-lg-3 col-md-3 footer-links">
+            <h4><u>Our Social Media</u></h4>
             <ul>
-              <a href="https://wa.me/089682265894" class="twitter"><i class="bx bxl-whatsapp" style="width: 5%;"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://wa.me/089682265894" class="whatsapp"><i class="bx bxl-whatsapp" style="width: 5%; margin: 0px 20px;"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram" style="margin: 0px 50px;"></i></a>
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Contact Us</h4>
-            <p>if you need more information you can contact us on down below</p>
+          <div class="col-lg-6 col-md-6 footer-links">
+            <h4 align="center"><u>Contact Us</u></h4>
+            <p>need more information you can contact us on down below</p>
             <div class="social-links mt-3">      
-              <strong>Phone :</strong> +62 896-8226-5894<br>
-              <strong>Email :</strong> 4swanary@gmail.com<br>
+              <p><strong>Phone : </strong> +62 896-8226-5894 <span> | </span><span><strong> Email : </strong> 4swanary@gmail.com</span></p>
               
               <!--<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
@@ -329,15 +327,8 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Support by:</h4>
-            <img src="{{ asset('assett/img/support.png') }}" alt="">
-            <!--<ul>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-              </ul>-->
+            <h4><u>Support By</u></h4>
+            <img src="{{ asset('assett/img/support.png') }}" alt="">        
           </div>
         </div>
 
@@ -348,13 +339,6 @@
     <div class="container py-4" align="center">
       <div class="copyright">Copyright &copy; 2022 <strong><span>Aswana.ry</span></strong>. All Rights Reserved
       </div>
-      <!--<div class="credits"> -->
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-      <!--  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div> -->
     </div>
   </footer><!-- End Footer -->
 

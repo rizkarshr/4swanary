@@ -55,7 +55,7 @@ class SubcategoryController extends Controller
             'id_category' => $request->id_category,
         ]);
 
-        return redirect('/admin/manage-subcategory');
+        return redirect('/admin/manage-subcategory')->with('success', 'Data Subcategory Created Successfully!');
     }
 
     /**
@@ -103,7 +103,7 @@ class SubcategoryController extends Controller
             'id_category' => $request->id_category,
         ]);
 
-        return redirect('/admin/manage-subcategory');
+        return redirect('/admin/manage-subcategory')->with('success', 'Data Subcategory Updated Successfully!');
     }
 
     /**

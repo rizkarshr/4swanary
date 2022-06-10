@@ -15,6 +15,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <!-- for-mobile-apps -->
+    <link href="{{ asset('assett/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('assett/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assett/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Falenda Flora, Ruben Agung Santoso" />
@@ -252,11 +255,11 @@ session_start();
                             </ul>
                         </div>
                         <br> <br>
-                        <p style="font-size: 30px;"><b>{{$company->name}}</b></p> 
+                        <p style="font-size: 28px;"><b>{{$company->name}}</b></p> 
                         <a data-toggle="modal" data-target="#modalAppointment">
                             <button>Schedule on Appoinment</button>
                         </a>
-                        <p>____________________________________________________</p>
+                        <p>__________________________________________</p>
                         <br>
                         <p><i>Establishes in {{$company->since}}</i></p>
                         <p>{{$company->IndonesiaCity->name}}, {{$company->IndonesiaProvince->name}}</p>
@@ -264,7 +267,7 @@ session_start();
 
                     
                     <div class="card-body">
-                        <table id="table" class="display" style="width:100%">
+                        <table id="table" class="display" style="width:100%;">
                             <thead class="thead-dark">
                                 <tr>
                                     <th><u>Website or Social Media</u></th>
@@ -297,7 +300,7 @@ session_start();
         <!--<div class="container">-->
         <br><br><br><br>
         <p align="center">____________________________________________________</p>
-            <br><h1 align="center">Our Products</h1>
+            <br><h2 align="center">Our Products</h2> <br>
             <br>
 
             <!--<div class="grid_3 grid_5">-->
@@ -380,33 +383,28 @@ session_start();
 
 <div class="footer-top">
   <div class="container">
-    <div class="row">
+    <div class="row" align="center">
 
-      <div class="col-lg-3 col-md-6 footer-contact">
-        <h3>Aswana<span>.ry</span></h3>
-        <p>
-          All around the World <br>
-          Every Universe<br>
-          In your Heart too. <br><br>
-          <strong>Phone:</strong> +62 896-8226-5894<br>
-          <strong>Email:</strong> 4swanary@gmail.com<br>
-        </p>
-      </div>
+      <div class="footer-contact" align="center">
+        <h3>Aswana.ry</h3>            
+        <p>Aswana Directory</p>
+        <p><i>All around the World Every Universe In your Heart too.</i><br><br></p>
+      </div><div></div>
 
-      <div class="col-lg-3 col-md-6 footer-links">
-        <h4>Useful Links</h4>
+      <div class="col-lg-3 col-md-3 footer-links">
+        <h4><u>Our Social Media</u></h4>
         <ul>
-          <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="#services">Category</a></li>
+          <a href="https://wa.me/089682265894" class="whatsapp"><i class="bx bxl-whatsapp" style="width: 5%; margin: 0px 20px;"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram" style="margin: 0px 50px;"></i></a>
         </ul>
       </div>
 
-      <div class="col-lg-3 col-md-6 footer-links">
-        <h4>Contact Us</h4>
-        <p>To make it easier, click the button below to contact us</p>
-        <div class="social-links mt-3">
-          <a href="https://wa.me/089682265894" class="twitter"><i class="bx bxl-instagram"></i></a>
+      <div class="col-lg-6 col-md-6 footer-links">
+        <h4 align="center"><u>Contact Us</u></h4>
+        <p>need more information you can contact us on down below</p>
+        <div class="social-links mt-3">      
+          <p><strong>Phone : </strong> +62 896-8226-5894 <span> | </span><span><strong> Email : </strong> 4swanary@gmail.com</span></p>
+          
           <!--<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
           <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
           <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
@@ -415,15 +413,8 @@ session_start();
       </div>
 
       <div class="col-lg-3 col-md-6 footer-links">
-        <h4>Support by:</h4>
-        <img src="{{ asset('assett/img/support.png') }}" alt="">
-        <!--<ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-          </ul>-->
+        <h4><u>Support By</u></h4>
+        <img src="{{ asset('assett/img/support.png') }}" alt="">        
       </div>
     </div>
 
@@ -431,34 +422,12 @@ session_start();
 </div>
 </div>
 
-<div class="container py-4">
-  <div class="copyright"> &copy; Copyright <strong><span>Aswana.ry</span></strong>. All Rights Reserved
+<div class="container py-4" align="center">
+  <div class="copyright">Copyright &copy; 2022 <strong><span>Aswana.ry</span></strong>. All Rights Reserved
   </div>
-  <!--<div class="credits"> -->
-  <!-- All the links in the footer should remain intact. -->
-  <!-- You can delete the links only if you purchased the pro version. -->
-  <!-- Licensing information: https://bootstrapmade.com/license/ -->
-  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-  <!--  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-  </div> -->
 </div>
 </footer><!-- End Footer -->
-    <!--<div class="footer-botm">
-        <div class="container">
-            <div class="w3layouts-foot">
-                <ul>
-                    <li><a href="#" class="w3_agile_instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-
-            <div class="payment-w3ls">
-                <img src="asset/images/card.png" alt=" " class="img-responsive">
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div>-->
+    
 
     <!-- modal input -->
     <div id="modalAppointment" class="modal fade">
@@ -557,165 +526,3 @@ session_start();
 
 </html>
 
-<style> 
-/*--------------------------------------------------------------
-# Footer
---------------------------------------------------------------*/
-#footer {
-    background: #fff;
-    padding: 0 0 30px 0;
-    color: #444444;
-    font-size: 14px;
-    background: #f1f6fe;
-  }
-  #footer .footer-newsletter {
-    padding: 50px 0;
-    background: #f1f6fe;
-    text-align: center;
-    font-size: 15px;
-  }
-  #footer .footer-newsletter h4 {
-    font-size: 24px;
-    margin: 0 0 20px 0;
-    padding: 0;
-    line-height: 1;
-    font-weight: 600;
-  }
-  #footer .footer-newsletter form {
-    margin-top: 30px;
-    background: #fff;
-    padding: 6px 10px;
-    position: relative;
-    border-radius: 4px;
-    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.06);
-    text-align: left;
-  }
-  #footer .footer-newsletter form input[type=email] {
-    border: 0;
-    padding: 4px 8px;
-    width: calc(100% - 100px);
-  }
-  #footer .footer-newsletter form input[type=submit] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    border: 0;
-    background: none;
-    font-size: 16px;
-    padding: 0 20px;
-    background: #106eea;
-    color: #fff;
-    transition: 0.3s;
-    border-radius: 0 4px 4px 0;
-    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  }
-  #footer .footer-newsletter form input[type=submit]:hover {
-    background: #0d58ba;
-  }
-  #footer .footer-top {
-    padding: 60px 0 30px 0;
-    background: #25262B;
-  }
-  #footer .footer-top .footer-contact {
-    margin-bottom: 30px;
-  }
-  #footer .footer-top .footer-contact h3 {
-    font-size: 24px;
-    margin: 0 0 15px 0;
-    padding: 2px 0 2px 0;
-    line-height: 1;
-    font-weight: 700;
-  }
-  #footer .footer-top .footer-contact h3 span {
-    color: #B0998D;
-  }
-  #footer .footer-top .footer-contact p {
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 0;
-    font-family: "Roboto", sans-serif;
-    color: #777777;
-  }
-  #footer .footer-top h4 {
-    font-size: 16px;
-    font-weight: bold;
-    color: #444444;
-    position: relative;
-    padding-bottom: 12px;
-  }
-  #footer .footer-top .footer-links {
-    margin-bottom: 30px;
-  }
-  #footer .footer-top .footer-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  #footer .footer-top .footer-links ul i {
-    padding-right: 2px;
-    color: #B0998D;
-    font-size: 18px;
-    line-height: 1;
-  }
-  #footer .footer-top .footer-links ul li {
-    padding: 10px 0;
-    display: flex;
-    align-items: center;
-  }
-  #footer .footer-top .footer-links ul li:first-child {
-    padding-top: 0;
-  }
-  #footer .footer-top .footer-links ul a {
-    color: #777777;
-    transition: 0.3s;
-    display: inline-block;
-    line-height: 1;
-  }
-  #footer .footer-top .footer-links ul a:hover {
-    text-decoration: none;
-    color: #B0998D;
-  }
-  #footer .footer-top .social-links a {
-    font-size: 18px;
-    display: inline-block;
-    background: #0b9b2d;
-    color: #fff;
-    line-height: 1;
-    padding: 8px 0;
-    margin-right: 4px;
-    border-radius: 4px;
-    text-align: center;
-    width: 36px;
-    height: 36px;
-    transition: 0.3s;
-    
-  }
-  #footer .footer-top .social-links a:hover {
-    background: #4A312C;
-    color: #fff;
-    text-decoration: none;
-  }
-  #footer .copyright {
-    text-align: center;
-    float: left;
-  }
-  
-  .copyright {
-    text-align: center;
-  }
-  
-  #footer .credits {
-    float: right;
-    text-align: center;
-    font-size: 13px;
-    color: #444444;
-  }
-  @media (max-width: 768px) {
-    #footer .copyright, #footer .credits {
-      float: none;
-      text-align: center;
-      padding: 2px 0;
-    }
-}
-</style>

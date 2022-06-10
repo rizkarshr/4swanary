@@ -181,7 +181,7 @@ session_start();
                                                     <a href="/admin/manage-article/edit/{{$article->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
-                                                    <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                    <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $article->id }}" data-nama="{{ $article->title }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
 
                                                 </td>
                                             </tr>
@@ -357,7 +357,31 @@ session_start();
     </div>-->
     <!-- modal edit end -->
 
-    
+    <!-- modal delete -->
+    <!--<div id="ModalDelete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Product</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="/admin/manage-article/delete/{id}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            Are You Sure You Want To Delete This Data?
+                            <input name="name" type="hidden" class="form-control" required autofocus>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="deleteproduct" type="submit" class="btn btn-primary" value="Delete">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>-->
+    <!-- modal delete end -->
 
     <script>
         $(document).ready(function() {
@@ -369,6 +393,7 @@ session_start();
             });
         });
     </script>
+
 
     <!-- jquery latest version -->
     <script src="{{url('https://code.jquery.com/jquery-3.3.1.js')}}"></script>
@@ -405,6 +430,37 @@ session_start();
     <!-- others plugins -->
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
+
+    <!-- Sweetalert -->
+    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    @include('sweetalert::alert')
+    <!-- Sweetalert Delete -->
+    <script>
+        $('.delete').click(function(){
+            var id = $(this).attr('data-id');
+            var nama = $(this).attr('data-nama');
+            swal({
+                title: "Are you sure?",
+                text: "You Will Delete This Data with Title "+nama+" ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                })
+                .then((willDelete) => {
+                if (willDelete) {
+                    window.location = "/admin/manage-article/delete/"+id+""
+                    swal("Your Data has been Deleted!", {
+                    icon: "success",
+                    });
+                } else {
+                    swal("Your Data is Safe!");
+                }
+            });
+
+        })
+    </script>
 
 </body>
 

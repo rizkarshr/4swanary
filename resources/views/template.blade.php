@@ -79,7 +79,8 @@ session_start();
                                     <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ url('/admin/manage-product') }}">Product</a></li>
                                     <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ url('/admin/manage-category') }}">Category</a></li>
                                     <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ url('/admin/manage-subcategory') }}">Subcategory</a></li>
-                                    <li class="link {{ Request::is('origins') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origins') }}">Origins</a></li>
+                                    <li class="link {{ Request::is('origins') ? ' active' : '' }}"><a href="{{ url('/admin/manage-province') }}">Province</a></li>
+                                    <li class="link {{ Request::is('origins') ? ' active' : '' }}"><a href="{{ url('/admin/manage-city') }}">City</a></li>
                                 </ul>
                             </li>
 

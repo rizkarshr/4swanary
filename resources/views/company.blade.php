@@ -12,7 +12,7 @@ session_start();
     <link rel="icon" type="image/png" href="{{asset('../favicon.png')}}">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="{{asset('images/l.png')}}">
-    <title>Manage Store - Aswana.ry</title>
+    <title>Manage Company - Aswana.ry</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/icon/favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -74,8 +74,8 @@ session_start();
                                     <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ url('/admin/manage-product') }}">Product</a></li>
                                     <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ url('/admin/manage-category') }}">Category</a></li>
                                     <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ url('/admin/manage-subcategory') }}">Subcategory</a></li>
-                                    <li class="link {{ Request::is('province') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origin') }}">Province</a></li>
-                                    <li class="link {{ Request::is('city') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origin') }}">City</a></li>
+                                    <li class="link {{ Request::is('province') ? ' active' : '' }}"><a href="{{ url('/admin/manage-province') }}">Province</a></li>
+                                    <li class="link {{ Request::is('city') ? ' active' : '' }}"><a href="{{ url('/admin/manage-city') }}">City</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -195,7 +195,7 @@ session_start();
                                                     <a href="/admin/manage-company/edit/{{$company->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
-                                                    <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                    <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $company->id }}" data-nama="{{ $company->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
                                                 </td>
                                             </tr>
                                             
@@ -346,7 +346,33 @@ session_start();
     </div>-->
     <!-- modal edit end -->
 
-    
+    <!-- modal delete -->
+    <!--<div id="ModalDelete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Company</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="/admin/manage-company/delete/{{$company->id}}" method="get" enctype="multipart/form-data">
+                        <div class="form-group">
+                            Are You Sure You Want To Delete This Data?
+                            <input name="name" type="hidden" class="form-control" required autofocus>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="deletecompany" type="submit" class="btn btn-primary" value="Delete">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>-->
+    <!-- modal delete end -->
+
+
 
     <script>
         $(document).ready(function() {
@@ -394,6 +420,37 @@ session_start();
     <!-- others plugins -->
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
+
+    <!-- Sweetalert -->
+    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    @include('sweetalert::alert')
+    <!-- Sweetalert Delete -->
+    <script>
+        $('.delete').click(function(){
+            var id = $(this).attr('data-id');
+            var nama = $(this).attr('data-nama');
+            swal({
+                title: "Are you sure?",
+                text: "You Will Delete This Data with Name "+nama+" ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                })
+                .then((willDelete) => {
+                if (willDelete) {
+                    window.location = "/admin/manage-company/delete/"+id+""
+                    swal("Your Data has been Deleted!", {
+                    icon: "success",
+                    });
+                } else {
+                    swal("Your Data is Safe!");
+                }
+            });
+
+        })
+    </script>
 
 </body>
 

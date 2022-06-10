@@ -74,8 +74,8 @@ session_start();
                                     <li class="link {{ Request::is('product') ? ' active' : '' }}"><a href="{{ url('/admin/manage-product') }}">Product</a></li>
                                     <li class="link {{ Request::is('category') ? ' active' : '' }}"><a href="{{ url('/admin/manage-category') }}">Category</a></li>
                                     <li class="link {{ Request::is('subcategory') ? ' active' : '' }}"><a href="{{ url('/admin/manage-subcategory') }}">Subcategory</a></li>
-                                    <li class="link {{ Request::is('province') ? ' active' : '' }}"><a href="{{ url('/admin/manage-origin') }}">Province</a></li>
-                                    <li class="link active"><a href="{{ url('/admin/manage-origin') }}">City</a></li>
+                                    <li class="link {{ Request::is('province') ? ' active' : '' }}"><a href="{{ url('/admin/manage-province') }}">Province</a></li>
+                                    <li class="link active"><a href="{{ url('/admin/manage-city') }}">City</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -145,9 +145,9 @@ session_start();
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h2>List Indonesia City</h2>
-                                    <a href="#">
+                                    <!--<a href="#">
                                         <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;" data-toggle="modal" data-target="#" class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Subcategory</button>
-                                    </a>
+                                    </a>-->
                                 </div>
                                 <div class="data-tables datatable-dark">
                                     <table id="dataTable3" class="display" style="width:100%">
@@ -161,26 +161,21 @@ session_start();
                                                 <th>Meta</th>
                                                 <th>Created at</th>
                                                 <th>Updated at</th>
-                                                <th>Action</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($indonesiacity as $indonesiacity)
+                                            @foreach ($city as $city)
                                             <tr>
                                                 <td>{{ $loop->iteration}}</td>
-                                                <td>{{ $indonesiacity->id }}</td>
-                                                <td>{{ $indonesiacity->code }}</td>
-                                                <td>{{ $indonesiacity->province_code }}</td>
-                                                <td>{{ $indonesiacity->name }}</td>
-                                                <td>{{ $indonesiacity->meta }}</td>
-                                                <td>{{ $indonesiacity->created_at }}</td>
-                                                <td>{{ $indonesiacity->updated_at }}</td>
-                                                <td align="center">
-                                                    <a href="#">
-                                                        <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
-                                                    </a>
-                                                    <button style="padding:5px" type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
-                                                </td>
+                                                <td>{{ $city->id }}</td>
+                                                <td>{{ $city->code }}</td>
+                                                <td>{{ $city->province_code }}</td>
+                                                <td>{{ $city->name }}</td>
+                                                <td>{{ $city->meta }}</td>
+                                                <td>{{ $city->created_at }}</td>
+                                                <td>{{ $city->updated_at }}</td>
+
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -208,7 +203,7 @@ session_start();
     <!-- page container area end -->
 
     <!-- modal input -->
-    <div id="myModal" class="modal fade">
+    <!--<div id="myModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -268,11 +263,11 @@ session_start();
                 </form>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- modal input end -->
 
     <!-- modal edit -->
-    <div id="ModalEdit" class="modal fade">
+    <!--<div id="ModalEdit" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -332,19 +327,19 @@ session_start();
                 </form>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- modal edit end -->
 
     <!-- modal delete -->
-    <div id="ModalDelete" class="modal fade">
+    <!--<div id="ModalDelete" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete Origins</h4>
+                    <h4 class="modal-title">Delete City</h4>
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ url('/admin/manage-product') }}" method="post" enctype="multipart/form-data">
+                    <form action="/admin/manage-city/delete/{{$city->id}}" method="get" enctype="multipart/form-data">
                         <div class="form-group">
                             Are You Sure You Want To Delete This Data?
                             <input name="name" type="hidden" class="form-control" required autofocus>
@@ -358,7 +353,7 @@ session_start();
                 </form>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- modal delete end -->
 
     <script>

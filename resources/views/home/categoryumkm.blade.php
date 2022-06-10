@@ -82,7 +82,7 @@
       @foreach ($search as $search)
         <div class="row">
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <a div class="card" href="{{ url('/product/{id}/') }}">
+                <a div class="card" href="{{ url('/company/'.$search->id)}}">
                 <img src="{{ asset('company/'.$search->logo) }}" alt="no pict" class="card-img-top" />
                   <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>

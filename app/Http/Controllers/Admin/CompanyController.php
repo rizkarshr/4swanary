@@ -149,7 +149,7 @@ class CompanyController extends Controller
             // }
         }
 
-        return redirect('/admin/manage-company');
+        return redirect('/admin/manage-company')->with('success', 'Data Company Created Successfully!');
     }
 
     /**
@@ -308,7 +308,7 @@ class CompanyController extends Controller
             }
         }
 
-        return redirect('/admin/manage-company');
+        return redirect('/admin/manage-company')->with('success', 'Data Company Updated Successfully!');
     }
 
     /**
