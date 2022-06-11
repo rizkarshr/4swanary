@@ -65,37 +65,36 @@
     </div>
   </header><!-- End Header -->
 
+  <br><br>
+    <div class="container">
+        <div class="nav-page">
+            <li><a class="nav-page scrollto" href="/search/product">Category Product</a></li>
+            <li><b>|</b></li> 
+            <li><a class="nav-page scrollto active" href="#"><b>Product Catalog</b></a></li>         
+        </div>
+    </div>   
+        
   <main id="main" data-aos="fade-up">
-
     <!-- ======= Breadcrumbs Section =======
     <section class="breadcrumbs">
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
           <ol>
-            <li><a href="{{ url('/home') }}">Product</a></li>
-            <li><a href="{{ url('/search/product') }}">Subcategory</a></li>
+            <li><a href="{{ url('/search/product') }}">Category Product</a></li>
             <li>Product Catalog</li>
           </ol>
         </div>
 
       </div>
-    </section>Breadcrumbs Section 
-    <div class="container">
-        <div class="nav-page">            
-            
-            <li><a class="nav-page scrollto" href="/search/msme">Category MSME</a></li>
-            <li>|</li> 
-            <li><a class="nav-page scrollto active" href="#"><b>MSME Profile</b></a></li>
-            <li></li>           
-        </div>-->
+    </section>-->
 
       <div class="row" id="product-details">
       {{-- @foreach ($product as $data) --}}
-      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100" align="center">
+      <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100" align="center">
       <img src="{{ asset('product/'.$product->product_pict) }}" class="img-fluid" alt="">
       </div>
-      <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-8 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
         <p class="card-text">{{ $product->name }}</b></p>
         <h3 class="text-justify" id="pdw"><strong>{{$product->name}}</strong></h3>
         <p style="text-align: justify" id="pdw">{{$product->desc}}</p>
@@ -126,9 +125,9 @@
 
     <!-- ======= Company Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
+      <div class="container" style=" padding-left: 20px;">
       {{-- @foreach($product as $product) --}}
-        <div class="col-lg-2">
+        <div class="">
           <div class="portfolio-info">
 
             <table width="100%" cellpadding="5">
@@ -165,15 +164,14 @@
 
   <!-- ======= Product Similar Section ======= -->
   <section id="similar" style="padding-top: 0px;padding-bottom: 0px;" class="similar section-bg">
-    <div class="container" data-aos="fade-up">
+    <div class="container" data-aos="fade-up" >
 
     <hr style="width: 480px; margin: 40px 320px 10px; color: #000000; height: 2px;">
       <div class="section-title">
-        <h3>Similar Product</h3>
+        <h3 align="center">Similar Product</h3>
       </div>
 
-      <section id="products" style="padding-top: 0px;padding-bottom: 40px;">
-        <div class="container">
+      <section id="products" style="margin-right: 40px; margin-left: 40px;">
           <div class="row">
             @foreach ($similiar_product as $similiar_product)
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
