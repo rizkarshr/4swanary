@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Category;
 
 class CategoryController extends Controller
@@ -55,7 +56,7 @@ class CategoryController extends Controller
             'desc' => $request->desc,
         ]);
 
-        return redirect('/admin/manage-category')->with('success', 'Data Category Created Successfully!');
+        return redirect('/admin/manage-category')->with('success', 'Category data created successfully.');
     }
 
     /**
@@ -106,7 +107,7 @@ class CategoryController extends Controller
             'desc' => $request->desc,
         ]);
 
-        return redirect('/admin/manage-category')->with('success', 'Data Category Updated Successfully!');
+        return redirect('/admin/manage-category')->with('success', 'Category data updated successfully.');
     }
 
     /**
@@ -122,6 +123,6 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        return redirect('/admin/manage-category');
+        return redirect('/admin/manage-category')->with('success', 'Category data deleted successfully.');
     }
 }

@@ -152,28 +152,28 @@ session_start();
                                         <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Company Name</label>
-                                            <input name="name" type="text" class="form-control" required autofocus>
+                                            <input name="name" type="text" class="form-control" value="{{old('name')}}" required autofocus>
                                         </div>
                                         <div class="form-group">
                                             <label>Since</label>
-                                            <input name="since" type="text" class="form-control" required>
+                                            <input name="since" type="text" class="form-control" value="{{old('since')}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Website</label>
-                                            <input name="website" type="text" class="form-control" required>
+                                            <input name="website" type="text" class="form-control" value="{{old('website')}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input name="email" type="text" class="form-control" required>
+                                            <input name="email" type="text" class="form-control" value="{{old('email')}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Contact Number</label>
-                                            <input name="contact_number" type="number" class="form-control" required>
+                                            <input name="contact_number" type="number" class="form-control" value="{{old('contact_number')}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Subcategory</label>
                                             <select id="id_subcategory" name="id_subcategory" class="form-control" required>
-                                                <option selected disabled="">Choose Subcategory</option>
+                                                <option style="display: none" value="{{old('id_subcategory')}}">Choose Subcategory</option>
                                                 @foreach ($subcategory as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -182,7 +182,7 @@ session_start();
                                         <div class="form-group">
                                             <label>Province</label>
                                             <select name="id_indonesia_province" class="form-control" required>
-                                                <option selected disabled="">Choose Province</option>
+                                                <option style="display: none" value="{{old('id_indonesia_province')}}">Choose Province</option>
                                                 @foreach ($province as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -191,7 +191,7 @@ session_start();
                                         <div class="form-group">
                                             <label>City</label>
                                             <select name="id_indonesia_city" class="form-control" required>
-                                                <option selected disabled="">Choose City</option>
+                                                <option style="display: none" value="{{old('id_indonesia_city')}}">Choose City</option>
                                                 @foreach ($city as $data)
                                                 <option value="{{ $data->id }}">{{ $data->name }}</option>
                                                 @endforeach
@@ -295,6 +295,8 @@ session_start();
     <!-- others plugins -->
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
+
+    @include('sweetalert::alert')
 
 </body>
 

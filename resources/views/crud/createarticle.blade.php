@@ -157,7 +157,7 @@ session_start();
                                         <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Title</label>
-                                            <input name="title" type="text" class="form-control" required autofocus>
+                                            <input name="title" type="text" class="form-control" value="{{old('title')}}" required autofocus>
                                         </div>
                                         <div class="form-group">
                                             <label>Article Image</label>
@@ -165,23 +165,29 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Source</label>
-                                            <input name="source" type="text" class="form-control" required>
+                                            <input name="source" type="text" class="form-control" value="{{old('source')}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Summary :</strong></label>
-                                            <textarea name="summary" class="form-control" required></textarea>
+                                            <textarea name="summary" class="form-control" value="{{old('summary')}}" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Status</label>
                                             <select class="form-control" name="status" id="status" required>
-                                                <option selected disabled="">Choose Status</option>
+                                                <option style="display: none" value="{{old('status')}}">
+                                                    @if (old('status')==null)
+                                                        Choose Status
+                                                    @else
+                                                    {{old('status')}}
+                                                    @endif
+                                                </option>
                                                 <option value="Active">Active</option>
                                                 <option value="Inactive">Inactive</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Content :</strong></label>
-                                            <textarea id="summernote" name="content" required></textarea>
+                                            <textarea id="summernote" name="content" value="{{old('content')}}" required></textarea>
                                         </div>
                                         <div class="modal-footer">
                                             <a href="/admin/manage-product">
@@ -276,6 +282,8 @@ session_start();
     <!-- others plugins -->
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
+
+    @include('sweetalert::alert')
 
 </body>
 

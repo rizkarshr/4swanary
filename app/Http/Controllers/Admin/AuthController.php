@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -18,7 +19,8 @@ class AuthController extends Controller
 
     
     public function authenticate(Request $request)
-    {
+    {      
+
         $email = $request->email;
         $password = $request->password;
 
@@ -45,7 +47,7 @@ class AuthController extends Controller
 
         }   
 
-        return back()->with('loginError','Login Failed');
+        return back()->with('errors','Login failed.');
 
     }
 

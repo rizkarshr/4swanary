@@ -152,24 +152,30 @@ session_start();
                                         <input type="hidden" name="updated_at" value="<?php echo date("Y-m-d H:i:s") ?>">
                                         <div class="form-group">
                                             <label>Username</label>
-                                            <input name="username" type="text" class="form-control" required autofocus>
+                                            <input name="username" type="text" class="form-control" value="{{old('username')}}" autofocus required>
                                         </div>
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input name="name" type="text" class="form-control" required>
+                                            <input name="name" type="text" class="form-control" value="{{old('name')}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input name="email" type="text" class="form-control" required>
+                                            <input name="email" type="text" class="form-control" value="{{old('email')}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input name="password" type="text" class="form-control" required>
+                                            <input name="password" type="text" class="form-control" value="{{old('password')}}" required autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label>Status</label>
                                             <select class="form-control" name="status" id="status" required>
-                                                <option style="display: none" value="">Choose Status</option>
+                                                <option style="display: none" value="{{old('status')}}">
+                                                    @if (old('status')==null)
+                                                        Choose Status
+                                                    @else
+                                                    {{old('status')}}
+                                                    @endif
+                                                </option>
                                                 <option value="Active">Active</option>
                                                 <option value="Inactive">Inactive</option>
                                                 <option value="Banned">Banned</option>
@@ -177,7 +183,7 @@ session_start();
                                         </div>
                                         <div class="form-group">
                                             <label>Profile Picture</label>
-                                            <input name="profil_pict" type="file" class="form-control" required>
+                                            <input name="profil_pict" type="file" class="form-control" value="{{old('profil_pict')}}">
                                         </div>
                                         <div class="modal-footer">
                                             <a href="/admin/manage-user">
@@ -267,6 +273,8 @@ session_start();
     <!-- others plugins -->
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
+
+    @include('sweetalert::alert')
 
 </body>
 
