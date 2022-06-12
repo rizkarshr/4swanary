@@ -49,5 +49,19 @@ class CompanySeeder extends Seeder
             'created_at' => $now,
             'updated_at' => $now,
         ]);
+
+        $company = DB::table('companies')->insert([
+            'id' => '3',
+            'name' => "3nd Company Name",
+            'since' => '2023',
+            'website' => 'companyname3.com',
+            'email' => '',
+            'contact_number' => '08xxxxxxxxxx',
+            'id_subcategory' => '5',
+            'id_indonesia_province' => '11',
+            'id_indonesia_city' => '55',
+            'created_at' => $now,
+            'updated_at' => $now,
+        ]);
     }
 }

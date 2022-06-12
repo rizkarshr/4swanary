@@ -85,7 +85,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
   Route::post('/admin/manage-product/store', [App\Http\Controllers\Admin\ProductController::class, 'store']);
   Route::get('/admin/manage-product/edit/{id}', [App\Http\Controllers\Admin\ProductController::class, 'edit']);
   Route::post('/admin/manage-product/update/{id}', [App\Http\Controllers\Admin\ProductController::class, 'update']);
-  Route::get('/admin/manage-product/delete/{id}', [App\Http\Controllers\Admin\ProductController::class, 'destroy']);
+  Route::delete('/admin/manage-product/delete/{id}', [App\Http\Controllers\Admin\ProductController::class, 'delete'])->name('admin.product');
 
   //ARTICLE
   Route::get('/admin/manage-article', [App\Http\Controllers\Admin\ArticleController::class, 'index']);

@@ -245,7 +245,7 @@ class UserController extends Controller
             $user->delete();
         }
 
-        return redirect('/admin/manage-user')->with('success', 'User deleted successfully.');
+        return redirect('/admin/manage-user');
     }
 
     public function generateUniqueCode()

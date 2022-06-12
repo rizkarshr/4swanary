@@ -39,6 +39,9 @@ session_start();
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
     <!-- modernizr css -->
     <script src="{{asset('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -195,7 +198,12 @@ session_start();
                                                     <a href="/admin/manage-company/edit/{{$company->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
-                                                    <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $company->id }}" data-nama="{{ $company->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                    {{-- <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $company->id }}" data-nama="{{ $company->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button> --}}
+                                                    <form method="get" action="/admin/manage-company/delete/{{$company->id}}">
+                                                        @csrf
+                                                        <input name="_method" type="hidden" value="DELETE">
+                                                        <button type="submit" style="padding:5px" type="button" class="btn btn-danger delete" data-toggle="tooltip" title='Delete'><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i></button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                             
@@ -223,156 +231,6 @@ session_start();
     <!-- footer area end-->
     </div>
     <!-- page container area end -->
-
-    <!-- modal input -->
-    <!--<div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Company</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-company') }}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Company Name</label>
-                            <input name="name" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Since</label>
-                            <input name="logo" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Sector</label>
-                            <input name="sector" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Website</label>
-                            <input name="website" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Contact Number</label>
-                            <select name="contact_number" class="form-control">
-                                <option selected>Choose Subcategory</option>
-
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Origin</label>
-                            <select name="id_origin" class="form-control">
-                                <option selected>Choose Origin</option>
-
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Logo</label>
-                            <input name="logo" type="file" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Banner</label>
-                            <input name="banner" type="file" class="form-control">
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="addcompany" type="submit" class="btn btn-primary" value="Add">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
-    <!-- modal input end -->
-
-    <!-- modal edit -->
-    <!--<div id="ModalEdit" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Company</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-company') }}" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Company Name</label>
-                            <input name="name" type="text" class="form-control" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Since</label>
-                            <input name="logo" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Sector</label>
-                            <input name="sector" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Website</label>
-                            <input name="website" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Contact Number</label>
-                            <select name="contact_number" class="form-control">
-                                <option selected>Choose Subcategory</option>
-
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Origin</label>
-                            <select name="id_origin" class="form-control">
-                                <option selected>Choose Origin</option>
-
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Logo</label>
-                            <input name="logo" type="file" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Banner</label>
-                            <input name="banner" type="file" class="form-control">
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="addcompany" type="submit" class="btn btn-primary" value="Save">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
-    <!-- modal edit end -->
-
-    <!-- modal delete -->
-    <!--<div id="ModalDelete" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Company</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="/admin/manage-company/delete/{{$company->id}}" method="get" enctype="multipart/form-data">
-                        <div class="form-group">
-                            Are You Sure You Want To Delete This Data?
-                            <input name="name" type="hidden" class="form-control" required autofocus>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="deletecompany" type="submit" class="btn btn-primary" value="Delete">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
-    <!-- modal delete end -->
-
-
 
     <script>
         $(document).ready(function() {
@@ -422,35 +280,31 @@ session_start();
     <script src="{{asset('assets/js/scripts.js')}}"></script>
 
     <!-- Sweetalert -->
-    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    @include('sweetalert::alert')
-    <!-- Sweetalert Delete -->
-    <script>
-        $('.delete').click(function(){
-            var id = $(this).attr('data-id');
-            var nama = $(this).attr('data-nama');
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show-alert-delete-box').click(function(event){
+            var form =  $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
             swal({
-                title: "Are you sure?",
-                text: "You Will Delete This Data with Name "+nama+" ",
+                title: "Are you sure you want to delete this record?",
+                text: "If you delete this, it will be gone forever.",
                 icon: "warning",
-                buttons: true,
-                dangerMode: true,
-                })
-                .then((willDelete) => {
+                type: "warning",
+                buttons: ["Cancel","Yes!"],
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/admin/manage-company/delete/"+id+""
-                    swal("Your Data has been Deleted!", {
-                    icon: "success",
-                    });
-                } else {
-                    swal("Your Data is Safe!");
+                    form.submit();
                 }
             });
-
-        })
+        });
     </script>
+
+    @include('sweetalert::alert')
 
 </body>
 

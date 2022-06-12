@@ -241,7 +241,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         $product = Product::findOrFail($id);
 
@@ -252,7 +252,7 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect('/admin/manage-product')->with('success', 'Product data deleted successfully.');
+        return redirect('/admin/manage-product');
     }
 
     public function generateUniqueCode()

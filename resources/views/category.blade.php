@@ -203,94 +203,6 @@ session_start();
     </div>
     <!-- page container area end -->
 
-    <!-- modal input -->
-    <!--<div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Category</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-category') }}" method="post" enctype="multipart/form-data">
-
-                    <div class="form-group">
-                        <label>Category Name</label>
-                        <input name="name" type="text" class="form-control" required autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input name="desc" type="text" class="form-control" required>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="addcategory" type="submit" class="btn btn-primary" value="Add">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
-    <!-- modal input end -->
-
-    <!-- modal edit -->
-    <!--<div id="ModalEdit" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Category</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="{{ url('/admin/manage-category') }}" method="post" enctype="multipart/form-data">
-
-                    <div class="form-group">
-                        <label>Category Name</label>
-                        <input name="name" type="text" class="form-control" required autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input name="desc" type="text" class="form-control" required>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="editcategory" type="submit" class="btn btn-primary" value="Save">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
-    <!-- modal edit end -->
-
-    <!-- modal delete -->
-    <!--<div id="ModalDelete" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Category</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="/admin/manage-category/delete/{{$category->id}}" method="get" enctype="multipart/form-data">
-                        <div class="form-group">
-                            Are You Sure You Want To Delete This Data?
-                            <input name="name" type="hidden" class="form-control" required autofocus>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="deletecategory" type="submit" class="btn btn-primary" value="Delete">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
-    <!-- modal delete end -->
-
     <script>
         $(document).ready(function() {
             $('#dataTable3').DataTable({
@@ -339,10 +251,9 @@ session_start();
     <script src="{{asset('assets/js/scripts.js')}}"></script>
 
     <!-- Sweetalert -->
-    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}"></script>
+    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    @include('sweetalert::alert')
     <!-- Sweetalert Delete -->
     <script>
         $('.delete').click(function(){
@@ -368,6 +279,8 @@ session_start();
 
         })
     </script>
+
+@include('sweetalert::alert')
 
 </body>
 

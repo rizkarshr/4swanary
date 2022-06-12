@@ -254,7 +254,7 @@ class ArticleController extends Controller
         }
 
 
-        return redirect('/admin/manage-article')->with('success', 'Article data deleted successfully.');
+        return redirect('/admin/manage-article');
     }
 
     public function generateUniqueCode()

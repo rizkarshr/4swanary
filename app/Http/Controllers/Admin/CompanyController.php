@@ -335,7 +335,7 @@ class CompanyController extends Controller
             $company->delete();
         }
 
-        return redirect('/admin/manage-company')->with('success', 'Company data deleted successfully.');
+        return redirect('/admin/manage-company');
     }
 
     public function generateUniqueCode()

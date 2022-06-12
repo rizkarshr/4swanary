@@ -432,7 +432,7 @@ session_start();
     <script src="{{asset('assets/js/scripts.js')}}"></script>
 
     <!-- Sweetalert -->
-    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}"></script>
+    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @include('sweetalert::alert')
@@ -443,7 +443,7 @@ session_start();
             var nama = $(this).attr('data-nama');
             swal({
                 title: "Are you sure?",
-                text: "You Will Delete This Data with Title "+nama+" ",
+                text: "You will delete this data with title "+nama+" ",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
