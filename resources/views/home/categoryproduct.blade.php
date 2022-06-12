@@ -60,6 +60,7 @@
   </div>
 </div>
 </section>
+</form>
 <!--===================================END OF FILTER=======================================-->
 
 
@@ -70,17 +71,17 @@
     {{-- </div>  --}}
     <!--===================================Search=======================================-->
     <div class="search">
-    <input type="search" name="search"  value="{{ request('search') }}" autocomplete="off" placeholder="Search Product Here...." style="width: 90%; border-radius: 6px;border-width: 1.5px; border-color: #562016;" method="post" >
-    <button type="submit" style="width: 6%; height: 6%; background-color: #562016; color:#EEE8E1;  border-radius: 6px; border-width: 1px; border-color: #562016;"><img src="{{asset('/images/srch.png')}}" style="width: 42%;"></button>
+    <input type="search" name="search"  value="{{ request('search') }}" autocomplete="off" placeholder="Search Product Here...." style="width: 92%; border-radius: 6px;border-width: 1.5px; border-color: #562016;" method="post" >
+    <button type="submit" style="width: 6%; height: 6%; background-color: #562016; color:#EEE8E1;  border-radius: 6px; border-width: 1px; border-color: #562016;"><img src="{{asset('/images/srch.png')}}" style="width: 45%;"></button>
   </div>
-</form>
 <!--===================================PRODUCT LIST=======================================-->
     <section id="list-product">
-    <div class="container" data-aos="fade-up" style="padding-left: 3px; padding-right: 3px;">
+    <div class="container" data-aos="fade-up" style="padding-left: 0px; padding-right: 0px;">
+      <section id="prod" style="margin-right: 4px; margin-left: 1px;">
+      <div class="row">
       @foreach ($search as $search)
-        <div class="row">
         <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <a div class="card" style="margin-right: 100px;" href="{{ url('/product/'.$search->id)}}">
+                <a div class="card" style="margin-right: 0px; margin-left: 0px;" href="{{ url('/product/'.$search->id)}}">
                   <img src="{{ asset('product/'.$search->product_pict) }}" alt="no pict" class="card-img-top" />
                   <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>
@@ -104,6 +105,7 @@
             
         </div>  
     </div>
+    </section>
     </section>
     
     <br><br>
@@ -191,7 +193,7 @@ body{
   padding: 0;
   display: flex;
   list-style: none;
-  align-items: center;
+  align-items:right;
 }
 .navbar li {
   position: relative;
@@ -290,7 +292,7 @@ body{
 
 /**
 * Mobile Navigation 
-*/
+
 .mobile-nav-toggle {
   color: #222222;
   font-size: 28px;
@@ -382,20 +384,23 @@ body{
 }
 .navbar-mobile .dropdown > .dropdown-active {
   display: block;
-}
+}*/
 
 /*Header End*/
 #sidebar{
-    width: 28%;
+    width: 27%;
     padding: 10px;
     margin: 0;
     float: left;
 }
 #products{
-    width: 72%;
+    width: 73%;
     padding: 10px;
     margin: 0;
     float: right;
+}
+#prod{
+  margin-left: 0;
 }
 ul{
     list-style: none;
@@ -429,9 +434,12 @@ li a:hover{
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
 }
 .card-img-top{
-    width: 250px;
-    height: 180px;
-    border-radius: 15px;
+  width: 230px;
+  height: 240px;
+  border-radius: 15px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
 }
 .card-body p{
     margin: 2px;
@@ -450,6 +458,7 @@ li a:hover{
     padding-top: 12px;
     max-width: 100%;
 }
+
 .categoryprod{
     font-size: 14px;
     color: #EEE8E1;;
@@ -547,7 +556,7 @@ li a:hover{
         display: none;
     }
 }
-@media(max-width:567px){
+/*@media(max-width:567px){
     .navbar-nav{
         margin-left: 0%;
     }
@@ -596,7 +605,7 @@ li a:hover{
     #mobile-filter{
         padding: 10px;
     }
-}
+}*/
 
 </style>
 <!--===================================END OF CSS=======================================-->
