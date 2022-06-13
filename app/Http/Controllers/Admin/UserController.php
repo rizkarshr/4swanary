@@ -37,7 +37,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+
         return view('crud/createuser');
     }
 
@@ -64,9 +64,9 @@ class UserController extends Controller
         //     'profil_pict.mimes' => 'File Type Must Be Jpg, jpeg, Png, Gif',
         //     'profil_pict.max' => 'Max. File Size 3 MB',
         // ];
-    
+
         if ($validator->fails()) {
-            
+
             return back()->with('errors', $validator->messages()->all()[0])->withInput();
         }
 
@@ -85,10 +85,9 @@ class UserController extends Controller
                 'password' => Hash::make($request->password),
                 'status' => $request->status,
                 'profil_pict' => $image,
-                'created_at'=>$request->created_at,
-                'updated_at'=>$request->updated_at
+                'created_at' => $request->created_at,
+                'updated_at' => $request->updated_at
             ]);
-
         } else {
 
             $user = User::create([
@@ -98,13 +97,12 @@ class UserController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'status' => $request->status,
-                'created_at'=>$request->created_at,
-                'updated_at'=>$request->updated_at
+                'created_at' => $request->created_at,
+                'updated_at' => $request->updated_at
             ]);
-
         }
 
-        return redirect('/admin/manage-user')->with('success', 'User created successfully.');
+        return redirect('/admin/manage-user')->with('success', 'Data User Created Successfully!');
     }
 
     /**
@@ -153,9 +151,9 @@ class UserController extends Controller
             'email' => 'unique:users',
             'profil_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
-    
+
         if ($validator->fails()) {
-            
+
             return back()->with('errors', $validator->messages()->all()[0])->withInput();
         }
 
@@ -171,7 +169,7 @@ class UserController extends Controller
             $upload->move($penyimpanan, $code . '.' . $upload->getClientOriginalExtension());
             $image = $code . '.' . $upload->getClientOriginalExtension();
 
-            if($request->password==null){
+            if ($request->password == null) {
 
                 $user->update([
                     'username' => $request->username,
@@ -179,10 +177,9 @@ class UserController extends Controller
                     'email' => $request->email,
                     'status' => $request->status,
                     'profil_pict' => $image,
-                    'updated_at'=>$request->updated_at
+                    'updated_at' => $request->updated_at
                 ]);
-
-            }else{
+            } else {
 
                 $user->update([
                     'username' => $request->username,
@@ -191,35 +188,32 @@ class UserController extends Controller
                     'password' => Hash::make($request->password),
                     'status' => $request->status,
                     'profil_pict' => $image,
-                    'updated_at'=>$request->updated_at
+                    'updated_at' => $request->updated_at
                 ]);
             }
-
         } else {
 
-            if($request->password==null){
+            if ($request->password == null) {
                 $user->update([
                     'username' => $request->username,
                     'name' => $request->name,
                     'email' => $request->email,
                     'status' => $request->status,
-                    'updated_at'=>$request->updated_at
+                    'updated_at' => $request->updated_at
                 ]);
-                
-            }else{
+            } else {
                 $user->update([
                     'username' => $request->username,
                     'name' => $request->name,
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'status' => $request->status,
-                    'updated_at'=>$request->updated_at
+                    'updated_at' => $request->updated_at
                 ]);
             }
-
         }
 
-        return redirect('/admin/manage-user')->with('success', 'User data updated successfully.');
+        return redirect('/admin/manage-user')->with('success', 'Data User Updated Successfully!');
     }
 
     /**
@@ -232,18 +226,18 @@ class UserController extends Controller
     {
         //$profil = User::where('id', Auth::user()->id)->first();
 
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         if (File::exists(public_path('user/' . $user->profil_pict))) {
 
             File::delete(public_path('user/' . $user->profil_pict));
 
             $user->delete();
-
         } else {
 
             $user->delete();
         }
+
 
         return redirect('/admin/manage-user');
     }
