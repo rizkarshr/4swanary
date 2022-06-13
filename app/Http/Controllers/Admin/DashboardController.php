@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Company;
@@ -17,6 +18,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
         $data = [
 
             'user' => User::all()->count(),

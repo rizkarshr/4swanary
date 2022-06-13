@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Subcategory;
 use App\Models\Category;
 
@@ -55,7 +56,7 @@ class SubcategoryController extends Controller
             'id_category' => $request->id_category,
         ]);
 
-        return redirect('/admin/manage-subcategory')->with('success', 'Data Subcategory Created Successfully!');
+        return redirect('/admin/manage-subcategory')->with('success', 'Subcategory data created successfully.');
     }
 
     /**
@@ -103,7 +104,7 @@ class SubcategoryController extends Controller
             'id_category' => $request->id_category,
         ]);
 
-        return redirect('/admin/manage-subcategory')->with('success', 'Data Subcategory Updated Successfully!');
+        return redirect('/admin/manage-subcategory')->with('success', 'Subcategory data updated successfully.');
     }
 
     /**

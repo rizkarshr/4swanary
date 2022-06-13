@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Product;
 use App\Models\Company;
 use App\Models\Subcategory;
@@ -62,12 +64,19 @@ class ProductController extends Controller
 
         $code = $this->generateUniqueCode();
 
+        $validator = Validator::make($request->all(), [
+            'product_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+    
+        if ($validator->fails()) {
+            
+            return back()->with('errors', $validator->messages()->all()[0])->withInput();
+        }
+
         if ($request->file('product_pict') != null) {
 
             $upload = $request->file('product_pict');
-            $this->validate($request, [
-                'product_pict' => '|mimes:jpg,jpeg,png,gif,jfif|max:2048',
-            ]);
+            
             $penyimpanan = public_path() . '/product';
             $upload->move($penyimpanan,  $code  . '.' . $upload->getClientOriginalExtension());
             $image = $code . '.' . $upload->getClientOriginalExtension();
@@ -110,7 +119,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect('/admin/manage-product')->with('success', 'Data Product Created Successfully!');
+        return redirect('/admin/manage-product')->with('success', 'Product data created successfully.');
     }
 
     /**
@@ -165,6 +174,15 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $code = $this->generateUniqueCode();
 
+        $validator = Validator::make($request->all(), [
+            'product_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+    
+        if ($validator->fails()) {
+            
+            return back()->with('errors', $validator->messages()->all()[0])->withInput();
+        }
+
 
         if ($request->file('product_pict') != null) {
 
@@ -174,9 +192,6 @@ class ProductController extends Controller
             }
 
             $upload = $request->file('product_pict');
-            $this->validate($request, [
-                'product_pict' => '|mimes:jpg,jpeg,png,gif,jfif|max:2048',
-            ]);
             $penyimpanan = public_path() . '/product';
             $upload->move($penyimpanan, $code . '.' . $upload->getClientOriginalExtension());
             $image = $code . '.' . $upload->getClientOriginalExtension();
@@ -217,7 +232,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect('/admin/manage-product')->with('success', 'Data Product Updated Successfully!');
+        return redirect('/admin/manage-product')->with('success', 'Product data updated successfully.');
     }
 
     /**
@@ -226,7 +241,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         $product = Product::findOrFail($id);
 

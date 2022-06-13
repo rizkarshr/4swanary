@@ -492,7 +492,7 @@
 }
 
 .notify-title a {
-    float: right;
+    
     display: inline-block;
     color: #ffee1d;
     font-size: 13px;
@@ -1218,7 +1218,7 @@ table.dbkit-table tr td {
     color: #e1e1e1;
 }
 
-.member-box .media-body {}
+
 
 .member-box .media-body p {
     font-size: 18px;
@@ -1917,7 +1917,7 @@ label {
 
 /*-------------------- 18. Icons ------------------- */
 
-.fw-icons {}
+
 
 .fw-icons a {
     color: #444;
@@ -2122,7 +2122,7 @@ table.dataTable thead td {
 
 /*-------------------- 22. Invoice ------------------- */
 
-.invoice-area {}
+
 
 .invoice-head {
     margin-bottom: 30px;
@@ -2165,7 +2165,7 @@ table.dataTable thead td {
     margin-bottom: 5px;
 }
 
-.invoice-table {}
+
 
 .invoice-table .table-bordered td,
 .invoice-table .table-bordered th {

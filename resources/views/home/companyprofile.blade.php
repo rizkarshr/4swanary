@@ -235,14 +235,12 @@ session_start();
 
     <!-- market value area start -->
     <div class="container">
-        <div class="nav-page">            
-            <!--<li><a href="#">{{$company->subcategory->name}}</a></li>
-            <li><</li>-->
+        <div class="nav-page">
             <li><a class="nav-page scrollto" href="/search/msme">Category MSME</a></li>
-            <li>|</li> 
-            <li><a class="nav-page scrollto active" href="#"><b>MSME Profile</b></a></li>
-            <li></li>           
+            <li><b>|</b></li> 
+            <li><a class="nav-page scrollto active" href="#"><b>MSME Profile</b></a></li>         
         </div>
+    </div>   
         
    <!--=============================== Profile=========================================================-->
         <div class="row mt-6">
@@ -300,7 +298,7 @@ session_start();
         <!--<div class="container">-->
         <br><br><br><br>
         <p align="center">____________________________________________________</p>
-            <br><h2 align="center">Our Products</h2> <br>
+            <br><h2 align="center" style="color: #25262B ;">Our Products</h2> <br>
             <br>
 
             <!--<div class="grid_3 grid_5">-->
@@ -329,10 +327,11 @@ session_start();
 
                                     //PRODUK DARI COMPANY-->
                                     
-                                    @foreach ($product as $product)
+                                    <section id="ourprods" style="margin-right: 4px; margin-left: 1px;">
                                     <div class="row" style="padding-bottom: 60px;">
+                                    @foreach ($product as $product)
                                         <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                                             <a div class="card-prod" href="{{ url('/product/{id}/') }}">
+                                             <a div class="card-prod" style="margin-right: 0px; margin-left: 0px;" href="{{ url('/product/{id}/') }}">
                                                 <img src="{{ asset('product/'.$product->product_pict) }}" alt=" " class="card-img-top" />
                                                 <div class="card-body-product">
                                                 <p><b>{{$product->name}}</b></p>
@@ -341,13 +340,15 @@ session_start();
                                                 </div>
                                              </a>
                                         </div>
-
+                                        @endforeach
+                                    </div>
+                                    </section>
                                         <div class="snipcart-details top_brand_home_details">
                                             <fieldset>
                                                <a href="product.php?idproduk=<?php //echo $p['idproduk'] ?>">                                            
                                             </fieldset>
                                         </div>
-                                    @endforeach                            
+                                                                
                                                         
                                                     </div>
                                                 </figure>

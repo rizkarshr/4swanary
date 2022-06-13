@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Company;
 use App\Models\Subcategory;
 use App\Models\IndonesiaCity;
@@ -56,12 +58,19 @@ class CompanyController extends Controller
         $code = $this->generateUniqueCode();
         $code2 = $this->generateUniqueCode2();
 
+        $validator = Validator::make($request->all(), [
+            'logo' => '|mimes:jpg,jpeg,png,gif|max:2048',
+            'background' => '|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+    
+        if ($validator->fails()) {
+            
+            return back()->with('errors', $validator->messages()->all()[0])->withInput();
+        }
+
         if ($file = $request->file('logo')) {
 
             $upload = $request->file('logo');
-            $this->validate($request, [
-                'logo' => '|mimes:jpg,jpeg,png,gif|max:2048',
-            ]);
             $penyimpanan = public_path() . '/company-logo';
             $upload->move($penyimpanan, $code . '.' . $upload->getClientOriginalExtension());
             $image1 = $code . '.' . $upload->getClientOriginalExtension();
@@ -70,9 +79,6 @@ class CompanyController extends Controller
         if ($file = $request->file('background')) {
 
             $upload2 = $request->file('background');
-            $this->validate($request, [
-                'background' => '|mimes:jpg,jpeg,png,gif|max:2048',
-            ]);
             $penyimpanan2 = public_path() . '/company-bg';
             $upload2->move($penyimpanan2, $code2 . '.' . $upload2->getClientOriginalExtension());
             $image2 = $code2 . '.' . $upload2->getClientOriginalExtension();
@@ -143,13 +149,9 @@ class CompanyController extends Controller
                 'updated_at' => $request->updated_at
             ]);
 
-            // if (!$company) {
-
-            //     return redirect('/admin/manage-company')->with('error', 'Failed Create Company');
-            // }
         }
 
-        return redirect('/admin/manage-company')->with('success', 'Data Company Created Successfully!');
+        return redirect('/admin/manage-company')->with('success', 'Company data created successfully.');
     }
 
     /**
@@ -195,6 +197,16 @@ class CompanyController extends Controller
         $code = $this->generateUniqueCode();
         $code2 = $this->generateUniqueCode2();
 
+        $validator = Validator::make($request->all(), [
+            'logo' => '|mimes:jpg,jpeg,png,gif|max:2048',
+            'background' => '|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+    
+        if ($validator->fails()) {
+            
+            return back()->with('errors', $validator->messages()->all()[0])->withInput();
+        }
+
         if ($file = $request->file('logo')) {
 
             if (File::exists(public_path('company-logo/' . $company->logo))) {
@@ -203,9 +215,6 @@ class CompanyController extends Controller
             }
 
             $upload = $request->file('logo');
-            $this->validate($request, [
-                'logo' => '|mimes:jpg,jpeg,png,gif|max:2048',
-            ]);
             $penyimpanan = public_path() . '/company-logo';
             $upload->move($penyimpanan, $code . '.' . $upload->getClientOriginalExtension());
             $image1 = $code . '.' . $upload->getClientOriginalExtension();
@@ -218,9 +227,6 @@ class CompanyController extends Controller
             }
 
             $upload2 = $request->file('background');
-            $this->validate($request, [
-                'background' => '|mimes:jpg,jpeg,png,gif|max:2048',
-            ]);
             $penyimpanan2 = public_path() . '/company-bg';
             $upload2->move($penyimpanan2, $code2 . '.' . $upload2->getClientOriginalExtension());
             $image2 = $code2 . '.' . $upload2->getClientOriginalExtension();
@@ -243,10 +249,6 @@ class CompanyController extends Controller
                 'updated_at' => $request->updated_at
             ]);
 
-            if (!$company) {
-
-                return redirect('/admin/manage-company')->with('error', 'Failed Update Company');
-            }
         } elseif ($file = $request->file('logo')) {
 
             $company->update([
@@ -263,10 +265,6 @@ class CompanyController extends Controller
                 'updated_at' => $request->updated_at
             ]);
 
-            if (!$company) {
-
-                return redirect('/admin/manage-company')->with('error', 'Failed Update Company');
-            }
         } elseif ($file = $request->file('background')) {
 
             $company->update([
@@ -283,10 +281,6 @@ class CompanyController extends Controller
                 'updated_at' => $request->updated_at
             ]);
 
-            if (!$company) {
-
-                return redirect('/admin/manage-company')->with('error', 'Failed Update Company');
-            }
         } else {
 
             $company->update([
@@ -302,13 +296,9 @@ class CompanyController extends Controller
                 'updated_at' => $request->updated_at
             ]);
 
-            if (!$company) {
-
-                return redirect('/admin/manage-company')->with('error', 'Failed Update Company');
-            }
         }
 
-        return redirect('/admin/manage-company')->with('success', 'Data Company Updated Successfully!');
+        return redirect('/admin/manage-company')->with('success', 'Company data updated successfully.');
     }
 
     /**
@@ -319,7 +309,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        $company = company::find($id);
+        $company = Company::findOrFail($id);
 
         if (File::exists(public_path('company-logo/' . $company->logo)) and File::exists(public_path('company-bg/' . $company->background))) {
 
@@ -327,16 +317,19 @@ class CompanyController extends Controller
             File::delete(public_path('company-bg/' . $company->background));
 
             $company->delete();
+
         } elseif (File::exists(public_path('company-logo/' . $company->logo))) {
 
             File::delete(public_path('company-logo/' . $company->logo));
 
             $company->delete();
+
         } elseif (File::exists(public_path('company-bg/' . $company->background))) {
 
             File::delete(public_path('company-bg/' . $company->background));
 
             $company->delete();
+            
         } else {
 
             $company->delete();

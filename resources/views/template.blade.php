@@ -135,6 +135,8 @@ session_start();
     <!-- others plugins -->
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
+
+    @include('sweetalert::alert')
 </body>
 
 </html>

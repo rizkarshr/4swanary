@@ -183,7 +183,11 @@ session_start();
                                                     <a href="/admin/manage-user/edit/{{$user->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
-                                                    <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $user->id }}" data-nama="{{ $user->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                    <form method="get" action="/admin/manage-user/delete/{{$user->id}}">
+                                                        @csrf
+                                                        <input name="_method" type="hidden" value="DELETE">
+                                                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -260,35 +264,27 @@ session_start();
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
 
-    <!-- Sweetalert -->
-    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    @include('sweetalert::alert')
-    <!-- Sweetalert Delete -->
-    <script>
-        $('.delete').click(function(){
-            var id = $(this).attr('data-id');
-            var nama = $(this).attr('data-nama');
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+    
+        $('.show_confirm').click(function(event) {
+            var form =  $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
             swal({
-                title: "Are you sure?",
-                text: "You Will Delete This Data with Name "+nama+" ",
+                title: `Are you sure you want to delete this record?`,
+                text: "If you delete this, it will be gone forever.",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
-                })
-                .then((willDelete) => {
+            })
+            .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/admin/manage-user/delete/"+id+""
-                    swal("Your Data has been Deleted!", {
-                    icon: "success",
-                    });
-                } else {
-                    swal("Your Data is Safe!");
+                form.submit();
                 }
             });
-
-        })
+        });
+    
     </script>
 
 </body>

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\User;
 
 class UserController extends Controller
@@ -35,6 +37,7 @@ class UserController extends Controller
      */
     public function create()
     {
+
         return view('crud/createuser');
     }
 
@@ -49,12 +52,27 @@ class UserController extends Controller
         $code = $this->generateUniqueCode();
         // $profil = User::where('id', Auth::user()->id)->first();
 
+        $validator = Validator::make($request->all(), [
+            'username' => 'unique:users',
+            'email' => 'unique:users',
+            'profil_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+
+        // $messages = [
+        //     'username.unique' => 'Username Not Available',
+        //     'email.unique' => 'Email Not Available',
+        //     'profil_pict.mimes' => 'File Type Must Be Jpg, jpeg, Png, Gif',
+        //     'profil_pict.max' => 'Max. File Size 3 MB',
+        // ];
+
+        if ($validator->fails()) {
+
+            return back()->with('errors', $validator->messages()->all()[0])->withInput();
+        }
+
         if ($file = $request->file('profil_pict')) {
 
             $upload = $request->file('profil_pict');
-            $this->validate($request, [
-                'profil_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
-            ]);
             $penyimpanan = public_path() . '/user';
             $upload->move($penyimpanan, $code . '.' . $upload->getClientOriginalExtension());
             $image = $code . '.' . $upload->getClientOriginalExtension();
@@ -70,12 +88,8 @@ class UserController extends Controller
                 'created_at' => $request->created_at,
                 'updated_at' => $request->updated_at
             ]);
-
-            if (!$user) {
-
-                return redirect('/admin/manage-user')->with('error', 'Failed Create User');
-            }
         } else {
+
             $user = User::create([
                 'id' => $request->id,
                 'username' => $request->username,
@@ -86,11 +100,6 @@ class UserController extends Controller
                 'created_at' => $request->created_at,
                 'updated_at' => $request->updated_at
             ]);
-
-            if (!$user) {
-
-                return redirect('/admin/manage-user')->with('error', 'Failed Create User');
-            }
         }
 
         return redirect('/admin/manage-user')->with('success', 'Data User Created Successfully!');
@@ -137,6 +146,17 @@ class UserController extends Controller
         $user = User::find($id);
         $code = $this->generateUniqueCode();
 
+        $validator = Validator::make($request->all(), [
+            'username' => 'unique:users',
+            'email' => 'unique:users',
+            'profil_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+
+            return back()->with('errors', $validator->messages()->all()[0])->withInput();
+        }
+
         if ($file = $request->file('profil_pict')) {
 
             if (File::exists(public_path('user/' . $user->profil_pict))) {
@@ -145,9 +165,6 @@ class UserController extends Controller
             }
 
             $upload = $request->file('profil_pict');
-            $this->validate($request, [
-                'profil_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
-            ]);
             $penyimpanan = public_path() . '/user';
             $upload->move($penyimpanan, $code . '.' . $upload->getClientOriginalExtension());
             $image = $code . '.' . $upload->getClientOriginalExtension();
@@ -174,11 +191,6 @@ class UserController extends Controller
                     'updated_at' => $request->updated_at
                 ]);
             }
-
-            if (!$user) {
-
-                return redirect('/admin/manage-user')->with('error', 'Failed Update User');
-            }
         } else {
 
             if ($request->password == null) {
@@ -198,11 +210,6 @@ class UserController extends Controller
                     'status' => $request->status,
                     'updated_at' => $request->updated_at
                 ]);
-            }
-
-            if (!$user) {
-
-                return redirect('/admin/manage-user')->with('error', 'Failed Update User');
             }
         }
 

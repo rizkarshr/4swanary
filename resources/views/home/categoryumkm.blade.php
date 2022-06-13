@@ -36,7 +36,7 @@
 <section>
 <form action="{{ url()->current() }}" method="get">
 <section id="sidebar">
-<div class="container">
+<div class="container" style="border-width: 10px;">
   <div class="border-bottom pb-2 ml-2">
     <h5 id="burgundy">Filters</h5>
   </div>
@@ -64,7 +64,7 @@
 </div>
 </section>
 </section>
-
+</form>
 <!--===================================U M K M=======================================-->
 <section id="umkm">
     <!--<div class="border-bottom pb-2 ml-2">-->
@@ -73,16 +73,18 @@
 
 <!--===================================Search=======================================-->
   <div class="search">
-    <input type="search" name="search"  value="{{ request('search') }}" autocomplete="off" placeholder="Search Company / MSME Here...." style="width: 90%; border-radius: 6px;border-width: 1.5px; border-color: #562016;" method="post" >
-    <button type="submit" style="width: 6%; height: 6%; background-color: #562016; color:#EEE8E1;  border-radius: 6px; border-width: 1px; border-color: #562016;"><img src="{{asset('/images/srch.png')}}" style="width: 42%;"></button>
+    <input type="search" name="search"  value="{{ request('search') }}" autocomplete="off" placeholder="Search Company / MSME Here...." style="width: 92%; border-radius: 6px;border-width: 1.5px; border-color: #562016;" method="post" >
+    <button type="submit" style="width: 6%; height: 6%; background-color: #562016; color:#EEE8E1;  border-radius: 6px; border-width: 1px; border-color: #562016;"><img src="{{asset('/images/srch.png')}}" style="width: 45%;"></button>
   </div>
 </form>
 <!--===================================UMKM LIST=======================================-->
-    <div class="container" style="padding-left: 3px; padding-right: 3px;">
+  <section id="list-umkm">
+    <div class="container" data-aos="fade-up" style="padding-left: 0px; padding-right: 0px;">
+    <section id="prod" style="margin-right: 4px; margin-left: 1px;">
+      <div class="row"> 
       @foreach ($search as $search)
-        <div class="row">
             <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                <a div class="card" href="{{ url('/company/'.$search->id)}}">
+                <a div class="card" style="margin-right: 0px; margin-left: 0px;" href="{{ url('/company/'.$search->id)}}">
                 <img src="{{ asset('company/'.$search->logo) }}" alt="no pict" class="card-img-top" />
                   <div class="card-body">
                     <p class="card-text"><b>{{$search->name}}</b></p>
@@ -91,7 +93,7 @@
                   </div>
                 </a>
             </div>
-
+      @endforeach
         <!-- <div class="col-lg-3 offset-lg-0 col-sm-4 offset-sm-2 col-11 offset-1">
                 <div class="card">
                     <img class="card-img-top" src="{{$search->logo}}" alt="Card image cap">
@@ -102,9 +104,11 @@
                     </div>
                 </div>
             </div>-->
-            @endforeach
-        </div>  
+      
+        </div>          
     </div>
+  </section>
+  </section>
     
     <br><br>
 <!--===================================END OF LIST=======================================-->
@@ -121,75 +125,6 @@
                 <a href="#"><b>&raquo;</b></a>
         </div>-->  
 </section>  
-
-<!-- ======= Footer ======= -->
-<footer id="footer">
-
-<div class="footer-top" data-unify="Footer" role="contentinfo">
-  <div class="container">
-    <div class="row">
-
-      <div class="col-lg-3 col-md-6 footer-contact" style="padding-top: 1800px;">
-        <h3>Aswana<span>.ry</span></h3>
-        <p>
-          All around the World <br>
-          Every Universe<br>
-          In your Heart too. <br><br>
-          <strong>Phone:</strong> +62 896-8226-5894<br>
-          <strong>Email:</strong> 4swanary@gmail.com<br>
-        </p>
-      </div>
-
-      <div class="col-lg-3 col-md-6 footer-links" style="padding-top: 1800px;">
-        <h4>Useful Links</h4>
-        <ul>
-          <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="#services">Category</a></li>
-        </ul>
-      </div>
-
-      <div class="col-lg-3 col-md-6 footer-links" style="padding-top: 1800px;">
-        <h4>Contact Us</h4>
-        <p>To make it easier, click the button below to contact us</p>
-        <div class="social-links mt-3">
-          <a href="https://wa.me/089682265894" class="twitter"><i class="bx bxl-whatsapp"></i></a>
-          <!--<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 footer-links" style="padding-top: 1800px;">
-        <h4>Support by:</h4>
-        <img src="{{ asset('assett/img/support.png') }}" alt="">
-        <!--<ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-          </ul>-->
-      </div>
-    </div>
-
-  </div>
-</div>
-</div>
-
-<div class="container py-4">
-  <div class="copyright"> &copy; Copyright <strong><span>Aswana.ry</span></strong>. All Rights Reserved
-  </div>
-  <!--<div class="credits"> -->
-  <!-- All the links in the footer should remain intact. -->
-  <!-- You can delete the links only if you purchased the pro version. -->
-  <!-- Licensing information: https://bootstrapmade.com/license/ -->
-  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-  <!--  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-  </div> -->
-</div>
-</footer><!-- End Footer -->
 
 </body>
 
@@ -253,16 +188,13 @@ margin-top: 70px;
 */
 .navbar {
 padding: 0;
-width: 100%;
-position: relative;
 }
 .navbar ul {
 margin: 0;
 padding: 0;
-display: flex;
+display:flex;
 list-style: none;
-align-items: center;
-position: relative;
+align-items: right;
 }
 .navbar li {
 position: relative;
@@ -272,7 +204,7 @@ white-space: nowrap;
 padding: 10px 0 10px 28px;
 }
 .navbar a, .navbar a:focus{
-
+display: flex;
 justify-content: space-between;
 padding: 0 3px;
 font-size: 15px;
@@ -456,13 +388,13 @@ display: block;
 
 /*Header End*/
 #sidebar{
-  width: 20%;
+  width: 28%;
   padding: 10px;
   margin: 0;
   float: left;
 }
 #umkm{
-  width: 80%;
+  width: 72%;
   padding: 10px;
   margin: 0;
   float: right;
@@ -499,9 +431,12 @@ li a:hover{
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
 }
 .card-img-top{
-  width: 250px;
-  height: 180px;
+  width: 230px;
+  height: 240px;
   border-radius: 15px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
 }
 .card-body p{
   margin: 2px;
@@ -624,12 +559,18 @@ border-radius: 5px;
       padding-left: 10px;
   }
   #sidebar{
-      width: 100%;
-      padding: 10px;
-      margin: 0;
-      float: left;
-  }
-  #umkm{
+    width: 28%;
+    padding: 10px;
+    margin: 0;
+    float: left;
+}
+#products{
+    width: 72%;
+    padding: 10px;
+    margin: 0;
+    float: right;
+}
+#umkm{
       width: 90%;
       padding: 5px;
       margin: 0;
@@ -652,7 +593,8 @@ border-radius: 5px;
       padding: 3px;
   }
   .offset-1{
-      margin-left: 0%;
+      margin-inline-start: auto;
+      margin-inline-end: auto;
   }
   .filter{
       display: block;
@@ -665,5 +607,6 @@ border-radius: 5px;
   #mobile-filter{
       padding: 10px;
   }
+  
 }
 </style>

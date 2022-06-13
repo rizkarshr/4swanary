@@ -70,19 +70,20 @@
 
       <div class="section-title">
         <!--<h2>Article</h2>-->
+        <hr style="width: 200px; margin: 40px 455px 10px; color: #000000; height: 2px;">
         <h3>Article</h3>
-        <p>read this section if you want to know more about exports!</p>
+        <p>read this section if you want to know something about indonesian exports!</p>
       </div><br>
 
       <div class="row">
         <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-          <img src="{{ asset('assett/img/artikel1.JPG') }}" class="img-fluid" alt="">
+          <img src="{{ asset('article/'.$article->image) }}" class="img-fluid" alt="">
         </div>
         <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-justify">Kampus Merdeka Program through Sekolah Ekspor Produces 198 Student Work Products Ready for Export</h3>
+          <h3 class="text-justify">{{$article->title}}</h3>
           <p class="text-justify">
-            Jakarta – Tasks Executor (Plt.) Director General of Higher Education, Research, and Technology (Dirjen Diktiristek) Nizam, and Head of Export School Handito Joewono inaugurated the Digital Export Showcase as Export Product Gallery for Independent Study Kampus Merdeka Program students to become new exporters for 4.0 academic year 2021/ 2022. There are 198 student export products produced by 777 students from 223 universities throughout Indonesia.
-            <a href="{{ url('/article') }}" class="fst-italic"><b>Readmore...</b></a>
+            {{$article->summary}}
+            <a href="{{ url('/articles') }}" class="fst-italic"><b>Readmore...</b></a>
           </p>
           <!--<a href="link" target="_blank" class="fst-italic">Readmore..</a>-->
           
@@ -97,6 +98,7 @@
     <br>
     <div class="section-title">
       <!--<h2>Product</h2>-->
+      <hr style="width: 480px; margin: 40px 400px 10px; color: #000000; height: 2px;">
       <h3>Indonesian MSMEs Product</h3>
       <p>see the visual of Indonesian MSMEs products right here!</p>
     </div>
@@ -154,6 +156,7 @@
         <div class="section-title">
           <!--<h2>Category</h2>-->
           <br>
+          <hr style="width: 280px; margin: 40px 420px 10px; color: #000000; height: 2px;">
           <h3>Category</h3>
           <p>want to see more about Indonesian MSMEs & their products?
             choose one of these two to see by categories!</p>
@@ -189,7 +192,7 @@
 
         <div class="section-title">
           <!--<h2>About Us</h2>-->
-          
+          <hr style="width: 280px; margin: 40px 420px 10px; color: #000000; height: 2px;">
           <h3>Find Out More <span>About Us!</span></h3><br>
           <p><b>What is Aswana.ry?</b></p><br><br>
           <img src="{{asset('/images/l.png')}}" alt="" style="width: 35%;">
@@ -214,8 +217,9 @@
 
         <div class="section-title">
           <!--<h2>Team</h2>-->
+          <hr style="width: 280px; margin: 40px 420px 10px; color: #000000; height: 2px;">
           <h3>Meet Our Hardworking <span>Team</span></h3>
-          <p>this team based on 4 beautiful member in different city</p>
+          <p>this team based on 4 beautiful member from different city</p>
         </div>
 
         <div class="row">

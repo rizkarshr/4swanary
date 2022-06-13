@@ -73,10 +73,10 @@
 
         <div class="d-flex justify-content-between align-items-center">
           <ol>
-            <li><a href="{{ url('/home') }}">Home</a></li>
-            <li>Article Page</li>
+            <li><h5>Article Page</h5> </li>
           </ol>
-          <h6>May 20th, 2022</h6>
+          
+          <h6>created at [ {{$article->created_at}} ]</h6>
         </div>
 
       </div>
@@ -84,7 +84,7 @@
 
     <!-- ======= Isi Artikel Section ======= -->
     <section id="isiartikel" class="about section-bg">
-    @foreach ($article as $article)
+    
       <div class="container" data-aos="fade-up">
         <div class="section-title">
           <h3> {{ $article->title }}</h3><br>
@@ -93,10 +93,10 @@
             <figcaption class="fst-italic">Inauguration of Digital Export Showcase.</figcaption>
           </figure>
         </div>
-    @endforeach     
+     
 
         <div class="row">
-        @foreach ($article as $article)     
+           
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
 
           </div>
@@ -108,7 +108,7 @@
             <p style="text-align: justify">“Sekolah Ekspor program can be the first step for you to start. Here, you have mentors and networks from other participants as well as from the campus which can be an important capital to start a long journey,” he said.</p>-->
           </div>
         </div>
-        @endforeach 
+       
       </div>
     </section><!-- End Isi Artikel Section -->
 
@@ -120,33 +120,28 @@
 
     <div class="footer-top">
       <div class="container">
-        <div class="row">
+        <div class="row" align="center">
 
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Aswana<span>.ry</span></h3>
-            <p>
-              All around the World <br>
-              Every Universe<br>
-              In your Heart too. <br><br>
-              <strong>Phone:</strong> +62 896-8226-5894<br>
-              <strong>Email:</strong> 4swanary@gmail.com<br>
-            </p>
-          </div>
+          <div class="footer-contact" align="center">
+            <h3>Aswana.ry</h3>            
+            <p>Aswana Directory</p>
+            <p><i>All around the World Every Universe In your Heart too.</i><br><br></p>
+          </div><div></div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+          <div class="col-lg-3 col-md-3 footer-links">
+            <h4><u>Our Social Media</u></h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/home') }}">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#services">Category</a></li>
+              <a href="https://wa.me/089682265894" class="whatsapp"><i class="bx bxl-whatsapp" style="width: 5%; margin: 0px 20px;"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram" style="margin: 0px 50px;"></i></a>
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Contact Us</h4>
-            <p>To make it easier, click the button below to contact us</p>
-            <div class="social-links mt-3">
-              <a href="https://wa.me/089682265894" class="twitter"><i class="bx bxl-whatsapp"></i></a>
+          <div class="col-lg-6 col-md-6 footer-links">
+            <h4 align="center"><u>Contact Us</u></h4>
+            <p>need more information you can contact us on down below</p>
+            <div class="social-links mt-3">      
+              <p><strong>Phone : </strong> +62 896-8226-5894 <span> | </span><span><strong> Email : </strong> 4swanary@gmail.com</span></p>
+              
               <!--<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
               <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
@@ -155,15 +150,8 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Support by:</h4>
-            <img src="{{ asset('assett/img/support.png') }}" alt="">
-            <!--<ul>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-              </ul>-->
+            <h4><u>Support By</u></h4>
+            <img src="{{ asset('assett/img/support.png') }}" alt="">        
           </div>
         </div>
 
@@ -171,17 +159,9 @@
     </div>
     </div>
 
-    <div class="container py-4">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Aswana.ry</span></strong>. All Rights Reserved
+    <div class="container py-4" align="center">
+      <div class="copyright">Copyright &copy; 2022 <strong><span>Aswana.ry</span></strong>. All Rights Reserved
       </div>
-      <!--<div class="credits"> -->
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-      <!--  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div> -->
     </div>
   </footer><!-- End Footer -->
 

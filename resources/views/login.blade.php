@@ -89,6 +89,14 @@
 </head>
 
 <body>
+
+    @if (auth()->user())
+        <?php
+        header('Location: /admin/dashboard ');
+        exit;
+        ?>
+    @else
+        
     <div id="card">
         <div id="card-content">
             <div id="card-title"> <img src="/images/l.png" width="60%" style="align:center">
@@ -107,6 +115,8 @@
         </div>
     </div>
 
+    
+
 </body>
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
@@ -119,5 +129,9 @@
 
 {{-- <script src="{{asset('app/build/app.js')}}"></script>
 <script src="{{asset('app/build/auth.js')}}" type="text/javascript"></script> --}}
+
+@include('sweetalert::alert')
+
+@endif
 
 </html>
