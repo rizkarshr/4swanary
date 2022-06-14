@@ -144,6 +144,7 @@
 body{
   color: #25262B;
   margin:0;
+  width: 100%;
 }
 
 /*Header Start*/
@@ -427,8 +428,9 @@ li a:hover{
   background-color: #25262B;
   color: #EEE8E1;
   border-radius: 15px;
-  margin: 0.5rem auto 0.5rem auto;
+  margin: 0.5rem auto 0.5rem 2rem;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  margin-right: 2em;
 }
 .card-img-top{
   width: 230px;

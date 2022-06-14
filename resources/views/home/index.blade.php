@@ -235,6 +235,7 @@
               <div class="member-info">
                 <h4>Rizka Rihul Sahara</h4>
                 <span>Product Owner</span>
+                <span>Front-End Developer</span>
               </div>
             </div>
           </div>
@@ -279,7 +280,8 @@
               </div>
               <div class="member-info">
                 <h4>Retno Anggraini</h4>
-                <span>UI/UX Designer and Quality Assurance</span>
+                <span>UI/UX Designer</span>
+                <span>Front-End Developer</span>
               </div>
             </div>
           </div>
