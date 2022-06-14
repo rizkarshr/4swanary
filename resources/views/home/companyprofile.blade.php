@@ -331,7 +331,7 @@ session_start();
                                     <div class="row" style="padding-bottom: 60px;">
                                     @foreach ($product as $product)
                                         <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
-                                             <a div class="card-prod" style="margin-right: 0px; margin-left: 0px;" href="{{ url('/product/{id}/') }}">
+                                             <a div class="card-prod" style="margin-right: 0px; margin-left: 0px;" href="{{ url('/product/'.$product->id)}}">
                                                 <img src="{{ asset('product/'.$product->product_pict) }}" alt=" " class="card-img-top" />
                                                 <div class="card-body-product">
                                                 <p><b>{{$product->name}}</b></p>
