@@ -19,18 +19,16 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
 
-        $article = Article::where('status','=','Active')->count();
+        $article = Article::where('status', '=', 'Active')->count();
 
-        if ($article >= 2){
+        if ($article >= 2) {
 
-            alert()->info('Info','There must be only one active article.');
-
+            alert()->info('Info', 'There must be only one active article.');
         }
 
         if ($request->filled('search')) {
 
             $article = Article::search($request->search)->get();
-            
         } else {
 
             $article = Article::all();
@@ -63,9 +61,9 @@ class ArticleController extends Controller
         $validator = Validator::make($request->all(), [
             'image' => '|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
-    
+
         if ($validator->fails()) {
-            
+
             return back()->with('errors', $validator->messages()->all()[0])->withInput();
         }
 
@@ -107,7 +105,6 @@ class ArticleController extends Controller
                 'created_at' => $request->created_at,
                 'updated_at' => $request->updated_at
             ]);
-
         } else {
 
             $content = $request->content;
@@ -140,7 +137,6 @@ class ArticleController extends Controller
                 'created_at' => $request->created_at,
                 'updated_at' => $request->updated_at
             ]);
-
         }
 
         return redirect('/admin/manage-article')->with('success', ' Article data created successfully.');
@@ -187,9 +183,9 @@ class ArticleController extends Controller
         $validator = Validator::make($request->all(), [
             'image' => '|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
-    
+
         if ($validator->fails()) {
-            
+
             return back()->with('errors', $validator->messages()->all()[0])->withInput();
         }
 
@@ -215,7 +211,6 @@ class ArticleController extends Controller
                 'content' => $request->content,
                 'updated_at' => $request->updated_at
             ]);
-
         } else {
 
             $article->update([
@@ -227,7 +222,6 @@ class ArticleController extends Controller
                 'content' => $request->content,
                 'updated_at' => $request->updated_at
             ]);
-
         }
 
         return redirect('/admin/manage-article')->with('success', 'Article data updated successfully.');
@@ -254,7 +248,7 @@ class ArticleController extends Controller
         }
 
 
-        return redirect('/admin/manage-article');
+        return redirect('/admin/manage-article')->with('warning', 'Your Data has been Deleted!');
     }
 
     public function generateUniqueCode()

@@ -67,16 +67,16 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'product_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
-    
+
         if ($validator->fails()) {
-            
+
             return back()->with('errors', $validator->messages()->all()[0])->withInput();
         }
 
         if ($request->file('product_pict') != null) {
 
             $upload = $request->file('product_pict');
-            
+
             $penyimpanan = public_path() . '/product';
             $upload->move($penyimpanan,  $code  . '.' . $upload->getClientOriginalExtension());
             $image = $code . '.' . $upload->getClientOriginalExtension();
@@ -177,9 +177,9 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'product_pict' => '|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
-    
+
         if ($validator->fails()) {
-            
+
             return back()->with('errors', $validator->messages()->all()[0])->withInput();
         }
 
@@ -241,18 +241,18 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
         $product = Product::findOrFail($id);
 
-        if (isset($product->product_pict)) {
+        if (File::exists($product->product_pict)) {
 
             File::delete(public_path('product/' . $product->product_pict));
         }
 
         $product->delete();
 
-        return redirect('/admin/manage-product');
+        return redirect('/admin/manage-product')->with('warning', 'Your Data has been Deleted!');
     }
 
     public function generateUniqueCode()

@@ -62,9 +62,9 @@ class CompanyController extends Controller
             'logo' => '|mimes:jpg,jpeg,png,gif|max:2048',
             'background' => '|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
-    
+
         if ($validator->fails()) {
-            
+
             return back()->with('errors', $validator->messages()->all()[0])->withInput();
         }
 
@@ -148,7 +148,6 @@ class CompanyController extends Controller
                 'created_at' => $request->created_at,
                 'updated_at' => $request->updated_at
             ]);
-
         }
 
         return redirect('/admin/manage-company')->with('success', 'Company data created successfully.');
@@ -201,9 +200,9 @@ class CompanyController extends Controller
             'logo' => '|mimes:jpg,jpeg,png,gif|max:2048',
             'background' => '|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
-    
+
         if ($validator->fails()) {
-            
+
             return back()->with('errors', $validator->messages()->all()[0])->withInput();
         }
 
@@ -248,7 +247,6 @@ class CompanyController extends Controller
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'updated_at' => $request->updated_at
             ]);
-
         } elseif ($file = $request->file('logo')) {
 
             $company->update([
@@ -264,7 +262,6 @@ class CompanyController extends Controller
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'updated_at' => $request->updated_at
             ]);
-
         } elseif ($file = $request->file('background')) {
 
             $company->update([
@@ -280,7 +277,6 @@ class CompanyController extends Controller
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'updated_at' => $request->updated_at
             ]);
-
         } else {
 
             $company->update([
@@ -295,7 +291,6 @@ class CompanyController extends Controller
                 'id_indonesia_city' => $request->id_indonesia_city,
                 'updated_at' => $request->updated_at
             ]);
-
         }
 
         return redirect('/admin/manage-company')->with('success', 'Company data updated successfully.');
@@ -317,25 +312,22 @@ class CompanyController extends Controller
             File::delete(public_path('company-bg/' . $company->background));
 
             $company->delete();
-
         } elseif (File::exists(public_path('company-logo/' . $company->logo))) {
 
             File::delete(public_path('company-logo/' . $company->logo));
 
             $company->delete();
-
         } elseif (File::exists(public_path('company-bg/' . $company->background))) {
 
             File::delete(public_path('company-bg/' . $company->background));
 
             $company->delete();
-            
         } else {
 
             $company->delete();
         }
 
-        return redirect('/admin/manage-company');
+        return redirect('/admin/manage-company')->with('warning', 'Your Data has been Deleted!');
     }
 
     public function generateUniqueCode()

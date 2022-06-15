@@ -181,35 +181,13 @@ session_start();
                                                     <a href="/admin/manage-article/edit/{{$article->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
-                                                    <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $article->id }}" data-nama="{{ $article->title }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                    <a href="/admin/manage-article/delete/{{$article->id}}">
+                                                        <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $article->id }}" data-nama="{{ $article->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i> </button>
+                                                    </a>
 
                                                 </td>
                                             </tr>
 
-                                            <!-- modal delete -->
-    <div id="ModalDelete" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Product</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form action="/admin/manage-article/delete/{{$article->id}}" method="get" enctype="multipart/form-data">
-                        <div class="form-group">
-                            Are You Sure You Want To Delete This Data?
-                            <input name="name" type="hidden" class="form-control" required autofocus>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input name="deleteproduct" type="submit" class="btn btn-primary" value="Delete">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- modal delete end -->
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -437,30 +415,30 @@ session_start();
 
     @include('sweetalert::alert')
     <!-- Sweetalert Delete -->
-    <script>
-        $('.delete').click(function(){
+    <!--<script>
+        $('.delete').click(function() {
             var id = $(this).attr('data-id');
             var nama = $(this).attr('data-nama');
             swal({
-                title: "Are you sure?",
-                text: "You will delete this data with title "+nama+" ",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
+                    title: "Are you sure?",
+                    text: "You will delete this data with title " + nama + " ",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
                 })
                 .then((willDelete) => {
-                if (willDelete) {
-                    window.location = "/admin/manage-article/delete/"+id+""
-                    swal("Your Data has been Deleted!", {
-                    icon: "success",
-                    });
-                } else {
-                    swal("Your Data is Safe!");
-                }
-            });
+                    if (willDelete) {
+                        window.location = "/admin/manage-article/delete/" + id + ""
+                        swal("Your Data has been Deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your Data is Safe!");
+                    }
+                });
 
         })
-    </script>
+    </script>-->
 
 </body>
 
