@@ -155,7 +155,7 @@ session_start();
                                             <tr>
                                                 <th>No.</th>
                                                 <th>ID</th>
-                                                <th>Category Name</th>
+                                                <th>Category</th>
                                                 <th>Description</th>
                                                 <th>Created at</th>
                                                 <th>Updated at</th>
@@ -175,7 +175,9 @@ session_start();
                                                     <a href="/admin/manage-category/edit/{{$category->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
-                                                    <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $category->id }}" data-nama="{{ $category->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                    <a href="/admin/manage-category/delete/{{$category->id}}">
+                                                        <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $category->id }}" data-nama="{{ $category->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i> </button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -254,33 +256,34 @@ session_start();
     <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    @include('sweetalert::alert')
     <!-- Sweetalert Delete -->
-    <script>
-        $('.delete').click(function(){
+    <!--<script>
+        $('.delete').click(function() {
             var id = $(this).attr('data-id');
             var nama = $(this).attr('data-nama');
             swal({
-                title: "Are you sure?",
-                text: "You Will Delete This Data with Name "+nama+" ",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
+                    title: "Are you sure?",
+                    text: "You Will Delete This Data with Name " + nama + " ",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
                 })
                 .then((willDelete) => {
-                if (willDelete) {
-                    window.location = "/admin/manage-category/delete/"+id+""
-                    swal("Your Data has been Deleted!", {
-                    icon: "success",
-                    });
-                } else {
-                    swal("Your Data is Safe!");
-                }
-            });
+                    if (willDelete) {
+                        window.location = "/admin/manage-category/delete/" + id + ""
+                        swal("Your Data has been Deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your Data is Safe!");
+                    }
+                });
 
         })
-    </script>
+    </script>-->
 
-@include('sweetalert::alert')
+
 
 </body>
 

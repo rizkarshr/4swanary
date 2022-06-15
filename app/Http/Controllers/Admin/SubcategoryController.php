@@ -118,6 +118,6 @@ class SubcategoryController extends Controller
         $subcategory = Subcategory::findOrFail($id);
         $subcategory->delete();
 
-        return redirect('/admin/manage-subcategory');
+        return redirect('/admin/manage-subcategory')->with('warning', 'Your Data has been Deleted!');
     }
 }

@@ -39,7 +39,6 @@ session_start();
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
     <!-- modernizr css -->
     <script src="{{asset('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
-
 </head>
 
 <body>
@@ -157,16 +156,16 @@ session_start();
                                                 <th>No.</th>
                                                 <th>ID</th>
                                                 <th>Product Name</th>
-                                                <th>Product Picture</th>
-                                                <th>Description</th>
+                                                <!--<th>Description</th>-->
+                                                <!--<th>Product Picture</th>-->
                                                 <th>HS Code</th>
                                                 <th>Dimension</th>
-                                                <th>ID Subcategory</th>
-                                                <th>ID Province</th>
-                                                <th>ID City</th>
-                                                <th>ID Company</th>
-                                                <th>Created at</th>
-                                                <th>Updated at</th>
+                                                <th>Subcategory</th>
+                                                <th>Province <br>
+                                                    City</th>
+                                                <th>Company</th>
+                                                <!--<th>Created at</th>
+                                                <th>Updated at</th>-->
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -176,28 +175,25 @@ session_start();
                                                 <td>{{ $loop->iteration}}</td>
                                                 <td>{{ $product->id }}</td>
                                                 <td>{{ $product->name }}</td>
-                                                <td>
+                                                <!--<td>{{ $product->desc }}</td>-->
+                                                <!--<td>
                                                     <img src="{{ asset('product/'.$product->product_pict) }}" width="50%">
-                                                </td>
-                                                <td>{{ $product->desc }}</td>
+                                                </td>-->
+
                                                 <td>{{ $product->hs_code }}</td>
                                                 <td>{{ $product->dimension }}</td>
                                                 <td>{{ $product->subcategory->name }}</td>
-                                                <td>{{ $product->indonesiaprovince->name }}</td>
-                                                <td>{{ $product->indonesiacity->name }}</td>
+                                                <td>{{ $product->indonesiaprovince->name }} , <br>
+                                                    {{ $product->indonesiacity->name }}
+                                                </td>
                                                 <td>{{ $product->company->name }}</td>
-                                                <td>{{ $product->created_at }}</td>
-                                                <td>{{ $product->updated_at }}</td>
+                                                <!--<td>{{ $product->created_at }}</td>
+                                                <td>{{ $product->updated_at }}</td>-->
                                                 <td align="center">
                                                     <a href="/admin/manage-product/edit/{{$product->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
-                                                    {{-- <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $product->id }}" data-nama="{{ $product->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button> --}}
-                                                    <form method="POST" action="{{ route('admin.product', $product->id) }}">
-                                                        @csrf
-                                                        <input name="_method" type="hidden" value="DELETE">
-                                                        <button type="submit" class="btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm" data-toggle="tooltip" title='Delete'><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i></button>
-                                                    </form>
+                                                    <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $product->id }}" data-nama="{{ $product->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -225,6 +221,42 @@ session_start();
     </div>
     <!-- page container area end -->
 
+    <!-- modal input -->
+
+    <!-- modal input end -->
+
+    <!-- modal edit -->
+
+    <!-- modal edit end -->
+
+    <!-- modal delete -->
+    <!--<div id="ModalDelete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Product</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="/admin/manage-product/delete/{{$product->id}}" method="get" enctype="multipart/form-data">
+                        <div class="form-group">
+                            Are You Sure You Want To Delete This Data?
+                            <input name="name" type="hidden" class="form-control" required autofocus>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input name="deleteproduct" type="submit" class="btn btn-primary" value="Delete">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>-->
+    <!-- modal delete end -->
+
+
+
     <script>
         $(document).ready(function() {
             $('#dataTable3').DataTable({
@@ -235,6 +267,9 @@ session_start();
             });
         });
     </script>
+
+
+
 
     <!-- jquery latest version -->
     <script src="{{url('https://code.jquery.com/jquery-3.3.1.js')}}"></script>
@@ -272,33 +307,39 @@ session_start();
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
 
+    @include('sweetalert::alert')
+    <!-- Sweetalert Delete -->
     <!-- Sweetalert -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script type="text/javascript">
-        $('.show-alert-delete-box').click(function(event){
-            var form =  $(this).closest("form");
-            var name = $(this).data("name");
-            event.preventDefault();
+    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--<script>
+        $('.delete').click(function(){
+            var id = $(this).attr('data-id');
+            var nama = $(this).attr('data-nama');
             swal({
-                title: "Are you sure you want to delete this record?",
-                text: "If you delete this, it will be gone forever.",
+                title: "Are you sure?",
+                text: "You Will Delete This Data with Name "+nama+" ",
                 icon: "warning",
-                type: "warning",
-                buttons: ["Cancel","Yes!"],
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((willDelete) => {
+                buttons: true,
+                dangerMode: true,
+                })
+                .then((willDelete) => {
                 if (willDelete) {
-                    form.submit();
+                    window.location = "/admin/manage-product/delete/"+id+""
+                    swal("Your Data has been Deleted!", {
+                    icon: "success",
+                    });
+                } else {
+                    swal("Your Data is Safe!");
                 }
             });
-        });
-    </script>
 
-    @include('sweetalert::alert')
+        })
+    </script>-->
+    
+    
 
 </body>
+    
 
 </html>

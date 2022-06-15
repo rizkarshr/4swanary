@@ -158,18 +158,17 @@ session_start();
                                             <tr>
                                                 <th>No.</th>
                                                 <th>ID</th>
-                                                <th>Company Name</th>
+                                                <th>Company <br>
+                                                    Since</th>
                                                 <th>Logo</th>
-                                                <th>Background</th>
-                                                <th>Since</th>
-                                                <th>Website</th>
-                                                <th>Email</th>
-                                                <th>Contact Number</th>
-                                                <th>ID Subcategory</th>
-                                                <th>ID Province</th>
-                                                <th>ID City</th>
-                                                <th>Created at</th>
-                                                <th>Updated at</th>
+                                                <!--<th>Background</th>-->
+                                                <br>
+                                                <th>Contact</th>
+                                                <th>Subcategory</th>
+                                                <th>Province , <br>
+                                                    City</th>
+                                                <!--<th>Created at</th>
+                                                <th>Updated at</th>-->
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -178,35 +177,41 @@ session_start();
                                             <tr>
                                                 <td>{{ $loop->iteration}}</td>
                                                 <td>{{ $company->id }}</td>
-                                                <td>{{ $company->name }}</td>
+                                                <td>{{ $company->name }} - <br>
+                                                    {{ $company->since }}
                                                 <td>
-                                                    <img src="{{ asset('company-logo/'.$company->logo) }}" width="50%">
+                                                    <img src="{{ asset('company-logo/'.$company->logo) }}" width="60%">
                                                 </td>
-                                                <td>
-                                                    <img src="{{ asset('company-bg/'.$company->background) }}" width="50%">
+                                                <!--<td>
+                                                    <img src="{{ asset('company-bg/'.$company->background) }}" width="40%">
+                                                </td>-->
+
+                                                <td>{{ $company->website }} <br>
+                                                    {{ $company->email }} <br>
+                                                    {{ $company->contact_number }}
                                                 </td>
-                                                <td>{{ $company->since }}</td>
-                                                <td>{{ $company->website }}</td>
-                                                <td>{{ $company->email }}</td>
-                                                <td>{{ $company->contact_number }}</td>
-                                                <td>{{ $company->id_subcategory }}</td>
-                                                <td>{{ $company->id_indonesia_province }}</td>
-                                                <td>{{ $company->id_indonesia_city }}</td>
-                                                <td>{{ $company->created_at }}</td>
-                                                <td>{{ $company->updated_at }}</td>
+                                                <td>{{ $company->subcategory->name }}</td>
+                                                <td>{{ $company->indonesiaprovince->name }} , <br>
+                                                    {{ $company->indonesiacity->name }}
+                                                </td>
+                                                <!--<td>{{ $company->created_at }}</td>
+                                                <td>{{ $company->updated_at }}</td>-->
                                                 <td align="center">
                                                     <a href="/admin/manage-company/edit/{{$company->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
-                                                    {{-- <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $company->id }}" data-nama="{{ $company->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button> --}}
-                                                    <form method="get" action="/admin/manage-company/delete/{{$company->id}}">
+                                                    <a href="/admin/manage-company/delete/{{$company->id}}">
+                                                        <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $company->id }}" data-nama="{{ $company->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i> </button>
+                                                    </a>
+                                                    <!--<button type="submit" style="padding:5px" type="button" class="btn btn-danger show-alert-delete-box" data-toggle="tooltip" title='Delete'><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i></button>-->
+                                                    <!--<form method="get" action="/admin/manage-company/delete/{{$company->id}}">
                                                         @csrf
                                                         <input name="_method" type="hidden" value="DELETE">
-                                                        <button type="submit" style="padding:5px" type="button" class="btn btn-danger delete" data-toggle="tooltip" title='Delete'><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i></button>
-                                                    </form>
+                                                        
+                                                    </form>-->
                                                 </td>
                                             </tr>
-                                            
+
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -280,31 +285,35 @@ session_start();
     <script src="{{asset('assets/js/scripts.js')}}"></script>
 
     <!-- Sweetalert -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script type="text/javascript">
-        $('.show-alert-delete-box').click(function(event){
-            var form =  $(this).closest("form");
-            var name = $(this).data("name");
-            event.preventDefault();
-            swal({
-                title: "Are you sure you want to delete this record?",
-                text: "If you delete this, it will be gone forever.",
-                icon: "warning",
-                type: "warning",
-                buttons: ["Cancel","Yes!"],
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((willDelete) => {
-                if (willDelete) {
-                    form.submit();
-                }
-            });
-        });
-    </script>
+    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @include('sweetalert::alert')
+    <!-- Sweetalert Delete -->
+    <!--<script>
+        $('.delete').click(function() {
+            var id = $(this).attr('data-id');
+            var nama = $(this).attr('data-nama');
+            swal({
+                    title: "Are you sure?",
+                    text: "You will delete this data with Name " + nama + " ",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "/admin/manage-company/delete/" + id + ""
+                        swal("Your Data has been Deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your Data is Safe!");
+                    }
+                });
+
+        })
+    </script>-->
 
 </body>
 

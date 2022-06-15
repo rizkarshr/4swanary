@@ -123,6 +123,6 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        return redirect('/admin/manage-category');
+        return redirect('/admin/manage-category')->with('warning', 'Your Data has been Deleted!');
     }
 }

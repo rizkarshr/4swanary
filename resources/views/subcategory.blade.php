@@ -157,7 +157,7 @@ session_start();
                                                 <th>ID</th>
                                                 <th>Subcategory Name</th>
                                                 <th>Description</th>
-                                                <th>ID Category</th>
+                                                <th>Category</th>
                                                 <th>Created at</th>
                                                 <th>Updated at</th>
                                                 <th>Action</th>
@@ -170,14 +170,16 @@ session_start();
                                                 <td>{{ $subcategory->id }}</td>
                                                 <td>{{ $subcategory->name }}</td>
                                                 <td>{{ $subcategory->desc }}</td>
-                                                <td>{{ $subcategory->id_category }}</td>
+                                                <td>{{ $subcategory->category->name }}</td>
                                                 <td>{{ $subcategory->created_at }}</td>
                                                 <td>{{ $subcategory->updated_at }}</td>
                                                 <td align="center">
                                                     <a href="/admin/manage-subcategory/edit/{{$subcategory->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
-                                                    <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $subcategory->id }}" data-nama="{{ $subcategory->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></i> </button>
+                                                    <a href="/admin/manage-subcategory/delete/{{$subcategory->id}}">
+                                                        <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $subcategory->id }}" data-nama="{{ $subcategory->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i> </button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -341,35 +343,35 @@ session_start();
     <script src="{{asset('assets/js/scripts.js')}}"></script>
 
     <!-- Sweetalert -->
-    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}"></script>
+    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @include('sweetalert::alert')
     <!-- Sweetalert Delete -->
-    <script>
-        $('.delete').click(function(){
+    <!--<script>
+        $('.delete').click(function() {
             var id = $(this).attr('data-id');
             var nama = $(this).attr('data-nama');
             swal({
-                title: "Are you sure?",
-                text: "You Will Delete This Data with Name "+nama+" ",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
+                    title: "Are you sure?",
+                    text: "You will delete this data with Name " + nama + " ",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
                 })
                 .then((willDelete) => {
-                if (willDelete) {
-                    window.location = "/admin/manage-subcategory/delete/"+id+""
-                    swal("Your Data has been Deleted!", {
-                    icon: "success",
-                    });
-                } else {
-                    swal("Your Data is Safe!");
-                }
-            });
+                    if (willDelete) {
+                        window.location = "/admin/manage-subcategory/delete/" + id + ""
+                        swal("Your Data has been Deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your Data is Safe!");
+                    }
+                });
 
-        })
-    </script>
+        });
+    </script>-->
 
 </body>
 

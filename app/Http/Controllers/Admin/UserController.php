@@ -239,7 +239,7 @@ class UserController extends Controller
         }
 
 
-        return redirect('/admin/manage-user');
+        return redirect('/admin/manage-user')->with('warning', 'Your Data has been Deleted!');
     }
 
     public function generateUniqueCode()

@@ -146,7 +146,7 @@ session_start();
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h2>List Admin</h2>
                                     <a href="/admin/manage-user/create">
-                                        <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;" data-toggle="modal" data-target="#" class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Subcategory</button>
+                                        <button style="width: 12.2em; height: 3.5em; margin-bottom: 20px;" data-toggle="modal" data-target="#" class="btn btn-info col-sm-12"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Admin</button>
                                     </a>
                                 </div>
                                 <div class="data-tables datatable-dark">
@@ -161,7 +161,7 @@ session_start();
                                                 <th>Email</th>
                                                 <th>Status</th>
                                                 <th>Created at</th>
-                                                <th>Updated at</th>
+                                                <!--<th>Updated at</th>-->
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -178,16 +178,19 @@ session_start();
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->status }}</td>
                                                 <td>{{ $user->created_at }}</td>
-                                                <td>{{ $user->updated_at }}</td>
+                                                <!--<td>{{ $user->updated_at }}</td>-->
                                                 <td align="center">
                                                     <a href="/admin/manage-user/edit/{{$user->id}}">
                                                         <button style="padding:5px" type="button" class="btn btn-primary align:center" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i> </button>
                                                     </a>
-                                                    <form method="get" action="/admin/manage-user/delete/{{$user->id}}">
+                                                    <a href="/admin/manage-user/delete/{{$user->id}}">
+                                                        <button style="padding:5px" type="button" class="btn btn-danger delete" data-id="{{ $user->id }}" data-nama="{{ $user->name }}" data-toggle="modal" data-target="#"><i class="fa fa-trash fa-2x" aria-hidden="true"></i> </button>
+                                                    </a>
+                                                    <!--<form method="get" action="/admin/manage-user/delete/{{$user->id}}">
                                                         @csrf
                                                         <input name="_method" type="hidden" value="DELETE">
                                                         <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
-                                                    </form>
+                                                    </form>-->
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -264,28 +267,36 @@ session_start();
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-    <script type="text/javascript">
-    
-        $('.show_confirm').click(function(event) {
-            var form =  $(this).closest("form");
-            var name = $(this).data("name");
-            event.preventDefault();
+    <!-- Sweetalert -->
+    <script src="{{url('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    @include('sweetalert::alert')
+    <!-- Sweetalert Delete -->
+    <!--<script>
+        $('.delete').click(function() {
+            var id = $(this).attr('data-id');
+            var nama = $(this).attr('data-nama');
             swal({
-                title: `Are you sure you want to delete this record?`,
-                text: "If you delete this, it will be gone forever.",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                form.submit();
-                }
-            });
-        });
-    
-    </script>
+                    title: "Are you sure?",
+                    text: "You will delete this data with title " + nama + " ",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "/admin/manage-article/delete/" + id + ""
+                        swal("Your Data has been Deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your Data is Safe!");
+                    }
+                });
+
+        })
+    </script>-->
 
 </body>
 
